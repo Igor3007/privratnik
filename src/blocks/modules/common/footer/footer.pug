@@ -1,0 +1,41 @@
+include ../../common/main-menu/main-menu.pug
+
+.container
+    .footer
+        .footer-top
+            .footer__left
+                .footer-contacts 
+                    .footer-contacts__title ООО «МОИ УМНЫЕ СЕРВИСЫ»
+                    .footer-contacts__list
+                        .footer-contacts__item  <span>ОГРН:</span>1237700282665
+                        .footer-contacts__item  <span>ИНН:</span>9719049065
+                        .footer-contacts__item  <span>КПП:</span>771901001
+                        .footer-contacts__item  <span>Адрес:</span>105187, г. Москва, ул. Щербаковская, д. 53, корп. 15
+                    .footer-contacts__map
+                        .map-overvlay 
+                            #footer-minimap(data-coordinates="55.783089, 37.734210")
+            .footer__right
+                .footer-menu
+                    .footer-menu__item.footer-menu__item--about
+                        .footer-menu__title О компании
+                        .footer-menu__list
+                            ul
+                                each item in app.mainMenu
+                                    li: a(href=item.href)= item.text
+                                
+                              
+
+                    .footer-menu__item
+                        .footer-menu__title Особенности системы
+                        .footer-menu__list
+                            ul
+                                each item in app.asidenav
+                                    li: a(href=item.href)= item.text
+        .footer-bottom
+            .footer-copyright © 2023, ООО «Мои умные сервисы». Все права защищены
+            .footer-developer
+                a(href='https://promicom.ru/' target="_blank") 
+                    span Разработка сайта:
+                    img(src="/img/common/logo-developer.svg" alt="Поддержка сайта Promicom")
+
++main-menu
