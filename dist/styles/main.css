@@ -3278,9 +3278,20 @@ body textarea:focus {
 
 .header-top__help a,
 .header-top__site a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-weight: 500;
+  height: 48px;
+  background-color: transparent;
+  border-radius: 6px;
+  padding: 0 1em;
+  min-width: 48px;
+  transition: background 0.3s ease;
+}
+
+.header-top__help a:hover,
+.header-top__site a:hover {
+  background-color: #fff;
 }
 
 .header-top__help a svg,
@@ -4473,6 +4484,11 @@ a[data-tooltip]:hover::before {
 
   .faq-item__answer {
     font-size: 16px;
+  }
+
+  .header-top__help,
+  .header-top__site {
+    min-width: 215px;
   }
 
   .qi-review span {

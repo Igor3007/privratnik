@@ -38,10 +38,24 @@
     &__help,
     &__site {
 
+        @media screen and (min-width: $w760) {
+            min-width: 215px;
+        }
+
         & a {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             font-weight: 500;
+            height: 48px;
+            background-color: transparent;
+            border-radius: 6px;
+            padding: 0 1em;
+            min-width: 48px;
+            transition: background 0.3s ease;
+
+            &:hover {
+                background-color: #fff;
+            }
 
             & svg {
                 margin-right: 10px;
