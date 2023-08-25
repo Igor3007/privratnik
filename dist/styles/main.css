@@ -3706,6 +3706,9 @@ body textarea:focus {
   text-align: center;
   padding: 20px 0;
   color: var(--text-01);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-authentication__login a {
