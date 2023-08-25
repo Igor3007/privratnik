@@ -4,13 +4,13 @@ mixin registration
             .form-authentication__title Регистрация
             .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для подтверждения
             .form-authentication__form
-                form(action='#' method='POST')
+                form(action='/registration-step2.html' method='POST')
                     .form
-                        .form__item: .form__subitem: input(type="tel" placeholder="Телефон")
+                        .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
                         .form__item: .form__subitem
-                            button.btn(disabled) Далее
+                            button.btn(disabled="" type="submit") Далее
                         .form__item: .form__subitem: .form__note
-                            +checkbox('Ознакомлен(-на) с <a href="/rules.html">Правилами пользования сервисом </a> и <a href="/policy.html">Политикой использования персональных данных</a>')
+                            +checkbox('Ознакомлен(-на) с <a href="/rules.html">Правилами пользования сервисом </a> и <a href="/policy.html">Политикой использования персональных данных</a>', 'policy', 'checked')
 
         .form-authentication__login
             span Уже зарегистрировались?
@@ -22,13 +22,51 @@ mixin registration-step2
             .form-authentication__title Регистрация
             .form-authentication__desc Шаг 2. Отправили СМС с кодом на указанный ранее номер телефона
             .form-authentication__form
-                form(action='#' method='POST')
+                form(action='/registration-step3.html' method='POST')
                     .form
-                        .form__item: .form__subitem: input(type="text" placeholder="Введите код из СМС")
+                        .form__item: .form__subitem: input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
                         .form__item: .form__subitem
-                            button.btn(disabled) Подтвердить номер
+                            button.btn(disabled="" type="submit") Подтвердить номер
                         .form__item: .form__subitem
-                            button.btn.btn-white(disabled) Выслать код заново (через 23 секунды)
+                            button.btn.btn-white(disabled) Выслать код заново (через <span data-timer>0</span> сек)
+                         
+
+        .form-authentication__login
+            +icons('#ic_arrow-back', 24)
+            a(href='/') Вернуться назад 
+
+
+mixin registration-step3
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Регистрация
+            .form-authentication__desc Шаг 3. Создание пароля
+            .form-authentication__form
+                form(action='/registration-step3.html' method='POST')
+                    .form
+                        .form__item: .form__subitem
+                            input(type="password" data-password="registration" placeholder="Пароль")
+                            span.show-pass
+                        .form__item: .form__subitem
+                            input(type="password" data-password-repeat="registration" placeholder="Повторите пароль")
+                            span.show-pass
+                        .form__item: .form__subitem
+                            ul.password-rules(data-rules="password")
+                                li(data-rule="enMum")  
+                                    +icons('#ic_check-small', 20)
+                                    span Не менее 8 символов (латинские буквы и цифры)
+                                li(data-rule="oneNum")  
+                                    +icons('#ic_check-small', 20)
+                                    span Содержит не менее одной цифры
+                                li(data-rule="oneCaps")  
+                                    +icons('#ic_check-small', 20)
+                                    span Содержит не менее одной заглавной буквы
+                                li(data-rule="passwordsMatch")  
+                                    +icons('#ic_check-small', 20)
+                                    span Пароли совпадают
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Завершить регистрацию
+                         
                          
 
         .form-authentication__login

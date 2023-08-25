@@ -189,74 +189,7 @@
          };
      }
 
-     /* ==============================================
-     mobile menu
-     ============================================== */
 
-     if (document.querySelector('[data-menu="btn"]')) {
-         const elContainer = document.querySelector('[data-menu="container"]')
-         const elButton = document.querySelector('[data-menu="btn"]')
-
-         function mobileMenu(params) {
-             this.el = params.elContainer || false;
-             this.button = params.elButton;
-             this.state = 'close';
-
-             this.open = function () {
-                 this.el ? this.el.classList.add('open') : ''
-                 this.button.classList.add('open')
-                 document.body.classList.add('hidden')
-                 document.body.classList.add('open-mobile-menu')
-                 this.state = 'open';
-
-             }
-
-             this.close = function () {
-
-                 this.el ? this.el.classList.add('close-animate') : false
-                 this.button.classList.remove('open')
-
-                 setTimeout(() => {
-                     this.el ? this.el.classList.remove('open') : false
-                     this.el ? this.el.classList.remove('close-animate') : false
-                     document.body.classList.remove('hidden')
-                     document.body.classList.remove('open-mobile-menu')
-                     this.state = 'close'
-                 }, 200)
-
-             }
-
-             this.toggle = function () {
-                 if (this.state == 'close') this.open()
-                 else this.close()
-             }
-         }
-
-         window.menuInstanse = new mobileMenu({
-             elButton,
-             elContainer
-         })
-
-         elButton.addEventListener('click', function () {
-             window.menuInstanse.toggle()
-         })
-     }
-
-
-     /* ==============================================
-     select
-     ============================================== */
-
-     // public methods
-     // select.afSelect.open()
-     // select.afSelect.close()
-     // select.afSelect.update()
-
-     const selectCustom = new afSelect({
-         selector: 'select'
-     })
-
-     selectCustom.init()
 
 
      /* =================================================
@@ -287,153 +220,278 @@
      ==================================================*/
 
      function initMaska() {
-         const {
-             MaskInput,
-         } = Maska
-         new MaskInput("[data-maska]")
+
      }
 
      initMaska();
 
+     const {
+         MaskInput,
+     } = Maska
+
+     new MaskInput("[data-maska]")
+
      /* ==================================================
-     find 
+     maska phone registration
      ==================================================*/
 
-     window.getScrollBarWidth = function () {
+     if (document.querySelector('[data-phone-mask="registration"]')) {
 
-         // Creating invisible container
-         const outer = document.createElement('div');
-         outer.style.visibility = 'hidden';
-         outer.style.overflow = 'scroll'; // forcing scrollbar to appear
-         outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
-         document.body.appendChild(outer);
+         class RegistrationSendPhone {
+             constructor() {
+                 this.input = document.querySelector('[data-phone-mask="registration"]')
+                 this.form = this.input.closest('form')
+                 this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
 
-         // Creating inner element and placing it in the container
-         const inner = document.createElement('div');
-         outer.appendChild(inner);
+                 this.initMask()
+                 this.addEvents()
+             }
 
-         // Calculating difference between container's full width and the child width
-         const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+             initMask() {
+                 new MaskInput(this.input, {
+                     mask: '+#(###) ###-##-##',
+                     onMaska: (event) => {
 
-         // Removing temporary elements from the DOM
-         outer.parentNode.removeChild(outer);
+                         if (!event.completed) {
+                             this.input.setAttribute('aria-valid', 'false')
+                             this.buttonSubmit.setAttribute('disabled', '')
+                         }
 
-         return scrollbarWidth;
+                         if (event.completed) {
+                             this.input.setAttribute('aria-valid', 'true')
+                             this.buttonSubmit.removeAttribute('disabled')
+                         }
 
-     }
-
-     /* ====================================================
-     map footer
-     ====================================================*/
-
-     function initMapFooter() {
-         window.loadApiYmaps((ymaps) => {
-
-             //map footer
-             if (document.querySelector('#footer-minimap')) {
-
-                 const coordinates = document.querySelector('#footer-minimap').dataset.coordinates.split(',')
-                 ymaps.ready(function () {
-                     const myMap = new ymaps.Map('footer-minimap', {
-                         center: coordinates,
-                         zoom: 14,
-                         controls: []
-                     }, {
-                         searchControlProvider: 'yandex#search',
-                         suppressMapOpenBlock: true
-                     });
-                     const myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-                         hintContent: 'Мой умный шлагбаум',
-                     }, {
-                         iconLayout: 'default#image',
-                         iconImageHref: '/img/svg/ic_pin.svg',
-                         iconImageSize: [60, 68],
-                         iconImageOffset: [-30, -68]
-                     });
-                     myMap.geoObjects.add(myPlacemark)
+                     }
                  })
              }
 
-             //map contacts
-             if (document.querySelector('#contact-minimap')) {
+             addEvents() {
+                 this.form.addEventListener('submit', e => {
 
-                 const coordinates = document.querySelector('#contact-minimap').dataset.coordinates.split(',')
-                 ymaps.ready(function () {
-                     const myMap = new ymaps.Map('contact-minimap', {
-                         center: coordinates,
-                         zoom: 14,
-                         controls: []
-                     }, {
-                         searchControlProvider: 'yandex#search',
-                         suppressMapOpenBlock: true
-                     });
-                     const myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-                         hintContent: 'Мой умный шлагбаум',
-                     }, {
-                         iconLayout: 'default#image',
-                         iconImageHref: '/img/svg/ic_pin.svg',
-                         iconImageSize: [60, 68],
-                         iconImageOffset: [-30, -68]
-                     });
-                     myMap.geoObjects.add(myPlacemark)
+                     const policy = this.form.querySelector('[name="policy"]')
+
+                     if (!policy.checked) {
+                         e.preventDefault()
+                         window.STATUS.err('Необходимо принять условия правил пользования сервисом ')
+                     }
+
                  })
              }
-         })
-     }
-
-     window.addEventListener('scroll', e => {
-
-         let posTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-
-         if (posTop > 200 && window.mapFooterInit == undefined) {
-             initMapFooter();
-             window.mapFooterInit = true
          }
-     })
 
-     /* =================================================
-     faq
-     =================================================*/
+         new RegistrationSendPhone();
 
-     if (document.querySelectorAll('.faq-item__question')) {
+     }
 
-         const faqItems = document.querySelectorAll('.faq-item__question')
+     /* ==================================================
+     maska phone registration
+     ==================================================*/
+
+     if (document.querySelector('[data-code-mask="registration"]')) {
+
+         class RegistrationSendCode {
+             constructor() {
+                 this.input = document.querySelector('[data-code-mask="registration"]')
+                 this.form = this.input.closest('form')
+                 this.elTimer = this.form.querySelector('[data-timer]')
+                 this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
+                 this.timerCount = 119
+
+                 this.initMask()
+                 this.startTimer(this.timerCount, this.elTimer)
+             }
+
+             initMask() {
+                 new MaskInput(this.input, {
+                     mask: '####',
+                     onMaska: (event) => {
+
+                         if (!event.completed) {
+                             this.input.setAttribute('aria-valid', 'false')
+                             this.buttonSubmit.setAttribute('disabled', '')
+                         }
+
+                         if (event.completed) {
+                             this.input.setAttribute('aria-valid', 'true')
+                             this.buttonSubmit.removeAttribute('disabled')
+                         }
+
+                     }
+                 })
+             }
+
+             repeatSendCode(button) {
+
+                 button.textContent = 'Отправить код'
+                 button.removeAttribute('disabled')
+
+                 button.addEventListener('click', e => {
+
+                     e.preventDefault()
+
+                     // ajax request
+
+                     button.setAttribute('disabled', 'disabled')
+                     button.innerHTML = 'Выслать код заново (через <span data-timer>00:00</span> сек)'
+                     this.startTimer(this.timerCount, button.querySelector('span'))
+                 })
+
+             }
+
+             startTimer(duration, display) {
+                 let timer = duration,
+                     minutes, seconds;
+                 let instanseTimer = setInterval(() => {
+
+                     minutes = parseInt(timer / 60, 10);
+                     seconds = parseInt(timer % 60, 10);
+
+                     minutes = minutes < 10 ? "0" + minutes : minutes;
+                     seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                     display.textContent = minutes + ":" + seconds;
+
+                     if (--timer < 0) {
+
+                         clearInterval(instanseTimer)
+                         this.repeatSendCode(display.closest('button'))
+
+                     }
+                 }, 1000);
+             }
+         }
+
+         new RegistrationSendCode();
+
+     }
+
+     /* ==========================================
+     validate password
+     ==========================================*/
+
+     if (document.querySelector('[data-password="registration"]')) {
+
+         class PasswordValidate {
+             constructor(params) {
+                 this.inputPassword = params.input
+                 this.inputPasswordRepeat = params.inputRepeat
+                 this.inputPasswordRepeat = params.inputRepeat
+                 this.elRules = params.elRules
+                 this.addEvents()
+
+                 this.rules = {
+                     enMum: null,
+                     oneNum: null,
+                     oneCaps: null,
+                     passwordsMatch: null,
+                 }
+             }
+
+             validatePasswordEnNum(value) {
+                 let regexp = '(?=^.{8,}$)((?=.*\d)|(?=.*[A-Za-z])).*';
+                 return (value.match(regexp) ? true : false);
+             }
+
+             validatePasswordRus(value) {
+                 let regexp = '(?=.*[А-яЁё])';
+                 return (value.match(regexp) ? true : false);
+             }
+
+             validatePasswordOneNum(value) {
+                 let regexp = '(?=.*[0-9])';
+                 return (value.match(regexp) ? true : false);
+             }
+
+             validatePasswordCaps(value) {
+                 // debugger
+                 let regexp = '(?=.*[A-Z])';
+                 return (value.match(regexp) ? true : false);
+             }
+
+             validatePasswordMatch(value) {
+                 return (this.inputPassword.value === this.inputPasswordRepeat.value ? true : false);
+             }
+
+             validate(e) {
+
+                 const value = e.target.value
+
+                 this.rules = {
+                     enMum: this.validatePasswordEnNum(value),
+                     oneNum: this.validatePasswordOneNum(value),
+                     oneCaps: this.validatePasswordCaps(value),
+                     passwordsMatch: this.validatePasswordMatch(value),
+                 }
+
+                 this.elRules.forEach(item => {
+                     item.setAttribute('class', this.rules[item.dataset.rule] ? 'is--valid' : 'is--invalid')
+                 });
+
+                 this.disableSubmitButton()
+             }
+
+             disableSubmitButton() {
+
+                 let errlog = []
+
+                 for (let key in this.rules) {
+                     this.rules[key] || errlog.push(key)
+                 }
+
+                 if (errlog.length) {
+                     this.inputPassword.closest('form').querySelector('[type="submit"]').setAttribute('disabled', '')
+                 } else {
+                     this.inputPassword.closest('form').querySelector('[type="submit"]').removeAttribute('disabled')
+                 }
+
+             }
 
 
-         faqItems.forEach(function (item, index) {
-             item.addEventListener('click', function () {
-                 this.parentNode.classList.toggle('open')
-             })
+
+             addEvents() {
+                 this.inputPassword.addEventListener('keyup', (e) => {
+                     this.validate(e)
+                 })
+                 this.inputPasswordRepeat.addEventListener('keyup', (e) => {
+                     this.validate(e)
+                 })
+             }
+         }
+
+
+         new PasswordValidate({
+             input: document.querySelector('[data-password="registration"]'),
+             inputRepeat: document.querySelector('[data-password-repeat="registration"]'),
+             elRules: document.querySelectorAll('[data-rules="password"] li')
          })
 
      }
 
-     /* =================================================
-     popups
-     =================================================*/
+     /* =====================================
+     show hide pass
+     =====================================*/
 
-     if (document.querySelector('[data-modal]')) {
-         const items = document.querySelectorAll('[data-modal]')
+     if (document.querySelector('.show-pass')) {
+         const items = document.querySelectorAll('.show-pass')
 
          items.forEach(item => {
              item.addEventListener('click', e => {
-
-                 window.ajax({
-                     type: 'GET',
-                     url: item.dataset.modal
-                 }, (status, response) => {
-
-                     const instansePopup = new afLightbox({
-                         mobileInBottom: true
-                     })
-                     instansePopup.open(response, (instanse) => {
-                         initMaska()
-                     })
-                 })
-
+                 if (item.classList.contains('is-active')) {
+                     item.classList.remove('is-active')
+                     item.closest('div').querySelector('input').setAttribute('type', 'password')
+                 } else {
+                     item.classList.add('is-active')
+                     item.closest('div').querySelector('input').setAttribute('type', 'text')
+                 }
              })
          })
      }
+
+
+
+
+
 
 
 

@@ -110,21 +110,21 @@
                 <div class="form-authentication__title">Регистрация</div>
                 <div class="form-authentication__desc">Шаг 2. Отправили СМС с кодом на указанный ранее номер телефона</div>
                 <div class="form-authentication__form">
-                  <form action="#" method="POST">
+                  <form action="/registration-step3.html" method="POST">
                     <div class="form">
                       <div class="form__item">
                         <div class="form__subitem">
-                          <input type="text" placeholder="Введите код из СМС">
+                          <input type="tel" data-code-mask="registration" placeholder="Введите код из СМС">
                         </div>
                       </div>
                       <div class="form__item">
                         <div class="form__subitem">
-                          <button class="btn" disabled>Подтвердить номер</button>
+                          <button class="btn" disabled="" type="submit">Подтвердить номер</button>
                         </div>
                       </div>
                       <div class="form__item">
                         <div class="form__subitem">
-                          <button class="btn btn-white" disabled>Выслать код заново (через 23 секунды)</button>
+                          <button class="btn btn-white" disabled>Выслать код заново (через <span data-timer>0</span> сек)</button>
                         </div>
                       </div>
                     </div>

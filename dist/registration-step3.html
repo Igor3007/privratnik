@@ -108,34 +108,60 @@
             <div class="form-authentication">
               <div class="form-authentication__wrp">
                 <div class="form-authentication__title">Регистрация</div>
-                <div class="form-authentication__desc">Шаг 1. На номер телефона придёт СМС с кодом для подтверждения</div>
+                <div class="form-authentication__desc">Шаг 3. Создание пароля</div>
                 <div class="form-authentication__form">
-                  <form action="/registration-step2.html" method="POST">
+                  <form action="/registration-step3.html" method="POST">
                     <div class="form">
                       <div class="form__item">
                         <div class="form__subitem">
-                          <input type="tel" data-phone-mask="registration" placeholder="Телефон">
+                          <input type="password" data-password="registration" placeholder="Пароль"><span class="show-pass"></span>
                         </div>
                       </div>
                       <div class="form__item">
                         <div class="form__subitem">
-                          <button class="btn" disabled="" type="submit">Далее</button>
+                          <input type="password" data-password-repeat="registration" placeholder="Повторите пароль"><span class="show-pass"></span>
                         </div>
                       </div>
                       <div class="form__item">
                         <div class="form__subitem">
-                          <div class="form__note">
-                            <label class="checkbox">
-                              <input type="checkbox" name="policy" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">Ознакомлен(-на) с <a href="/rules.html">Правилами пользования сервисом </a> и <a href="/policy.html">Политикой использования персональных данных</a></span>
-                            </label>
-                          </div>
+                          <ul class="password-rules" data-rules="password">
+                            <li data-rule="enMum"> 
+                              <svg width="20" height="20">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_check-small"></use>
+                              </svg><span>Не менее 8 символов (латинские буквы и цифры)</span>
+                            </li>
+                            <li data-rule="oneNum"> 
+                              <svg width="20" height="20">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_check-small"></use>
+                              </svg><span>Содержит не менее одной цифры</span>
+                            </li>
+                            <li data-rule="oneCaps"> 
+                              <svg width="20" height="20">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_check-small"></use>
+                              </svg><span>Содержит не менее одной заглавной буквы</span>
+                            </li>
+                            <li data-rule="passwordsMatch"> 
+                              <svg width="20" height="20">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_check-small"></use>
+                              </svg><span>Пароли совпадают</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="form__item">
+                        <div class="form__subitem">
+                          <button class="btn" disabled="" type="submit">Завершить регистрацию</button>
                         </div>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
-              <div class="form-authentication__login"><span>Уже зарегистрировались?</span><a href="/login.html">Войти </a></div>
+              <div class="form-authentication__login">
+                <svg width="24" height="24">
+                  <use xlink:href="/img/sprites/sprite.svg#ic_arrow-back"></use>
+                </svg><a href="/">Вернуться назад </a>
+              </div>
             </div>
     </main>
     <footer>
