@@ -91,122 +91,61 @@
       <div class="header">
         <div class="container">
           <div class="header-top">
-            <div class="header-top__logo"><a href="/"><span class="bgimage" style="background-image: url('/img/common/logo.svg')"> </span><span class="bgimage bgimage--hover" style="background-image: url('/img/common/logo-light.svg')"> </span></a></div>
-            <div class="header-top__nav"> 
-              <nav>
-                <ul> 
-                  <li><a href="/about.html">О нас</a></li>
-                  <li><a href="software.html">Программное обеспечение</a></li>
-                  <li><a href="hardware.html">Оборудование</a></li>
-                  <li><a href="support.html">Техподдержка</a></li>
-                  <li><a href="faq.html">Вопросы и ответы</a></li>
-                  <li><a href="franchise.html">Франшиза</a></li>
-                  <li><a href="contacts.html">Контакты </a></li>
-                </ul>
-              </nav>
-            </div>
-            <div class="header-top__button">
-              <button class="btn" data-modal="/parts/_popup-callback.html">Обратная связь</button>
-            </div>
-            <div class="header-top__burger">
-              <div class="burger-button" data-menu="btn"><span></span><span> </span></div>
-            </div>
+            <div class="header-top__site"><a href="#">
+                <svg width="24" height="24">
+                  <use xlink:href="/img/sprites/sprite.svg#ic_arr-back"></use>
+                </svg><span>Вернуться на сайт</span></a></div>
+            <div class="header-top__logo"><a href="/"><span class="bgimage" style="background-image: url('/img/common/logo-blue.svg')"> </span></a></div>
+            <div class="header-top__help"><a href="#">
+                <svg width="24" height="24">
+                  <use xlink:href="/img/sprites/sprite.svg#ic_msg"></use>
+                </svg><span>Нужна помощь</span></a></div>
           </div>
         </div>
       </div>
     </header>
-    <main> 
-      <div>index</div>
+    <main style="background-image: url('/img/common/main-bg.svg')"> 
+            <div class="form-authentication">
+              <div class="form-authentication__wrp">
+                <div class="form-authentication__title">Регистрация</div>
+                <div class="form-authentication__desc">Шаг 1. На номер телефона придёт СМС с кодом для подтверждения</div>
+                <div class="form-authentication__form">
+                  <form action="#" method="POST">
+                    <div class="form">
+                      <div class="form__item">
+                        <div class="form__subitem">
+                          <input type="tel" placeholder="Телефон">
+                        </div>
+                      </div>
+                      <div class="form__item">
+                        <div class="form__subitem">
+                          <button class="btn" disabled>Далее</button>
+                        </div>
+                      </div>
+                      <div class="form__item">
+                        <div class="form__subitem">
+                          <div class="form__note">
+                            <label class="checkbox">
+                              <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Ознакомлен(-на) с <a href="/rules.html">Правилами пользования сервисом </a> и <a href="/policy.html">Политикой использования персональных данных</a></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="form-authentication__login"><span>Уже зарегистрировались?</span><a href="/login.html">Войти </a></div>
+            </div>
     </main>
     <footer>
       <div class="container">
         <div class="footer">
-          <div class="footer-top">
-            <div class="footer__left">
-              <div class="footer-contacts"> 
-                <div class="footer-contacts__title">ООО «МОИ УМНЫЕ СЕРВИСЫ»</div>
-                <div class="footer-contacts__list">
-                  <div class="footer-contacts__item"> <span>ОГРН:</span>1237700282665</div>
-                  <div class="footer-contacts__item"> <span>ИНН:</span>9719049065</div>
-                  <div class="footer-contacts__item"> <span>КПП:</span>771901001</div>
-                  <div class="footer-contacts__item"> <span>Адрес:</span>105187, г. Москва, ул. Щербаковская, д. 53, корп. 15</div>
-                </div>
-                <div class="footer-contacts__map">
-                  <div class="map-overvlay"> 
-                    <div id="footer-minimap" data-coordinates="55.783089, 37.734210"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="footer__right">
-              <div class="footer-menu">
-                <div class="footer-menu__item footer-menu__item--about">
-                  <div class="footer-menu__title">О компании</div>
-                  <div class="footer-menu__list">
-                    <ul>
-                      <li><a href="/about.html">О нас</a></li>
-                      <li><a href="software.html">Программное обеспечение</a></li>
-                      <li><a href="hardware.html">Оборудование</a></li>
-                      <li><a href="support.html">Техподдержка</a></li>
-                      <li><a href="faq.html">Вопросы и ответы</a></li>
-                      <li><a href="franchise.html">Франшиза</a></li>
-                      <li><a href="contacts.html">Контакты </a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="footer-menu__item">
-                  <div class="footer-menu__title">Особенности системы</div>
-                  <div class="footer-menu__list">
-                    <ul>
-                      <li><a href="/spectransport.html">Распознавание спецтранспорта</a></li>
-                      <li><a href="/gosnomer.html">Распознавание госномеров и гражданских ТС</a></li>
-                      <li><a href="/helper-method.html">Вспомогательные методы открытия</a></li>
-                      <li><a href="/video-archive.html">Видеонаблюдение и видеоаналитика</a></li>
-                      <li><a href="reliable-device.html">Надёжное конечное устройство</a></li>
-                      <li><a href="/courtyards.html">Дворы многоквартирных домов</a></li>
-                      <li><a href="/parkings.html">Многоуровневые и плоскостные паркинги</a></li>
-                      <li><a href="/country-cottages.html">Дачные и котеджные поселки</a></li>
-                      <li><a href="shopping-malls.html">Торговые центры, магазины и рестораны</a></li>
-                      <li><a href="hotels.html">Гостиницы и дома отдыха</a></li>
-                      <li><a href="industrial-warehouses.html">Промышленные, складские и логистические центры</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="footer-bottom">
             <div class="footer-copyright">© 2023, ООО «Мои умные сервисы». Все права защищены</div>
-            <div class="footer-developer"><a href="https://promicom.ru/" target="_blank"> <span>Разработка сайта:</span><img src="/img/common/logo-developer.svg" alt="Поддержка сайта Promicom"></a></div>
           </div>
         </div>
       </div>
-            <div class="main-menu" data-menu="container">
-              <div class="main-menu__wrp">
-                <div class="main-menu__nav">
-                  <nav>
-                    <ul>
-                      <li><a href="/about.html">О нас</a>
-                      </li>
-                      <li><a href="software.html">Программное обеспечение</a>
-                      </li>
-                      <li><a href="hardware.html">Оборудование</a>
-                      </li>
-                      <li><a href="support.html">Техподдержка</a>
-                      </li>
-                      <li><a href="faq.html">Вопросы и ответы</a>
-                      </li>
-                      <li><a href="franchise.html">Франшиза</a>
-                      </li>
-                      <li><a href="contacts.html">Контакты </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-                <div class="main-menu__contact"><a href="#">
-                    <button class="btn btn-white" data-modal="/parts/_popup-shop.html">Обратная связь</button></a></div>
-              </div>
-            </div>
     </footer>
     <script src="/js/vendor.js"> </script>
     <script src="/js/common.js"> </script>

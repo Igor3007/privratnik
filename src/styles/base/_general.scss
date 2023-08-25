@@ -3,8 +3,8 @@ html {
     font-weight: 400;
     font-style: normal;
     font-size: 15px;
-    line-height: 140%;
-    background: #fff;
+    line-height: 150%;
+    background: var(--bg-01);
     color: #000;
     letter-spacing: normal;
     text-size-adjust: none;
@@ -12,6 +12,7 @@ html {
     -moz-text-size-adjust: none;
     -ms-text-size-adjust: none;
     height: -webkit-fill-available;
+
 
     @media screen and (min-width: $w992) {
         font-size: 16px;
@@ -68,7 +69,9 @@ body {
     --fancybox-thumbs-width: 96px;
     --fancybox-thumbs-border-radius: 0px;
 
-    --bg-02: #1A1B1F;
+    --bg-01: #ECF0F5;
+    --bg-02: #DAE3ED;
+    --bg-04: #F5F7FA;
     --green: #7EAE4E;
     --orange: #ECAD4F;
     --error: #F94258;
@@ -80,7 +83,6 @@ body {
     --blue-dark: #253678;
     --main: #253678;
     --stroke: #E2E6EB;
-    --bg-01: #ECF0F5;
     --text-03: #A9ACB8;
     --text-02: #787D8F;
     --text-01: #222429;
@@ -148,21 +150,26 @@ section {
 
 main {
     width: 100%;
-    min-height: calc((var(--vh, 1vh) * 100) - 223px);
+    min-height: calc((var(--vh, 1vh) * 100) - 206px);
 
 
     @media screen and (min-width: $w1440) {
-
-        min-height: calc((var(--vh, 1vh) * 100) - 207px);
+        min-height: calc((var(--vh, 1vh) * 100) - 245px);
     }
 
     @media screen and (min-width: $w1200) {
-        min-height: calc((var(--vh, 1vh) * 100) - 159px);
+        min-height: calc((var(--vh, 1vh) * 100) - 197px);
     }
 
     @media screen and (min-width: $w760) {
-        min-height: calc((var(--vh, 1vh) * 100) - 175px);
+        min-height: calc((var(--vh, 1vh) * 100) - 213px);
     }
+}
+
+main {
+    background-repeat: no-repeat;
+    background-position: -2vw 15%;
+    background-size: 100% auto;
 }
 
 .page-store {

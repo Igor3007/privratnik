@@ -1,6 +1,6 @@
-extends layouts/home
+extends layouts/auth
 
- 
+
  
 block variables
   include ../data/data.pug
@@ -8,7 +8,10 @@ block variables
  
 
 block content
-  div index
+
+  include ../blocks/modules/registration/form-registration.pug
+
+  +registration()
        
  
 block scripts

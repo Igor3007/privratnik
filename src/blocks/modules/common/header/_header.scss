@@ -1,138 +1,61 @@
 .header {
     background-color: transparent;
-    border-bottom: 1px solid #ddd;
-
-
 }
 
-.open-mobile-menu {
-    @media screen and (max-width: $w576) {
-        & .header {
-            background-color: var(--main);
-        }
 
-        & .burger-button {
-            & span {
-                background-color: #fff;
-            }
-        }
-
-        & .header-top {
-            &__logo {
-
-                & span {
-                    filter: grayscale(200) brightness(300);
-                }
-
-            }
-        }
-    }
-}
 
 .header-top {
 
     padding: 16px 0;
     display: flex;
-    //flex-wrap: wrap;
 
-    @media screen and (min-width: $w1440) {
-        padding: 20px 0;
+    @media screen and (min-width: $w1200) {
+        padding: 32px 0;
     }
 
 
     &__logo {
 
-        margin-right: 16px;
+        margin-left: auto;
         display: flex;
         align-items: center;
         margin-right: auto;
 
         & .bgimage {
-            width: 263px;
-            height: 32px;
+            width: 80px;
+            height: 80px;
             @include bgimage-contain;
             background-position: left center;
             transition: opacity 0.3s ease;
 
             @media screen and (min-width: $w1440) {
-                width: 381px;
-                height: 48px;
-            }
-
-            &--hover {
-                display: none;
-            }
-
-
-        }
-
-        &:hover {
-            & .bgimage {
-                display: none;
-            }
-
-            & .bgimage--hover {
-                display: block;
+                width: 140px;
+                height: 140px;
             }
         }
     }
 
-    &__nav {
-        display: none;
+    &__help,
+    &__site {
 
-        @media screen and (min-width: $w992) {
+        & a {
             display: flex;
-
-            margin-right: auto;
             align-items: center;
+            font-weight: 500;
 
-            & ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+            & svg {
+                margin-right: 10px;
+            }
 
-                & li {
-                    padding: 0 1em;
-                    padding-top: 4px;
-                    white-space: nowrap;
+            & span {
+                display: none;
 
-                    &::after {
-                        content: '';
-                        width: 0;
-                        display: block;
-                        height: 2px;
-                        background-color: var(--main);
-                        border-radius: 2px;
-                        transition: 0.3s ease;
-                        margin: 0 auto;
-                        margin-top: 2px;
-                    }
-
-                    &.active,
-                    &:hover {
-                        &::after {
-                            width: 100%;
-                        }
-                    }
+                @media screen and (min-width: $w576) {
+                    display: inline;
                 }
             }
         }
 
-
-    }
-
-    &__button {
-        display: none;
-
-        @media screen and (min-width: $w992) {
-            display: block;
-        }
-    }
-
-    &__burger {
-        @media screen and (min-width: $w992) {
-            display: none;
-        }
     }
 
 }

@@ -16,10 +16,11 @@
     font-weight: 500;
     font-size: 16px;
     text-align: center;
-    border-radius: 48px;
+    border-radius: 8px;
 
     &:hover {
-        background-color: $accent-1-2;
+
+        background: var(--blue-medium, #515E93);
     }
 
     &:active,
@@ -103,9 +104,16 @@
     &.btn-white {
         background-color: #fff;
         color: $main;
+        border: 2px solid var(--blue-dark, #253678);
+
 
         &:hover {
-            background-color: $gray-92;
+            color: var(--blue-medium, #515E93);
+        }
+
+        &:disabled {
+            color: var(--blue-medium, #A8AFC9);
+            border-color: var(--blue-medium, #A8AFC9);
         }
     }
 

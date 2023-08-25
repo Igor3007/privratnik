@@ -1,31 +1,4 @@
-input {
-    display: block;
-    width: 100%;
-    height: 48px;
-    border-radius: 6px;
-    border: 1px solid var(--blue-extralight, #CDD5F5);
-    padding: 0 15px;
-    border-radius: 4px;
-    transition: 0.3s ease;
-
-    &::placeholder {
-        color: $gray-92;
-    }
-
-    &:focus {
-        border: 1px solid $main;
-    }
-}
-
-.form {
-
-    &.is-validate {
-        & input:invalid {
-            border: 1px solid $red;
-        }
-    }
-
-
+body {
 
     & input[type="text"],
     & input[type="date"],
@@ -43,12 +16,10 @@ input {
         box-sizing: border-box;
         width: auto;
         flex-grow: 1;
-        background-color: transparent;
-        transition: border, background 0.4s ease;
-        border-radius: 6px;
-        border: 1px solid var(--blue-extralight, #CDD5F5);
-
-
+        background-color: var(--bg-01);
+        transition: background 0.4s ease;
+        border-radius: 8px;
+        border: none;
 
 
         &::placeholder {
@@ -57,13 +28,14 @@ input {
         }
 
         &:focus {
-            border-color: $main;
+            background-color: var(--bg-02);
             outline: none;
         }
     }
 
     & input[disabled] {
-        background-color: #eee;
+        background-color: var(--bg-02);
+        cursor: not-allowed;
     }
 
     & select {
@@ -88,10 +60,14 @@ input {
     & input[type="password"][aria-valid="false"],
     & input[type="email"][aria-valid="false"] {
         border-color: #f00;
+        background-color: rgba(249, 66, 88, 0.12);
+        ;
     }
 
     & .af-select[aria-valid="false"] {
         border-color: #f00;
+        background-color: rgba(249, 66, 88, 0.12);
+        ;
     }
 
     & input[type="password"][aria-valid="true"],
@@ -124,6 +100,20 @@ input {
             outline: none !important;
         }
     }
+}
+
+.form {
+
+    &.is-validate {
+        & input:invalid {
+            background-color: rgba(249, 66, 88, 0.12);
+            ;
+        }
+    }
+
+
+
+
 
     & div.error {
         color: $red;
@@ -252,7 +242,7 @@ input {
         }
 
         @media screen and (min-width: $w760) {
-            padding: 12px 10px;
+            padding: 17px 10px;
             margin-bottom: 0;
         }
     }

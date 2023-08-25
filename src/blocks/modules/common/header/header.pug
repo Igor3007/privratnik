@@ -1,19 +1,15 @@
 .header
     .container
         .header-top
+            .header-top__site
+                a(href='#')
+                    +icons('#ic_arr-back', 24)
+                    span Вернуться на сайт
             .header-top__logo
                 a(href='/')
-                    span.bgimage(style="background-image: url('/img/common/logo.svg')") 
-                    span.bgimage.bgimage--hover(style="background-image: url('/img/common/logo-light.svg')") 
-            .header-top__nav 
-                nav
-                    ul 
-                        each item in app.mainMenu
-                            li: a(href=item.href)= item.text
-            .header-top__button
-                button.btn(data-modal="/parts/_popup-callback.html") Обратная связь
-
-            .header-top__burger
-                .burger-button(data-menu="btn")
-                    span
-                    span 
+                    span.bgimage(style="background-image: url('/img/common/logo-blue.svg')") 
+                    
+            .header-top__help
+                a(href='#')
+                    +icons('#ic_msg', 24)
+                    span Нужна помощь

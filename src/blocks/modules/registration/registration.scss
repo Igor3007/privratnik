@@ -1,0 +1,82 @@
+.form-authentication {
+    max-width: 440px;
+    margin: 0 10px;
+    padding-top: 10vh;
+
+    @media screen and (min-width: $w480) {
+        margin: 0 auto;
+        padding-top: 0;
+    }
+
+    &__wrp {
+        background-color: #fff;
+        padding: 24px 18px;
+        border-radius: 12px;
+
+        @media screen and (min-width: $w480) {
+            padding: 32px;
+        }
+    }
+
+    &__title {
+        color: var(--text-01, #222429);
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        padding-bottom: 9px;
+    }
+
+    &__desc {
+        color: var(--text-02);
+        line-height: 150%;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    &__form {
+        & .form {
+            &__note {
+                padding-top: 0px;
+            }
+
+            & .btn {
+                width: 100%;
+            }
+
+            & .checkbox {
+                font-size: 15px;
+
+                @media screen and (min-width: $w480) {
+                    font-size: 16px;
+                }
+
+                & a {
+                    color: var(--blue-dark, #253678);
+                    font-weight: 600;
+                    text-decoration: none;
+                    line-height: 150%;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    &__login {
+
+        text-align: center;
+        padding: 20px 0;
+        color: var(--text-01);
+
+        & a {
+            color: var(--blue-dark);
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+    }
+}

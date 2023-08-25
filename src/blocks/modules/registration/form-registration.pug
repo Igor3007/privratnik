@@ -1,0 +1,17 @@
+mixin registration
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Регистрация
+            .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для подтверждения
+            .form-authentication__form
+                form(action='#' method='POST')
+                    .form
+                        .form__item: .form__subitem: input(type="tel" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            button.btn(disabled) Далее
+                        .form__item: .form__subitem: .form__note
+                            +checkbox('Ознакомлен(-на) с <a href="/rules.html">Правилами пользования сервисом </a> и <a href="/policy.html">Политикой использования персональных данных</a>')
+
+        .form-authentication__login
+            span Уже зарегистрировались?
+            a(href='/login.html') Войти 

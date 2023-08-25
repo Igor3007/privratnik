@@ -25,25 +25,35 @@
     }
 
     &__elem {
+
+
+
         top: 1px;
         position: relative;
-        height: 16px;
-        width: 16px;
-        min-width: 16px;
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
         background-color: #fff;
         display: inline-block;
         margin-right: rem(10);
         border: 1px solid #bcbcbc;
-        border-radius: 2px;
+        border-radius: 6px;
+
 
 
         &::after {
             content: "";
             position: absolute;
-            left: 2px;
-            top: 2px;
-            width: 10px;
-            height: 10px;
+
+            left: 5px;
+            top: 6px;
+            width: 12px;
+            height: 9px;
+
+
+
+
+
             transition: 0.5s cubic-bezier(0.08, 0.82, 0.17, 1);
             opacity: 0;
             background-size: 13px;
