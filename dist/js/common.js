@@ -1,498 +1,539 @@
- document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", function (event) {
+
+    const API_YMAPS = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
+
+
+    /* =================================================
+    load ymaps api
+    =================================================*/
+
+    window.loadApiYmaps = function (callback) {
+
+        if (window.ymaps == undefined) {
+            const script = document.createElement('script')
+            script.src = API_YMAPS
+            script.onload = () => {
+                callback(window.ymaps)
+            }
+            document.head.append(script)
+        } else {
+            callback(window.ymaps)
+        }
+
+    }
+
+    /* =================================================
+    preloader
+    ================================================= */
+
+    class Preloader {
+
+        constructor() {
+            this.$el = this.init()
+            this.state = false
+        }
+
+        init() {
+            const el = document.createElement('div')
+            el.classList.add('loading')
+            el.innerHTML = '<div class="indeterminate"></div>';
+            document.body.append(el)
+            return el;
+        }
+
+        load() {
+
+            this.state = true;
+
+            setTimeout(() => {
+                if (this.state) this.$el.classList.add('load')
+            }, 300)
+        }
+
+        stop() {
+
+            this.state = false;
+
+            setTimeout(() => {
+                if (this.$el.classList.contains('load'))
+                    this.$el.classList.remove('load')
+            }, 200)
+        }
+
+    }
+
+    window.preloader = new Preloader();
+
 
-     const API_YMAPS = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
+    /* ==============================================
+    mobile menu
+    ============================================== */
 
+    function Status() {
 
-     /* =================================================
-     load ymaps api
-     =================================================*/
-
-     window.loadApiYmaps = function (callback) {
-
-         if (window.ymaps == undefined) {
-             const script = document.createElement('script')
-             script.src = API_YMAPS
-             script.onload = () => {
-                 callback(window.ymaps)
-             }
-             document.head.append(script)
-         } else {
-             callback(window.ymaps)
-         }
-
-     }
-
-     /* =================================================
-     preloader
-     ================================================= */
-
-     class Preloader {
-
-         constructor() {
-             this.$el = this.init()
-             this.state = false
-         }
-
-         init() {
-             const el = document.createElement('div')
-             el.classList.add('loading')
-             el.innerHTML = '<div class="indeterminate"></div>';
-             document.body.append(el)
-             return el;
-         }
-
-         load() {
-
-             this.state = true;
-
-             setTimeout(() => {
-                 if (this.state) this.$el.classList.add('load')
-             }, 300)
-         }
-
-         stop() {
-
-             this.state = false;
-
-             setTimeout(() => {
-                 if (this.$el.classList.contains('load'))
-                     this.$el.classList.remove('load')
-             }, 200)
-         }
-
-     }
+        this.containerElem = '#status'
+        this.headerElem = '#status_header'
+        this.msgElem = '#status_msg'
+        this.btnElem = '#status_btn'
+        this.timeOut = 10000,
+            this.autoHide = true
 
-     window.preloader = new Preloader();
+        this.init = function () {
+            let elem = document.createElement('div')
+            elem.setAttribute('id', 'status')
+            elem.innerHTML = '<div id="status_header"></div> <div id="status_msg"></div><div id="status_btn"></div>'
+            document.body.append(elem)
+
+            document.querySelector(this.btnElem).addEventListener('click', function () {
+                this.parentNode.setAttribute('class', '')
+            })
+        }
 
+        this.msg = function (_msg, _header) {
+            _header = (_header ? _header : 'Успешно')
+            this.onShow('complete', _header, _msg)
+            if (this.autoHide) {
+                this.onHide();
+            }
+        }
+        this.err = function (_msg, _header) {
+            _header = (_header ? _header : 'Ошибка')
+            this.onShow('error', _header, _msg)
+            if (this.autoHide) {
+                this.onHide();
+            }
+        }
+        this.wrn = function (_msg, _header) {
+            _header = (_header ? _header : 'Внимание')
+            this.onShow('warning', _header, _msg)
+            if (this.autoHide) {
+                this.onHide();
+            }
+        }
 
+        this.onShow = function (_type, _header, _msg) {
+            document.querySelector(this.headerElem).innerText = _header
+            document.querySelector(this.msgElem).innerText = _msg
+            document.querySelector(this.containerElem).classList.add(_type)
+        }
 
-     /* ==============================================
-     mobile menu
-     ============================================== */
+        this.onHide = function () {
+            setTimeout(() => {
+                document.querySelector(this.containerElem).setAttribute('class', '')
+            }, this.timeOut);
+        }
 
-     function Status() {
+    }
 
-         this.containerElem = '#status'
-         this.headerElem = '#status_header'
-         this.msgElem = '#status_msg'
-         this.btnElem = '#status_btn'
-         this.timeOut = 10000,
-             this.autoHide = true
+    window.STATUS = new Status();
+    const STATUS = window.STATUS;
+    STATUS.init();
 
-         this.init = function () {
-             let elem = document.createElement('div')
-             elem.setAttribute('id', 'status')
-             elem.innerHTML = '<div id="status_header"></div> <div id="status_msg"></div><div id="status_btn"></div>'
-             document.body.append(elem)
+    /********************************************
+     * ajax request
+     ********************************************/
 
-             document.querySelector(this.btnElem).addEventListener('click', function () {
-                 this.parentNode.setAttribute('class', '')
-             })
-         }
+    window.ajax = function (params, response) {
 
-         this.msg = function (_msg, _header) {
-             _header = (_header ? _header : 'Успешно')
-             this.onShow('complete', _header, _msg)
-             if (this.autoHide) {
-                 this.onHide();
-             }
-         }
-         this.err = function (_msg, _header) {
-             _header = (_header ? _header : 'Ошибка')
-             this.onShow('error', _header, _msg)
-             if (this.autoHide) {
-                 this.onHide();
-             }
-         }
-         this.wrn = function (_msg, _header) {
-             _header = (_header ? _header : 'Внимание')
-             this.onShow('warning', _header, _msg)
-             if (this.autoHide) {
-                 this.onHide();
-             }
-         }
+        //params Object
+        //dom element
+        //collback function
 
-         this.onShow = function (_type, _header, _msg) {
-             document.querySelector(this.headerElem).innerText = _header
-             document.querySelector(this.msgElem).innerText = _msg
-             document.querySelector(this.containerElem).classList.add(_type)
-         }
+        window.preloader.load()
 
-         this.onHide = function () {
-             setTimeout(() => {
-                 document.querySelector(this.containerElem).setAttribute('class', '')
-             }, this.timeOut);
-         }
+        let xhr = new XMLHttpRequest();
+        xhr.open((params.type ? params.type : 'POST'), params.url)
 
-     }
+        if (params.responseType == 'json') {
+            xhr.responseType = 'json';
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.send(JSON.stringify(params.data))
+        } else {
 
-     window.STATUS = new Status();
-     const STATUS = window.STATUS;
-     STATUS.init();
+            let formData = new FormData()
 
-     /******************************************** 
-      * ajax request
-      ********************************************/
+            for (key in params.data) {
+                formData.append(key, params.data[key])
+            }
 
-     window.ajax = function (params, response) {
+            xhr.send(formData)
 
-         //params Object
-         //dom element
-         //collback function
+        }
 
-         window.preloader.load()
+        xhr.onload = function () {
 
-         let xhr = new XMLHttpRequest();
-         xhr.open((params.type ? params.type : 'POST'), params.url)
+            response ? response(xhr.status, xhr.response) : ''
 
-         if (params.responseType == 'json') {
-             xhr.responseType = 'json';
-             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-             xhr.send(JSON.stringify(params.data))
-         } else {
+            window.preloader.stop()
 
-             let formData = new FormData()
+            setTimeout(function () {
+                if (params.btn) {
+                    params.btn.classList.remove('btn-loading')
+                }
+            }, 300)
+        };
 
-             for (key in params.data) {
-                 formData.append(key, params.data[key])
-             }
+        xhr.onerror = function () {
+            window.STATUS.err('Error: ajax request failed')
+        };
 
-             xhr.send(formData)
+        xhr.onreadystatechange = function () {
 
-         }
+            if (xhr.readyState == 3) {
+                if (params.btn) {
+                    params.btn.classList.add('btn-loading')
+                }
+            }
 
-         xhr.onload = function () {
+        };
+    }
 
-             response ? response(xhr.status, xhr.response) : ''
 
-             window.preloader.stop()
+    /* =================================================
+    scroll
+    ================================================= */
 
-             setTimeout(function () {
-                 if (params.btn) {
-                     params.btn.classList.remove('btn-loading')
-                 }
-             }, 300)
-         };
+    window.scrollToTargetAdjusted = function (elem) {
 
-         xhr.onerror = function () {
-             window.STATUS.err('Error: ajax request failed')
-         };
+        //elem string selector
 
-         xhr.onreadystatechange = function () {
+        if (!document.querySelector(elem)) return false;
 
-             if (xhr.readyState == 3) {
-                 if (params.btn) {
-                     params.btn.classList.add('btn-loading')
-                 }
-             }
+        let element = document.querySelector(elem);
+        let headerOffset = 0;
+        let elementPosition = element.offsetTop
+        let offsetPosition = elementPosition - headerOffset;
 
-         };
-     }
+        var offset = element.getBoundingClientRect();
 
+        window.scrollTo({
+            top: offset.top,
+            behavior: "smooth"
+        });
+    }
 
+    /* ==================================================
+    maska
+    ==================================================*/
 
+    function initMaska() {
 
-     /* =================================================
-     scroll
-     ================================================= */
+    }
 
-     window.scrollToTargetAdjusted = function (elem) {
+    initMaska();
 
-         //elem string selector
+    const {
+        MaskInput,
+    } = Maska
 
-         if (!document.querySelector(elem)) return false;
+    new MaskInput("[data-maska]")
 
-         let element = document.querySelector(elem);
-         let headerOffset = 0;
-         let elementPosition = element.offsetTop
-         let offsetPosition = elementPosition - headerOffset;
+    /* ==================================================
+   maska phone auth
+   ==================================================*/
 
-         var offset = element.getBoundingClientRect();
+    if (document.querySelector('[data-phone-mask="auth"]')) {
 
-         window.scrollTo({
-             top: offset.top,
-             behavior: "smooth"
-         });
-     }
+        class AuthSendPhone {
+            constructor() {
+                this.input = document.querySelector('[data-phone-mask="auth"]')
+                this.form = this.input.closest('form')
+                this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
 
-     /* ==================================================
-     maska 
-     ==================================================*/
+                this.initMask()
+                this.addEvents()
 
-     function initMaska() {
+            }
 
-     }
+            initMask() {
+                new MaskInput(this.input, {
+                    mask: '+#(###) ###-##-##',
+                    onMaska: (event) => {
 
-     initMaska();
+                        if (!event.completed) {
+                            this.input.setAttribute('aria-valid', 'false')
+                            this.buttonSubmit.setAttribute('disabled', '')
+                        }
 
-     const {
-         MaskInput,
-     } = Maska
+                        if (event.completed) {
+                            this.input.setAttribute('aria-valid', 'true')
+                            this.buttonSubmit.removeAttribute('disabled')
+                        }
 
-     new MaskInput("[data-maska]")
 
-     /* ==================================================
-     maska phone registration
-     ==================================================*/
+                    }
+                })
 
-     if (document.querySelector('[data-phone-mask="registration"]')) {
+            }
 
-         class RegistrationSendPhone {
-             constructor() {
-                 this.input = document.querySelector('[data-phone-mask="registration"]')
-                 this.form = this.input.closest('form')
-                 this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
+            addEvents() {
+                if (document.querySelector('[data-password="auth"]').value.length !== '') {
+                    this.input.setAttribute('aria-valid', 'true')
+                    this.buttonSubmit.removeAttribute('disabled')
+                }
+            }
+        }
 
-                 this.initMask()
-                 this.addEvents()
-             }
+        new AuthSendPhone();
 
-             initMask() {
-                 new MaskInput(this.input, {
-                     mask: '+#(###) ###-##-##',
-                     onMaska: (event) => {
+    }
 
-                         if (!event.completed) {
-                             this.input.setAttribute('aria-valid', 'false')
-                             this.buttonSubmit.setAttribute('disabled', '')
-                         }
 
-                         if (event.completed) {
-                             this.input.setAttribute('aria-valid', 'true')
-                             this.buttonSubmit.removeAttribute('disabled')
-                         }
+    /* ==================================================
+    maska phone registration
+    ==================================================*/
 
-                     }
-                 })
-             }
+    if (document.querySelector('[data-phone-mask="registration"]')) {
 
-             addEvents() {
-                 this.form.addEventListener('submit', e => {
+        class RegistrationSendPhone {
+            constructor() {
+                this.input = document.querySelector('[data-phone-mask="registration"]')
+                this.form = this.input.closest('form')
+                this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
 
-                     const policy = this.form.querySelector('[name="policy"]')
+                this.initMask()
+                this.addEvents()
+            }
 
-                     if (!policy.checked) {
-                         e.preventDefault()
-                         window.STATUS.err('Необходимо принять условия правил пользования сервисом ')
-                     }
+            initMask() {
+                new MaskInput(this.input, {
+                    mask: '+#(###) ###-##-##',
+                    onMaska: (event) => {
 
-                 })
-             }
-         }
+                        if (!event.completed) {
+                            this.input.setAttribute('aria-valid', 'false')
+                            this.buttonSubmit.setAttribute('disabled', '')
+                        }
 
-         new RegistrationSendPhone();
+                        if (event.completed) {
+                            this.input.setAttribute('aria-valid', 'true')
+                            this.buttonSubmit.removeAttribute('disabled')
+                        }
 
-     }
+                    }
+                })
+            }
 
-     /* ==================================================
-     maska phone registration
-     ==================================================*/
+            addEvents() {
+                this.form.addEventListener('submit', e => {
 
-     if (document.querySelector('[data-code-mask="registration"]')) {
+                    const policy = this.form.querySelector('[name="policy"]')
 
-         class RegistrationSendCode {
-             constructor() {
-                 this.input = document.querySelector('[data-code-mask="registration"]')
-                 this.form = this.input.closest('form')
-                 this.elTimer = this.form.querySelector('[data-timer]')
-                 this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
-                 this.timerCount = 119
+                    if (!policy.checked) {
+                        e.preventDefault()
+                        window.STATUS.err('Необходимо принять условия правил пользования сервисом ')
+                    }
 
-                 this.initMask()
-                 this.startTimer(this.timerCount, this.elTimer)
-             }
+                })
+            }
+        }
 
-             initMask() {
-                 new MaskInput(this.input, {
-                     mask: '####',
-                     onMaska: (event) => {
+        new RegistrationSendPhone();
 
-                         if (!event.completed) {
-                             this.input.setAttribute('aria-valid', 'false')
-                             this.buttonSubmit.setAttribute('disabled', '')
-                         }
+    }
 
-                         if (event.completed) {
-                             this.input.setAttribute('aria-valid', 'true')
-                             this.buttonSubmit.removeAttribute('disabled')
-                         }
+    /* ==================================================
+    maska phone registration
+    ==================================================*/
 
-                     }
-                 })
-             }
+    if (document.querySelector('[data-code-mask="registration"]')) {
 
-             repeatSendCode(button) {
+        class RegistrationSendCode {
+            constructor() {
+                this.input = document.querySelector('[data-code-mask="registration"]')
+                this.form = this.input.closest('form')
+                this.elTimer = this.form.querySelector('[data-timer]')
+                this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
+                this.timerCount = 119
 
-                 button.textContent = 'Отправить код'
-                 button.removeAttribute('disabled')
+                this.initMask()
+                this.startTimer(this.timerCount, this.elTimer)
+            }
 
-                 button.addEventListener('click', e => {
+            initMask() {
+                new MaskInput(this.input, {
+                    mask: '####',
+                    onMaska: (event) => {
 
-                     e.preventDefault()
+                        if (!event.completed) {
+                            this.input.setAttribute('aria-valid', 'false')
+                            this.buttonSubmit.setAttribute('disabled', '')
+                        }
 
-                     // ajax request
+                        if (event.completed) {
+                            this.input.setAttribute('aria-valid', 'true')
+                            this.buttonSubmit.removeAttribute('disabled')
+                        }
 
-                     button.setAttribute('disabled', 'disabled')
-                     button.innerHTML = 'Выслать код заново (через <span data-timer>00:00</span> сек)'
-                     this.startTimer(this.timerCount, button.querySelector('span'))
-                 })
+                    }
+                })
+            }
 
-             }
+            repeatSendCode(button) {
 
-             startTimer(duration, display) {
-                 let timer = duration,
-                     minutes, seconds;
-                 let instanseTimer = setInterval(() => {
+                button.textContent = 'Отправить код'
+                button.removeAttribute('disabled')
 
-                     minutes = parseInt(timer / 60, 10);
-                     seconds = parseInt(timer % 60, 10);
+                button.addEventListener('click', e => {
 
-                     minutes = minutes < 10 ? "0" + minutes : minutes;
-                     seconds = seconds < 10 ? "0" + seconds : seconds;
+                    e.preventDefault()
 
-                     display.textContent = minutes + ":" + seconds;
+                    // ajax request
 
-                     if (--timer < 0) {
+                    button.setAttribute('disabled', 'disabled')
+                    button.innerHTML = 'Выслать код заново (через <span data-timer>00:00</span> сек)'
+                    this.startTimer(this.timerCount, button.querySelector('span'))
+                })
 
-                         clearInterval(instanseTimer)
-                         this.repeatSendCode(display.closest('button'))
+            }
 
-                     }
-                 }, 1000);
-             }
-         }
+            startTimer(duration, display) {
+                let timer = duration,
+                    minutes, seconds;
+                let instanseTimer = setInterval(() => {
 
-         new RegistrationSendCode();
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
 
-     }
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-     /* ==========================================
-     validate password
-     ==========================================*/
+                    display.textContent = minutes + ":" + seconds;
 
-     if (document.querySelector('[data-password="registration"]')) {
+                    if (--timer < 0) {
 
-         class PasswordValidate {
-             constructor(params) {
-                 this.inputPassword = params.input
-                 this.inputPasswordRepeat = params.inputRepeat
-                 this.inputPasswordRepeat = params.inputRepeat
-                 this.elRules = params.elRules
-                 this.addEvents()
+                        clearInterval(instanseTimer)
+                        this.repeatSendCode(display.closest('button'))
 
-                 this.rules = {
-                     enMum: null,
-                     oneNum: null,
-                     oneCaps: null,
-                     passwordsMatch: null,
-                 }
-             }
+                    }
+                }, 1000);
+            }
+        }
 
-             validatePasswordEnNum(value) {
-                 let regexp = '(?=^.{8,}$)((?=.*\d)|(?=.*[A-Za-z])).*';
-                 return (value.match(regexp) ? true : false);
-             }
+        new RegistrationSendCode();
 
-             validatePasswordRus(value) {
-                 let regexp = '(?=.*[А-яЁё])';
-                 return (value.match(regexp) ? true : false);
-             }
+    }
 
-             validatePasswordOneNum(value) {
-                 let regexp = '(?=.*[0-9])';
-                 return (value.match(regexp) ? true : false);
-             }
+    /* ==========================================
+    validate password
+    ==========================================*/
 
-             validatePasswordCaps(value) {
-                 // debugger
-                 let regexp = '(?=.*[A-Z])';
-                 return (value.match(regexp) ? true : false);
-             }
+    if (document.querySelector('[data-password="registration"]')) {
 
-             validatePasswordMatch(value) {
-                 return (this.inputPassword.value === this.inputPasswordRepeat.value ? true : false);
-             }
+        class PasswordValidate {
+            constructor(params) {
+                this.inputPassword = params.input
+                this.inputPasswordRepeat = params.inputRepeat
+                this.inputPasswordRepeat = params.inputRepeat
+                this.elRules = params.elRules
+                this.addEvents()
 
-             validate(e) {
+                this.rules = {
+                    enMum: null,
+                    oneNum: null,
+                    oneCaps: null,
+                    passwordsMatch: null,
+                }
+            }
 
-                 const value = e.target.value
+            validatePasswordEnNum(value) {
+                let regexp = '(?=^.{8,}$)((?=.*\d)|(?=.*[A-Za-z])).*';
+                return (value.match(regexp) ? true : false);
+            }
 
-                 this.rules = {
-                     enMum: this.validatePasswordEnNum(value),
-                     oneNum: this.validatePasswordOneNum(value),
-                     oneCaps: this.validatePasswordCaps(value),
-                     passwordsMatch: this.validatePasswordMatch(value),
-                 }
+            validatePasswordRus(value) {
+                let regexp = '(?=.*[А-яЁё])';
+                return (value.match(regexp) ? true : false);
+            }
 
-                 this.elRules.forEach(item => {
-                     item.setAttribute('class', this.rules[item.dataset.rule] ? 'is--valid' : 'is--invalid')
-                 });
+            validatePasswordOneNum(value) {
+                let regexp = '(?=.*[0-9])';
+                return (value.match(regexp) ? true : false);
+            }
 
-                 this.disableSubmitButton()
-             }
+            validatePasswordCaps(value) {
+                // debugger
+                let regexp = '(?=.*[A-Z])';
+                return (value.match(regexp) ? true : false);
+            }
 
-             disableSubmitButton() {
+            validatePasswordMatch(value) {
+                return (this.inputPassword.value === this.inputPasswordRepeat.value ? true : false);
+            }
 
-                 let errlog = []
+            validate(e) {
 
-                 for (let key in this.rules) {
-                     this.rules[key] || errlog.push(key)
-                 }
+                const value = e.target.value
 
-                 if (errlog.length) {
-                     this.inputPassword.closest('form').querySelector('[type="submit"]').setAttribute('disabled', '')
-                 } else {
-                     this.inputPassword.closest('form').querySelector('[type="submit"]').removeAttribute('disabled')
-                 }
+                this.rules = {
+                    enMum: this.validatePasswordEnNum(value),
+                    oneNum: this.validatePasswordOneNum(value),
+                    oneCaps: this.validatePasswordCaps(value),
+                    passwordsMatch: this.validatePasswordMatch(value),
+                }
 
-             }
+                this.elRules.forEach(item => {
+                    item.setAttribute('class', this.rules[item.dataset.rule] ? 'is--valid' : 'is--invalid')
+                });
 
+                this.disableSubmitButton()
+            }
 
+            disableSubmitButton() {
 
-             addEvents() {
-                 this.inputPassword.addEventListener('keyup', (e) => {
-                     this.validate(e)
-                 })
-                 this.inputPasswordRepeat.addEventListener('keyup', (e) => {
-                     this.validate(e)
-                 })
-             }
-         }
+                let errlog = []
 
+                for (let key in this.rules) {
+                    this.rules[key] || errlog.push(key)
+                }
 
-         new PasswordValidate({
-             input: document.querySelector('[data-password="registration"]'),
-             inputRepeat: document.querySelector('[data-password-repeat="registration"]'),
-             elRules: document.querySelectorAll('[data-rules="password"] li')
-         })
+                if (errlog.length) {
+                    this.inputPassword.closest('form').querySelector('[type="submit"]').setAttribute('disabled', '')
+                } else {
+                    this.inputPassword.closest('form').querySelector('[type="submit"]').removeAttribute('disabled')
+                }
 
-     }
+            }
 
-     /* =====================================
-     show hide pass
-     =====================================*/
 
-     if (document.querySelector('.show-pass')) {
-         const items = document.querySelectorAll('.show-pass')
+            addEvents() {
+                this.inputPassword.addEventListener('keyup', (e) => {
+                    this.validate(e)
+                })
+                this.inputPasswordRepeat.addEventListener('keyup', (e) => {
+                    this.validate(e)
+                })
+            }
+        }
 
-         items.forEach(item => {
-             item.addEventListener('click', e => {
-                 if (item.classList.contains('is-active')) {
-                     item.classList.remove('is-active')
-                     item.closest('div').querySelector('input').setAttribute('type', 'password')
-                 } else {
-                     item.classList.add('is-active')
-                     item.closest('div').querySelector('input').setAttribute('type', 'text')
-                 }
-             })
-         })
-     }
 
+        new PasswordValidate({
+            input: document.querySelector('[data-password="registration"]'),
+            inputRepeat: document.querySelector('[data-password-repeat="registration"]'),
+            elRules: document.querySelectorAll('[data-rules="password"] li')
+        })
 
+    }
 
+    /* =====================================
+    show hide pass
+    =====================================*/
 
+    if (document.querySelector('.show-pass')) {
+        const items = document.querySelectorAll('.show-pass')
 
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+                if (item.classList.contains('is-active')) {
+                    item.classList.remove('is-active')
+                    item.closest('div').querySelector('input').setAttribute('type', 'password')
+                } else {
+                    item.classList.add('is-active')
+                    item.closest('div').querySelector('input').setAttribute('type', 'text')
+                }
+            })
+        })
+    }
 
 
-
- });
+});

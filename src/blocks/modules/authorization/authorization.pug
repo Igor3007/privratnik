@@ -1,0 +1,124 @@
+mixin authorization
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Вход
+            .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
+            .form-authentication__form
+                form(action='/registration-step2.html' method='POST')
+                    .form
+                        .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Далее
+
+        .form-authentication__login
+            a(href='/') Зарегистрироваться
+
+
+mixin authorization-step1
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Восстановление пароля
+            .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для восстановления
+            .form-authentication__form
+                form(action='/' method='POST')
+                    .form
+                        .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Получить код
+        .form-authentication__login
+            +icons('#ic_arrow-back', 24)
+            a(href='/') Вернуться назад
+
+
+mixin authorization-step2
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Восстановление пароля
+            .form-authentication__desc Шаг 2. Отправили СМС с кодом на указанный ранее номер телефона
+            .form-authentication__form
+                form(action='/registration-step3.html' method='POST')
+                    .form
+                        .form__item: .form__subitem: input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Подтвердить номер
+                        .form__item: .form__subitem
+                            button.btn.btn-white(disabled) Выслать код заново (через <span data-timer>0</span> сек)
+
+
+        .form-authentication__login
+            +icons('#ic_arrow-back', 24)
+            a(href='/') Вернуться назад
+
+
+mixin authorization-step3
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Восстановление пароля
+            .form-authentication__desc Шаг 3. Введите новый пароль, он заменит предыдущий
+            .form-authentication__form
+                form(action='/registration-step3.html' method='POST')
+                    .form
+                        .form__item: .form__subitem
+                            input(type="password" data-password="registration" placeholder="Пароль")
+                            span.show-pass
+                        .form__item: .form__subitem
+                            input(type="password" data-password-repeat="registration" placeholder="Повторите пароль")
+                            span.show-pass
+                        .form__item: .form__subitem
+                            ul.password-rules(data-rules="password")
+                                li(data-rule="enMum")
+                                    +icons('#ic_check-small', 20)
+                                    span Не менее 8 символов (латинские буквы и цифры)
+                                li(data-rule="oneNum")
+                                    +icons('#ic_check-small', 20)
+                                    span Содержит не менее одной цифры
+                                li(data-rule="oneCaps")
+                                    +icons('#ic_check-small', 20)
+                                    span Содержит не менее одной заглавной буквы
+                                li(data-rule="passwordsMatch")
+                                    +icons('#ic_check-small', 20)
+                                    span Пароли совпадают
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Войти с новым паролем
+
+mixin authorization-user
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Вход
+            .form-authentication__desc Отправили СМС с кодом на указанный ранее номер телефона
+            .form-authentication__form
+                form(action='/registration-step3.html' method='POST')
+                    .form
+                        .form__item: .form__subitem: input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Войти
+                        .form__item: .form__subitem
+                            button.btn.btn-white(disabled) Выслать код заново (через <span data-timer>0</span> сек)
+
+
+        .form-authentication__login
+            +icons('#ic_arrow-back', 24)
+            a(href='/') Вернуться назад
+
+
+mixin authorization-admin
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Вход
+            .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
+            .form-authentication__form
+                form(action='/' method='POST')
+                    .form
+                        .form__item: .form__subitem: input(type="tel" data-phone-mask="auth" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            input(type="password" data-password="auth" data-phone-mask="auth" placeholder="Пароль")
+                            span.show-pass
+                        .form__item: .form__subitem
+                            a.forgot-psw(href="#" type="submit") Забыли пароль?
+                        .form__item: .form__subitem
+                            button.btn(disabled="" type="submit") Войти
+
+
+        .form-authentication__login
+            +icons('#ic_arrow-back', 24)
+            a(href='/') Вернуться назад
