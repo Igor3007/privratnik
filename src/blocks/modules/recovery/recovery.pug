@@ -1,25 +1,23 @@
-mixin registration
+mixin recovery-step1
     .form-authentication
         .form-authentication__wrp
-            .form-authentication__title Регистрация
-            .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для подтверждения
+            .form-authentication__title Восстановление пароля
+            .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для восстановления
             .form-authentication__form
                 form(action='/registration-step2.html' method='POST')
                     .form
                         .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
                         .form__item: .form__subitem
-                            button.btn(disabled="" type="submit") Далее
-                        .form__item: .form__subitem: .form__note
-                            +checkbox('Ознакомлен(-на) с <a href="/rules.html">Правилами пользования сервисом </a> и <a href="/policy.html">Политикой использования персональных данных</a>', 'policy', 'checked')
+                            button.btn(disabled="" type="submit") Получить код
 
         .form-authentication__login
-            span Уже зарегистрировались?
-            a(href='/login.html') Войти 
+            +icons('#ic_arrow-back', 24)
+            a(href='/login.html') Вернуться назад 
 
-mixin registration-step2
+mixin recovery-step2
     .form-authentication
         .form-authentication__wrp
-            .form-authentication__title Регистрация
+            .form-authentication__title Восстановление пароля
             .form-authentication__desc Шаг 2. Отправили СМС с кодом на указанный ранее номер телефона
             .form-authentication__form
                 form(action='/registration-step3.html' method='POST')
@@ -33,14 +31,14 @@ mixin registration-step2
 
         .form-authentication__login
             +icons('#ic_arrow-back', 24)
-            a(href='/') Вернуться назад 
+            a(href='/recovery-step1.html') Вернуться назад 
 
 
-mixin registration-step3
+mixin recovery-step3
     .form-authentication
         .form-authentication__wrp
-            .form-authentication__title Регистрация
-            .form-authentication__desc Шаг 3. Создание пароля
+            .form-authentication__title Восстановление пароля
+            .form-authentication__desc Шаг 3. Введите новый пароль, он заменит предыдущий
             .form-authentication__form
                 form(action='/registration-step3.html' method='POST')
                     .form
@@ -65,4 +63,4 @@ mixin registration-step3
                                     +icons('#ic_check-small', 20)
                                     span Пароли совпадают
                         .form__item: .form__subitem
-                            button.btn(disabled="" type="submit") Завершить регистрацию
+                            button.btn(disabled="" type="submit") Войти с новым паролем
