@@ -1,0 +1,39 @@
+.table {
+    display: table;
+    min-width: 100%;
+    //table-layout: fixed;
+    border-collapse: collapse;
+
+    margin: -1px 0;
+
+    &__tr {
+        display: table-row;
+    }
+
+    &__th,
+    &__td {
+        display: table-cell;
+        border: 1px solid #CED6E0;
+        padding: 12px;
+        vertical-align: middle;
+        border-left: none;
+        border-right: none;
+        width: 500px;
+
+        &:last-child {
+            padding-right: 24px;
+            width: 100px;
+        }
+
+        &:first-child {
+            padding-left: 24px;
+            width: 255px;
+        }
+
+    }
+
+    &__th {
+        display: table-cell;
+        background: var(--bg-01, #ECF0F5);
+    }
+}

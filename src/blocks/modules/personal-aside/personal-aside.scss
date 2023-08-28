@@ -1,0 +1,61 @@
+.personal-aside {
+    padding: 16px 0;
+
+    &__logo {
+
+        padding-bottom: 25px;
+
+        & span {
+            padding-top: 22%;
+            display: block;
+            background-repeat: no-repeat;
+            background-position: left center;
+        }
+
+    }
+
+    &__nav {
+        & ul {
+            & li {
+                min-height: 48px;
+                background-color: transparent;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+
+                & a {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 12px;
+                    width: 100%;
+                    color: var(--text-01);
+
+                    & .ic_24 {
+                        margin-right: 10px;
+                        opacity: 0.5;
+                    }
+                }
+
+                &.is-active {
+                    background-color: #fff;
+
+                    & .ic_24 {
+                        opacity: 1;
+                    }
+                }
+
+                &:hover {
+
+                    & .ic_24 {
+                        opacity: 1;
+                    }
+
+                    & a {
+                        color: var(--text-01);
+                    }
+                }
+            }
+        }
+    }
+}

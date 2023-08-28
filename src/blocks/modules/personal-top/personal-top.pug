@@ -1,0 +1,31 @@
+mixin personal-top
+   .personal-top
+        .personal-top__left
+            .dropdown-icon 
+                .dropdown-icon__head
+                    .dropdown-icon__svg: +icons('#ic_users')
+                    .dropdown-icon__text
+                        .dropdown-icon__subtitle Текущая роль
+                        .dropdown-icon__title Администратор
+                    .dropdown-icon__arrow 
+                .dropdown-icon__list
+                    ul
+                        li.is-active
+                            a(href='#')
+                                strong Администратор
+                                span У вас уже есть собственные управляющие устройства
+                        li
+                            a(href='#')
+                                strong Пользователь
+                                span Базовый доступ без управляющих устройств
+        .personal-top__right
+            .link-icon
+                .link-icon__svg: +icons('#ic_users')
+            .link-icon
+                .link-icon__svg: +icons('#ic_chat')
+            .link-icon
+                .link-icon__svg: +icons('#ic_notifications')
+                .link-icon__dropdown
+
+            .link-icon.link-icon--white
+                .link-icon__svg: +icons('#ic_user')

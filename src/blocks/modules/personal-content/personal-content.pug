@@ -1,0 +1,33 @@
+include ../../components/breadcrumb/breadcrumb.pug
+ 
+
+mixin personal-content
+   .personal-content
+      .personal-content__breadcrubs
+         +breadcrumb([
+            'Общая информация',
+            'Мои парковки',
+         ])
+      .personal-content__h1 Мои парковки
+      .personal-content__action
+         .personal-content__add
+            a(href='#'): button.btn Добавить парковку
+      .personal-content__table
+         .table
+            col(width="250px")
+            col(width="500px")
+            col(width="300px")
+            col(width="100px")
+            .table__tr
+               .table__th Название парковки
+               .table__th Адреса строений
+               .table__th Устройства управления
+               .table__th Действия
+            each item in app.parkings
+               .table__tr
+                  .table__td= item.name
+                  .table__td= item.address
+                  .table__td= item.device
+                  .table__td
+                     span: +icons('#ic_trash', 22)
+                     span: +icons('#ic_edit', 22)

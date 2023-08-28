@@ -44,11 +44,13 @@ html(lang="ru")
 
 
   body.perf-no-animation
-    header 
-      block header
-        include ../../blocks/modules/common/header/header.pug
+     
     main 
-      block content
+        .page-personal
+          .page-personal__aside
+            block aside 
+          .page-personal__content
+            block content
 
     footer
       block footer

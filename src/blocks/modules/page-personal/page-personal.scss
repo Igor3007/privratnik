@@ -1,0 +1,22 @@
+.page-personal {
+    display: flex;
+    height: 100%;
+    padding: 0 16px;
+
+    &__aside {
+        display: none;
+        width: 288px;
+        min-width: 288px;
+        padding: 0 16px;
+
+        @media screen and (min-width: $w992) {
+            display: block;
+        }
+    }
+
+    &__content {
+        width: 100%;
+        min-height: 90vh;
+        padding: 0 16px;
+    }
+}
