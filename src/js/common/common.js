@@ -238,7 +238,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
             constructor() {
                 this.input = document.querySelector('[data-phone-mask="auth"]')
                 this.form = this.input.closest('form')
-                this.buttonSubmit = this.input.closest('form').querySelector('[type="submit"]')
+                this.buttonSubmit = this.form.querySelector('[type="submit"]')
+
+                this.password = this.form.querySelector('[data-password="auth"]')
+                this.maskCompleted = false
 
                 this.initMask()
                 this.addEvents()
@@ -250,28 +253,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     mask: '+#(###) ###-##-##',
                     onMaska: (event) => {
 
-                        if (!event.completed) {
-                            this.input.setAttribute('aria-valid', 'false')
-                            this.buttonSubmit.setAttribute('disabled', '')
-                        }
-
-                        if (event.completed) {
-                            this.input.setAttribute('aria-valid', 'true')
-                            this.buttonSubmit.removeAttribute('disabled')
-                        }
-
-
+                        this.input.setAttribute('aria-valid', event.completed ? 'true' : 'false')
+                        this.maskCompleted = event.completed
+                        this.validate()
                     }
                 })
 
             }
 
-            addEvents() {
-                if (document.querySelector('[data-password="auth"]').value.length !== '') {
-                    this.input.setAttribute('aria-valid', 'true')
+            validate() {
+
+                if (this.maskCompleted && this.password.value.length >= 6) {
                     this.buttonSubmit.removeAttribute('disabled')
+                } else {
+                    this.buttonSubmit.setAttribute('disabled', '')
                 }
+
             }
+
+            addEvents() {
+                this.password.addEventListener('keyup', e => {
+                    this.validate()
+                })
+            }
+
+
         }
 
         new AuthSendPhone();

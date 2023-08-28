@@ -4,7 +4,7 @@ mixin authorization
             .form-authentication__title Вход
             .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
             .form-authentication__form
-                form(action='/registration-step2.html' method='POST')
+                form(action='/login-step1.html' method='POST')
                     .form
                         .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
                         .form__item: .form__subitem
@@ -111,10 +111,10 @@ mixin authorization-admin
                     .form
                         .form__item: .form__subitem: input(type="tel" data-phone-mask="auth" placeholder="Телефон")
                         .form__item: .form__subitem
-                            input(type="password" data-password="auth" data-phone-mask="auth" placeholder="Пароль")
+                            input(type="password" data-password="auth"  placeholder="Пароль")
                             span.show-pass
                         .form__item: .form__subitem
-                            a.forgot-psw(href="#" type="submit") Забыли пароль?
+                            a.forgot-psw(href="#" ) Забыли пароль?
                         .form__item: .form__subitem
                             button.btn(disabled="" type="submit") Войти
 
