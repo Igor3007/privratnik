@@ -58,7 +58,9 @@
             }
 
             & svg {
-                margin-right: 10px;
+                @media screen and (min-width: $w576) {
+                    margin-right: 10px;
+                }
             }
 
             & span {

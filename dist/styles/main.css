@@ -3294,11 +3294,6 @@ body textarea:focus {
   background-color: #fff;
 }
 
-.header-top__help a svg,
-.header-top__site a svg {
-  margin-right: 10px;
-}
-
 .header-top__help a span,
 .header-top__site a span {
   display: none;
@@ -4381,6 +4376,11 @@ a[data-tooltip]:hover::before {
     width: 24px;
     min-width: 24px;
     height: 24px;
+  }
+
+  .header-top__help a svg,
+  .header-top__site a svg {
+    margin-right: 10px;
   }
 
   .header-top__help a span,
