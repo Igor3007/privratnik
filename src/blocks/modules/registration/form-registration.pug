@@ -4,9 +4,10 @@ mixin registration
             .form-authentication__title Регистрация
             .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для подтверждения
             .form-authentication__form
-                form(action='/registration-step2.html' method='POST')
+                form(action='/registration-step2.html' method='GET')
                     .form
-                        .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            input(type="tel" data-phone-mask="registration" placeholder="Телефон")
                         .form__item: .form__subitem
                             button.btn(disabled="" type="submit") Далее
                         .form__item: .form__subitem: .form__note
@@ -22,7 +23,7 @@ mixin registration-step2
             .form-authentication__title Регистрация
             .form-authentication__desc Шаг 2. Отправили СМС с кодом на указанный ранее номер телефона
             .form-authentication__form
-                form(action='/registration-step3.html' method='POST')
+                form(action='/registration-step3.html' method='GET')
                     .form
                         .form__item: .form__subitem: input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
                         .form__item: .form__subitem
@@ -42,7 +43,7 @@ mixin registration-step3
             .form-authentication__title Регистрация
             .form-authentication__desc Шаг 3. Создание пароля
             .form-authentication__form
-                form(action='/registration-step3.html' method='POST')
+                form(action='/personal-parkings.html' method='GET')
                     .form
                         .form__item: .form__subitem
                             input(type="password" data-password="registration" placeholder="Пароль")

@@ -14,9 +14,7 @@
          margin-left: auto;
          margin-right: auto;
 
-         @media screen and (min-width: $w992) {
-             margin-left: 0;
-         }
+
 
          & ul {
              display: flex;
@@ -24,17 +22,54 @@
 
              & li {
 
-                 &.next {
-                     & a {
-                         width: auto;
-                         display: flex;
-                         align-items: center;
-                         padding: 0 1em;
+
+                 margin: 0 2px;
+
+
+
+
+                 & span,
+                 & a {
+                     width: rem(36);
+                     height: rem(36);
+                     display: flex;
+                     border-radius: 8px;
+                     align-items: center;
+                     justify-content: center;
+                     color: $black;
+                     font-weight: 500;
+
+
+                     @media screen and (min-width: $w992) {
+                         width: rem(48);
+                         height: rem(48);
+                     }
+
+                     & svg {
+                         fill: var(--blue);
+                         min-width: 48px;
+                         height: 48px;
+
+                     }
+
+
+
+
+                     &:hover {
+
+                         color: $accent-2-1;
+                         background-color: var(--bg-01);
+
+                         & svg {
+                             fill: $accent-2-1;
+                         }
                      }
                  }
 
-                 &:first-child {
-                     margin-left: 0;
+                 & span {
+                     & svg {
+                         fill: var(--blue);
+                     }
                  }
 
                  &.active a {
@@ -44,43 +79,6 @@
                      & svg {
                          fill: #fff;
 
-                     }
-                 }
-
-                 & a {
-                     width: rem(36);
-                     height: rem(36);
-                     display: flex;
-                     border-radius: 3px;
-                     align-items: center;
-                     justify-content: center;
-                     color: $black;
-                     font-weight: 800;
-
-
-                     @media screen and (min-width: $w992) {
-                         width: rem(40);
-                         height: rem(40);
-                     }
-
-                     & svg {
-                         fill: #000;
-                         min-width: 10px;
-                         height: 10px;
-                         margin-left: 10px;
-                         margin-top: 4px;
-                     }
-
-
-
-
-                     &:hover {
-
-                         color: $accent-2-1;
-
-                         & svg {
-                             fill: $accent-2-1;
-                         }
                      }
                  }
 

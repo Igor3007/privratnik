@@ -3,20 +3,32 @@ extends ../layouts/personal
 include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
 
 block variables
     include ../../data/data.pug
-    - const title = "Привратник - Мои парковки"
+    - const title = "Привратник - Финансы"
 
 
 block aside
   +personal-aside({
-    title: 'Мои парковки'
+    title: 'Финансы'
   })
 
 block content
   +personal-top()
-  +personal-content()
+  
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Финансы',
+        ])
+    .personal-content__h1 Финансы
+         
+    .personal-content__main
+         div Финансы
+
 
     
 

@@ -1,0 +1,36 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Настройки доступа"
+
+
+block aside
+  +personal-aside({
+    title: 'Настройки доступа'
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Настройки доступа',
+        ])
+    .personal-content__h1 Настройки доступа
+     
+    .personal-content__main
+        div Настройки доступа
+    
+
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")

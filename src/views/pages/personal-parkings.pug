@@ -1,0 +1,58 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/components/pagination/pagination.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Мои парковки"
+
+
+block aside
+  +personal-aside({
+    title: 'Мои парковки'
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Мои парковки',
+        ])
+    .personal-content__h1 Мои парковки
+    .personal-content__action
+        .personal-content__add
+          a(href='#'): button.btn Добавить парковку
+    .personal-content__table
+        .table
+          .table__tr
+              .table__th Название парковки
+              .table__th Адреса строений
+              .table__th Устройства управления
+              .table__th Действия
+          each item in app.parkings
+              .table__tr
+                .table__td(data-title="Название парковки")= item.name
+                .table__td(data-title="Адреса строений")= item.address
+                .table__td(data-title="Устройства управления")= item.device
+                .table__td(data-title="Действия")
+                    ul.table-action
+                      li: +icons('#ic_edit', 22)
+                      li.row-remove: +icons('#ic_trash', 22)
+
+    .personal-content__pagination
+      +pagination()
+
+
+    
+
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")

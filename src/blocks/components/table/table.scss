@@ -1,33 +1,89 @@
 .table {
-    display: table;
+    display: block;
     min-width: 100%;
     //table-layout: fixed;
     border-collapse: collapse;
-
     margin: -1px 0;
 
+    @media screen and (min-width: $w992) {
+        display: table;
+    }
+
     &__tr {
-        display: table-row;
+
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #eee;
+
+        @media screen and (min-width: $w992) {
+            display: table-row;
+            border: none;
+        }
+
+        &:hover {
+
+            background-color: var(--bg-01);
+
+            & .table__td {
+                background-color: var(--bg-01);
+            }
+        }
+    }
+
+    &__td {
+        @media screen and (max-width: $w992) {
+            &::before {
+                content: attr(data-title);
+                display: block;
+                font-size: 13px;
+                font-weight: 400;
+                color: #a8a8a8;
+            }
+        }
     }
 
     &__th,
     &__td {
-        display: table-cell;
-        border: 1px solid #CED6E0;
-        padding: 12px;
+
+        display: block;
         vertical-align: middle;
-        border-left: none;
-        border-right: none;
-        width: 500px;
+
+        line-height: 140%;
+        padding: 12px 12px;
+
+        @media screen and (min-width: $w992) {
+            display: table-cell;
+            width: 500px;
+            border: 1px solid #CED6E0;
+            padding: 20px 12px;
+            border-left: none;
+            border-right: none;
+
+        }
 
         &:last-child {
-            padding-right: 24px;
+
             width: 100px;
+
+            @media screen and (min-width: $w992) {
+                padding-right: 24px;
+            }
         }
 
         &:first-child {
-            padding-left: 24px;
             width: 255px;
+            font-weight: 500;
+            width: 100%;
+
+            &::before {
+                display: none;
+            }
+
+            @media screen and (min-width: $w992) {
+                width: auto;
+                padding-left: 24px;
+
+            }
         }
 
     }
@@ -35,5 +91,12 @@
     &__th {
         display: table-cell;
         background: var(--bg-01, #ECF0F5);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: none;
+
+        @media screen and (min-width: $w992) {
+            display: table-cell;
+        }
     }
 }

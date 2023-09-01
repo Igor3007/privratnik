@@ -116,11 +116,16 @@ body {
 
 
     & div.error {
-        color: $red;
+        color: #F94258;
         font-size: 13px;
-        padding-top: 5px;
-        text-align: center;
+        padding-top: 0.5em;
         width: 100%;
+        line-height: 140%;
+        font-weight: 400;
+
+        @media screen and (min-width: $w760) {
+            font-size: 15px;
+        }
     }
 
     &__note {
@@ -224,13 +229,7 @@ body {
             }
         }
 
-        & div.error {
-            color: $red;
-            font-size: 13px;
-            padding-top: 5px;
-            padding-left: 3px;
-            width: 100%;
-        }
+
 
 
         & .form__item {

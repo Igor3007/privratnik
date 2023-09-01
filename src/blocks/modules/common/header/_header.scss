@@ -21,6 +21,7 @@
         align-items: center;
         margin-right: auto;
 
+
         & .bgimage {
             width: 80px;
             height: 80px;
@@ -52,6 +53,7 @@
             padding: 0 1em;
             min-width: 48px;
             transition: background 0.3s ease;
+            color: var(--blue-dark);
 
             &:hover {
                 background-color: #fff;

@@ -4,9 +4,11 @@ mixin authorization
             .form-authentication__title Вход
             .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
             .form-authentication__form
-                form(action='/login-step1.html' method='POST')
+                form(action='/login-error.html' method='GET')
                     .form
-                        .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                            
                         .form__item: .form__subitem
                             button.btn(disabled="" type="submit") Далее
 
@@ -14,20 +16,23 @@ mixin authorization
             a(href='/') Зарегистрироваться
 
 
-mixin authorization-step1
+mixin authorization-error
     .form-authentication
         .form-authentication__wrp
-            .form-authentication__title Восстановление пароля
-            .form-authentication__desc Шаг 1. На номер телефона придёт СМС с кодом для восстановления
+            .form-authentication__title Вход
+            .form-authentication__desc Отправили СМС с кодом на указанный ранее номер телефона
             .form-authentication__form
-                form(action='/' method='POST')
+                form(action='/login-user.html' method='GET')
                     .form
-                        .form__item: .form__subitem: input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                        .form__item: .form__subitem
+                            input(type="tel" data-phone-mask="registration" placeholder="Телефон")
+                            .error Пользователь с таким номером не найден: зарегистрируйтесь или свяжитесь с администратором для добавления номера
+
                         .form__item: .form__subitem
                             button.btn(disabled="" type="submit") Получить код
         .form-authentication__login
             +icons('#ic_arrow-back', 24)
-            a(href='/') Вернуться назад
+            a(href='/login.html') Вернуться назад
 
 
 mixin authorization-step2
@@ -47,7 +52,7 @@ mixin authorization-step2
 
         .form-authentication__login
             +icons('#ic_arrow-back', 24)
-            a(href='/') Вернуться назад
+            a(href='/login.html') Вернуться назад
 
 
 mixin authorization-step3
@@ -87,7 +92,7 @@ mixin authorization-user
             .form-authentication__title Вход
             .form-authentication__desc Отправили СМС с кодом на указанный ранее номер телефона
             .form-authentication__form
-                form(action='/registration-step3.html' method='POST')
+                form(action='/login-admin.html' method='GET')
                     .form
                         .form__item: .form__subitem: input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
                         .form__item: .form__subitem
@@ -98,7 +103,7 @@ mixin authorization-user
 
         .form-authentication__login
             +icons('#ic_arrow-back', 24)
-            a(href='/') Вернуться назад
+            a(href='/login.html') Вернуться назад
 
 
 mixin authorization-admin
@@ -107,7 +112,7 @@ mixin authorization-admin
             .form-authentication__title Вход
             .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
             .form-authentication__form
-                form(action='/' method='POST')
+                form(action='/personal-parkings.html' method='GET')
                     .form
                         .form__item: .form__subitem: input(type="tel" data-phone-mask="auth" placeholder="Телефон")
                         .form__item: .form__subitem
@@ -121,4 +126,4 @@ mixin authorization-admin
 
         .form-authentication__login
             +icons('#ic_arrow-back', 24)
-            a(href='/') Вернуться назад
+            a(href='/login.html') Вернуться назад
