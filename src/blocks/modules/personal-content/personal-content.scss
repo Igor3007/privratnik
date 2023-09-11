@@ -1,8 +1,12 @@
  .personal-content {
      background-color: #fff;
      height: 100%;
-     padding: 32px;
+     padding: 16px;
      border-radius: 12px;
+
+     @media screen and (min-width: $w576) {
+         padding: 32px;
+     }
 
      &__h1 {
          padding-bottom: 28px;

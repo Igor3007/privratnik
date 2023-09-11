@@ -1,3 +1,9 @@
+mixin item-notification(data)
+    .top-nitification__item
+        .top-nitification__title!= data.title
+        .top-nitification__date= data.date
+        .top-nitification__text= data.text
+
 mixin personal-top
    .personal-top
         .personal-top__left
@@ -25,6 +31,13 @@ mixin personal-top
             .link-icon
                 .link-icon__svg: +icons('#ic_notifications')
                 .link-icon__dropdown
+                    .top-nitification
+                        .top-nitification__list
+                            each item in app.notification
+                                +item-notification(item)
+                        .top-nitification__bottom
+                            .top-nitification__all: a(href='#') Смотреть все уведомления
+                            .top-nitification__setting: +icons('#ic_gear')
 
             .link-icon.link-icon--white
                 .link-icon__svg: +icons('#ic_user')
