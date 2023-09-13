@@ -1,0 +1,23 @@
+.popup-form {
+    padding: 24px;
+    max-width: 755px;
+
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    &__desc {
+        padding-bottom: 15px;
+        text-align: center;
+        color: var(--text-02);
+    }
+
+    &__fields {
+        & .btn {
+            width: 100%;
+        }
+    }
+}

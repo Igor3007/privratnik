@@ -541,5 +541,74 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     }
 
+    /* =======================================
+     click sort dropdown
+     =======================================*/
+
+    if (document.querySelector('.link-dropdown')) {
+        const items = document.querySelectorAll('.link-dropdown')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+                item.classList.toggle('is-active')
+
+                document.addEventListener('click', e => {
+                    if (item.classList.contains('is-active') && !e.target.closest('.link-dropdown')) item.classList.toggle('is-active')
+                })
+
+            })
+
+
+        })
+    }
+
+    /* ======================================
+    add parking
+    ======================================*/
+
+    if (document.querySelector('[data-parking="add"]')) {
+        const items = document.querySelectorAll('[data-parking="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const addParkingPopup = new afLightbox()
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-parking-add.html'
+                }, (status, response) => {
+
+
+                    addParkingPopup.open(response, (instanse) => {
+                        const selectCustom = new afSelect({
+                            selector: 'select'
+                        })
+
+                        selectCustom.init()
+                    })
+                })
+
+
+            })
+        })
+    }
+
+    /* ==============================================
+     select
+    ============================================== */
+
+    // public methods
+    // select.afSelect.open()
+    // select.afSelect.close()
+    // select.afSelect.update()
+
+    const selectCustom = new afSelect({
+        selector: 'select'
+    })
+
+    selectCustom.init()
+
+
 
 });

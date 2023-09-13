@@ -758,7 +758,7 @@ select {
   position: relative;
   font-size: 14px;
   user-select: none;
-  color: #fff;
+  color: #ECF0F5;
   width: 100%;
   min-width: 150px;
   height: auto;
@@ -778,7 +778,7 @@ select {
 }
 
 .select-styled {
-  background-color: transparent;
+  background-color: #ECF0F5;
   padding: 8px 15px;
   transition: all 0.2s ease-in;
   border: 1px solid transparent;
@@ -790,6 +790,7 @@ select {
   display: flex;
   justify-content: space-between;
   height: 100%;
+  border-radius: 8px;
 }
 
 .select-styled span {
@@ -819,7 +820,6 @@ select {
 
 .select-styled:active,
 .select-styled.active {
-  background-color: #e5e5e5;
   border-color: 1px solid #8f8f8f;
 }
 
@@ -2619,11 +2619,11 @@ body textarea:focus {
 
 .form__label {
   font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
+  font-size: 18px;
+  width: 100%;
   color: var(--blue-dark, #253678);
-  padding-top: 25px;
-  padding-bottom: 15px;
+  color: var(--text-01);
+  padding-bottom: 10px;
 }
 
 .form fieldset {
@@ -2642,9 +2642,8 @@ body textarea:focus {
 
 .form .af-select {
   height: 48px;
-  border: 1px solid #EBEBEB;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .form .af-select .select-options li {
@@ -2700,7 +2699,8 @@ body textarea:focus {
   right: 0;
   bottom: 0;
   z-index: 101;
-  background-color: #253678;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(22px);
   transition: 0.3s ease;
   opacity: 0.9;
 }
@@ -2728,7 +2728,7 @@ body textarea:focus {
 }
 
 .af-popup__content {
-  border-radius: 4px;
+  border-radius: 12px;
   background: #fff;
   padding: 10px;
 }
@@ -3553,13 +3553,17 @@ body textarea:focus {
   display: flex;
   margin-left: auto;
   padding: 6px 0 6px 0;
+  position: relative;
+}
+
+.chat-tooltip-msg {
+  font-size: 15px;
 }
 
 .link-icon {
   border-radius: 8px;
   margin-left: 16px;
   cursor: pointer;
-  position: relative;
 }
 
 .link-icon__svg {
@@ -3575,8 +3579,8 @@ body textarea:focus {
   position: absolute;
   z-index: 1;
   right: 0;
-  width: 360px;
-  max-width: 360px;
+  width: 320px;
+  max-width: 320px;
   padding: 16px;
   background: #fff;
   border-radius: 8px;
@@ -3623,7 +3627,7 @@ body textarea:focus {
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
   padding: 16px;
   width: 100vw;
-  max-width: 360px;
+  max-width: 320px;
   visibility: hidden;
   opacity: 0;
   transform: translateY(10px);
@@ -3801,6 +3805,63 @@ body textarea:focus {
   color: var(--red);
 }
 
+.user-profile {
+  display: flex;
+}
+
+.user-profile__avatar .bgimage {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-01);
+  border-radius: 6px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAwLTQtNEg4YTQgNCAwIDAwLTQgNHYyTTE2IDdhNCA0IDAgMTEtOCAwIDQgNCAwIDAxOCAweiIgc3Ryb2tlPSIjMjUzNjc4IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+}
+
+.user-profile__name {
+  font-size: 16px;
+  color: var(--blue-dark);
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.user-profile__data {
+  padding-left: 12px;
+}
+
+.user-profile__info {
+  font-size: 13px;
+  color: var(--text-02);
+}
+
+.profile-tooltip__user {
+  padding-bottom: 20px;
+}
+
+.profile-tooltip__links {
+  border-top: 1px solid #eee;
+  padding: 14px 24px;
+  margin: 0 -24px;
+}
+
+.profile-tooltip__links ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.profile-tooltip__links ul li a svg {
+  margin-left: auto;
+}
+
+.profile-tooltip__links ul li a:hover {
+  background-color: var(--bg-01);
+}
+
 .personal-content {
   background-color: #fff;
   height: 100%;
@@ -3816,6 +3877,8 @@ body textarea:focus {
 
 .personal-content__action {
   padding-bottom: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .personal-content__table {
@@ -3826,6 +3889,102 @@ body textarea:focus {
 
 .personal-content__pagination {
   padding-top: 30px;
+}
+
+.personal-content__sortable {
+  margin-left: auto;
+}
+
+.link-dropdown {
+  position: relative;
+}
+
+.link-dropdown__title {
+  background-color: var(--bg-02);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 12px 16px;
+  font-size: 0;
+}
+
+.link-dropdown__title::after {
+  content: '';
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEzLjQ3NiAxOS4zMDZBMi42OTcgMi42OTcgMCAwMDE2LjE2OSAyMmgzLjEzN0EyLjY5NyAyLjY5NyAwIDAwMjIgMTkuMzA2YTIuNjk3IDIuNjk3IDAgMDAtMi42OTQtMi42OTRIMTYuMTdhMi42OTcgMi42OTcgMCAwMC0yLjY5MyAyLjY5NHptNS44My0xLjEzMWExLjEzMiAxLjEzMiAwIDAxLjAwMSAyLjI2MkgxNi4xN2ExLjEzMyAxLjEzMyAwIDAxLTEuMTMyLTEuMTNjMC0uNjI1LjUwOC0xLjEzMiAxLjEzMS0xLjEzMmgzLjEzN3pNMiAxMmEyLjY5NyAyLjY5NyAwIDAwMi42OTQgMi42OTRoMTQuNjEyQTIuNjk3IDIuNjk3IDAgMDAyMiAxMmEyLjY5NyAyLjY5NyAwIDAwLTIuNjk0LTIuNjk0SDQuNjk0QTIuNjk3IDIuNjk3IDAgMDAyIDEyem0xNy4zMDYtMS4xMzFhMS4xMzIgMS4xMzIgMCAwMS4wMDEgMi4yNjJINC42OTNBMS4xMzMgMS4xMzMgMCAwMTMuNTYzIDEyYzAtLjYyNC41MDctMS4xMzEgMS4xMy0xLjEzMWgxNC42MTN6TTcuNzM4IDQuNjk0YTIuNjk3IDIuNjk3IDAgMDAyLjY5NCAyLjY5NGg4Ljg3NEEyLjY5NyAyLjY5NyAwIDAwMjIgNC42OTQgMi42OTcgMi42OTcgMCAwMDE5LjMwNiAyaC04Ljg3NGEyLjY5NyAyLjY5NyAwIDAwLTIuNjk0IDIuNjk0em0xMS41NjgtMS4xMzFhMS4xMzIgMS4xMzIgMCAwMS4wMDEgMi4yNjJoLTguODc1QTEuMTMzIDEuMTMzIDAgMDE5LjMgNC42OTRjMC0uNjI0LjUwOC0xLjEzMSAxLjEzMi0xLjEzMWg4Ljg3NHoiIGZpbGw9IiMyNTM2NzgiLz48L3N2Zz4=);
+  background-position: center;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.3s ease;
+}
+
+.link-dropdown__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  border-radius: 8px;
+  background: var(--white, #FFF);
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 360px;
+  min-width: 280px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s ease;
+  z-index: 5;
+  padding: 16px 16px;
+}
+
+.link-dropdown__list ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.link-dropdown__list ul li a svg {
+  margin-left: auto;
+}
+
+.link-dropdown__list ul li a:hover {
+  background-color: var(--bg-01);
+}
+
+.link-dropdown:hover {
+  background-color: #fff;
+}
+
+.link-dropdown:hover .link-dropdown__list {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popup-form {
+  padding: 24px;
+  max-width: 755px;
+}
+
+.popup-form__title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.popup-form__desc {
+  padding-bottom: 15px;
+  text-align: center;
+  color: var(--text-02);
+}
+
+.popup-form__fields .btn {
+  width: 100%;
 }
 
 /* common styles */
@@ -3986,6 +4145,10 @@ a[data-tooltip]:hover::before {
   .form-authentication__form .form .checkbox {
     font-size: 16px;
   }
+
+  .link-icon {
+    position: relative;
+  }
 }
 
 @media screen and (min-width: 576px) {
@@ -4010,6 +4173,12 @@ a[data-tooltip]:hover::before {
 
   .link-icon__dropdown {
     padding: 16px 24px;
+    width: 360px;
+    max-width: 360px;
+  }
+
+  .dropdown-icon__list {
+    max-width: 360px;
   }
 
   .dropdown-icon__svg {
@@ -4105,6 +4274,19 @@ a[data-tooltip]:hover::before {
   .header-top__help,
   .header-top__site {
     min-width: 215px;
+  }
+
+  .link-dropdown__title {
+    font-size: 16px;
+  }
+
+  .link-dropdown__title::after {
+    margin-left: 10px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTS4yOTMuMjkzYTEgMSAwIDAxMS40MTQgMEw1IDMuNTg2IDguMjkzLjI5M2ExIDEgMCAwMTEuNDE0IDEuNDE0bC00IDRhMSAxIDAgMDEtMS40MTQgMGwtNC00YTEgMSAwIDAxMC0xLjQxNHoiIGZpbGw9IiM3ODdEOEYiLz48L3N2Zz4=);
+  }
+
+  .link-dropdown:hover .link-dropdown__title::after {
+    transform: rotate(180deg);
   }
 }
 

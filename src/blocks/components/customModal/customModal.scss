@@ -45,7 +45,8 @@
         right: 0;
         bottom: 0;
         z-index: 101;
-        background-color: #253678;
+        background: rgba(0, 0, 0, 0.60);
+        backdrop-filter: blur(22px);
         transition: 0.3s ease;
         opacity: 0.9;
     }
@@ -88,7 +89,7 @@
 }
 
 .af-popup__content {
-    border-radius: 4px;
+    border-radius: 12px;
     background: #fff;
     padding: 10px;
 }

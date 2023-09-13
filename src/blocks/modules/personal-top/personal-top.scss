@@ -8,7 +8,13 @@
         display: flex;
         margin-left: auto;
         padding: 6px 0 6px 0;
+        position: relative;
+
     }
+}
+
+.chat-tooltip-msg {
+    font-size: 15px;
 }
 
 .link-icon {
@@ -16,7 +22,11 @@
     border-radius: 8px;
     margin-left: 16px;
     cursor: pointer;
-    position: relative;
+
+    @media screen and (min-width: $w480) {
+        position: relative;
+    }
+
 
     &__svg {
         width: 48px;
@@ -31,8 +41,8 @@
         position: absolute;
         z-index: 1;
         right: 0;
-        width: 360px;
-        max-width: 360px;
+        width: 320px;
+        max-width: 320px;
         padding: 16px;
         background: #fff;
         border-radius: 8px;
@@ -46,6 +56,8 @@
 
         @media screen and (min-width: $w576) {
             padding: 16px 24px;
+            width: 360px;
+            max-width: 360px;
         }
     }
 
@@ -92,12 +104,16 @@
         box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
         padding: 16px;
         width: 100vw;
-        max-width: 360px;
+        max-width: 320px;
         visibility: hidden;
         opacity: 0;
         transform: translateY(10px);
         transition: 0.3s ease;
         z-index: 5;
+
+        @media screen and (min-width: $w576) {
+            max-width: 360px;
+        }
 
         & ul {
             & li {
@@ -310,5 +326,78 @@
 
     &--red {
         color: var(--red);
+    }
+}
+
+.user-profile {
+
+    display: flex;
+
+    &__avatar {
+
+
+        & .bgimage {
+            display: block;
+            width: 48px;
+            height: 48px;
+            background-color: var(--bg-01);
+            border-radius: 6px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAwLTQtNEg4YTQgNCAwIDAwLTQgNHYyTTE2IDdhNCA0IDAgMTEtOCAwIDQgNCAwIDAxOCAweiIgc3Ryb2tlPSIjMjUzNjc4IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+        }
+    }
+
+    &__name {
+        font-size: 16px;
+        color: var(--blue-dark);
+        font-weight: 500;
+        padding-bottom: 4px;
+    }
+
+    &__data {
+        padding-left: 12px;
+    }
+
+    &__info {
+        font-size: 13px;
+        color: var(--text-02);
+    }
+
+
+
+}
+
+.profile-tooltip {
+
+    &__user {
+        padding-bottom: 20px;
+    }
+
+    &__links {
+        border-top: 1px solid #eee;
+        padding: 14px 24px;
+        margin: 0 -24px;
+
+        & ul {
+            & li {
+                & a {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 16px;
+                    border-radius: 6px;
+                    transition: 0.3s ease;
+
+                    & svg {
+                        margin-left: auto;
+                    }
+
+
+                    &:hover {
+                        background-color: var(--bg-01);
+                    }
+                }
+            }
+        }
     }
 }

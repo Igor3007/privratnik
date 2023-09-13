@@ -4,6 +4,28 @@ mixin item-notification(data)
         .top-nitification__date= data.date
         .top-nitification__text= data.text
 
+
+mixin profile-tooltip(data)
+    .profile-tooltip
+        .profile-tooltip__user
+            .user-profile
+                .user-profile__avatar
+                    span.bgimage(style="")
+                .user-profile__data
+                    .user-profile__name Михаил Тестовый
+                    .user-profile__info +7 (499) ***-**-**
+        .profile-tooltip__links 
+            ul
+                li: a(href='#') Информация по аккаунту
+                li: a(href='#') История удалений
+                li: a(href='#') Настройки пользователя
+        .profile-tooltip__links 
+            ul
+                li: a(href='#') Перейти в ЛК пользователя
+                li: a(href='#') 
+                    span Выйти из кабинета
+                    +icons('#ic_logout')
+
 mixin personal-top
    .personal-top
         .personal-top__left
@@ -28,6 +50,8 @@ mixin personal-top
             
             .link-icon
                 .link-icon__svg: +icons('#ic_chat')
+                .link-icon__dropdown
+                    .chat-tooltip-msg Чат с технической поддержкой сервиса
             .link-icon
                 .link-icon__svg: +icons('#ic_notifications')
                 .link-icon__dropdown
@@ -41,3 +65,5 @@ mixin personal-top
 
             .link-icon.link-icon--white
                 .link-icon__svg: +icons('#ic_user')
+                .link-icon__dropdown
+                    +profile-tooltip()
