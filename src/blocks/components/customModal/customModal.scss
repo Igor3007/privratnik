@@ -37,6 +37,7 @@
     z-index: 100;
     opacity: 0;
     transition: 0.25s ease;
+    backdrop-filter: blur(22px);
 
     &__bg {
         position: fixed;
@@ -46,7 +47,7 @@
         bottom: 0;
         z-index: 101;
         background: rgba(0, 0, 0, 0.60);
-        backdrop-filter: blur(22px);
+
         transition: 0.3s ease;
         opacity: 0.9;
     }
@@ -182,4 +183,135 @@
             }
         }
     }
+}
+
+
+/* ========================== */
+
+.af-dialog {
+    width: 440px;
+    border-radius: 12px;
+    background: var(--white, #FFF);
+    padding: 24px;
+
+    &__title {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 8px;
+        padding-bottom: 12px;
+    }
+
+    &__desc {
+        color: var(--text-02);
+        text-align: center;
+        padding-bottom: 16px;
+        line-height: 130%;
+    }
+
+    &__action {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 -8px;
+
+
+        &>div {
+            height: 48px;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            width: 100%;
+            text-align: center;
+            margin: 0 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+
+        & .af-dialog {
+            &__apply {
+                border-radius: 8px;
+                opacity: 0.4;
+                background: var(--red, #F94258);
+                color: #fff;
+
+                &[disabled] {
+                    pointer-events: none;
+                }
+            }
+
+            &__cancel {
+                background-color: transparent;
+                border: 1px solid var(--blue-dark, #253678);
+
+                &:hover {
+                    background-color: var(--bg-02);
+                    border-color: var(--bg-02);
+                }
+            }
+        }
+    }
+
+
+}
+
+/* status revert */
+
+.af-dialog-revert {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: var(--blue-dark);
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 15px;
+
+    &__msg {
+        margin-right: 10px;
+    }
+
+    &__btn {
+        font-weight: 600;
+        color: #CDD5F5;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &__close {
+        width: 32px;
+        height: 32px;
+        transform: rotate(45deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        position: relative;
+        left: 7px;
+        cursor: pointer;
+    }
+}
+
+@keyframes fadeOutTopStatus {
+    to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+}
+
+.af-dialog-revert--hide .af-dialog-revert {
+
+    animation: fadeOutTopStatus 0.3s ease forwards;
+
 }

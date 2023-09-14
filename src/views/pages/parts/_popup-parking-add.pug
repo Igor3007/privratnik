@@ -13,14 +13,24 @@ include ../../../blocks/modules/popup-form/popup-form.pug
                     input(type="text" placeholder="Введите название")
                .form__item: .form__subitem
                     .form__label Адреса строений, входящих в парковку
-                    input(type="text" placeholder="Введите название")
+
+                    .form__repeat
+                         .form__repeat-item
+                              .form__repeat-field
+                                   .input--suggest.input--suggest-address
+                                        input(type="text" data-suggest="input" placeholder="Найти адрес"  )
+                              .form__repeat-remove
+
+                    .input--suggest.input--suggest-address
+                         input(type="text" data-suggest="input" placeholder="Найти адрес"  )
                .form__item: .form__subitem
                     .form__label Устройства управления
-                    select 
+                    select
                         option(value="0") Выберите устройство
                         option(value="1") Вариант 1
                         option(value="2") Вариант 2
                         option(value="3") Вариант 3
+                        option(value="4") Вариант 4
                         option(value="4") Вариант 4
                .form__item: .form__subitem
                     button.btn Добавить парковку

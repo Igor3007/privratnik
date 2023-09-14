@@ -14,17 +14,30 @@
         <div class="form__item">
           <div class="form__subitem">
             <div class="form__label">Адреса строений, входящих в парковку</div>
-            <input type="text" placeholder="Введите название"/>
+            <div class="form__repeat">
+              <div class="form__repeat-item">
+                <div class="form__repeat-field">
+                  <div class="input--suggest input--suggest-address">
+                    <input type="text" data-suggest="input" placeholder="Найти адрес"/>
+                  </div>
+                </div>
+                <div class="form__repeat-remove"></div>
+              </div>
+            </div>
+            <div class="input--suggest input--suggest-address">
+              <input type="text" data-suggest="input" placeholder="Найти адрес"/>
+            </div>
           </div>
         </div>
         <div class="form__item">
           <div class="form__subitem">
             <div class="form__label">Устройства управления</div>
-            <select> 
+            <select>
               <option value="0">Выберите устройство</option>
               <option value="1">Вариант 1</option>
               <option value="2">Вариант 2</option>
               <option value="3">Вариант 3</option>
+              <option value="4">Вариант 4</option>
               <option value="4">Вариант 4</option>
             </select>
           </div>

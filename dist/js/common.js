@@ -65,6 +65,121 @@ document.addEventListener("DOMContentLoaded", function (event) {
     window.preloader = new Preloader();
 
 
+    /* =================================================
+    confirm
+    ================================================= */
+
+
+    class Dialog {
+
+        constructor() {
+            this.i = 0
+        }
+
+        topStatusRevert(params) {
+            const template = `
+                <div class="af-dialog-revert" >
+                    <div class="af-dialog-revert__msg" >Вы удалили парковку «Парковка 2».</div>
+                    <div class="af-dialog-revert__btn" >Отменить</div>
+                    <div class="af-dialog-revert__close" >+</div>
+                </div>
+            `
+
+            function hideMSG(elementStatus) {
+                elementStatus.classList.add('af-dialog-revert--hide')
+                setTimeout(() => {
+                    elementStatus.remove()
+                }, 500)
+            }
+
+            const elementStatus = document.createElement('div')
+            elementStatus.innerHTML = template;
+
+            const timer = setTimeout(() => {
+                params.onConfirm()
+                hideMSG(elementStatus)
+            }, 5000)
+
+            if (elementStatus.querySelector('.af-dialog-revert__btn')) {
+                elementStatus.querySelector('.af-dialog-revert__btn').addEventListener('click', e => {
+                    clearTimeout(timer)
+                    this.revertElement(params.removeHtmlElem)
+                    hideMSG(elementStatus)
+                })
+            }
+
+            document.body.append(elementStatus)
+
+
+
+        }
+
+        getTemplate(data) {
+            return `
+                <div class="af-dialog" >
+                    <div class="af-dialog__title" >${data.title}</div>
+                    <div class="af-dialog__desc" >${data.desc}</div>
+                    <div class="af-dialog__action" >
+                        <div class="af-dialog__apply"  >Да, удалить (5сек)</div>
+                        <div class="af-dialog__cancel" >Отмена</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        hideElement(elem) {
+            elem.style.opacity = 0
+            elem.style.transition = '0.5s ease'
+            setTimeout(() => {
+                elem.style.display = 'none'
+            }, 600)
+        }
+
+        revertElement(elem) {
+            elem.style.opacity = 1
+            setTimeout(() => {
+                elem.style.removeProperty('display');
+            }, 600)
+        }
+
+        remove(params) {
+
+            const popupDialog = new afLightbox({
+                mobileInBottom: true
+            })
+
+            popupDialog.open(this.getTemplate(params), (instance) => {
+
+                const buttonApply = instance.querySelector('.af-dialog__apply')
+
+                buttonApply.addEventListener('click', e => {
+                    this.hideElement(params.removeHtmlElem)
+                    this.topStatusRevert(params)
+                    popupDialog.close()
+                })
+
+            })
+
+        }
+
+    }
+
+    window.dialog = new Dialog()
+
+    document.querySelectorAll('.row-remove').forEach(item => {
+        item.addEventListener('click', e => {
+            window.dialog.remove({
+                removeHtmlElem: item.closest('.table__tr'),
+                title: 'Удаление парковки',
+                desc: 'Внимание! Вы уверены, что хотите удалить парковку «Парковка 2» со всеми добавленными к ней данными и доступами?',
+                onConfirm: function () {
+                    console.log('удалено')
+                }
+            })
+        })
+    })
+
+
     /* ==============================================
     mobile menu
     ============================================== */
@@ -227,6 +342,184 @@ document.addEventListener("DOMContentLoaded", function (event) {
     } = Maska
 
     new MaskInput("[data-maska]")
+
+
+    /* ==============================================
+     select
+    ============================================== */
+
+    // public methods
+    // select.afSelect.open()
+    // select.afSelect.close()
+    // select.afSelect.update()
+
+    const selectCustom = new afSelect({
+        selector: 'select'
+    })
+
+    selectCustom.init()
+
+    /* ==========================================
+       suggest input
+     ========================================== */
+
+    class inputSuggest {
+
+        constructor(option) {
+            this.option = option
+            this.elem = option.elem
+            this.maxHeightSuggestList = this.option.maxHeightSuggestList || false
+            this.list = document.createElement('ul');
+            this.init()
+        }
+
+        init() {
+            this.createSuggestList()
+            this.addEvent()
+
+            if (this.maxHeightSuggestList) {
+                this.list.style.maxHeight = this.maxHeightSuggestList
+            }
+        }
+
+        createSuggestList() {
+
+
+            if (this.elem.dataset.url) {
+                this.loadSuggestElem(this.elem.dataset.url, (arr) => {
+                    this.renderSuggestList(arr)
+                })
+            } else {
+                if (this.option.on.listHadler) {
+                    this.option.on.listHadler(this)
+                } else {
+                    this.renderSuggestList([{
+                        text: 'no result',
+                        value: '0',
+                    }])
+                }
+            }
+
+
+
+
+        }
+
+        renderSuggestList(arr) {
+
+            this.list.querySelectorAll('li').forEach((removeItem) => {
+                removeItem.remove()
+            })
+
+            arr.forEach((item) => {
+                let li = document.createElement('li')
+                li.innerText = item.text
+                li.setAttribute('rel', item.value)
+
+                this.eventListItem(li)
+                this.list.append(li)
+            })
+
+            this.list.classList.add('suggest-list')
+            this.mountList()
+        }
+
+        mountList() {
+
+            if (this.elem.parentNode.querySelector('.suggest-list')) {
+                this.elem.parentNode.querySelector('.suggest-list').remove()
+            }
+
+            this.elem.parentNode.append(this.list)
+
+        }
+
+        loadSuggestElem(url, callback) {
+            window.ajax({
+                type: 'GET',
+                responseType: 'json',
+                url: url
+            }, function (status, response) {
+                callback(response)
+            })
+        }
+
+        changeInput(event) {
+
+            let value = event.target.value.toLowerCase()
+
+            if (this.elem.dataset.url) {
+
+                this.list.style.display = 'initial'
+
+                this.list.querySelectorAll('li').forEach(function (li) {
+
+                    if (li.classList.contains('hide')) {
+                        li.classList.remove('hide')
+                    }
+
+                    if (li.innerText.toLowerCase().indexOf(value) == -1 && value.length) {
+                        li.classList.add('hide')
+                    }
+                })
+
+                //update list
+                this.mountList()
+            } else {
+                this.option.on.listHadler(this)
+            }
+        }
+
+        closeList() {
+            this.list.style.display = 'none'
+
+            if (!this.elem.value.length) {
+                this.elem.removeAttribute('area-valid')
+                if (this.option.on.change) {
+                    this.option.on.change('', false)
+                }
+            }
+
+        }
+        openList() {
+            this.list.style.display = 'block'
+            this.elem.setAttribute('area-valid', true)
+            this.createSuggestList()
+        }
+
+        addEvent() {
+            this.elem.addEventListener('keyup', (event) => {
+                this.changeInput(event)
+            })
+
+            this.elem.addEventListener('focus', (event) => {
+                this.openList()
+            })
+
+            this.elem.addEventListener('click', (event) => {
+                event.stopPropagation()
+            })
+
+            this.elem.addEventListener('blur', () => {
+                setTimeout(() => {
+                    this.closeList()
+                }, 100)
+            })
+        }
+
+        eventListItem(li) {
+            li.addEventListener('click', (event) => {
+                this.elem.setAttribute('area-valid', true)
+                this.elem.value = event.target.innerText
+                this.closeList()
+
+                if (this.option.on.change) {
+                    this.option.on.change(event.target.innerText, event.target.getAttribute('rel'))
+                }
+            })
+        }
+
+    }
 
     /* ==================================================
    maska phone auth
@@ -586,6 +879,39 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         })
 
                         selectCustom.init()
+
+                        // init suggest
+
+                        if (instanse.querySelectorAll('.input--suggest')) {
+
+                            window.loadApiYmaps((ymaps) => {
+
+                                instanse.querySelectorAll('.input--suggest input').forEach((input) => {
+
+                                    new inputSuggest({
+                                        elem: input,
+                                        on: {
+                                            listHadler: function (inst) {
+                                                ymaps.ready(() => {
+                                                    ymaps.suggest(inst.elem.value).then(function (items) {
+
+                                                        const suggestArray = items.map(elem => ({
+                                                            text: elem.displayName,
+                                                            value: elem.value,
+                                                        }));
+
+                                                        inst.renderSuggestList(suggestArray)
+
+                                                    })
+                                                })
+                                            }
+                                        }
+                                    });
+
+                                })
+
+                            })
+                        }
                     })
                 })
 
@@ -594,20 +920,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     }
 
-    /* ==============================================
-     select
-    ============================================== */
 
-    // public methods
-    // select.afSelect.open()
-    // select.afSelect.close()
-    // select.afSelect.update()
 
-    const selectCustom = new afSelect({
-        selector: 'select'
-    })
-
-    selectCustom.init()
 
 
 
