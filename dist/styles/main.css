@@ -2108,6 +2108,21 @@ select {
   border-color: var(--blue-medium, #A8AFC9);
 }
 
+.btn.btn-line {
+  background-color: transparent;
+  color: var(--blue-dark, #253678);
+  border: 1px solid var(--blue-dark, #253678);
+}
+
+.btn.btn-line:hover {
+  color: var(--blue-medium, #515E93);
+}
+
+.btn.btn-line:disabled {
+  color: var(--blue-medium, #A8AFC9);
+  border-color: var(--blue-medium, #A8AFC9);
+}
+
 .btn.btn-full {
   width: 100%;
 }
@@ -2669,7 +2684,7 @@ body textarea:focus {
 
 .form__label {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 17px;
   width: 100%;
   color: var(--blue-dark, #253678);
   color: var(--text-01);
@@ -2936,10 +2951,11 @@ body textarea:focus {
 /* ========================== */
 
 .af-dialog {
-  width: 440px;
+  width: 100%;
   border-radius: 12px;
   background: var(--white, #FFF);
-  padding: 24px;
+  padding: 24px 12px;
+  max-width: 100%;
 }
 
 .af-dialog__title {
@@ -2984,13 +3000,13 @@ body textarea:focus {
 
 .af-dialog__action .af-dialog__apply {
   border-radius: 8px;
-  opacity: 0.4;
   background: var(--red, #F94258);
   color: #fff;
 }
 
 .af-dialog__action .af-dialog__apply[disabled] {
   pointer-events: none;
+  opacity: 0.4;
 }
 
 .af-dialog__action .af-dialog__cancel {
@@ -3016,6 +3032,7 @@ body textarea:focus {
   align-items: center;
   color: #fff;
   font-size: 15px;
+  margin-left: 15px;
 }
 
 .af-dialog-revert__msg {
@@ -4216,7 +4233,7 @@ body textarea:focus {
 }
 
 .popup-form {
-  padding: 24px;
+  padding: 24px 12px;
   max-width: 735px;
 }
 
@@ -4235,6 +4252,96 @@ body textarea:focus {
 
 .popup-form__fields .btn {
   width: 100%;
+}
+
+.page-devices {
+  padding-top: 5px;
+}
+
+.page-devices__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -12px;
+}
+
+.page-devices__item {
+  padding: 12px;
+}
+
+.page-devices__title {
+  font-weight: 600;
+  font-size: 20px;
+  padding-bottom: 0.6em;
+}
+
+.page-devices__desc {
+  padding-bottom: 1.8em;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-device {
+  background-color: var(--bg-01);
+  border-radius: 8px;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+}
+
+.card-device:hover {
+  background-color: #E2E7EE;
+}
+
+.card-device__icon {
+  padding-bottom: 16px;
+}
+
+.card-device__icon .bgimage {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.card-device__title {
+  padding-bottom: 12px;
+  font-size: 18px;
+  color: var(--text-01);
+  line-height: 155%;
+  font-weight: 600;
+}
+
+.card-device__desc {
+  padding-bottom: 24px;
+  font-size: 15px;
+  color: var(--text-02);
+  line-height: 160%;
+}
+
+.card-device__links {
+  margin-top: auto;
+}
+
+.card-device__links ul li {
+  margin-bottom: 10px;
+}
+
+.card-device__links ul li:last-child {
+  margin-bottom: 0;
+}
+
+.card-device__links a {
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+.card-device__links a:hover {
+  text-decoration: underline;
 }
 
 /* common styles */
@@ -4379,8 +4486,17 @@ a[data-tooltip]:hover::before {
     max-width: 100%;
   }
 
+  .form__label {
+    font-size: 18px;
+  }
+
   .af-popup__container {
     max-width: 90%;
+  }
+
+  .af-dialog {
+    width: 440px;
+    padding: 24px;
   }
 
   .form-authentication {
@@ -4398,6 +4514,10 @@ a[data-tooltip]:hover::before {
 
   .link-icon {
     position: relative;
+  }
+
+  .popup-form {
+    padding: 24px;
   }
 }
 
@@ -4755,6 +4875,15 @@ a[data-tooltip]:hover::before {
   .main-menu__nav nav ul li .sub-menu .sub-menu a {
     font-size: 18px;
   }
+
+  .page-devices__list {
+    margin: -16px;
+  }
+
+  .page-devices__item {
+    max-width: 25%;
+    padding: 16px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -4810,6 +4939,7 @@ a[data-tooltip]:hover::before {
     bottom: 0;
     max-height: 50vh;
     margin: auto;
+    background-color: #fff;
   }
 
   .select-options li {

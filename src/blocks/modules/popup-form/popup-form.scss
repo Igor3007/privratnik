@@ -1,6 +1,10 @@
 .popup-form {
-    padding: 24px;
+    padding: 24px 12px;
     max-width: 735px;
+
+    @media screen and (min-width: $w480) {
+        padding: 24px;
+    }
 
     &__title {
         font-size: 24px;

@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     <div class="af-dialog__title" >${data.title}</div>
                     <div class="af-dialog__desc" >${data.desc}</div>
                     <div class="af-dialog__action" >
-                        <div class="af-dialog__apply"  >Да, удалить (5сек)</div>
+                        <div class="af-dialog__apply" disabled="disabled" >Да, удалить <span>(5 сек)</span></div>
                         <div class="af-dialog__cancel" >Отмена</div>
                     </div>
                 </div>
@@ -142,6 +142,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }, 600)
         }
 
+        startTimer(duration, display) {
+            let timer = duration,
+                minutes, seconds;
+            let instanseTimer = setInterval(() => {
+
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                //seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = '(' + (minutes == '00' ? '' : minutes + ":") + seconds + ' сек)';
+
+                if (--timer < 0) {
+                    clearInterval(instanseTimer)
+                    display.parentNode.removeAttribute('disabled')
+                    display.remove()
+                }
+            }, 1000);
+        }
+
         remove(params) {
 
             const popupDialog = new afLightbox({
@@ -151,6 +172,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             popupDialog.open(this.getTemplate(params), (instance) => {
 
                 const buttonApply = instance.querySelector('.af-dialog__apply')
+
+                this.startTimer(5, buttonApply.querySelector('span'))
 
                 buttonApply.addEventListener('click', e => {
                     this.hideElement(params.removeHtmlElem)
@@ -332,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ==================================================*/
 
     function initMaska() {
-
+        //new MaskInput("[data-maska]")
     }
 
     initMaska();
@@ -341,7 +364,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         MaskInput,
     } = Maska
 
-    new MaskInput("[data-maska]")
 
 
     /* ==============================================
@@ -700,10 +722,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     display.textContent = minutes + ":" + seconds;
 
                     if (--timer < 0) {
-
                         clearInterval(instanseTimer)
                         this.repeatSendCode(display.closest('button'))
-
                     }
                 }, 1000);
             }
@@ -865,7 +885,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         items.forEach(item => {
             item.addEventListener('click', e => {
 
-                const addParkingPopup = new afLightbox()
+                const addParkingPopup = new afLightbox({
+                    mobileInBottom: true
+                })
 
                 window.ajax({
                     type: 'GET',

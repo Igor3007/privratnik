@@ -189,10 +189,16 @@
 /* ========================== */
 
 .af-dialog {
-    width: 440px;
+    width: 100%;
     border-radius: 12px;
     background: var(--white, #FFF);
-    padding: 24px;
+    padding: 24px 12px;
+    max-width: 100%;
+
+    @media screen and (min-width: $w480) {
+        width: 440px;
+        padding: 24px;
+    }
 
     &__title {
         font-size: 24px;
@@ -237,12 +243,12 @@
         & .af-dialog {
             &__apply {
                 border-radius: 8px;
-                opacity: 0.4;
                 background: var(--red, #F94258);
                 color: #fff;
 
                 &[disabled] {
                     pointer-events: none;
+                    opacity: 0.4;
                 }
             }
 
@@ -274,6 +280,7 @@
     align-items: center;
     color: #fff;
     font-size: 15px;
+    margin-left: 15px;
 
     &__msg {
         margin-right: 10px;

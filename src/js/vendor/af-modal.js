@@ -38,8 +38,6 @@ class afLightbox {
         let _this = this;
         this.modal = this.createTemplate();
 
-
-
         if (window.innerWidth <= 480 && this.mobileBottom) {
             this.modal.querySelector(".af-popup").classList.add("af-popup--mobile")
         }
