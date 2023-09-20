@@ -4,6 +4,7 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/modules/page-devices/page-devices.pug
 
 block variables
     include ../../data/data.pug
@@ -25,9 +26,13 @@ block content
           'Устройства управления',
         ])
     .personal-content__h1 Устройства управления
+    .personal-content__action
+        .personal-content__add
+           a(href='#'): button.btn(data-parking="add")  + Добавить устройство
+         
          
     .personal-content__main
-         div Устройства управления
+         +page-devices
 
 
     

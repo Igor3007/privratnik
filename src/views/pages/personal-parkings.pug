@@ -28,7 +28,15 @@ block content
     .personal-content__h1 Мои парковки
     .personal-content__action
         .personal-content__add
-          a(href='#'): button.btn Добавить парковку
+           a(href='#'): button.btn(data-parking="add") Добавить доступ
+        .personal-content__sortable
+          .link-dropdown
+            .link-dropdown__title Сначала старые
+            .link-dropdown__list
+              ul
+                li: a(href='#') Сначала старые
+                li: a(href='#') Сначала новые
+                li: a(href='#') Последние добавленные
     .personal-content__table
         .table
           .table__tr

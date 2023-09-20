@@ -1,0 +1,102 @@
+.page-devices {
+
+    padding-top: 5px;
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -12px;
+
+        @media screen and (min-width: $w1440) {
+            margin: -16px;
+        }
+    }
+
+    &__item {
+        padding: 12px;
+
+        @media screen and (min-width: $w1440) {
+            max-width: 25%;
+            padding: 16px;
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 20px;
+        padding-bottom: 0.6em;
+    }
+
+    &__desc {
+        padding-bottom: 1.8em;
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.card-device {
+
+    background-color: var(--bg-01);
+    border-radius: 8px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+
+    &:hover {
+        background-color: #E2E7EE;
+    }
+
+
+    &__icon {
+
+        padding-bottom: 16px;
+
+        & .bgimage {
+            width: 64px;
+            height: 64px;
+
+            @include bgimage-contain;
+        }
+    }
+
+    &__title {
+        padding-bottom: 12px;
+        font-size: 18px;
+        color: var(--text-01);
+        line-height: 155%;
+        font-weight: 600;
+    }
+
+    &__desc {
+        padding-bottom: 24px;
+        font-size: 15px;
+        color: var(--text-02);
+        line-height: 160%;
+
+    }
+
+    &__links {
+        margin-top: auto;
+
+        & ul {
+            & li {
+                margin-bottom: 10px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        & a {
+            font-weight: 600;
+            color: var(--blue-dark);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

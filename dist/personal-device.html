@@ -139,6 +139,9 @@
                     <use xlink:href="/img/sprites/sprite.svg#ic_chat"></use>
                   </svg>
                 </div>
+                <div class="link-icon__dropdown">
+                  <div class="chat-tooltip-msg">Чат с технической поддержкой сервиса</div>
+                </div>
               </div>
               <div class="link-icon">
                 <div class="link-icon__svg">
@@ -146,13 +149,80 @@
                     <use xlink:href="/img/sprites/sprite.svg#ic_notifications"></use>
                   </svg>
                 </div>
-                <div class="link-icon__dropdown"></div>
+                <div class="link-icon__dropdown">
+                  <div class="top-nitification">
+                    <div class="top-nitification__list">
+                      <div class="top-nitification__item">
+                        <div class="top-nitification__title"><span class="item-nitification--green">Доступ предоставлен</span></div>
+                        <div class="top-nitification__date">02.02.23 / 16:27</div>
+                        <div class="top-nitification__text">Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
+                      <div class="top-nitification__item">
+                        <div class="top-nitification__title"><span class="item-nitification--red">Отказ в доступе</span> (не внесен в БД)</div>
+                        <div class="top-nitification__date">01.02.23 | 14:23 </div>
+                        <div class="top-nitification__text">АНОНИМ, +7 (905) 533-**-02</div>
+                      </div>
+                      <div class="top-nitification__item">
+                        <div class="top-nitification__title"><span class="item-nitification--red">Отказ в доступе</span> (не внесен в БД)</div>
+                        <div class="top-nitification__date">01.02.23 | 14:22 </div>
+                        <div class="top-nitification__text">АНОНИМ, +7 (905) 533-**-02</div>
+                      </div>
+                      <div class="top-nitification__item">
+                        <div class="top-nitification__title"><span class="item-nitification--green">Доступ предоставлен</span></div>
+                        <div class="top-nitification__date">28.01.23 / 09:41</div>
+                        <div class="top-nitification__text">Михаил Тестовый +7 (490) 533-**-85</div>
+                      </div>
+                      <div class="top-nitification__item">
+                        <div class="top-nitification__title"><span class="item-nitification--green">Доступ предоставлен</span></div>
+                        <div class="top-nitification__date">28.01.23 / 17:30</div>
+                        <div class="top-nitification__text">Михаил Тестовый, +7 (490) 533-**-85</div>
+                      </div>
+                    </div>
+                    <div class="top-nitification__bottom">
+                      <div class="top-nitification__all"><a href="#">Смотреть все уведомления</a></div>
+                      <div class="top-nitification__setting">
+                        <svg width="25" height="25">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_gear"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="link-icon link-icon--white">
                 <div class="link-icon__svg">
                   <svg width="25" height="25">
                     <use xlink:href="/img/sprites/sprite.svg#ic_user"></use>
                   </svg>
+                </div>
+                <div class="link-icon__dropdown">
+                  <div class="profile-tooltip">
+                    <div class="profile-tooltip__user">
+                      <div class="user-profile">
+                        <div class="user-profile__avatar"><span class="bgimage"></span></div>
+                        <div class="user-profile__data">
+                          <div class="user-profile__name">Михаил Тестовый</div>
+                          <div class="user-profile__info">+7 (499) ***-**-**</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="profile-tooltip__links"> 
+                      <ul>
+                        <li><a href="#">Информация по аккаунту</a></li>
+                        <li><a href="#">История удалений</a></li>
+                        <li><a href="#">Настройки пользователя</a></li>
+                      </ul>
+                    </div>
+                    <div class="profile-tooltip__links"> 
+                      <ul>
+                        <li><a href="#">Перейти в ЛК пользователя</a></li>
+                        <li><a href="#"> <span>Выйти из кабинета</span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_logout"></use>
+                            </svg></a></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -167,8 +237,55 @@
               </div>
             </div>
             <div class="personal-content__h1">Устройства управления</div>
+            <div class="personal-content__action">
+              <div class="personal-content__add"><a href="#">
+                  <button class="btn" data-parking="add"> + Добавить устройство</button></a></div>
+            </div>
             <div class="personal-content__main">
-              <div>Устройства управления</div>
+              <section class="section-page-devices">
+                <div class="page-devices">
+                  <div class="page-devices__title">Устройства пока не подключены</div>
+                  <div class="page-devices__desc">Для комфортной работы с сервисом «ПривратникЪ» соблюдайте простую последовательность из нескольких шагов:</div>
+                  <div class="page-devices__list">
+                    <div class="page-devices__item">
+                      <div class="card-device">
+                        <div class="card-device__icon"><span class="bgimage lazyload" data-bg="/img/common/ic_device_1.svg"></span>
+                        </div>
+                        <div class="card-device__title">1. Закажите и установите конечное оборудование системы«ПривратникЪ»</div>
+                        <div class="card-device__desc">Не требуются специальные сложные настройки, поскольку интеграция с серверным уже ПО произведена на этапе производства, а монтажнику остаётся только произвести подключение устройств на объекте.</div>
+                        <div class="card-device__links"><ul><li><button class="btn btn-line">Наше оборудование</button></li></ul></div>
+                      </div>
+                    </div>
+                    <div class="page-devices__item">
+                      <div class="card-device">
+                        <div class="card-device__icon"><span class="bgimage lazyload" data-bg="/img/common/ic_device_2.svg"></span>
+                        </div>
+                        <div class="card-device__title">2. Добавьте устройства управления в личном кабинете (вы сейчас здесь)</div>
+                        <div class="card-device__desc">Добавьте ранее установленные устройства в личном кабинете, чтобы их можно было удобно добавлять (объединять) в парковки и настраивать доступ. Сразу после добавления вы можете проверить работоспособность устройства.</div>
+                        <div class="card-device__links"><ul><li><button class="btn btn-line"> + Подключить устройство</button></li></ul></div>
+                      </div>
+                    </div>
+                    <div class="page-devices__item">
+                      <div class="card-device">
+                        <div class="card-device__icon"><span class="bgimage lazyload" data-bg="/img/common/ic_device_3.svg"></span>
+                        </div>
+                        <div class="card-device__title">3. Добавьте парковки</div>
+                        <div class="card-device__desc">Создайте свои парковки, объедините все необходимые здания и объекты, доступ к которым хотите ограничить. Добавьте одно или сколько угодно много управляющих устройств в одну парковку.</div>
+                        <div class="card-device__links"><ul><li><a href="" >Перейти в «Мои парковки»</a></li></ul></div>
+                      </div>
+                    </div>
+                    <div class="page-devices__item">
+                      <div class="card-device">
+                        <div class="card-device__icon"><span class="bgimage lazyload" data-bg="/img/common/ic_device_4.svg"></span>
+                        </div>
+                        <div class="card-device__title">4. Настройте доступы, смотрите статистику и многое другое</div>
+                        <div class="card-device__desc">Создавайте сценарии доступа к парковкам. Добавляйте пользователей и группы пользователей, в том числе с помощью наших шаблонов. Настраивайте права доступа. Смотрите статистику и проверяйте видео проездов в «Видеонаблюдении».</div>
+                        <div class="card-device__links"><ul><li><a href="" >Перейти в «Настройки доступа»</a></li> <li><a href="" >Перейти в «Статистика доступа»</a></li></ul></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </div>
