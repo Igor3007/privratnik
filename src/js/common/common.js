@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    const API_YMAPS = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
+    const API_YMAPS = 'https://api-maps.yandex.ru/2.1/?apikey=0e2d85e0-7f40-4425-aab6-ff6d922bb371&suggest_apikey=ad5015b5-5f39-4ba3-9731-a83afcecb740&lang=ru_RU&mode=debug';
 
 
     /* =================================================
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
     }
+
 
     /* =================================================
     preloader
@@ -509,10 +510,38 @@ document.addEventListener("DOMContentLoaded", function (event) {
             this.createSuggestList()
         }
 
+        debounce(func, wait, immediate) {
+            var timeout;
+
+            return function () {
+
+                var context = this,
+                    args = arguments;
+                var later = function () {
+                    timeout = null;
+                    if (!immediate) {
+                        console.log('immediate::');
+                        func.apply(context, args);
+                    }
+                }
+
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+
+                timeout = setTimeout(later, wait);
+                if (callNow) {
+                    func.apply(context, args);
+                }
+            }
+        }
+
         addEvent() {
-            this.elem.addEventListener('keyup', (event) => {
-                this.changeInput(event)
-            })
+
+            const debounceKeyup = this.debounce((e) => {
+                this.changeInput(e)
+            }, 300)
+
+            this.elem.addEventListener('keyup', debounceKeyup)
 
             this.elem.addEventListener('focus', (event) => {
                 this.openList()
@@ -914,17 +943,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                         elem: input,
                                         on: {
                                             listHadler: function (inst) {
+
+                                                if (!inst.elem.value.length) {
+                                                    return false
+                                                }
+
                                                 ymaps.ready(() => {
-                                                    ymaps.suggest(inst.elem.value).then(function (items) {
+                                                    ymaps.suggest(inst.elem.value).then(
+                                                        (items) => {
+                                                            const suggestArray = items.map(elem => ({
+                                                                text: elem.displayName,
+                                                                value: elem.value,
+                                                            }));
+                                                            inst.renderSuggestList(suggestArray)
+                                                        },
 
-                                                        const suggestArray = items.map(elem => ({
-                                                            text: elem.displayName,
-                                                            value: elem.value,
-                                                        }));
+                                                        (error) => {
+                                                            console.err('Error inputSuggest ' + error)
+                                                        }
 
-                                                        inst.renderSuggestList(suggestArray)
+                                                    )
 
-                                                    })
                                                 })
                                             }
                                         }
