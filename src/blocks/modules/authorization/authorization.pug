@@ -112,7 +112,7 @@ mixin authorization-admin
             .form-authentication__title Вход
             .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
             .form-authentication__form
-                form(action='/personal-parkings.html' method='GET')
+                form(action='/login-role.html' method='GET')
                     .form
                         .form__item: .form__subitem: input(type="tel" data-phone-mask="auth" placeholder="Телефон")
                         .form__item: .form__subitem
@@ -122,6 +122,28 @@ mixin authorization-admin
                             a.forgot-psw(href="#" ) Забыли пароль?
                         .form__item: .form__subitem
                             button.btn(disabled="" type="submit") Войти
+
+
+        .form-authentication__login
+            +icons('#ic_arrow-back', 24)
+            a(href='/login.html') Вернуться назад
+
+mixin authorization-role
+    .form-authentication
+        .form-authentication__wrp
+            .form-authentication__title Выберите роль
+            .form-authentication__desc Выберите роль администратора со своими управляющими устройствами или обычного пользователя
+            .form-authentication__role
+                .select-role
+                    ul
+                        li.is-active
+                            a(href='/personal-parkings.html')
+                                strong Администратор
+                                span У вас уже есть собственные управляющие устройства
+                        li
+                            a(href='/personal-parkings.html')
+                                strong Пользователь
+                                span Базовый доступ без управляющих устройств
 
 
         .form-authentication__login

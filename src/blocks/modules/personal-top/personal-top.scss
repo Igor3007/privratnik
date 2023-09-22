@@ -96,6 +96,7 @@
     }
 
     &__list {
+
         position: absolute;
         top: calc(100% + 8px);
         left: 0;
@@ -400,4 +401,61 @@
             }
         }
     }
+}
+
+
+.select-role {
+
+
+    border-radius: 8px;
+    background: var(--white, #FFF);
+    padding: 16px;
+    transition: 0.3s ease;
+    z-index: 5;
+
+
+
+    & ul {
+        & li {
+
+            border-radius: 8px;
+            border: 1px solid var(--stroke, #CED6E0);
+            background: var(--bg-01, #ECF0F5);
+            margin-bottom: 8px;
+            transition: 0.3s ease;
+
+
+
+            & a {
+                display: block;
+                padding: 16px;
+            }
+
+            & strong {
+                display: block;
+            }
+
+            &:hover {
+                background-color: #e3e6eb;
+            }
+
+            &.is-active {
+
+                border-color: var(--blue-dark, #253678);
+                background: var(--blue-dark, #253678);
+
+                & a,
+                & span,
+                & strong {
+
+                    color: #fff;
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
 }

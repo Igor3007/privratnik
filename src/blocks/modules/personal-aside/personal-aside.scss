@@ -19,17 +19,20 @@
             & li {
                 min-height: 42px;
                 background-color: transparent;
-                border-radius: 8px;
+
                 display: flex;
+                flex-wrap: wrap;
                 align-items: center;
                 margin-bottom: 12px;
+                position: relative;
 
                 & a {
                     display: flex;
                     align-items: center;
-                    padding: 10px 12px;
+                    padding: 10px 12px 10px 12px;
                     width: 100%;
                     color: var(--text-01);
+                    border-radius: 8px;
 
                     & .ic_24 {
                         margin-right: 10px;
@@ -38,10 +41,64 @@
                 }
 
                 &.is-active {
-                    background-color: #fff;
+                    & a {
+                        background-color: #fff;
+                    }
 
                     & .ic_24 {
                         opacity: 1;
+                    }
+                }
+
+                &.is-sub-menu {
+
+                    & .sub-menu {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: 0.3s ease;
+
+                        & li {
+                            & a {
+                                background-color: transparent;
+
+                                &:hover {
+                                    &::before {
+                                        background-color: var(--blue-dark);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.is-open {
+
+
+                        & .sub-menu {
+                            max-height: 300px;
+                            padding-top: 12px;
+                        }
+
+                        &::after {
+                            transform: rotate(180deg);
+                        }
+
+
+                    }
+
+                    &::after {
+                        width: 38px;
+                        height: 38px;
+                        position: absolute;
+                        right: 4px;
+                        top: 4px;
+                        content: '';
+                        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTS4yOTMuMjkzYTEgMSAwIDAxMS40MTQgMEw3IDUuNTg2IDEyLjI5My4yOTNhMSAxIDAgMTExLjQxNCAxLjQxNGwtNiA2YTEgMSAwIDAxLTEuNDE0IDBsLTYtNmExIDEgMCAwMTAtMS40MTR6IiBmaWxsPSIjMjUzNjc4Ii8+PC9zdmc+);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        transition: 0.3s ease;
+                        background-size: 12px auto;
+                        cursor: pointer;
                     }
                 }
 
@@ -53,6 +110,36 @@
 
                     & a {
                         color: var(--text-01);
+                    }
+                }
+            }
+
+            &.sub-menu {
+                width: 100%;
+                padding-left: 32px;
+
+                & li {
+                    padding: 0;
+                    margin: 0;
+
+                    & a {
+                        padding: 0;
+                        padding-bottom: 12px;
+                        padding-left: 14px;
+                        position: relative;
+
+                        &::before {
+                            content: '';
+                            width: 4px;
+                            min-width: 4px;
+                            height: 4px;
+                            display: inline-block;
+                            position: absolute;
+                            left: 0;
+                            top: 8px;
+                            background-color: var(--blue-light);
+                            border-radius: 50%;
+                        }
                     }
                 }
             }

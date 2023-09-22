@@ -22,6 +22,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     }
 
+    /* =================================================
+    submenu
+    =================================================*/
+
+    if (document.querySelector('.is-sub-menu')) {
+        const items = document.querySelectorAll('.is-sub-menu')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+                if (item.closest('.is-sub-menu')) {
+                    e.preventDefault()
+                }
+
+                item.classList.toggle('is-open')
+            })
+
+            if (item.querySelector('.sub-menu')) {
+                item.querySelector('.sub-menu').addEventListener('click', e => {
+                    e.stopPropagation()
+                })
+            }
+        })
+    }
 
     /* =================================================
     preloader

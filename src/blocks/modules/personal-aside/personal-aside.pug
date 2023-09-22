@@ -1,13 +1,14 @@
-mixin personal-aside(data)
+mixin personal-aside(data) 
     .personal-aside 
         .personal-aside__logo
-            a(href='#'): +bgimage('/img/common/logo-blue-horisontal.svg')
+            a(href='#'): +bgimage--nolazy('/img/common/logo-blue-horisontal.svg')
         .personal-aside__nav
             nav
                 ul
                     each item in app.mainMenu
-
-                        if (data.title == item.text)
-                            li(class = "is-active"): a(href=item.href)!= '<span class="ic_24 lazyload" class="lazyload" data-bg="/img/svg/'+item.icon+'" ></span>' + item.text
-                        else
-                            li: a(href=item.href)!= '<span class="ic_24 lazyload" class="lazyload" data-bg="/img/svg/'+item.icon+'" ></span>' + item.text
+                            li(class =  (data.title == item.text ? "is-active" : "") class = (item.sub ? " is-sub-menu":"") class = (data.title == item.text && data.openSub ? " is-open":""))
+                                a(href=item.href)!= '<span class="ic_24" style="background-image: url(/img/svg/'+item.icon+')" ></span>' + item.text
+                                if(item.sub)
+                                    ul.sub-menu
+                                        each subitem in item.sub
+                                            li: a(href=subitem.href)= subitem.text 

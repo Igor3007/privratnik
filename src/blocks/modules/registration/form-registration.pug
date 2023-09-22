@@ -25,7 +25,9 @@ mixin registration-step2
             .form-authentication__form
                 form(action='/registration-step3.html' method='GET')
                     .form
-                        .form__item: .form__subitem: input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
+                        .form__item: .form__subitem
+                            input(type="tel" data-code-mask="registration" placeholder="Введите код из СМС")
+                            .error Пример ошибки
                         .form__item: .form__subitem
                             button.btn(disabled="" type="submit") Подтвердить номер
                         .form__item: .form__subitem

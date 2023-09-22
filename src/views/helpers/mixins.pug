@@ -56,8 +56,8 @@ mixin icons(id, size)
 mixin bgimage(url)
   span.bgimage.lazyload(data-bg=""+url+"")
 
-//- mixin bgimage(url)
-//-   span.bgimage(style="background-image: url("+url+")")
+mixin bgimage--nolazy(url)
+  span.bgimage(style="background-image: url("+url+")")
 
 mixin checkbox(label, name,  check)
   label.checkbox

@@ -19,6 +19,11 @@
             max-width: 25%;
             padding: 16px;
         }
+
+        @media screen and (min-width: $w760) {
+            max-width: 50%;
+            padding: 16px;
+        }
     }
 
     &__title {
@@ -28,9 +33,9 @@
     }
 
     &__desc {
-        padding-bottom: 1.8em;
+        padding-bottom: 2.3em;
         font-size: 15px;
-        font-weight: bold;
+
     }
 }
 
