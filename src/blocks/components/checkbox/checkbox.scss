@@ -2,13 +2,14 @@
     display: inline-flex;
     position: relative;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 140%;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     align-items: flex-start;
+
 
     & input {
         position: absolute;
@@ -28,7 +29,7 @@
 
 
 
-        top: 1px;
+        top: -1px;
         position: relative;
         height: 24px;
         width: 24px;
@@ -36,8 +37,9 @@
         background-color: #fff;
         display: inline-block;
         margin-right: rem(10);
-        border: 1px solid #bcbcbc;
+        border: 1px solid var(--bg-02);
         border-radius: 6px;
+        background-color: var(--bg-02);
 
 
 
@@ -145,7 +147,7 @@
 
     &__text {
         line-height: 140%;
-        font-size: 13px;
+        font-size: 15px;
         color: #222;
         font-weight: 500;
         padding-top: 1px;
@@ -154,28 +156,29 @@
     &__elem {
         top: rem(1);
         position: relative;
-        height: 16px;
-        width: 16px;
-        min-width: 16px;
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
         background-color: transparent;
         display: inline-block;
         margin-right: 10px;
         border-radius: 50%;
         transition: 0.15s linear;
-        border: 1px solid #ccc;
+        border: 1px solid var(--bg-02);
+        background-color: var(--bg-02);
+
 
 
     }
 
     & input {
         &:hover~.radio__elem {
-
             border: 1px solid $accent-1-1;
         }
 
         &:checked~.radio__elem {
-            border: 5px solid $accent-1-1;
-
+            border: 7px solid $accent-1-1;
+            background-color: #fff;
 
         }
 

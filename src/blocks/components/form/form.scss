@@ -20,6 +20,7 @@ body {
         transition: background 0.4s ease;
         border-radius: 8px;
         border: none;
+        width: 100%;
 
 
         &::placeholder {
@@ -111,7 +112,27 @@ body {
         }
     }
 
+    &__tabs {
+        width: 100%;
+    }
 
+    &__tab {
+        display: none;
+
+        &.is-active {
+            display: block;
+        }
+
+        & .form {
+            &__label {
+                padding-top: 20px;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
 
 
 
@@ -259,20 +280,20 @@ body {
         flex-wrap: wrap;
         position: relative;
 
-        & label:not(.checkbox) {
-            background-color: var(--bg-01);
-            font-size: 13px;
-            position: absolute;
-            top: -7px;
-            left: 7px;
-            padding: 0 10px;
-            color: var(--text-02, #787D8F);
+        // & label:not(.checkbox) {
+        //     background-color: var(--bg-01);
+        //     font-size: 13px;
+        //     position: absolute;
+        //     top: -7px;
+        //     left: 7px;
+        //     padding: 0 10px;
+        //     color: var(--text-02, #787D8F);
 
-            @media screen and (min-width: $w760) {
-                top: 5px;
-                left: 21px;
-            }
-        }
+        //     @media screen and (min-width: $w760) {
+        //         top: 5px;
+        //         left: 21px;
+        //     }
+        // }
 
 
 
@@ -302,6 +323,23 @@ body {
 
         @media screen and (min-width: $w480) {
             font-size: 18px;
+        }
+
+        & span[data-tooltip] {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.5em;
+            cursor: pointer;
+
+            & svg {
+                fill: var(--blue-light);
+            }
+
+            &:hover {
+                & svg {
+                    fill: var(--blue-dark);
+                }
+            }
         }
     }
 
@@ -421,4 +459,14 @@ body {
             }
         }
     }
+}
+
+.switch-list {
+    display: flex;
+    margin: 0 -12px;
+    flex-wrap: wrap
+}
+
+.switch-list li {
+    padding: 12px;
 }

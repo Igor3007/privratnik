@@ -1004,6 +1004,328 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     }
 
+    /* ======================================
+    select device
+    ======================================*/
+
+    class SelectAddressYmaps {
+        constructor(params) {
+            this.$el = params.el;
+            this.popup = null;
+            this.placemark = null;
+            this.myMap = null;
+            this.inputSearch = null;
+            this.list = document.createElement('ul')
+        }
+
+        getBalloonTemplate() {
+            return `
+            
+                <div class="select-ymaps" >
+                    <div class="select-ymaps__title" >Ближайший адрес:</div>
+                    <div class="select-ymaps__adrss" >Москва, Островского улица, 36</div>
+                    <div class="select-ymaps__btn" >
+                        <button class="btn" >Подтвердить</button> 
+                    </div>
+                </div>
+
+            `;
+        }
+
+        getTemplate() {
+            return `
+                <div class="select-address-on-map" >
+                    <div class="form" >
+                        <div class="form__item" >
+                            <div class="form__subitem" >
+                                <div class="form__label" >Адрес ближайшего к устройству строения (выбор из поиска)</div>
+                                <div class="input--suggest input--suggest-address">
+                                    <input type="text" data-suggest="input" placeholder="Найти адрес">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__item" >
+                            <div class="form__subitem" ><div class="map-select" id="map-select" ></div></div>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+
+        geoCode(str) {
+
+            if (!str) return false
+
+            ymaps.geocode(str).then(
+
+                (res) => {
+                    let coordinates = res.geoObjects.get(0).geometry.getCoordinates()
+                    this.placemark.geometry.setCoordinates(coordinates);
+                    this.myMap.setCenter(coordinates)
+                    this.placemark.balloon.open()
+                },
+
+                (err) => {
+                    console.error('error: SelectAddressYmaps')
+                }
+            );
+        }
+
+        geoCodeCoordinates(arr) {
+
+            ymaps.geocode(arr).then(
+
+                (res) => {
+                    this.inputSearch.value = res.geoObjects.get(0).getAddressLine()
+                },
+
+                (err) => {
+                    console.error('error: geoCodeCoordinates')
+                }
+            );
+        }
+
+        mapInit() {
+            window.loadApiYmaps((ymaps) => {
+                ymaps.ready(() => {
+
+                    this.myMap = new ymaps.Map('map-select', {
+                        center: [55.753994, 37.622093],
+                        zoom: 14,
+                        controls: []
+                    }, {
+                        searchControlProvider: 'yandex#search',
+                        suppressMapOpenBlock: true
+                    });
+
+                    this.placemark = new ymaps.Placemark(this.myMap.getCenter(), {
+                        hintContent: 'Адресс устройства',
+                        balloonContent: this.getBalloonTemplate(),
+
+                    }, {
+                        preset: 'islands#blueCircleDotIconWithCaption',
+                        iconColor: '#253678',
+                        draggable: true,
+                        hideIconOnBalloonOpen: false
+                    });
+
+                    this.placemark.events.add('dragend', (e) => {
+                        this.geoCodeCoordinates(e.get('target').geometry.getCoordinates())
+                    })
+
+                    this.myMap.geoObjects.add(this.placemark)
+                })
+            })
+        }
+
+        open() {
+            this.popup = new afLightbox({
+                mobileInBottom: true
+            })
+
+            this.popup.open(this.getTemplate(), (instanse) => {
+                this.mapInit()
+                this.inputSearch = instanse.querySelector('[data-suggest="input"]')
+                this.addEventInput()
+            })
+
+        }
+
+        closeList() {
+            this.list.style.setProperty('display', 'none')
+        }
+        showList() {
+            this.list.style.setProperty('display', 'block')
+        }
+
+
+        eventListItem(li) {
+            li.addEventListener('click', (event) => {
+                this.inputSearch.setAttribute('area-valid', true)
+                this.inputSearch.value = event.target.innerText
+
+                this.geoCode(event.target.innerText)
+
+                this.closeList()
+            })
+        }
+
+        renderSuggestList(arr) {
+
+
+
+            this.list.querySelectorAll('li').forEach((removeItem) => {
+                removeItem.remove()
+            })
+
+            arr.forEach((item) => {
+                let li = document.createElement('li')
+                li.innerText = item.text
+                li.setAttribute('rel', item.value)
+                this.eventListItem(li)
+                this.list.append(li)
+            })
+
+            this.list.classList.add('suggest-list')
+            this.mountList()
+        }
+
+        mountList() {
+
+            if (this.inputSearch.parentNode.querySelector('.suggest-list')) {
+                this.inputSearch.parentNode.querySelector('.suggest-list').remove()
+            }
+
+            this.inputSearch.parentNode.append(this.list)
+            this.list.style.setProperty('display', 'block')
+
+        }
+
+        getSuggestFromYmaps(e) {
+            ymaps.ready(() => {
+                ymaps.suggest(e.target.value).then(
+                    (items) => {
+
+                        console.log(items)
+
+                        const suggestArray = items.map(elem => ({
+                            text: elem.displayName,
+                            value: elem.value,
+                        }));
+                        this.renderSuggestList(suggestArray)
+                    },
+
+                    (error) => {
+                        console.err('Error getSuggestFromYmaps ' + error)
+                    }
+
+                )
+            })
+        }
+
+        addEventInput() {
+
+            this.inputSearch.addEventListener('keyup', e => {
+                this.getSuggestFromYmaps(e)
+                this.showList()
+            })
+
+        }
+    }
+
+    /* ======================================
+    select device
+    ======================================*/
+
+
+    if (document.querySelector('[data-device="add"]')) {
+        const items = document.querySelectorAll('[data-device="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const addParkingPopup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-connect-device.html'
+                }, (status, response) => {
+
+
+                    addParkingPopup.open(response, (instanse) => {
+                        const selectCustom = new afSelect({
+                            selector: 'select'
+                        })
+
+                        selectCustom.init()
+
+                        // init suggest
+                        if (instanse.querySelectorAll('.input--suggest')) {
+
+                            window.loadApiYmaps((ymaps) => {
+
+                                instanse.querySelectorAll('.input--suggest input').forEach((input) => {
+
+                                    new inputSuggest({
+                                        elem: input,
+                                        on: {
+                                            listHadler: function (inst) {
+
+                                                if (!inst.elem.value.length) {
+                                                    return false
+                                                }
+
+                                                ymaps.ready(() => {
+                                                    ymaps.suggest(inst.elem.value).then(
+                                                        (items) => {
+                                                            const suggestArray = items.map(elem => ({
+                                                                text: elem.displayName,
+                                                                value: elem.value,
+                                                            }));
+                                                            inst.renderSuggestList(suggestArray)
+                                                        },
+
+                                                        (error) => {
+                                                            console.err('Error inputSuggest ' + error)
+                                                        }
+
+                                                    )
+
+                                                })
+                                            }
+                                        }
+                                    });
+
+                                })
+
+                            })
+                        }
+
+                        // tabs
+
+                        if (document.querySelector('[data-tab-radio]')) {
+                            const radio = document.querySelectorAll('[data-tab-radio]')
+                            const container = document.querySelector('[data-tab-container="type-device"]')
+
+                            radio.forEach(item => {
+                                item.addEventListener('change', e => {
+                                    container.querySelectorAll('[data-tab-item]').forEach(tab => {
+                                        if (tab.dataset.tabItem == item.dataset.tabRadio) {
+                                            tab.classList.add('is-active')
+                                        } else {
+                                            tab.classList.contains('is-active') ? tab.classList.remove('is-active') : ''
+                                        }
+                                    })
+                                })
+                            })
+                        }
+
+                        //select address on map
+
+                        if (document.querySelector('[data-address="select-map"]')) {
+                            const openMap = document.querySelector('[data-address="select-map"]')
+
+                            openMap.addEventListener('click', e => {
+                                e.preventDefault()
+
+                                const selectAddress = new SelectAddressYmaps({
+                                    el: '.errr'
+                                })
+
+                                selectAddress.open()
+
+                            })
+                        }
+                    })
+                })
+
+
+            })
+        })
+    }
+
 
 
 

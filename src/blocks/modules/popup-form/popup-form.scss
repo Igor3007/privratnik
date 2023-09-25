@@ -23,5 +23,51 @@
         & .btn {
             width: 100%;
         }
+
+        & .form {
+            &__tabs {
+                & .checkbox {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+.select-address-on-map {
+    padding: 12px;
+}
+
+.map-select {
+    height: 50vh;
+    background-color: var(--bg-01);
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.select-ymaps {
+
+    font-family: "GolosText", sans-serif;
+    text-align: center;
+
+    &__title {
+        font-size: 13px;
+        font-family: "GolosText", sans-serif;
+        color: var(--text-02);
+    }
+
+    &__adrss {
+        font-size: 14px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #CED6E0;
+        margin-bottom: 11px;
+    }
+
+    &__btn button {
+        margin: 0 auto;
+        background-color: transparent;
+        color: var(--blue-dark);
+        height: 44px;
     }
 }

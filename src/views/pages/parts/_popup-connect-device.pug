@@ -1,0 +1,59 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Подключить устройство управления
+    .popup-form__desc Для правильной работы с устройством необходимо заполнить все поля ниже
+    .popup-form__fields
+       
+        form(action='#' method='POST')
+             .form
+               .form__item: .form__subitem
+                    .form__label Название устройства
+                    input(type="text" placeholder="Введите название")
+               .form__item
+                    .form__subitem
+                         .form__label Адрес ближайшего к устройству строения (выбор из поиска)
+                         .input--suggest.input--suggest-address
+                              input(type="text" data-suggest="input" placeholder="Найти адрес"  )
+               .form__item
+                    .form__subitem
+                         button.btn.btn-line(data-address="select-map") Указать геометку месторасположения на карте
+
+               .form__item: .form__subitem
+                    .form__label Тип устройства
+                    ul.switch-list
+                         li
+                              label.radio
+                                   input(type="radio"  data-tab-radio="router" name="type-device" checked="" value="1")
+                                   span.radio__elem
+                                   span.radio__text Роутер-СКУД ПривратникЪ
+                               
+                         li
+                              label.radio
+                                   input(type="radio"  data-tab-radio="gsm" name="type-device"  value="2")
+                                   span.radio__elem
+                                   span.radio__text GSM-модуль
+
+
+               .form__item: .form__subitem
+                    .form__tabs(data-tab-container="type-device")
+                         .form__tab.is-active(data-tab-item="router")
+                              .form__label MAC-адрес роутера
+                              input(type="text" placeholder="__-__-__-__-__-__")
+                         .form__tab(data-tab-item="gsm")
+                              .form__label Номер телефона СИМ-карты в GSM модуле
+                              input(type="text" placeholder="Введите название")
+
+                              .form__label 
+                                   |Сервисные номера
+                                   span(data-tooltip="Cервисные телефонные номера «ПривратникЪ»,звонки с которых будут приводить к открытию устройства")
+                                        +icons('#ic_tooltip', 22)
+                              ul.switch-list
+                                   li: +checkbox('+7 (495) 111-11-11')
+                                   li: +checkbox('+7 (495) 222-22-22')
+
+               
+     
+               .form__item: .form__subitem
+                    button.btn Подключить устройство
