@@ -103,9 +103,8 @@ ul {
   list-style-type: none;
 }
 
-.hidden-profile,
-.hidden {
-  overflow: hidden;
+div.hidden {
+  display: none;
 }
 
 .hide {
@@ -2138,6 +2137,13 @@ select {
   font-weight: 400;
 }
 
+.btn.btn-xsmall {
+  height: 32px;
+  font-size: 14px;
+  padding: 0.4em 2.5em 0.5em 2.5em;
+  font-weight: 500;
+}
+
 .btn.btn-loading::after {
   content: '';
   width: 0.8em;
@@ -2509,6 +2515,10 @@ body input[type="tel"]:focus {
 body input[disabled] {
   background-color: var(--bg-02);
   cursor: not-allowed;
+}
+
+body input[data-mac-mask] {
+  text-transform: uppercase;
 }
 
 body select {
@@ -3229,6 +3239,7 @@ body textarea:focus {
   padding-top: 20px;
   padding-bottom: 20px;
   display: none;
+  color: var(--text-02);
 }
 
 .header {
@@ -3920,6 +3931,19 @@ body textarea:focus {
   border-radius: 50%;
 }
 
+.personal-aside__services {
+  border-top: 1px solid #CED6E0;
+  padding-top: 16px;
+}
+
+.personal-aside__services svg {
+  fill: #fff;
+}
+
+.personal-aside__services .btn {
+  justify-content: flex-start;
+}
+
 .personal-top {
   display: flex;
   padding: 10px 0 10px 0;
@@ -4333,7 +4357,7 @@ body textarea:focus {
 
 .link-dropdown__title::after {
   content: '';
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEzLjQ3NiAxOS4zMDZBMi42OTcgMi42OTcgMCAwMDE2LjE2OSAyMmgzLjEzN0EyLjY5NyAyLjY5NyAwIDAwMjIgMTkuMzA2YTIuNjk3IDIuNjk3IDAgMDAtMi42OTQtMi42OTRIMTYuMTdhMi42OTcgMi42OTcgMCAwMC0yLjY5MyAyLjY5NHptNS44My0xLjEzMWExLjEzMiAxLjEzMiAwIDAxLjAwMSAyLjI2MkgxNi4xN2ExLjEzMyAxLjEzMyAwIDAxLTEuMTMyLTEuMTNjMC0uNjI1LjUwOC0xLjEzMiAxLjEzMS0xLjEzMmgzLjEzN3pNMiAxMmEyLjY5NyAyLjY5NyAwIDAwMi42OTQgMi42OTRoMTQuNjEyQTIuNjk3IDIuNjk3IDAgMDAyMiAxMmEyLjY5NyAyLjY5NyAwIDAwLTIuNjk0LTIuNjk0SDQuNjk0QTIuNjk3IDIuNjk3IDAgMDAyIDEyem0xNy4zMDYtMS4xMzFhMS4xMzIgMS4xMzIgMCAwMS4wMDEgMi4yNjJINC42OTNBMS4xMzMgMS4xMzMgMCAwMTMuNTYzIDEyYzAtLjYyNC41MDctMS4xMzEgMS4xMy0xLjEzMWgxNC42MTN6TTcuNzM4IDQuNjk0YTIuNjk3IDIuNjk3IDAgMDAyLjY5NCAyLjY5NGg4Ljg3NEEyLjY5NyAyLjY5NyAwIDAwMjIgNC42OTQgMi42OTcgMi42OTcgMCAwMDE5LjMwNiAyaC04Ljg3NGEyLjY5NyAyLjY5NyAwIDAwLTIuNjk0IDIuNjk0em0xMS41NjgtMS4xMzFhMS4xMzIgMS4xMzIgMCAwMS4wMDEgMi4yNjJoLTguODc1QTEuMTMzIDEuMTMzIDAgMDE5LjMgNC42OTRjMC0uNjI0LjUwOC0xLjEzMSAxLjEzMi0xLjEzMWg4Ljg3NHoiIGZpbGw9IiMyNTM2NzgiLz48L3N2Zz4=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iNCIgeT0iNSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiMyNTM2NzgiLz48cmVjdCB4PSI4IiB5PSIxMSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiMyNTM2NzgiLz48cmVjdCB4PSIxMyIgeT0iMTciIHdpZHRoPSI3IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiMyNTM2NzgiLz48L3N2Zz4=);
   background-position: center;
   width: 18px;
   height: 18px;
@@ -4425,20 +4449,22 @@ body textarea:focus {
 
 .select-ymaps {
   font-family: "GolosText", sans-serif;
-  text-align: center;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 .select-ymaps__title {
-  font-size: 13px;
+  font-size: 14px;
   font-family: "GolosText", sans-serif;
   color: var(--text-02);
+  padding-bottom: 5px;
 }
 
 .select-ymaps__adrss {
-  font-size: 14px;
-  padding-bottom: 5px;
+  font-size: 15px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #CED6E0;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
 }
 
 .select-ymaps__btn button {
@@ -4446,6 +4472,10 @@ body textarea:focus {
   background-color: transparent;
   color: var(--blue-dark);
   height: 44px;
+}
+
+.select-ymaps__btn button:hover {
+  color: #fff;
 }
 
 .page-devices {
@@ -4944,11 +4974,11 @@ a[data-tooltip]:hover::before {
   .table__th,
   .table__td {
     display: table-cell;
-    width: 500px;
     border: 1px solid #CED6E0;
     padding: 20px 12px;
     border-left: none;
     border-right: none;
+    max-width: 360px;
   }
 
   .table__th:last-child,
@@ -4990,11 +5020,6 @@ a[data-tooltip]:hover::before {
 }
 
 @media screen and (min-width: 1200px) {
-  .hidden-profile,
-  .hidden {
-    margin-right: 17px;
-  }
-
   main {
     min-height: calc((var(--vh, 1vh) * 100) - 197px);
   }

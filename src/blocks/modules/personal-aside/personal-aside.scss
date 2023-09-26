@@ -145,4 +145,19 @@
             }
         }
     }
+
+    &__services {
+
+        border-top: 1px solid #CED6E0;
+        padding-top: 16px;
+
+        & svg {
+            fill: #fff;
+        }
+
+        & .btn {
+            justify-content: flex-start;
+        }
+
+    }
 }

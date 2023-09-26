@@ -39,6 +39,10 @@ body {
         cursor: not-allowed;
     }
 
+    & input[data-mac-mask] {
+        text-transform: uppercase;
+    }
+
     & select {
         height: 52px;
         width: 100%;

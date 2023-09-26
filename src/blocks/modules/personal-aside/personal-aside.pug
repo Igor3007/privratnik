@@ -12,3 +12,8 @@ mixin personal-aside(data)
                                     ul.sub-menu
                                         each subitem in item.sub
                                             li: a(href=subitem.href)= subitem.text 
+        .personal-aside__services
+            a(href='#')
+                button.btn.btn-full
+                    +icons('#ic_plus')
+                    span Услуги 

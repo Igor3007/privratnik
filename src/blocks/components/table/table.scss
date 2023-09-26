@@ -47,23 +47,27 @@
 
         display: block;
         vertical-align: middle;
-
         line-height: 140%;
         padding: 12px 12px;
 
         @media screen and (min-width: $w992) {
             display: table-cell;
-            width: 500px;
+            //width: 500px;
             border: 1px solid #CED6E0;
             padding: 20px 12px;
             border-left: none;
             border-right: none;
+            max-width: 360px;
 
         }
 
         &:last-child {
 
             width: 100px;
+
+            // @media screen and (min-width: $w375) {
+            //     width: 100px;
+            // }
 
             @media screen and (min-width: $w992) {
                 padding-right: 24px;
@@ -94,6 +98,7 @@
         padding-top: 20px;
         padding-bottom: 20px;
         display: none;
+        color: var(--text-02);
 
         @media screen and (min-width: $w992) {
             display: table-cell;

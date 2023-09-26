@@ -377,17 +377,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     /* ==================================================
     maska
     ==================================================*/
+    const {
+        MaskInput,
+    } = Maska
 
     function initMaska() {
         //new MaskInput("[data-maska]")
     }
 
     initMaska();
-
-    const {
-        MaskInput,
-    } = Maska
-
 
 
     /* ==============================================
@@ -1011,10 +1009,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     class SelectAddressYmaps {
         constructor(params) {
             this.$el = params.el;
+            this.startCoordinates = (params.startCoordinates ? params.startCoordinates.split(',') : [55.753994, 37.622093]);
+            this.params = params
             this.popup = null;
             this.placemark = null;
+            this.coordinates = null;
             this.myMap = null;
             this.inputSearch = null;
+            this.addressLine = 'Нет адреса'
             this.list = document.createElement('ul')
         }
 
@@ -1023,7 +1025,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             
                 <div class="select-ymaps" >
                     <div class="select-ymaps__title" >Ближайший адрес:</div>
-                    <div class="select-ymaps__adrss" >Москва, Островского улица, 36</div>
+                    <div class="select-ymaps__adrss" >${this.addressLine}</div>
                     <div class="select-ymaps__btn" >
                         <button class="btn" >Подтвердить</button> 
                     </div>
@@ -1059,9 +1061,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
             ymaps.geocode(str).then(
 
                 (res) => {
-                    let coordinates = res.geoObjects.get(0).geometry.getCoordinates()
-                    this.placemark.geometry.setCoordinates(coordinates);
-                    this.myMap.setCenter(coordinates)
+                    this.addressLine = str
+                    this.coordinates = res.geoObjects.get(0).geometry.getCoordinates()
+                    this.placemark.geometry.setCoordinates(this.coordinates);
+                    this.myMap.setCenter(this.coordinates)
+                    this.placemark.properties.set('balloonContent', this.getBalloonTemplate())
                     this.placemark.balloon.open()
                 },
 
@@ -1076,21 +1080,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
             ymaps.geocode(arr).then(
 
                 (res) => {
-                    this.inputSearch.value = res.geoObjects.get(0).getAddressLine()
+                    this.coordinates = arr
+                    this.addressLine = res.geoObjects.get(0).getAddressLine()
+                    this.inputSearch.value = this.addressLine
+                    this.placemark.properties.set('balloonContent', this.getBalloonTemplate())
+                    this.placemark.balloon.open()
                 },
 
                 (err) => {
                     console.error('error: geoCodeCoordinates')
                 }
             );
+
+
         }
 
         mapInit() {
             window.loadApiYmaps((ymaps) => {
                 ymaps.ready(() => {
 
-                    this.myMap = new ymaps.Map('map-select', {
-                        center: [55.753994, 37.622093],
+                    this.myMap = new ymaps.Map(this.$el, {
+                        center: this.startCoordinates,
                         zoom: 14,
                         controls: []
                     }, {
@@ -1113,7 +1123,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         this.geoCodeCoordinates(e.get('target').geometry.getCoordinates())
                     })
 
+                    this.placemark.events.add('dragstart', (e) => {
+                        this.placemark.balloon.close()
+                    })
+
+                    this.placemark.events.add('balloonopen', (e) => {
+                        this.myMap.container._parentElement.querySelector('.select-ymaps__btn .btn').addEventListener('click', e => {
+                            if (this.params.on.change) {
+                                this.params.on.change({
+                                    address: this.addressLine,
+                                    coordinates: this.coordinates
+                                })
+
+                                this.popup.close()
+                            }
+                        })
+                    })
+
                     this.myMap.geoObjects.add(this.placemark)
+                    this.myMap.events.add('click', e => e.get('target').balloon.close());
                 })
             })
         }
@@ -1145,14 +1173,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 this.inputSearch.value = event.target.innerText
 
                 this.geoCode(event.target.innerText)
-
                 this.closeList()
             })
         }
 
         renderSuggestList(arr) {
-
-
 
             this.list.querySelectorAll('li').forEach((removeItem) => {
                 removeItem.remove()
@@ -1186,8 +1211,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ymaps.suggest(e.target.value).then(
                     (items) => {
 
-                        console.log(items)
-
                         const suggestArray = items.map(elem => ({
                             text: elem.displayName,
                             value: elem.value,
@@ -1214,9 +1237,115 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     /* ======================================
-    select device
+    add device
     ======================================*/
 
+    function initPopupDevice(response, addDevice) {
+        addDevice.open(response, (instanse) => {
+            const selectCustom = new afSelect({
+                selector: 'select'
+            })
+
+            selectCustom.init()
+
+            // init suggest
+            if (instanse.querySelectorAll('.input--suggest')) {
+
+                window.loadApiYmaps((ymaps) => {
+
+                    instanse.querySelectorAll('.input--suggest input').forEach((input) => {
+
+                        new inputSuggest({
+                            elem: input,
+                            on: {
+                                listHadler: function (inst) {
+
+                                    if (!inst.elem.value.length) {
+                                        return false
+                                    }
+
+                                    ymaps.ready(() => {
+                                        ymaps.suggest(inst.elem.value).then(
+                                            (items) => {
+                                                const suggestArray = items.map(elem => ({
+                                                    text: elem.displayName,
+                                                    value: elem.value,
+                                                }));
+                                                inst.renderSuggestList(suggestArray)
+                                            },
+
+                                            (error) => {
+                                                console.err('Error inputSuggest ' + error)
+                                            }
+
+                                        )
+
+                                    })
+                                }
+                            }
+                        });
+
+                    })
+
+                })
+            }
+
+            // tabs
+
+            if (document.querySelector('[data-tab-radio]')) {
+                const radio = document.querySelectorAll('[data-tab-radio]')
+                const container = document.querySelector('[data-tab-container="type-device"]')
+
+                radio.forEach(item => {
+                    item.addEventListener('change', e => {
+                        container.querySelectorAll('[data-tab-item]').forEach(tab => {
+                            if (tab.dataset.tabItem == item.dataset.tabRadio) {
+                                tab.classList.add('is-active')
+                            } else {
+                                tab.classList.contains('is-active') ? tab.classList.remove('is-active') : ''
+                            }
+                        })
+                    })
+                })
+            }
+
+            //select address on map
+
+            if (document.querySelector('[data-address="select-map"]')) {
+                const openMap = instanse.querySelector('[data-address="select-map"]')
+                const coordinatesInput = instanse.querySelector('[data-address="coordinates"]')
+
+                openMap.addEventListener('click', e => {
+                    e.preventDefault()
+
+                    const selectAddress = new SelectAddressYmaps({
+                        el: 'map-select',
+                        startCoordinates: coordinatesInput.value,
+                        on: {
+                            change: function (e) {
+                                console.log(e)
+                                coordinatesInput.value = e.coordinates.join(',')
+                                coordinatesInput.parentNode.style.display = 'block'
+                                openMap.innerText = 'Изменить геометку'
+                                instanse.querySelector('[data-suggest="input"]').value = e.address
+                            }
+                        }
+                    })
+
+                    selectAddress.open()
+                })
+            }
+
+            //mask for MAC address
+
+            if (instanse.querySelector('[data-mac-mask]')) {
+                new MaskInput(instanse.querySelector('[data-mac-mask]'), {
+                    mask: '**-**-**-**-**-**',
+                })
+            }
+
+        })
+    }
 
     if (document.querySelector('[data-device="add"]')) {
         const items = document.querySelectorAll('[data-device="add"]')
@@ -1224,7 +1353,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         items.forEach(item => {
             item.addEventListener('click', e => {
 
-                const addParkingPopup = new afLightbox({
+                const addDevice = new afLightbox({
                     mobileInBottom: true
                 })
 
@@ -1233,92 +1362,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     url: '/parts/_popup-connect-device.html'
                 }, (status, response) => {
 
+                    initPopupDevice(response, addDevice)
 
-                    addParkingPopup.open(response, (instanse) => {
-                        const selectCustom = new afSelect({
-                            selector: 'select'
-                        })
-
-                        selectCustom.init()
-
-                        // init suggest
-                        if (instanse.querySelectorAll('.input--suggest')) {
-
-                            window.loadApiYmaps((ymaps) => {
-
-                                instanse.querySelectorAll('.input--suggest input').forEach((input) => {
-
-                                    new inputSuggest({
-                                        elem: input,
-                                        on: {
-                                            listHadler: function (inst) {
-
-                                                if (!inst.elem.value.length) {
-                                                    return false
-                                                }
-
-                                                ymaps.ready(() => {
-                                                    ymaps.suggest(inst.elem.value).then(
-                                                        (items) => {
-                                                            const suggestArray = items.map(elem => ({
-                                                                text: elem.displayName,
-                                                                value: elem.value,
-                                                            }));
-                                                            inst.renderSuggestList(suggestArray)
-                                                        },
-
-                                                        (error) => {
-                                                            console.err('Error inputSuggest ' + error)
-                                                        }
-
-                                                    )
-
-                                                })
-                                            }
-                                        }
-                                    });
-
-                                })
-
-                            })
-                        }
-
-                        // tabs
-
-                        if (document.querySelector('[data-tab-radio]')) {
-                            const radio = document.querySelectorAll('[data-tab-radio]')
-                            const container = document.querySelector('[data-tab-container="type-device"]')
-
-                            radio.forEach(item => {
-                                item.addEventListener('change', e => {
-                                    container.querySelectorAll('[data-tab-item]').forEach(tab => {
-                                        if (tab.dataset.tabItem == item.dataset.tabRadio) {
-                                            tab.classList.add('is-active')
-                                        } else {
-                                            tab.classList.contains('is-active') ? tab.classList.remove('is-active') : ''
-                                        }
-                                    })
-                                })
-                            })
-                        }
-
-                        //select address on map
-
-                        if (document.querySelector('[data-address="select-map"]')) {
-                            const openMap = document.querySelector('[data-address="select-map"]')
-
-                            openMap.addEventListener('click', e => {
-                                e.preventDefault()
-
-                                const selectAddress = new SelectAddressYmaps({
-                                    el: '.errr'
-                                })
-
-                                selectAddress.open()
-
-                            })
-                        }
-                    })
                 })
 
 
@@ -1327,8 +1372,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
 
+    /* ======================================
+    edit device
+    ======================================*/
+
+    if (document.querySelector('[data-device="edit"]')) {
+        const items = document.querySelectorAll('[data-device="edit"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const addDevice = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-connect-device--edit.html'
+                }, (status, response) => {
+
+                    initPopupDevice(response, addDevice)
+
+                })
 
 
-
+            })
+        })
+    }
 
 });

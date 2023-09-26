@@ -129,13 +129,9 @@ ul {
     list-style-type: none;
 }
 
-.hidden-profile,
-.hidden {
-    overflow: hidden;
 
-    @media screen and (min-width: $w1200) {
-        margin-right: 17px;
-    }
+div.hidden {
+    display: none;
 }
 
 .hide {

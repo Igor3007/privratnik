@@ -1,0 +1,72 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/components/pagination/pagination.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Устройства управления"
+
+
+block aside
+  +personal-aside({
+    title: 'Устройства управления'
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Устройства управления',
+        ])
+    .personal-content__h1 Устройства управления
+    .personal-content__action
+        .personal-content__add
+           a(href='#'): button.btn(data-device="add") Подключить устройство
+        .personal-content__sortable
+          .link-dropdown
+            .link-dropdown__title Сначала старые
+            .link-dropdown__list
+              ul
+                li: a(href='#') Сначала старые
+                li: a(href='#') Сначала новые
+                li: a(href='#') Последние добавленные
+         
+    .personal-content__table
+        .table
+          .table__tr
+            .table__th Название парковки
+            .table__th Адрес ближайшего строения
+            .table__th Тип устройства
+            .table__th Данные по устройству
+            .table__th Тестовое открытие
+            .table__th Действия
+           
+          .table__tr
+            .table__td(data-title="Название парковки") Шлагбаум у кафе Витязь
+            .table__td(data-title="Адрес ближайшего строения") Москва, Островского улица, 36
+            .table__td(data-title="Тип устройства") Роутер-СКУД
+            .table__td(data-title="Данные по устройству") 06-AD-C8-36-B3-F4
+            .table__td(data-title="Тестовое открытие") 
+              button.btn.btn-xsmall Открыть
+            .table__td(data-title="Действия")
+                ul.table-action
+                  li(data-device="edit"): +icons('#ic_edit', 22)
+                  li.row-remove: +icons('#ic_trash', 22)
+
+    //- .personal-content__pagination
+    //-   +pagination()
+
+
+    
+
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")
