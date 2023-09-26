@@ -17,6 +17,7 @@
         padding-bottom: 15px;
         text-align: center;
         color: var(--text-02);
+        line-height: 135%;
     }
 
     &__fields {
@@ -76,4 +77,39 @@
             color: #fff;
         }
     }
+}
+
+
+.worktime-toggle {
+    width: 100%;
+    color: var(--blue-dark);
+    font-weight: 500;
+    font-size: 16px;
+    padding-top: 12px;
+
+    & span {
+
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTS4yOTMuMjkzYTEgMSAwIDAxMS40MTQgMEw1IDMuNTg2IDguMjkzLjI5M2ExIDEgMCAwMTEuNDE0IDEuNDE0bC00IDRhMSAxIDAgMDEtMS40MTQgMGwtNC00YTEgMSAwIDAxMC0xLjQxNHoiIGZpbGw9IiMyNTM2NzgiLz48L3N2Zz4=);
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: 0.3s ease;
+        }
+
+        &.is-active {
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+
+    }
+
 }

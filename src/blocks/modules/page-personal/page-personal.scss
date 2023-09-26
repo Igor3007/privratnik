@@ -23,5 +23,9 @@
         width: 100%;
         min-height: 90vh;
         padding: 0 16px;
+
+        @media screen and (min-width: $w992) {
+            width: calc(100% - 288px);
+        }
     }
 }

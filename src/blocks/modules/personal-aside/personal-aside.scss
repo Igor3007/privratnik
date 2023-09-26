@@ -58,8 +58,12 @@
                         transition: 0.3s ease;
 
                         & li {
+
+                            min-height: 35px;
+
                             & a {
                                 background-color: transparent;
+                                font-size: 14px;
 
                                 &:hover {
                                     &::before {
@@ -75,7 +79,7 @@
 
                         & .sub-menu {
                             max-height: 300px;
-                            padding-top: 12px;
+                            padding-bottom: 9px;
                         }
 
                         &::after {
@@ -124,8 +128,8 @@
 
                     & a {
                         padding: 0;
-                        padding-bottom: 12px;
-                        padding-left: 14px;
+                        padding-bottom: 0px;
+                        padding-left: 16px;
                         position: relative;
 
                         &::before {

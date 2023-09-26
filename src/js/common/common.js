@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         topStatusRevert(params) {
             const template = `
                 <div class="af-dialog-revert" >
-                    <div class="af-dialog-revert__msg" >Вы удалили парковку «Парковка 2».</div>
+                    <div class="af-dialog-revert__msg" >${params.revertText}</div>
                     <div class="af-dialog-revert__btn" >Отменить</div>
                     <div class="af-dialog-revert__close" >+</div>
                 </div>
@@ -196,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
             popupDialog.open(this.getTemplate(params), (instance) => {
 
                 const buttonApply = instance.querySelector('.af-dialog__apply')
-
                 this.startTimer(5, buttonApply.querySelector('span'))
 
                 buttonApply.addEventListener('click', e => {
@@ -219,7 +218,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 removeHtmlElem: item.closest('.table__tr'),
                 title: 'Удаление парковки',
                 desc: 'Внимание! Вы уверены, что хотите удалить парковку «Парковка 2» со всеми добавленными к ней данными и доступами?',
+                revertText: 'Вы удалили парковку «Парковка 2».',
                 onConfirm: function () {
+                    //ajax request for remove
+                    console.log('удалено')
+                }
+            })
+        })
+    })
+
+    document.querySelectorAll('.row-remove-script').forEach(item => {
+        item.addEventListener('click', e => {
+            window.dialog.remove({
+                removeHtmlElem: item.closest('.table__tr'),
+                title: 'Удаление сценария',
+                desc: 'Внимание! Вы уверены, что хотите удалить сценарий «Сценария для жильцов» со всеми добавленными к нему правами доступа для пользователей?',
+                revertText: 'Вы удалили сценарий ««Сценарий для жильцов»»',
+                onConfirm: function () {
+                    //ajax request for remove
                     console.log('удалено')
                 }
             })
@@ -1392,6 +1408,80 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }, (status, response) => {
 
                     initPopupDevice(response, addDevice)
+
+                })
+
+
+            })
+        })
+    }
+
+    /* ======================================
+    add script
+    ======================================*/
+
+    function initPopupAccessScripts(response, addScript) {
+
+        addScript.open(response, (instanse) => {
+
+            // mask on time
+            instanse.querySelectorAll("[data-input-mask='time']").forEach(inputTime => {
+                new MaskInput(inputTime, {
+
+                    mask: (value) => {
+                        if (value[1] == ':' || value[1] == '-' || value[1] == '.') {
+                            return '#:##'
+                        }
+                        return '##:##'
+                    },
+
+                    postProcess: (value) => {
+                        let arr = [];
+                        value.split(':').forEach((num, index) => {
+                            if (index == 0) Number(num) > 23 ? arr.push(23) : arr.push(num)
+                            if (index == 1) Number(num) > 59 ? arr.push(59) : arr.push(num)
+                        })
+                        return arr.join(':')
+                    }
+
+                })
+            })
+
+            // toggle worktime
+
+            if (document.querySelector('[data-toggle="worktime"]')) {
+                const elToggle = document.querySelector('[data-toggle="worktime"]')
+                const containerToggle = document.querySelector('[data-toggle-container="worktime"]')
+
+                elToggle.addEventListener('click', e => {
+                    containerToggle.classList.toggle('hidden')
+                    elToggle.classList.toggle('is-active')
+                    elToggle.innerText = containerToggle.classList.contains('hidden') ? 'Изменить' : 'Вернуть по умолчанию'
+                })
+            }
+
+
+        })
+
+
+    }
+
+    if (document.querySelector('[data-script="add"]')) {
+        const items = document.querySelectorAll('[data-script="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const addScript = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-script--create.html'
+                }, (status, response) => {
+
+                    initPopupAccessScripts(response, addScript)
 
                 })
 

@@ -1,0 +1,48 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Добавление сценария доступа
+    .popup-form__desc Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций
+    .popup-form__fields
+       
+        form(action='/access-script.html' method='GET')
+             .form
+               .form__item: .form__subitem
+                    .form__label Название сценария
+                    input(type="text" placeholder="Введите название")
+               .form__item: .form__subitem
+                    .form__label Методы открытия
+                    ul.switch-list.switch-list--col3
+                         li: +checkbox('Телефонный вызов')
+                         li: +checkbox('Мобильное приложение')
+                         li: +checkbox('По госномеру')
+                         li: +checkbox('Пульт')
+                         li: +checkbox('RFID-карта')
+                         li: +checkbox('RFID-метка')
+
+               .form__item: .form__subitem
+                    .form__label 
+                         | График действия
+                         span(data-tooltip="Вы можете оставить график действия по умолчанию (в таком случае текущий сценарий будет работать всё время) или проставить дни и время работы сценария вручную"): +icons('#ic_tooltip', 22)
+                    .worktime-default ПН-ВС, круглосуточно.
+                    .worktime.hidden(data-toggle-container="worktime")
+                         each item in ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС']
+                              label
+                                   input(type="checkbox" value = item)
+                                   .worktime-item
+                                        .worktime-item__day: span= item
+                                        .worktime-item__from: input(type="text" placeholder="От" data-input-mask="time")
+                                        .worktime-item__to: input(type="text" placeholder="До" data-input-mask="time") 
+                    .worktime-toggle: span(data-toggle="worktime") Изменить
+
+
+               .form__item: .form__subitem
+                    .form__label Методы открытия
+                    ul.switch-list
+                         li: +checkbox('Создавать временные/разовые пропуски')
+                         li: +checkbox('Доступ к видеотрансляции')
+               
+     
+               .form__item: .form__subitem
+                    button.btn Добавить сценарий

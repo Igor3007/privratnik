@@ -1,0 +1,76 @@
+.worktime {
+    margin: -2px;
+    padding-top: 14px;
+
+    & label {
+
+        & input[type="checkbox"] {
+            display: none;
+
+            &:checked {
+                &~.worktime-item {
+                    & .worktime-item {
+                        &__day {
+                            & span {
+                                background-color: $accent-2-1;
+                                color: #fff;
+                            }
+                        }
+
+                        &__from,
+                        &__to {
+                            & input {
+                                pointer-events: all;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+
+.worktime-item {
+    display: flex;
+
+
+    & input {
+        &::placeholder {
+            color: #565656;
+            font-size: 13px;
+        }
+    }
+
+    &__from,
+    &__to,
+    &__day {
+        padding: 4px;
+
+        & input {
+            background-color: $gray-96;
+            pointer-events: none;
+        }
+    }
+
+    &__day {
+        & span {
+            width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 500;
+            border-radius: 8px;
+            height: 100%;
+            background-color: var(--blue-light);
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            &:hover {
+                background-color: #9da3bd;
+            }
+        }
+    }
+}

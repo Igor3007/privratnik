@@ -1,3 +1,10 @@
+.table-radius-wrapper {
+    border: 1px solid #CED6E0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
 .table {
     display: block;
     min-width: 100%;
@@ -49,6 +56,12 @@
         vertical-align: middle;
         line-height: 140%;
         padding: 12px 12px;
+        font-weight: 300;
+        font-size: 14px;
+
+        @media screen and (min-width: $w1440) {
+            font-size: 15px;
+        }
 
         @media screen and (min-width: $w992) {
             display: table-cell;
@@ -103,5 +116,16 @@
         @media screen and (min-width: $w992) {
             display: table-cell;
         }
+    }
+
+    & small {
+        display: block;
+        font-size: 13px;
+        color: var(--text-02);
+        font-weight: 400;
+    }
+
+    & strong {
+        font-weight: 500;
     }
 }

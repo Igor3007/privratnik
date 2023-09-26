@@ -34,6 +34,54 @@
      &__sortable {
          margin-left: auto;
      }
+
+     &__tabs {
+         padding-bottom: 32px;
+         width: 100%;
+
+         & ul {
+             display: inline-flex;
+             background-color: var(--bg-01);
+             padding: 6px;
+             border-radius: 12px;
+             overflow-x: auto;
+             max-width: 100%;
+
+             @media screen and (min-width: $w992) {
+                 max-width: 100%;
+             }
+
+             & li {
+                 & a {
+                     min-height: 44px;
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     padding-left: 1.25em;
+                     padding-right: 1.25em;
+                     color: var(--text-02);
+                     border-radius: 8px;
+                     font-size: 15px;
+                     font-weight: 500;
+                     white-space: nowrap;
+
+                     &:hover {
+                         color: var(--blue-dark);
+                     }
+
+
+                 }
+
+                 &.is-active {
+                     & a {
+                         background-color: #fff;
+                         color: var(--blue-dark);
+                     }
+                 }
+             }
+
+         }
+     }
  }
 
  .link-dropdown {

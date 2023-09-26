@@ -27,8 +27,6 @@
 
     &__elem {
 
-
-
         top: -1px;
         position: relative;
         height: 24px;
@@ -97,7 +95,7 @@
     &:hover {
         & .checkbox {
             &__elem {
-                border-color: $accent-1-1;
+                border-color: #C6D3E2;
             }
         }
     }

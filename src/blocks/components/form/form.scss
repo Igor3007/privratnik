@@ -467,10 +467,29 @@ body {
 
 .switch-list {
     display: flex;
-    margin: 0 -12px;
-    flex-wrap: wrap
-}
+    margin: 0 -10px;
+    flex-wrap: wrap;
 
-.switch-list li {
-    padding: 12px;
+    & li {
+        padding: 10px;
+    }
+
+    &--col3 {
+        &.switch-list {
+            & li {
+                flex-basis: 220px;
+                flex-grow: 1;
+                padding: 7px 10px;
+
+                @media screen and (min-width: $w760) {
+                    padding: 10px;
+                }
+
+                // @media screen and (min-width: $w760) {
+                //     width: 33.33%;
+                //     flex-basis: 33.33%;
+                // }
+            }
+        }
+    }
 }

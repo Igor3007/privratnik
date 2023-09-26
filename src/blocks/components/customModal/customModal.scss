@@ -38,6 +38,7 @@
     opacity: 0;
     transition: 0.25s ease;
     backdrop-filter: blur(22px);
+    background: rgba(0, 0, 0, 0.60);
 
     &__bg {
         position: fixed;
@@ -46,7 +47,7 @@
         right: 0;
         bottom: 0;
         z-index: 101;
-        background: rgba(0, 0, 0, 0.60);
+
 
         transition: 0.3s ease;
         opacity: 0.9;

@@ -251,12 +251,100 @@
             <div class="personal-content__breadcrubs">
               <div class="breadcrumb">
                 <ul>
-                  <li><a href="/">Настройки доступа</a></li>
+                  <li><a href="/">Общая информация</a></li>
+                  <li><a href="#">Настройки доступа</a></li>
                   <li><span>Сценарии доступа</span></li>
                 </ul>
               </div>
             </div>
-            <div class="personal-content__h1">Сценарии доступа</div>
+            <div class="personal-content__h1">Настройки доступа</div>
+            <div class="personal-content__tabs">
+              <ul>
+                <li class="is-active"><a href="#">Сценарии доступа</a></li>
+                <li><a href="#">Список пользователей</a></li>
+                <li><a href="#">Список групп</a></li>
+                <li><a href="#">Права доступа</a></li>
+                <li><a href="#">Разовые/временные пропуски</a></li>
+              </ul>
+            </div>
+            <div class="personal-content__tab-container">
+              <div class="access-config">
+                <div class="access-config__title">Сценарии доступа</div>
+                <div class="access-config__desc">Создание сценариев доступа для пользователей из раздела <a href="/user-list.html">«Список пользователей»</a>. В разделе <a href="/access-rights.html">«Права доступа» </a>эти сценарии добавляются к пользователям и группам пользователей.</div>
+                <div class="access-config__action">
+                  <div class="access-config__add">
+                    <button class="btn" data-script="add">+ Добавить сценарий</button>
+                  </div>
+                </div>
+                <div class="access-config__table">
+                  <div class="table-radius-wrapper">
+                    <div class="table">
+                      <div class="table__tr">
+                        <div class="table__th">Номер и название сценария</div>
+                        <div class="table__th">Методы открытия</div>
+                        <div class="table__th">График действия</div>
+                        <div class="table__th">Дополнительные сервисы</div>
+                        <div class="table__th">Действия</div>
+                      </div>
+                      <div class="table__tr">
+                        <div class="table__td" data-title="Номер и название сценария"><strong>0. Сценарий по умолчанию</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
+                        <div class="table__td" data-title="Методы открытия">Телефонный вызов, Мобильное приложение, По госномеру</div>
+                        <div class="table__td" data-title="График действия">Все дни: Любое время (пример, когда дни не выбраны, время не прописано)</div>
+                        <div class="table__td" data-title="Дополнительные сервисы">Создавать временные/разовые пропуски, Доступ к видеотрансляции</div>
+                        <div class="table__td" data-title="Действия">-</div>
+                      </div>
+                      <div class="table__tr">
+                        <div class="table__td" data-title="Номер и название сценария"><strong>1. Полный запрет</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
+                        <div class="table__td" data-title="Методы открытия">-</div>
+                        <div class="table__td" data-title="График действия">-</div>
+                        <div class="table__td" data-title="Дополнительные сервисы">-</div>
+                        <div class="table__td" data-title="Действия">-</div>
+                      </div>
+                      <div class="table__tr">
+                        <div class="table__td" data-title="Номер и название сценария"><strong>2. Сценарий для жильцов</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
+                        <div class="table__td" data-title="Методы открытия">По госномеру</div>
+                        <div class="table__td" data-title="График действия">ПН: 08:00-12:00, 18:00-22:00; ВТ: 10:00-20:00; СР; ЧТ; ПТ</div>
+                        <div class="table__td" data-title="Дополнительные сервисы">-</div>
+                        <div class="table__td" data-title="Действия">
+                          <ul class="table-action">
+                            <li>
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
+                              </svg>
+                            </li>
+                            <li class="row-remove-script">
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
+                              </svg>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="table__tr">
+                        <div class="table__td" data-title="Номер и название сценария"><strong>3. Сценарий для спецтранспорта</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
+                        <div class="table__td" data-title="Методы открытия">Телефонный вызов, Мобильное приложение, По госномеру</div>
+                        <div class="table__td" data-title="График действия">Все дни: Любое время (пример, когда дни не выбраны, время не прописано)</div>
+                        <div class="table__td" data-title="Дополнительные сервисы">Создавать временные/разовые пропуски, Доступ к видеотрансляции</div>
+                        <div class="table__td" data-title="Действия">
+                          <ul class="table-action">
+                            <li>
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
+                              </svg>
+                            </li>
+                            <li class="row-remove-script">
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
+                              </svg>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

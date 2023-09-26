@@ -22,10 +22,84 @@ block content
   .personal-content
     .personal-content__breadcrubs
         +breadcrumb([
+          'Общая информация',
           'Настройки доступа',
           'Сценарии доступа',
         ])
-    .personal-content__h1 Сценарии доступа
+    .personal-content__h1 Настройки доступа
+    .personal-content__tabs
+      ul
+        li.is-active: a(href="#") Сценарии доступа
+        li: a(href="#") Список пользователей
+        li: a(href="#") Список групп
+        li: a(href="#") Права доступа
+        li: a(href="#") Разовые/временные пропуски
+
+    .personal-content__tab-container
+      .access-config
+        .access-config__title Сценарии доступа
+        .access-config__desc Создание сценариев доступа для пользователей из раздела 
+          a(href='/user-list.html') «Список пользователей»
+          |. В разделе 
+          a(href='/access-rights.html') «Права доступа» 
+          | эти сценарии добавляются к пользователям и группам пользователей.
+        .access-config__action
+          .access-config__add: button.btn(data-script="add") + Добавить сценарий
+        .access-config__table
+        
+          .table-radius-wrapper
+            .table
+              .table__tr
+                  .table__th Номер и название сценария
+                  .table__th Методы открытия
+                  .table__th График действия
+                  .table__th Дополнительные сервисы
+                  .table__th Действия
+              
+              .table__tr
+                .table__td(data-title="Номер и название сценария")
+                  strong 0. Сценарий по умолчанию
+                  small Создан: 06.09.23, 10:11:11, Создавший
+                  small Изменен: 07.09.23, 10:20:22, Изменивший
+                .table__td(data-title="Методы открытия") Телефонный вызов, Мобильное приложение, По госномеру
+                .table__td(data-title="График действия") Все дни: Любое время (пример, когда дни не выбраны, время не прописано)
+                .table__td(data-title="Дополнительные сервисы") Создавать временные/разовые пропуски, Доступ к видеотрансляции
+                .table__td(data-title="Действия") -
+              .table__tr
+                .table__td(data-title="Номер и название сценария")
+                  strong 1. Полный запрет
+                  small Создан: 06.09.23, 10:11:11, Создавший
+                  small Изменен: 07.09.23, 10:20:22, Изменивший
+                .table__td(data-title="Методы открытия") -
+                .table__td(data-title="График действия") -
+                .table__td(data-title="Дополнительные сервисы") -
+                .table__td(data-title="Действия") -
+              .table__tr
+                .table__td(data-title="Номер и название сценария")
+                  strong 2. Сценарий для жильцов
+                  small Создан: 06.09.23, 10:11:11, Создавший
+                  small Изменен: 07.09.23, 10:20:22, Изменивший
+                .table__td(data-title="Методы открытия") По госномеру
+                .table__td(data-title="График действия") ПН: 08:00-12:00, 18:00-22:00; ВТ: 10:00-20:00; СР; ЧТ; ПТ
+                .table__td(data-title="Дополнительные сервисы") -
+                .table__td(data-title="Действия")
+                  ul.table-action
+                      li: +icons('#ic_edit', 22)
+                      li.row-remove-script: +icons('#ic_trash', 22)
+              .table__tr
+                .table__td(data-title="Номер и название сценария")
+                  strong 3. Сценарий для спецтранспорта
+                  small Создан: 06.09.23, 10:11:11, Создавший
+                  small Изменен: 07.09.23, 10:20:22, Изменивший
+                .table__td(data-title="Методы открытия") Телефонный вызов, Мобильное приложение, По госномеру
+                .table__td(data-title="График действия") Все дни: Любое время (пример, когда дни не выбраны, время не прописано)
+                .table__td(data-title="Дополнительные сервисы") Создавать временные/разовые пропуски, Доступ к видеотрансляции
+                .table__td(data-title="Действия")
+                  ul.table-action
+                      li: +icons('#ic_edit', 22)
+                      li.row-remove-script: +icons('#ic_trash', 22)
+
+      
    
 
     

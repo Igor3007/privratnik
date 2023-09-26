@@ -1,6 +1,6 @@
 
 <div class="popup-form">
-  <div class="popup-form__title">Редактировать устройство управления</div>
+  <div class="popup-form__title">Подключить устройство управления</div>
   <div class="popup-form__desc">Для правильной работы с устройством необходимо заполнить все поля ниже</div>
   <div class="popup-form__fields">
     <form action="/personal-device-list.html" method="GET">
@@ -8,23 +8,23 @@
         <div class="form__item">
           <div class="form__subitem">
             <div class="form__label">Название устройства</div>
-            <input type="text" placeholder="Введите название" value="Шлагбаум Аррат Парк Хаятт"/>
+            <input type="text" placeholder="Введите название"/>
           </div>
         </div>
         <div class="form__item">
           <div class="form__subitem">
             <div class="form__label">Адрес ближайшего к устройству строения (выбор из поиска)</div>
             <div class="input--suggest input--suggest-address">
-              <input type="text" data-suggest="input" placeholder="Найти адрес" value="Москва, Неглинная улица, 4"/>
+              <input type="text" data-suggest="input" placeholder="Найти адрес"/>
             </div>
           </div>
         </div>
         <div class="form__item">
-          <div class="form__subitem">
-            <input type="text" placeholder="Координаты" data-address="coordinates" value="55.759995641769954,37.621406354492194"/>
+          <div class="form__subitem hidden">
+            <input type="text" placeholder="Координаты" data-address="coordinates"/>
           </div>
           <div class="form__subitem">
-            <button class="btn btn-line" data-address="select-map" type="button">Изменить геометку</button>
+            <button class="btn btn-line" data-address="select-map">Указать геометку месторасположения на карте</button>
           </div>
         </div>
         <div class="form__item">
@@ -49,7 +49,7 @@
             <div class="form__tabs" data-tab-container="type-device">
               <div class="form__tab is-active" data-tab-item="router">
                 <div class="form__label">MAC-адрес роутера</div>
-                <input type="text" placeholder="__-__-__-__-__-__" data-mac-mask="" value="0g-d7-58-f8-wa-r7"/>
+                <input type="text" placeholder="__-__-__-__-__-__" data-mac-mask=""/>
               </div>
               <div class="form__tab" data-tab-item="gsm">
                 <div class="form__label">Номер телефона СИМ-карты в GSM модуле</div>

@@ -2253,7 +2253,7 @@ select {
 }
 
 .checkbox:hover .checkbox__elem {
-  border-color: var(--blue-medium, #515E93);
+  border-color: #C6D3E2;
 }
 
 /* radio */
@@ -2837,12 +2837,18 @@ body textarea:focus {
 
 .switch-list {
   display: flex;
-  margin: 0 -12px;
+  margin: 0 -10px;
   flex-wrap: wrap;
 }
 
 .switch-list li {
-  padding: 12px;
+  padding: 10px;
+}
+
+.switch-list--col3.switch-list li {
+  flex-basis: 220px;
+  flex-grow: 1;
+  padding: 7px 10px;
 }
 
 /* popup */
@@ -2882,6 +2888,7 @@ body textarea:focus {
   opacity: 0;
   transition: 0.25s ease;
   backdrop-filter: blur(22px);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .af-popup__bg {
@@ -2891,7 +2898,6 @@ body textarea:focus {
   right: 0;
   bottom: 0;
   z-index: 101;
-  background: rgba(0, 0, 0, 0.6);
   transition: 0.3s ease;
   opacity: 0.9;
 }
@@ -3187,6 +3193,12 @@ body textarea:focus {
   fill: #fff;
 }
 
+.table-radius-wrapper {
+  border: 1px solid #CED6E0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .table {
   display: block;
   min-width: 100%;
@@ -3214,6 +3226,8 @@ body textarea:focus {
   vertical-align: middle;
   line-height: 140%;
   padding: 12px 12px;
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .table__th:last-child,
@@ -3240,6 +3254,17 @@ body textarea:focus {
   padding-bottom: 20px;
   display: none;
   color: var(--text-02);
+}
+
+.table small {
+  display: block;
+  font-size: 13px;
+  color: var(--text-02);
+  font-weight: 400;
+}
+
+.table strong {
+  font-weight: 500;
 }
 
 .header {
@@ -3860,8 +3885,13 @@ body textarea:focus {
   transition: 0.3s ease;
 }
 
+.personal-aside__nav ul li.is-sub-menu .sub-menu li {
+  min-height: 35px;
+}
+
 .personal-aside__nav ul li.is-sub-menu .sub-menu li a {
   background-color: transparent;
+  font-size: 14px;
 }
 
 .personal-aside__nav ul li.is-sub-menu .sub-menu li a:hover::before {
@@ -3870,7 +3900,7 @@ body textarea:focus {
 
 .personal-aside__nav ul li.is-sub-menu.is-open .sub-menu {
   max-height: 300px;
-  padding-top: 12px;
+  padding-bottom: 9px;
 }
 
 .personal-aside__nav ul li.is-sub-menu.is-open::after {
@@ -3913,8 +3943,8 @@ body textarea:focus {
 
 .personal-aside__nav ul.sub-menu li a {
   padding: 0;
-  padding-bottom: 12px;
-  padding-left: 14px;
+  padding-bottom: 0px;
+  padding-left: 16px;
   position: relative;
 }
 
@@ -4340,6 +4370,43 @@ body textarea:focus {
   margin-left: auto;
 }
 
+.personal-content__tabs {
+  padding-bottom: 32px;
+  width: 100%;
+}
+
+.personal-content__tabs ul {
+  display: inline-flex;
+  background-color: var(--bg-01);
+  padding: 6px;
+  border-radius: 12px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.personal-content__tabs ul li a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  color: var(--text-02);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.personal-content__tabs ul li a:hover {
+  color: var(--blue-dark);
+}
+
+.personal-content__tabs ul li.is-active a {
+  background-color: #fff;
+  color: var(--blue-dark);
+}
+
 .link-dropdown {
   position: relative;
 }
@@ -4426,6 +4493,7 @@ body textarea:focus {
   padding-bottom: 15px;
   text-align: center;
   color: var(--text-02);
+  line-height: 135%;
 }
 
 .popup-form__fields .btn {
@@ -4476,6 +4544,35 @@ body textarea:focus {
 
 .select-ymaps__btn button:hover {
   color: #fff;
+}
+
+.worktime-toggle {
+  width: 100%;
+  color: var(--blue-dark);
+  font-weight: 500;
+  font-size: 16px;
+  padding-top: 12px;
+}
+
+.worktime-toggle span {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.worktime-toggle span::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTS4yOTMuMjkzYTEgMSAwIDAxMS40MTQgMEw1IDMuNTg2IDguMjkzLjI5M2ExIDEgMCAwMTEuNDE0IDEuNDE0bC00IDRhMSAxIDAgMDEtMS40MTQgMGwtNC00YTEgMSAwIDAxMC0xLjQxNHoiIGZpbGw9IiMyNTM2NzgiLz48L3N2Zz4=);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.3s ease;
+}
+
+.worktime-toggle span.is-active::after {
+  transform: rotate(180deg);
 }
 
 .page-devices {
@@ -4565,6 +4662,86 @@ body textarea:focus {
 
 .card-device__links a:hover {
   text-decoration: underline;
+}
+
+.access-config__title {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 12px;
+}
+
+.access-config__desc {
+  padding-bottom: 28px;
+  font-size: 15px;
+  line-height: 135%;
+}
+
+.access-config__desc a {
+  color: var(--blue-dark);
+  font-weight: 500;
+}
+
+.access-config__action {
+  padding-bottom: 24px;
+}
+
+.worktime {
+  margin: -2px;
+  padding-top: 14px;
+}
+
+.worktime label input[type="checkbox"] {
+  display: none;
+}
+
+.worktime label input[type="checkbox"]:checked ~ .worktime-item .worktime-item__day span {
+  background-color: var(--blue-dark, #253678);
+  color: #fff;
+}
+
+.worktime label input[type="checkbox"]:checked ~ .worktime-item .worktime-item__from input,
+.worktime label input[type="checkbox"]:checked ~ .worktime-item .worktime-item__to input {
+  pointer-events: all;
+}
+
+.worktime-item {
+  display: flex;
+}
+
+.worktime-item input::placeholder {
+  color: #565656;
+  font-size: 13px;
+}
+
+.worktime-item__from,
+.worktime-item__to,
+.worktime-item__day {
+  padding: 4px;
+}
+
+.worktime-item__from input,
+.worktime-item__to input,
+.worktime-item__day input {
+  background-color: #f5f5f5;
+  pointer-events: none;
+}
+
+.worktime-item__day span {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 8px;
+  height: 100%;
+  background-color: var(--blue-light);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.worktime-item__day span:hover {
+  background-color: #9da3bd;
 }
 
 /* common styles */
@@ -4865,6 +5042,10 @@ a[data-tooltip]:hover::before {
     margin-bottom: 0;
   }
 
+  .switch-list--col3.switch-list li {
+    padding: 10px;
+  }
+
   .dark-mode .af-popup__close {
     top: 25px;
     right: 15px;
@@ -5017,6 +5198,14 @@ a[data-tooltip]:hover::before {
   .page-personal__aside {
     display: block;
   }
+
+  .page-personal__content {
+    width: calc(100% - 288px);
+  }
+
+  .personal-content__tabs ul {
+    max-width: 100%;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -5086,6 +5275,11 @@ a[data-tooltip]:hover::before {
 
   .form__item > .form__item {
     flex-direction: row;
+  }
+
+  .table__th,
+  .table__td {
+    font-size: 15px;
   }
 
   .header-top__logo .bgimage {
