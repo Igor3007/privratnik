@@ -2564,18 +2564,24 @@ body textarea {
   max-width: 100%;
   resize: vertical;
   width: 100%;
+  transition: background 0.4s ease;
+  border: none;
   font-size: 14px;
   padding: 15px;
   line-height: 140%;
   outline: none !important;
-  background: transparent;
+  background-color: var(--bg-01);
   border-radius: 6px;
-  border: 1px solid var(--blue-extralight, #CDD5F5);
+}
+
+body textarea::placeholder {
+  color: #8f8f8f;
+  opacity: 1;
 }
 
 body textarea:focus {
-  border-color: var(--blue-dark, #253678);
-  outline: none !important;
+  background-color: var(--bg-02);
+  outline: none;
 }
 
 .form.is-validate input:invalid {

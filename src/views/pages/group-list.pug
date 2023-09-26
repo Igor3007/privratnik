@@ -1,0 +1,78 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Список групп"
+
+
+block aside
+  +personal-aside({
+    title: 'Настройки доступа',
+    openSub: true
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Настройки доступа',
+          'Список групп',
+        ])
+    .personal-content__h1 Настройки доступа
+    .personal-content__tabs
+      ul
+        li: a(href="access-script.html") Сценарии доступа
+        li: a(href="#") Список пользователей
+        li.is-active: a(href="group-list.html") Список групп
+        li: a(href="#") Права доступа
+        li: a(href="#") Разовые/временные пропуски
+
+    .personal-content__tab-container
+      .access-config
+        .access-config__title Список групп
+        .access-config__desc 
+          | Добавление групп пользователей для объединения пользователей присвоения им 
+          a(href='access-script.html') «Сценарии доступа» 
+          | в разделе 
+          a(href='access-rights.html') «Права доступа».
+        .access-config__action
+          .access-config__add: button.btn(data-group="add") + Добавить группу
+        .access-config__table
+        
+          .table-radius-wrapper
+            .table
+              .table__tr
+                  .table__th Название группы
+                  .table__th Примечения
+                  .table__th Действия
+              .table__tr
+                .table__td(data-title="Название группы")
+                  strong 0. Общая группа
+                .table__td(data-title="Примечения") Базовая группа, имеющаяся по умолчанию
+                .table__td(data-title="Действия") -
+              each item in [1,2,3,4,5]
+                .table__tr
+                  .table__td(data-title="Название группы"): strong= item+'. Группа '+item
+                  .table__td(data-title="Примечения") Пример текста примечания
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                        li: +icons('#ic_edit', 22)
+                        li.row-remove-group: +icons('#ic_trash', 22)
+
+      
+   
+
+    
+
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")

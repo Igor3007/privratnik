@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 removeHtmlElem: item.closest('.table__tr'),
                 title: 'Удаление парковки',
                 desc: 'Внимание! Вы уверены, что хотите удалить парковку «Парковка 2» со всеми добавленными к ней данными и доступами?',
-                revertText: 'Вы удалили парковку «Парковка 2».',
+                revertText: 'Вы удалили парковку «Парковка 2»',
                 onConfirm: function () {
                     //ajax request for remove
                     console.log('удалено')
@@ -233,7 +233,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 removeHtmlElem: item.closest('.table__tr'),
                 title: 'Удаление сценария',
                 desc: 'Внимание! Вы уверены, что хотите удалить сценарий «Сценария для жильцов» со всеми добавленными к нему правами доступа для пользователей?',
-                revertText: 'Вы удалили сценарий ««Сценарий для жильцов»»',
+                revertText: 'Вы удалили сценарий ««Сценарий для жильцов»',
+                onConfirm: function () {
+                    //ajax request for remove
+                    console.log('удалено')
+                }
+            })
+        })
+    })
+
+    document.querySelectorAll('.row-remove-group').forEach(item => {
+        item.addEventListener('click', e => {
+            window.dialog.remove({
+                removeHtmlElem: item.closest('.table__tr'),
+                title: 'Удаление группы',
+                desc: 'Внимание! Вы уверены, что хотите удалить группу «Группа 2»? Все пользователи группы будут автоматически перенесены в «Общую группу».',
+                revertText: 'Вы удалили группу «Группа 2»',
                 onConfirm: function () {
                     //ajax request for remove
                     console.log('удалено')
@@ -1482,6 +1497,46 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }, (status, response) => {
 
                     initPopupAccessScripts(response, addScript)
+
+                })
+
+
+            })
+        })
+    }
+
+    /* ======================================
+    add group
+    ======================================*/
+
+    function initPopupAccessGroup(response, popup) {
+
+        popup.open(response, (instanse) => {
+
+
+
+
+        })
+
+
+    }
+
+    if (document.querySelector('[data-group="add"]')) {
+        const items = document.querySelectorAll('[data-group="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-group--create.html'
+                }, (status, response) => {
+
+                    initPopupAccessGroup(response, popup)
 
                 })
 

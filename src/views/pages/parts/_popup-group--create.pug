@@ -1,0 +1,21 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Добавление группы
+    .popup-form__desc Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций
+    .popup-form__fields
+       
+        form(action='/access-script.html' method='GET')
+             .form
+               .form__item: .form__subitem
+                    .form__label Название группы
+                    input(type="text" placeholder="Введите название")
+               .form__item: .form__subitem
+                    .form__label Примечание (необязательно)
+                    textarea(placeholder="Текст примечания")
+                
+               
+     
+               .form__item: .form__subitem
+                    button.btn Добавить группу
