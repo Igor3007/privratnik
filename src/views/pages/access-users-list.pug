@@ -1,0 +1,161 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Список пользователей"
+
+
+block aside
+  +personal-aside({
+    title: 'Настройки доступа',
+    openSub: true
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Настройки доступа',
+          'Список пользователей',
+        ])
+    .personal-content__h1 Список пользователей
+    .personal-content__tabs
+      ul
+        li: a(href="access-script.html") Сценарии доступа
+        li.is-active: a(href="access-users.html") Список пользователей
+        li: a(href="group-list.html") Список групп
+        li: a(href="access-rights.html") Права доступа
+        li: a(href="access-onetime.html") Разовые/временные пропуски
+
+    .personal-content__tab-container
+      .access-config
+        .access-config__title Список пользователей
+        .access-config__desc 
+          | Добавление пользователей и групп пользователей, чтобы присвоить им 
+          a(href='#') «Сценарии доступа» 
+          | в разделе 
+          a(href='#') «Права доступа».
+        .access-config__action
+          .access-config__add: button.btn.btn--add(data-users="add") + Добавить пользователя
+          .access-config__find 
+            .input--find: input(type="text" placeholder="Найти пользователя")
+          .access-config__btn: button.btn.btn-line Импорт из Excel
+          .access-config__btn: button.btn.btn-line Экспорт в Excel
+          .access-config__btn: button.btn.btn-line Скачать шаблон Excel
+        .access-config__table
+          .table-radius-wrapper
+            .table
+              .table__tr
+                  .table__th 
+                    | Имя
+                    .table__sort
+                  .table__th 
+                    | Группа
+                    .table__sort
+                  .table__th 
+                    | Номер телефона  
+                  .table__th 
+                    | Госномер т/с
+                    .table__sort
+                  .table__th 
+                    | Примечание
+                    .table__sort
+                  .table__th  Действия
+                  
+              each item in [1,1,1]
+                .table__tr
+                  .table__td(data-title="Имя")
+                    .table-dropdown
+                      .table-dropdown__title Тестовый Михаил
+                      .table-dropdown__list
+                        ul
+                          li: span Права доступа пользователя
+                          li: span Статистика пользования доступами
+                    small Создан: 06.09.23, 10:11:11, Создавший
+                    small Изменен: 07.09.23, 10:20:22, Изменивший
+
+                  .table__td(data-title="Группа") Общая группа
+                  .table__td(data-title="Номер телефона") +7 (490) 560-20-30
+                  .table__td(data-title="Госномер т/с")
+                    span А037НУ799
+                    ul.devices-access
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"): +bgimage('/img/common/remote-device-call.svg') 
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия по номеру авто"): +bgimage('/img/common/remote-device-car-plate.svg')
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия чипом RFID"): +bgimage('/img/common/remote-device-chip.svg')
+                  .table__td(data-title="Примечание") Пример текста примечания, чтобы было несколько строк
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                        li(data-users="edit"): +icons('#ic_edit', 22)
+                        li.row-remove(data-users="remove"): +icons('#ic_trash', 22)
+
+
+                .table__tr
+                  .table__td(data-title="Имя")
+                    .table-dropdown
+                      .table-dropdown__title Иванов Матвей
+                      .table-dropdown__list
+                        ul
+                          li: span Права доступа пользователя
+                          li: span Статистика пользования доступами
+                    small Создан: 06.09.23, 10:11:11, Создавший
+                    small Изменен: 07.09.23, 10:20:22, Изменивший
+
+                  .table__td(data-title="Группа") Общая группа
+                  .table__td(data-title="Номер телефона") +7 (490) 568-28-38
+                  .table__td(data-title="Госномер т/с")
+                    span А037НУ799
+                    ul.devices-access
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"): +bgimage('/img/common/remote-device-call.svg') 
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия по номеру авто"): +bgimage('/img/common/remote-device-car-plate.svg')
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия чипом RFID"): +bgimage('/img/common/remote-device-chip.svg')
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия с мобильного приложения"): +bgimage('/img/common/remote-device-mobile-app.svg')
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия c пульта ДУ"): +bgimage('/img/common/remote-device-pult.svg')
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия RFID картой"): +bgimage('/img/common/remote-device-rfid-card.svg')
+                  .table__td(data-title="Примечание")
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                        li(data-users="edit"): +icons('#ic_edit', 22)
+                        li.row-remove(data-users="remove"): +icons('#ic_trash', 22)
+
+
+                .table__tr
+                  .table__td(data-title="Имя")
+                    .table-dropdown
+                      .table-dropdown__title Ильин Максим
+                      .table-dropdown__list
+                        ul
+                          li: span Права доступа пользователя
+                          li: span Статистика пользования доступами
+                    small Создан: 06.09.23, 10:11:11, Создавший
+                    small Изменен: 07.09.23, 10:20:22, Изменивший
+
+                  .table__td(data-title="Группа") Общая группа
+                  .table__td(data-title="Номер телефона") +7 (490) 568-28-38
+                  .table__td(data-title="Госномер т/с")
+                    span А037НУ799
+                    ul.devices-access
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"): +bgimage('/img/common/remote-device-call.svg') 
+                      li: span( class="tooltip--top" data-tooltip="Метод открытия RFID картой"): +bgimage('/img/common/remote-device-rfid-card.svg')
+                  .table__td(data-title="Примечание") Короткое примечание
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                        li(data-users="edit"): +icons('#ic_edit', 22)
+                        li.row-remove(data-users="remove"): +icons('#ic_trash', 22)
+           
+        
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")
+
+ 
+ 
+

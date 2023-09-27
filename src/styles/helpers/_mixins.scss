@@ -13,7 +13,7 @@
 
 @mixin scrollbar() {
 
-    scrollbar-color: $gray-80 $gray-92;
+    scrollbar-color: var(--main) #e2e6e8;
     scrollbar-width: thin !important;
 
 
@@ -29,7 +29,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #cbcfd0;
+            background-color: var(--main);
             border-radius: 4px;
         }
     }

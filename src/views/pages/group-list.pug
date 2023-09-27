@@ -44,7 +44,7 @@ block content
           | в разделе 
           a(href='access-rights.html') «Права доступа».
         .access-config__action
-          .access-config__add: button.btn(data-group="add") + Добавить группу
+          .access-config__add: button.btn.btn--add(data-group="add") Добавить группу
           
         .access-config__table
         
@@ -66,7 +66,7 @@ block content
                   .table__td(data-title="Действия")
                     ul.table-action
                         li: +icons('#ic_edit', 22)
-                        li.row-remove-group: +icons('#ic_trash', 22)
+                        li.row-remove(data-group="remove"): +icons('#ic_trash', 22)
 
       
    

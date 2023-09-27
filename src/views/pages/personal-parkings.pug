@@ -28,7 +28,7 @@ block content
     .personal-content__h1 Мои парковки
     .personal-content__action
         .personal-content__add
-           a(href='#'): button.btn(data-parking="add") Добавить доступ
+           a(href='#'): button.btn.btn--add(data-parking="add") Добавить парковку
         .personal-content__sortable
           .link-dropdown
             .link-dropdown__title Сначала старые
@@ -43,7 +43,7 @@ block content
               .table__th Название парковки
               .table__th Адреса строений
               .table__th Устройства управления
-              .table__th Действия
+              .table__th Действия 
           each item in app.parkings
               .table__tr
                 .table__td(data-title="Название парковки")= item.name
@@ -52,7 +52,7 @@ block content
                 .table__td(data-title="Действия")
                     ul.table-action
                       li: +icons('#ic_edit', 22)
-                      li.row-remove: +icons('#ic_trash', 22)
+                      li.row-remove(data-parking="remove"): +icons('#ic_trash', 22)
 
     .personal-content__pagination
       +pagination()

@@ -11,6 +11,32 @@
         position: relative;
 
     }
+
+    &__left {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        & .btn-burger {
+
+            &.open {
+                z-index: 100;
+                position: relative;
+            }
+
+            @media screen and (min-width: $w1200) {
+                display: none;
+            }
+        }
+
+        & .dropdown-icon--role {
+            display: none;
+
+            @media screen and (min-width: $w360) {
+                display: block;
+            }
+        }
+    }
 }
 
 .chat-tooltip-msg {
@@ -388,6 +414,7 @@
                     padding: 12px 16px;
                     border-radius: 6px;
                     transition: 0.3s ease;
+                    font-weight: 500;
 
                     & svg {
                         margin-left: auto;
@@ -396,6 +423,7 @@
 
                     &:hover {
                         background-color: var(--bg-01);
+                        color: var(--blue-dark);
                     }
                 }
             }

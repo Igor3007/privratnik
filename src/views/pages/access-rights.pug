@@ -40,7 +40,7 @@ block content
         .access-config__title Права доступа
         .access-config__desc Выберите пользователя или группу пользователей и присвойте им созданный ранее сценарий доступа.
         .access-config__action
-          .access-config__add: button.btn(data-rights="add") + Добавить права доступа
+          .access-config__add: button.btn.btn--add(data-rights="add") Добавить права доступа
           .access-config__find
             .input--find: input(type="text" placeholder="Найти пользователя или группу")
         .access-config__table
@@ -60,7 +60,7 @@ block content
                 .table__td(data-title="Действия")
                   ul.table-action
                       li(data-rights="edit"): +icons('#ic_edit', 22)
-                      li.row-remove-rights: +icons('#ic_trash', 22)
+                      li.row-remove(data-rights="remove"): +icons('#ic_trash', 22)
 
               .table__tr
                 .table__td(data-title="Имя или группа пользователей") Жильцы
@@ -68,7 +68,7 @@ block content
                 .table__td(data-title="Действия")
                   ul.table-action
                       li(data-rights="edit"): +icons('#ic_edit', 22)
-                      li.row-remove-rights: +icons('#ic_trash', 22)
+                      li.row-remove(data-rights="remove"): +icons('#ic_trash', 22)
     
 
 

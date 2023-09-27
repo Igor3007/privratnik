@@ -109,7 +109,7 @@
                       <li><a href="access-onetime.html">Разовые/временные пропуски</a></li>
                     </ul>
                   </li>
-                  <li><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Контроль доступа</a>
+                  <li><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
                   </li>
                   <li><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
                   </li>
@@ -131,7 +131,8 @@
         <div class="page-personal__content">
           <div class="personal-top">
             <div class="personal-top__left">
-              <div class="dropdown-icon"> 
+              <div class="btn-burger" data-menu="open"><i></i><i></i><i></i></div>
+              <div class="dropdown-icon dropdown-icon--role">
                 <div class="dropdown-icon__head">
                   <div class="dropdown-icon__svg">
                     <svg width="25" height="25">
@@ -273,7 +274,7 @@
                 <div class="access-config__desc">Выберите пользователя или группу пользователей и присвойте им созданный ранее сценарий доступа.</div>
                 <div class="access-config__action">
                   <div class="access-config__add">
-                    <button class="btn" data-rights="add">+ Добавить права доступа</button>
+                    <button class="btn btn--add" data-rights="add">Добавить права доступа</button>
                   </div>
                   <div class="access-config__find">
                     <div class="input--find">
@@ -300,7 +301,7 @@
                                 <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
                               </svg>
                             </li>
-                            <li class="row-remove-rights">
+                            <li class="row-remove" data-rights="remove">
                               <svg width="22" height="22">
                                 <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
                               </svg>
@@ -318,7 +319,7 @@
                                 <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
                               </svg>
                             </li>
-                            <li class="row-remove-rights">
+                            <li class="row-remove" data-rights="remove">
                               <svg width="22" height="22">
                                 <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
                               </svg>

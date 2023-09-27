@@ -44,9 +44,8 @@ block content
           a(href='/access-rights.html') «Права доступа» 
           | эти сценарии добавляются к пользователям и группам пользователей.
         .access-config__action
-          .access-config__add: button.btn(data-script="add") + Добавить сценарий
+          .access-config__add: button.btn.btn--add(data-script="add") Добавить сценарий
         .access-config__table
-        
           .table-radius-wrapper
             .table
               .table__tr
@@ -85,7 +84,7 @@ block content
                 .table__td(data-title="Действия")
                   ul.table-action
                       li: +icons('#ic_edit', 22)
-                      li.row-remove-script: +icons('#ic_trash', 22)
+                      li.row-remove(data-script="remove"): +icons('#ic_trash', 22)
               .table__tr
                 .table__td(data-title="Номер и название сценария")
                   strong 3. Сценарий для спецтранспорта
@@ -97,7 +96,7 @@ block content
                 .table__td(data-title="Действия")
                   ul.table-action
                       li: +icons('#ic_edit', 22)
-                      li.row-remove-script: +icons('#ic_trash', 22)
+                      li.row-remove(data-script="remove"): +icons('#ic_trash', 22)
 
       
    

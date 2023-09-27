@@ -7,12 +7,12 @@ include ../../blocks/components/breadcrumb/breadcrumb.pug
 
 block variables
     include ../../data/data.pug
-    - const title = "Привратник - Контроль доступа"
+    - const title = "Привратник - Статистика доступа"
 
 
 block aside
   +personal-aside({
-    title: 'Контроль доступа'
+    title: 'Статистика доступа'
   })
 
 block content
@@ -22,14 +22,14 @@ block content
     .personal-content__breadcrubs
         +breadcrumb([
           'Общая информация',
-          'Контроль доступа',
+          'Статистика доступа',
         ])
-    .personal-content__h1 Контроль доступа
+    .personal-content__h1 Статистика доступа
     .personal-content__action
         .personal-content__add
           a(href='#'): button.btn Добавить доступ
     .personal-content__main
-        div Контроль доступа
+        div Статистика доступа
 
     
 

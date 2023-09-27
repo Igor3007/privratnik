@@ -21,11 +21,15 @@ body {
         border-radius: 8px;
         border: none;
         width: 100%;
+        color: var(--text-01);
+
 
 
         &::placeholder {
             color: $gray-56;
             opacity: 1;
+            text-shadow: none;
+            font-weight: 400;
         }
 
         &:focus {

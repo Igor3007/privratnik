@@ -29,7 +29,13 @@ mixin profile-tooltip(data)
 mixin personal-top
    .personal-top
         .personal-top__left
-            .dropdown-icon 
+    
+            .btn-burger(data-menu="open")
+                i
+                i
+                i
+
+            .dropdown-icon.dropdown-icon--role
                 .dropdown-icon__head
                     .dropdown-icon__svg: +icons('#ic_users')
                     .dropdown-icon__text

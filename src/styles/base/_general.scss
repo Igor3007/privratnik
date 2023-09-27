@@ -2,7 +2,7 @@ html {
     font-family: "GolosText", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 150%;
     background: var(--bg-01);
     color: #000;
@@ -14,7 +14,7 @@ html {
     height: -webkit-fill-available;
 
 
-    @media screen and (min-width: $w992) {
+    @media screen and (min-width: $w1376) {
         font-size: 16px;
     }
 

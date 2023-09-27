@@ -256,6 +256,8 @@
             &__cancel {
                 background-color: transparent;
                 border: 1px solid var(--blue-dark, #253678);
+                color: var(--blue-dark);
+
 
                 &:hover {
                     background-color: var(--bg-02);
@@ -291,23 +293,45 @@
         font-weight: 600;
         color: #CDD5F5;
         cursor: pointer;
+        border-radius: 6px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        padding-left: 13px;
+        padding-right: 13px;
+
 
         &:hover {
             color: #fff;
+            background-color: var(--blue-medium);
         }
     }
 
     &__close {
         width: 32px;
         height: 32px;
-        transform: rotate(45deg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 26px;
         position: relative;
         left: 7px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+
+        &:hover {
+            color: #fff;
+            background-color: var(--blue-medium);
+        }
+
+        &::before {
+            content: '+';
+            transform: rotate(45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            line-height: 100%;
+        }
     }
 }
 

@@ -89,39 +89,66 @@ a[data-tooltip]:hover::before {
 
 #status {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    padding: 15px 20px 20px 20px;
-    background: rgba(0, 0, 0, 0.75);
-    border-left: 0px solid #bbb;
-
+    top: 20px;
+    right: 20px;
+    padding: 10px 14px 10px 14px;
+    background: transparent;
     font-size: 13px;
     min-width: 300px;
-    transform: translateY(100%) translateY(20px);
+    transform: translateY(-50%);
     transition: 0.3s ease;
     color: #fff;
     z-index: 100000;
     max-width: 450px;
     visibility: hidden;
+    display: flex;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    opacity: 0;
 
 }
 
 #status_header {
-    font-weight: 500;
-    font-size: 14px
+    font-weight: 600;
+    font-size: 14px;
+    padding: 2px 4px;
+}
+
+#status_msg {
+    line-height: 140%;
+    padding: 2px 4px;
 }
 
 #status.error {
-    border-color: #ca2c2c;
+
     transform: translateY(0);
-    border-left-width: 4px;
     height: auto;
-    display: block;
     visibility: visible;
+    background-color: $red;
+    opacity: 1;
+
 }
 
+#status.warning {
+    transform: translateY(0);
+    height: auto;
+    visibility: visible;
+    background-color: $orange;
+    opacity: 1;
+}
+
+#status.complete {
+    transform: translateY(0);
+    height: auto;
+    visibility: visible;
+    background-color: $green;
+    opacity: 1;
+}
+
+
+
 #status.error #status_header {
-    color: #fff
+    color: #fff;
 }
 
 #status.warning #status_header {
@@ -134,26 +161,8 @@ a[data-tooltip]:hover::before {
 
 
 
-#status.warning {
-    border-color: orange;
-    transform: translateY(0);
-    border-left-width: 4px;
-    display: block;
-    visibility: visible;
-}
 
-#status.complete {
-    border-color: #2dba70;
-    transform: translateY(0);
-    border-left-width: 4px;
-    display: block;
-    visibility: visible;
-}
 
-#status_msg {
-    line-height: 140%;
-    margin-top: 5px;
-}
 
 #status_btn {
     background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.681818 0L15 14.3182L14.3182 15L1.62748e-08 0.681818L0.681818 0Z' fill='%23FFFFFF'/%3E%3Cpath d='M15 0.681818L0.681818 15L0 14.3182L14.3182 6.09593e-07L15 0.681818Z' fill='%23FFFFFF'/%3E%3C/svg%3E%0A");

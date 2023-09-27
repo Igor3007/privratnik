@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 <div class="af-dialog-revert" >
                     <div class="af-dialog-revert__msg" >${params.revertText}</div>
                     <div class="af-dialog-revert__btn" >Отменить</div>
-                    <div class="af-dialog-revert__close" >+</div>
+                    <div class="af-dialog-revert__close" ></div>
                 </div>
             `
 
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             const timer = setTimeout(() => {
                 params.onConfirm()
-                hideMSG(elementStatus)
+                //hideMSG(elementStatus)
             }, 5000)
 
             if (elementStatus.querySelector('.af-dialog-revert__btn')) {
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     window.dialog = new Dialog()
 
-    document.querySelectorAll('.row-remove').forEach(item => {
+    document.querySelectorAll('[data-parking="remove"]').forEach(item => {
         item.addEventListener('click', e => {
             window.dialog.remove({
                 removeHtmlElem: item.closest('.table__tr'),
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     })
 
-    document.querySelectorAll('.row-remove-script').forEach(item => {
+    document.querySelectorAll('[data-script="remove"]').forEach(item => {
         item.addEventListener('click', e => {
             window.dialog.remove({
                 removeHtmlElem: item.closest('.table__tr'),
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     })
 
-    document.querySelectorAll('.row-remove-group').forEach(item => {
+    document.querySelectorAll('[data-group="remove"]').forEach(item => {
         item.addEventListener('click', e => {
             window.dialog.remove({
                 removeHtmlElem: item.closest('.table__tr'),
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     })
 
-    document.querySelectorAll('.row-remove-rights').forEach(item => {
+    document.querySelectorAll('[data-rights="remove"]').forEach(item => {
         item.addEventListener('click', e => {
             window.dialog.remove({
                 removeHtmlElem: item.closest('.table__tr'),
@@ -285,9 +285,87 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     })
 
+    document.querySelectorAll('[data-users="remove"]').forEach(item => {
+        item.addEventListener('click', e => {
+            window.dialog.remove({
+                removeHtmlElem: item.closest('.table__tr'),
+                title: 'Удаление пользователя',
+                desc: 'Внимание! Вы уверены, что хотите удалить пользователя Тестовый Михайл?',
+                revertText: 'Вы удалили пользователя Тестовый Михаил.',
+                onConfirm: function () {
+                    //ajax request for remove
+                    console.log('удалено')
+                }
+            })
+        })
+    })
+
 
     /* ==============================================
     mobile menu
+    ============================================== */
+
+    // if (document.querySelector('[data-menu="open"]')) {
+    //     const elContainer = document.querySelector('[data-menu="container"]')
+    //     const elButton = document.querySelector('[data-menu="btn"]')
+
+    //     function mobileMenu(params) {
+    //         this.el = params.elContainer;
+    //         this.button = params.elButton;
+    //         this.state = 'close';
+
+    //         this.open = function () {
+
+    //             this.el.classList.add('open')
+    //             this.button.classList.add('open')
+    //             document.body.classList.add('hidden')
+    //             this.state = 'open';
+
+    //         }
+
+    //         this.close = function () {
+
+    //             this.el.classList.add('close-animate')
+    //             this.button.classList.remove('open')
+
+
+    //             setTimeout(() => {
+    //                 this.el.classList.remove('open')
+    //                 this.el.classList.remove('close-animate')
+    //                 document.body.classList.remove('hidden')
+    //                 this.state = 'close'
+    //             }, 200)
+
+
+    //         }
+
+    //         this.toggle = function () {
+    //             if (this.state == 'close') this.open()
+    //             else this.close()
+    //         }
+    //     }
+
+    //     window.menuInstanse = new mobileMenu({
+    //         elButton,
+    //         elContainer
+    //     })
+
+
+    // }
+
+    if (document.querySelector('[data-menu="open"]')) {
+        const btnBurger = document.querySelector('[data-menu="open"]')
+        const menuBurger = document.querySelector('.page-personal__aside')
+
+        btnBurger.addEventListener('click', e => {
+            btnBurger.classList.toggle('open')
+            menuBurger.classList.toggle('is-open')
+        })
+    }
+
+
+    /* ==============================================
+    Status
     ============================================== */
 
     function Status() {
@@ -311,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
         this.msg = function (_msg, _header) {
-            _header = (_header ? _header : 'Успешно')
+            _header = (_header ? _header : 'Отлично!')
             this.onShow('complete', _header, _msg)
             if (this.autoHide) {
                 this.onHide();
@@ -1722,7 +1800,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     if (document.querySelector('[data-users="edit"]')) {
-        const items = document.querySelectorAll('[data-rights="edit"]')
+        const items = document.querySelectorAll('[data-users="edit"]')
 
         items.forEach(item => {
             item.addEventListener('click', e => {
