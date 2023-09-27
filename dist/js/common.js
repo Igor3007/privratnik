@@ -1824,3 +1824,34 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
 }); //domContentLoaded
+
+/* 
+
+    access-onetime.html
+    access-rights.html
+    access-script.html
+    access-users-list.html
+    access-users.html
+    group-list.html
+    index.html
+    login-admin.html
+    login-error.html
+    login-role.html
+    login-user.html
+    login.html
+    personal-access.html
+    personal-device-list.html
+    personal-device.html
+    personal-faq.html
+    personal-finance.html
+    personal-info.html
+    personal-parkings.html
+    personal-settings.html
+    personal-video.html
+    recovery-step1.html
+    recovery-step2.html
+    recovery-step3.html
+    registration-step2.html
+    registration-step3.html
+
+*/
