@@ -1,0 +1,72 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Добавление прав доступа
+    .popup-form__desc Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций
+    .popup-form__fields
+       
+        form(action='/access-rights.html' method='GET')
+             .form
+
+               .form__item: .form__subitem
+                    .form__label Выберите пользователя или группу
+                    ul.switch-list
+                         li
+                              label.radio
+                                   input(type="radio"  data-tab-radio="group" name="type-user" checked="" value="1")
+                                   span.radio__elem
+                                   span.radio__text Группа
+                               
+                         li
+                              label.radio
+                                   input(type="radio"  data-tab-radio="user" name="type-user"  value="2")
+                                   span.radio__elem
+                                   span.radio__text Отдельный пользователь
+
+
+               .form__item: .form__subitem
+                    .form__tabs(data-tab-container="type-user")
+                         .form__tab.is-active(data-tab-item="group")
+                              select(name="group")
+                                   option(value="0") Выберите группу
+                                   option(value="1") Общая группа
+                                   option(value="2") Группа 1
+                                   option(value="3") Группа 2
+                                   option(value="3") Группа 3
+                                   option(value="4") Группа 4
+                                   option(value="4") Группа 5
+                               
+                         .form__tab(data-tab-item="user")
+                              select(name="user")
+                                   option(value="0") Выберите пользователя
+                                   option(value="2") Пользователь 1
+                                   option(value="3") Пользователь 2
+                                   option(value="3") Пользователь 3
+                                   option(value="4") Пользователь 4
+                                   option(value="4") Пользователь 5
+                              
+
+                    
+                    
+               .form__item: .form__subitem
+                    .form__label Сценарий доступа
+                    select
+                         option(value="0") Выберите сценарий
+                         option(value="1") Сценарий по умолчанию
+                         option(value="2") Полный запрет
+                         option(value="3") Сценарий для жильцов
+                         option(value="4") Сценарий для спецтранспорта
+
+               .form__item: .form__subitem
+                    .form__label Парковки
+                    select
+                         option(value="0") Выберите парковку
+                         option(value="1") Парковка у дома
+                         option(value="1") Парковка маленькая
+                         option(value="1") Парковка 2
+                
+               
+     
+               .form__item: .form__subitem
+                    button.btn Добавить группу 

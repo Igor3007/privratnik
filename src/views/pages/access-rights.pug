@@ -27,8 +27,48 @@ block content
           'Права доступа',
         ])
     .personal-content__h1 Настройки доступа
-   
+    .personal-content__tabs
+      ul
+        li: a(href="access-script.html") Сценарии доступа
+        li: a(href="access-users.html") Список пользователей
+        li: a(href="group-list.html") Список групп
+        li.is-active: a(href="access-rights.html") Права доступа
+        li: a(href="access-onetime.html") Разовые/временные пропуски
 
+    .personal-content__tab-container
+      .access-config
+        .access-config__title Права доступа
+        .access-config__desc Выберите пользователя или группу пользователей и присвойте им созданный ранее сценарий доступа.
+        .access-config__action
+          .access-config__add: button.btn(data-rights="add") + Добавить права доступа
+          .access-config__find
+            .input--find: input(type="text" placeholder="Найти пользователя или группу")
+        .access-config__table
+        
+          .table-radius-wrapper
+            .table
+              .table__tr
+                  .table__th 
+                    | Имя или группа пользователей
+                    span.table__sort
+                  .table__th Сценарий доступа
+                  .table__th Действия
+              
+              .table__tr
+                .table__td(data-title="Имя или группа пользователей") Группа по умолчанию
+                .table__td(data-title="Сценарий доступа") Сценарий по умолчанию 
+                .table__td(data-title="Действия")
+                  ul.table-action
+                      li(data-rights="edit"): +icons('#ic_edit', 22)
+                      li.row-remove-rights: +icons('#ic_trash', 22)
+
+              .table__tr
+                .table__td(data-title="Имя или группа пользователей") Жильцы
+                .table__td(data-title="Сценарий доступа") Сценарий для жильцов
+                .table__td(data-title="Действия")
+                  ul.table-action
+                      li(data-rights="edit"): +icons('#ic_edit', 22)
+                      li.row-remove-rights: +icons('#ic_trash', 22)
     
 
 

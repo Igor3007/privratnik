@@ -18,5 +18,17 @@
 
     &__action {
         padding-bottom: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: -6px;
+
+        &>div {
+            padding: 6px;
+        }
+    }
+
+    &__find {
+        width: 100%;
+        max-width: 360px;
     }
 }

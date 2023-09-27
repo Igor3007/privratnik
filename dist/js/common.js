@@ -23,6 +23,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     /* =================================================
+    table sort example
+    =================================================*/
+
+    if (document.querySelector('.table__sort')) {
+        document.querySelectorAll('.table__sort').forEach(item => {
+            item.addEventListener('click', e => item.classList.toggle('table__sort--up'))
+        })
+    }
+
+    /* =================================================
     submenu
     =================================================*/
 
@@ -196,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             popupDialog.open(this.getTemplate(params), (instance) => {
 
                 const buttonApply = instance.querySelector('.af-dialog__apply')
+                const buttonCancle = instance.querySelector('.af-dialog__cancel')
                 this.startTimer(5, buttonApply.querySelector('span'))
 
                 buttonApply.addEventListener('click', e => {
@@ -203,6 +214,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     this.topStatusRevert(params)
                     popupDialog.close()
                 })
+
+                buttonCancle.addEventListener('click', e => popupDialog.close())
 
             })
 
@@ -249,6 +262,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 title: 'Удаление группы',
                 desc: 'Внимание! Вы уверены, что хотите удалить группу «Группа 2»? Все пользователи группы будут автоматически перенесены в «Общую группу».',
                 revertText: 'Вы удалили группу «Группа 2»',
+                onConfirm: function () {
+                    //ajax request for remove
+                    console.log('удалено')
+                }
+            })
+        })
+    })
+
+    document.querySelectorAll('.row-remove-rights').forEach(item => {
+        item.addEventListener('click', e => {
+            window.dialog.remove({
+                removeHtmlElem: item.closest('.table__tr'),
+                title: 'Удаление прав доступа',
+                desc: 'Внимание! Вы уверены, что хотите удалить сценарий «Сценарий для жильцов» у пользователя/группы пользователей «Добрынина Валерия»?',
+                revertText: 'Вы удалили права доступа.',
                 onConfirm: function () {
                     //ajax request for remove
                     console.log('удалено')
@@ -1513,9 +1541,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         popup.open(response, (instanse) => {
 
-
-
-
         })
 
 
@@ -1545,4 +1570,179 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     }
 
-});
+
+    /* ======================================
+    add rights access
+    ======================================*/
+
+    function initPopupAccessRights(response, popup) {
+
+        popup.open(response, (instanse) => {
+
+            //init select 
+            const selectCustom = new afSelect({
+                selector: 'select'
+            })
+
+            selectCustom.init()
+
+            // tabs
+
+            if (document.querySelector('[data-tab-radio]')) {
+                const radio = document.querySelectorAll('[data-tab-radio]')
+                const container = document.querySelector('[data-tab-container="type-user"]')
+
+                radio.forEach(item => {
+                    item.addEventListener('change', e => {
+                        container.querySelectorAll('[data-tab-item]').forEach(tab => {
+                            if (tab.dataset.tabItem == item.dataset.tabRadio) {
+                                tab.classList.add('is-active')
+                            } else {
+                                tab.classList.contains('is-active') ? tab.classList.remove('is-active') : ''
+                            }
+                        })
+                    })
+                })
+            }
+
+        })
+
+
+    }
+
+    if (document.querySelector('[data-rights="add"]')) {
+        const items = document.querySelectorAll('[data-rights="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-rights--create.html'
+                }, (status, response) => {
+
+                    initPopupAccessRights(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+    if (document.querySelector('[data-rights="edit"]')) {
+        const items = document.querySelectorAll('[data-rights="edit"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-rights--edit.html'
+                }, (status, response) => {
+
+                    initPopupAccessRights(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+    /* ======================================
+    add user list
+    ======================================*/
+
+    function initPopupAccessUsersList(response, popup) {
+
+        popup.open(response, (instanse) => {
+
+            //init select 
+            const selectCustom = new afSelect({
+                selector: 'select'
+            })
+
+            selectCustom.init()
+
+            // tabs
+
+            if (document.querySelector('[data-tab-radio]')) {
+                const radio = document.querySelectorAll('[data-tab-radio]')
+                const container = document.querySelector('[data-tab-container="type-user"]')
+
+                radio.forEach(item => {
+                    item.addEventListener('change', e => {
+                        container.querySelectorAll('[data-tab-item]').forEach(tab => {
+                            if (tab.dataset.tabItem == item.dataset.tabRadio) {
+                                tab.classList.add('is-active')
+                            } else {
+                                tab.classList.contains('is-active') ? tab.classList.remove('is-active') : ''
+                            }
+                        })
+                    })
+                })
+            }
+
+        })
+
+
+    }
+
+    if (document.querySelector('[data-users="add"]')) {
+        const items = document.querySelectorAll('[data-users="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-users--create.html'
+                }, (status, response) => {
+
+                    initPopupAccessUsersList(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+    if (document.querySelector('[data-users="edit"]')) {
+        const items = document.querySelectorAll('[data-rights="edit"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-users--edit.html'
+                }, (status, response) => {
+
+                    initPopupAccessUsersList(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+}); //domContentLoaded

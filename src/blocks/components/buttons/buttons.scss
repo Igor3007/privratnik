@@ -121,14 +121,9 @@
         color: $main;
         border: 1px solid var(--blue-dark, #253678);
 
-
-        &:hover {
-            color: var(--blue-medium, #515E93);
-        }
-
         &:disabled {
-            color: var(--blue-medium, #A8AFC9);
-            border-color: var(--blue-medium, #A8AFC9);
+            color: var(--blue-light, #A8AFC9);
+            border-color: var(--blue-light, #A8AFC9);
         }
     }
 

@@ -1,0 +1,55 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Список пользователей"
+
+
+block aside
+  +personal-aside({
+    title: 'Настройки доступа',
+    openSub: true
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Настройки доступа',
+          'Список пользователей',
+        ])
+    .personal-content__h1 Список пользователей
+    .personal-content__tabs
+      ul
+        li: a(href="access-script.html") Сценарии доступа
+        li.is-active: a(href="access-users.html") Список пользователей
+        li: a(href="group-list.html") Список групп
+        li: a(href="access-rights.html") Права доступа
+        li: a(href="access-onetime.html") Разовые/временные пропуски
+
+    .personal-content__tab-container
+      .access-config
+        .access-config__title Список пользователей
+        .access-config__desc 
+          | Добавление пользователей и групп пользователей, чтобы присвоить им 
+          a(href='#') «Сценарии доступа» 
+          | в разделе 
+          a(href='#') «Права доступа».
+        .access-config__action
+          .access-config__add: button.btn(data-users="add") + Добавить пользователя
+          .access-config__btn: button.btn.btn-line Импорт из Excel
+          .access-config__btn: button.btn.btn-line(disabled) Экспорт в Excel
+          .access-config__btn: button.btn.btn-line Скачать шаблон Excel
+        
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")

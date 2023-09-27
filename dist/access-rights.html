@@ -104,7 +104,7 @@
                   <li class="is-active  is-sub-menu  is-open"><a href="personal-settings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-settings.svg)" ></span>Настройки доступа</a>
                     <ul class="sub-menu">
                       <li><a href="access-script.html">Сценарии доступа</a></li>
-                      <li><a href="user-list.html">Список пользователей</a></li>
+                      <li><a href="access-users.html">Список пользователей</a></li>
                       <li><a href="access-rights.html">Права доступа</a></li>
                       <li><a href="access-onetime.html">Разовые/временные пропуски</a></li>
                     </ul>
@@ -258,6 +258,79 @@
               </div>
             </div>
             <div class="personal-content__h1">Настройки доступа</div>
+            <div class="personal-content__tabs">
+              <ul>
+                <li><a href="access-script.html">Сценарии доступа</a></li>
+                <li><a href="access-users.html">Список пользователей</a></li>
+                <li><a href="group-list.html">Список групп</a></li>
+                <li class="is-active"><a href="access-rights.html">Права доступа</a></li>
+                <li><a href="access-onetime.html">Разовые/временные пропуски</a></li>
+              </ul>
+            </div>
+            <div class="personal-content__tab-container">
+              <div class="access-config">
+                <div class="access-config__title">Права доступа</div>
+                <div class="access-config__desc">Выберите пользователя или группу пользователей и присвойте им созданный ранее сценарий доступа.</div>
+                <div class="access-config__action">
+                  <div class="access-config__add">
+                    <button class="btn" data-rights="add">+ Добавить права доступа</button>
+                  </div>
+                  <div class="access-config__find">
+                    <div class="input--find">
+                      <input type="text" placeholder="Найти пользователя или группу">
+                    </div>
+                  </div>
+                </div>
+                <div class="access-config__table">
+                  <div class="table-radius-wrapper">
+                    <div class="table">
+                      <div class="table__tr">
+                        <div class="table__th">
+                           Имя или группа пользователей<span class="table__sort"></span></div>
+                        <div class="table__th">Сценарий доступа</div>
+                        <div class="table__th">Действия</div>
+                      </div>
+                      <div class="table__tr">
+                        <div class="table__td" data-title="Имя или группа пользователей">Группа по умолчанию</div>
+                        <div class="table__td" data-title="Сценарий доступа">Сценарий по умолчанию </div>
+                        <div class="table__td" data-title="Действия">
+                          <ul class="table-action">
+                            <li data-rights="edit">
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
+                              </svg>
+                            </li>
+                            <li class="row-remove-rights">
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
+                              </svg>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="table__tr">
+                        <div class="table__td" data-title="Имя или группа пользователей">Жильцы</div>
+                        <div class="table__td" data-title="Сценарий доступа">Сценарий для жильцов</div>
+                        <div class="table__td" data-title="Действия">
+                          <ul class="table-action">
+                            <li data-rights="edit">
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
+                              </svg>
+                            </li>
+                            <li class="row-remove-rights">
+                              <svg width="22" height="22">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
+                              </svg>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

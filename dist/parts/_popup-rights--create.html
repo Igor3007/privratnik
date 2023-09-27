@@ -1,0 +1,83 @@
+
+<div class="popup-form">
+  <div class="popup-form__title">Добавление прав доступа</div>
+  <div class="popup-form__desc">Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций</div>
+  <div class="popup-form__fields">
+    <form action="/access-rights.html" method="GET">
+      <div class="form">
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Выберите пользователя или группу</div>
+            <ul class="switch-list">
+              <li>
+                <label class="radio">
+                  <input type="radio" data-tab-radio="group" name="type-user" checked="" value="1"/><span class="radio__elem"></span><span class="radio__text">Группа</span>
+                </label>
+              </li>
+              <li>
+                <label class="radio">
+                  <input type="radio" data-tab-radio="user" name="type-user" value="2"/><span class="radio__elem"></span><span class="radio__text">Отдельный пользователь</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__tabs" data-tab-container="type-user">
+              <div class="form__tab is-active" data-tab-item="group">
+                <select name="group">
+                  <option value="0">Выберите группу</option>
+                  <option value="1">Общая группа</option>
+                  <option value="2">Группа 1</option>
+                  <option value="3">Группа 2</option>
+                  <option value="3">Группа 3</option>
+                  <option value="4">Группа 4</option>
+                  <option value="4">Группа 5</option>
+                </select>
+              </div>
+              <div class="form__tab" data-tab-item="user">
+                <select name="user">
+                  <option value="0">Выберите пользователя</option>
+                  <option value="2">Пользователь 1</option>
+                  <option value="3">Пользователь 2</option>
+                  <option value="3">Пользователь 3</option>
+                  <option value="4">Пользователь 4</option>
+                  <option value="4">Пользователь 5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Сценарий доступа</div>
+            <select>
+              <option value="0">Выберите сценарий</option>
+              <option value="1">Сценарий по умолчанию</option>
+              <option value="2">Полный запрет</option>
+              <option value="3">Сценарий для жильцов</option>
+              <option value="4">Сценарий для спецтранспорта</option>
+            </select>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Парковки</div>
+            <select>
+              <option value="0">Выберите парковку</option>
+              <option value="1">Парковка у дома</option>
+              <option value="1">Парковка маленькая</option>
+              <option value="1">Парковка 2</option>
+            </select>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <button class="btn">Добавить группу </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
