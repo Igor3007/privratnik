@@ -20,7 +20,7 @@ mixin authorization-error
     .form-authentication
         .form-authentication__wrp
             .form-authentication__title Вход
-            .form-authentication__desc Отправили СМС с кодом на указанный ранее номер телефона
+            .form-authentication__desc Войти в ранее созданный аккаунт по номеру телефона
             .form-authentication__form
                 form(action='/login-user.html' method='GET')
                     .form
@@ -29,7 +29,7 @@ mixin authorization-error
                             .error Пользователь с таким номером не найден: зарегистрируйтесь или свяжитесь с администратором для добавления номера
 
                         .form__item: .form__subitem
-                            button.btn(disabled="" type="submit") Получить код
+                            button.btn(disabled="" type="submit") Далее
         .form-authentication__login
             +icons('#ic_arrow-back', 24)
             a(href='/login.html') Вернуться назад
@@ -136,7 +136,7 @@ mixin authorization-role
             .form-authentication__role
                 .select-role
                     ul
-                        li.is-active
+                        li
                             a(href='/personal-parkings.html')
                                 strong Администратор
                                 span У вас уже есть собственные управляющие устройства

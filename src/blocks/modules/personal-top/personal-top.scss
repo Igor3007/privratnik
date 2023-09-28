@@ -448,11 +448,16 @@
 
             border-radius: 8px;
             border: 1px solid var(--stroke, #CED6E0);
-            background: var(--bg-01, #ECF0F5);
+            background-color: var(--bg-01, #ECF0F5);
             margin-bottom: 8px;
             transition: 0.3s ease;
+            background-size: 8px auto;
+            background-repeat: no-repeat;
+            background-position: calc(100% - 20px) center;
+            padding-right: 36px;
+            font-size: 14px;
 
-
+            color: var(--bg-03);
 
             & a {
                 display: block;
@@ -461,16 +466,25 @@
 
             & strong {
                 display: block;
+                color: var(--blue-dark);
+                font-size: 18px;
+                font-weight: 600;
+                padding-bottom: 0.5em;
             }
 
-            &:hover {
-                background-color: #e3e6eb;
-            }
+            // &:hover {
+            //     background-color: #e3e6eb;
+            // }
 
+            &:hover,
             &.is-active {
 
                 border-color: var(--blue-dark, #253678);
-                background: var(--blue-dark, #253678);
+                background-color: var(--blue-dark, #253678);
+                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSIxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTS4yOTMuMjkzYTEgMSAwIDAxMS40MTQgMGw2IDZhMSAxIDAgMDEwIDEuNDE0bC02IDZhMSAxIDAgMDEtMS40MTQtMS40MTRMNS41ODYgNyAuMjkzIDEuNzA3YTEgMSAwIDAxMC0xLjQxNHoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
+
+
+
 
                 & a,
                 & span,
