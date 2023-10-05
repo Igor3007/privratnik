@@ -31,7 +31,7 @@ select {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    font-size: 14px;
+    //font-size: 14px;
     user-select: none;
     color: $select-color;
     width: $select-width;
@@ -41,6 +41,12 @@ select {
 
     @media screen and (max-width: $w1200) {
         height: rem(45);
+    }
+
+    &--selected {
+        & .select-styled span {
+            color: var(--text-01);
+        }
     }
 }
 
@@ -213,10 +219,11 @@ select {
 
     & li {
         margin: 0;
-        padding: 0.75rem rem(15);
+        padding: 0.75rem 15px;
         // border-top: 1px solid darken($select-background, 4);
         // transition: all 0.15s ease-in;
         font-size: 14px;
+        margin: 2px 0;
         white-space: nowrap;
         max-width: 300px;
         text-overflow: ellipsis;
@@ -244,6 +251,8 @@ select {
         &[rel="hide"] {
             display: none;
         }
+
+
     }
 }
 
@@ -404,10 +413,11 @@ select {
             background-repeat: no-repeat;
             background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOSAxTDQgNyAxIDQiIHN0cm9rZT0iIzUyNTE2NiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
             opacity: 0.4;
+
         }
 
         &::after {
-            background-color: #ccc;
+            background-color: var(--blue-dark);
             @include layer(1);
             content: '';
             border-radius: 3px;
@@ -424,7 +434,7 @@ select {
 
     & .select-options {
         & li {
-            padding: 0.75rem rem(40) 0.75rem rem(15);
+            padding: 0.65rem rem(40) 0.65rem rem(15);
 
             @media screen and (max-width: $w480) {
                 padding: 1.5em 40px 1.5em 1.5em;
@@ -434,6 +444,7 @@ select {
                 & .af-check-multiple {
                     &::before {
                         opacity: 1;
+                        filter: brightness(200);
                     }
 
                     &::after {

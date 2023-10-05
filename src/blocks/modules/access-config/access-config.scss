@@ -12,7 +12,7 @@
 
         & a {
             color: var(--blue-dark);
-            font-weight: 500;
+            font-weight: 600;
         }
     }
 
@@ -22,13 +22,47 @@
         flex-wrap: wrap;
         margin: -6px;
 
+        @media screen and (min-width: 1650px) {
+            flex-wrap: nowrap;
+        }
+
         &>div {
             padding: 6px;
+
+            @media screen and (max-width: $w480) {
+                width: 100%;
+
+                & .btn {
+                    width: 100%;
+                }
+            }
         }
     }
 
     &__find {
         width: 100%;
-        max-width: 360px;
+        order: 10;
+
+        @media screen and (min-width: $w760) {
+            max-width: 360px;
+        }
+
+        @media screen and (min-width: 1650px) {
+            max-width: 100%;
+        }
     }
+
+    &__add {
+        @media screen and (max-width: $w480) {
+            width: 100%;
+
+            & .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.access-config__find.access-config__find--min {
+    max-width: 360px;
 }

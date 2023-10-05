@@ -124,6 +124,11 @@
             color: var(--blue-light, #A8AFC9);
             border-color: var(--blue-light, #A8AFC9);
         }
+
+        &:hover {
+            border-color: var(--blue-medium);
+            color: var(--blue-medium);
+        }
     }
 
     &.btn-full {

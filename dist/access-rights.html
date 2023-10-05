@@ -271,62 +271,15 @@
             <div class="personal-content__tab-container">
               <div class="access-config">
                 <div class="access-config__title">Права доступа</div>
-                <div class="access-config__desc">Выберите пользователя или группу пользователей и присвойте им созданный ранее сценарий доступа.</div>
+                <div class="access-config__desc">
+                    Нет сценариев доступа, перейдите в раздел <a href="#">«Сценарии доступа» </a>и создайте нужный сценарий. Нет пользователей, перейдите в раздел <a href="#">«Список пользователей» </a>и добавьте их.</div>
                 <div class="access-config__action">
                   <div class="access-config__add">
-                    <button class="btn btn--add" data-rights="add">Добавить права доступа</button>
+                    <button class="btn btn--add" data-rights="add" disabled>Добавить права доступа</button>
                   </div>
-                  <div class="access-config__find">
+                  <div class="access-config__find access-config__find--min">
                     <div class="input--find">
                       <input type="text" placeholder="Найти пользователя или группу">
-                    </div>
-                  </div>
-                </div>
-                <div class="access-config__table">
-                  <div class="table-radius-wrapper">
-                    <div class="table">
-                      <div class="table__tr">
-                        <div class="table__th">
-                           Имя или группа пользователей<span class="table__sort"></span></div>
-                        <div class="table__th">Сценарий доступа</div>
-                        <div class="table__th">Действия</div>
-                      </div>
-                      <div class="table__tr">
-                        <div class="table__td" data-title="Имя или группа пользователей">Группа по умолчанию</div>
-                        <div class="table__td" data-title="Сценарий доступа">Сценарий по умолчанию </div>
-                        <div class="table__td" data-title="Действия">
-                          <ul class="table-action">
-                            <li data-rights="edit">
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
-                              </svg>
-                            </li>
-                            <li class="row-remove" data-rights="remove">
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
-                              </svg>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="table__tr">
-                        <div class="table__td" data-title="Имя или группа пользователей">Жильцы</div>
-                        <div class="table__td" data-title="Сценарий доступа">Сценарий для жильцов</div>
-                        <div class="table__td" data-title="Действия">
-                          <ul class="table-action">
-                            <li data-rights="edit">
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
-                              </svg>
-                            </li>
-                            <li class="row-remove" data-rights="remove">
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
-                              </svg>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -343,6 +296,11 @@
             <div class="footer-copyright">© 2023, ООО «Мои умные сервисы». Все права защищены</div>
           </div>
         </div>
+      </div>
+      <div class="page-scroll-top">
+        <svg width="25" height="25">
+          <use xlink:href="/img/sprites/sprite.svg#ic_arr-up"></use>
+        </svg>
       </div>
     </footer>
     <script src="/js/vendor.js"></script>

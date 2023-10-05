@@ -28,7 +28,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     if (document.querySelector('.table__sort')) {
         document.querySelectorAll('.table__sort').forEach(item => {
-            item.addEventListener('click', e => item.classList.toggle('table__sort--up'))
+            item.addEventListener('click', (e) => {
+                item.classList.toggle('table__sort--up')
+                e.target.closest('.table__th').classList.toggle('is-active')
+            })
         })
     }
 
@@ -300,6 +303,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     })
 
+
+    /* ==============================================
+    mobile menu
+    ============================================== */
+
+    if (document.querySelector('.page-scroll-top')) {
+
+        const btnPageScrollTop = document.querySelector('.page-scroll-top')
+
+        btnPageScrollTop.addEventListener('click', e => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        })
+
+        window.addEventListener('scroll', e => {
+            if (document.documentElement.scrollTop > 300) {
+                btnPageScrollTop.classList.add('is-active')
+            } else {
+                if (btnPageScrollTop.classList.contains('is-active')) btnPageScrollTop.classList.remove('is-active')
+            }
+        })
+    }
 
     /* ==============================================
     mobile menu
@@ -1069,6 +1096,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (document.querySelector('[data-parking="add"]')) {
         const items = document.querySelectorAll('[data-parking="add"]')
 
+        function repeatSelect(value) {
+            const selectThis = value.parentNode.cloneNode(true)
+            selectThis.classList.remove('select-hidden')
+            selectThis.classList.add('select-repeat')
+            value.closest('.form__subitem').append(selectThis)
+
+            const selectR = new afSelect({
+                selector: '.select-repeat',
+            })
+
+            selectR.init()
+        }
+
         items.forEach(item => {
             item.addEventListener('click', e => {
 
@@ -1084,7 +1124,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                     addParkingPopup.open(response, (instanse) => {
                         const selectCustom = new afSelect({
-                            selector: 'select'
+                            selector: 'select',
+                            on: {
+                                change: function (value) {
+
+                                    // const selectThis = value.parentNode.cloneNode(true)
+                                    // selectThis.classList.remove('select-hidden')
+                                    // selectThis.classList.add('select-repeat')
+                                    // value.closest('.form__subitem').append(selectThis)
+
+                                    // const selectR = new afSelect({
+                                    //     selector: '.select-repeat',
+                                    // })
+
+                                    // selectR.init()
+
+                                }
+                            }
                         })
 
                         selectCustom.init()
@@ -1823,10 +1879,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     }
 
+    /* =================================
+    change role
+    ================================= */
+
+    if (document.querySelector('.dropdown-icon__list')) {
+
+        const listItem = document.querySelectorAll('.dropdown-icon__list li')
+
+        listItem.forEach(item => {
+            item.addEventListener('click', e => {
+                listItem.forEach(li => li.classList.contains('is-active') ? li.classList.remove('is-active') : '')
+                item.classList.add('is-active')
+            })
+        })
+    }
+
 }); //domContentLoaded
 
 /* 
- 
     http://privratnik.promicom.xyz/access-onetime.html
     http://privratnik.promicom.xyz/access-rights.html
     http://privratnik.promicom.xyz/access-script.html
@@ -1834,5 +1905,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
     http://privratnik.promicom.xyz/access-users.html
     http://privratnik.promicom.xyz/group-list.html
     http://privratnik.promicom.xyz/personal-device.html
-
 */

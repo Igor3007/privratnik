@@ -110,6 +110,11 @@ ul {
     line-height: 130%;
 }
 
+body.page-hidden {
+    overflow: hidden;
+    touch-action: none;
+}
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

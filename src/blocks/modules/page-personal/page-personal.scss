@@ -36,11 +36,13 @@
 
     &__content {
         width: 100%;
-        min-height: 90vh;
+        min-height: 93vh;
         padding: 0 16px;
 
         @media screen and (min-width: $w1200) {
             width: calc(100% - 288px);
+            display: flex;
+            flex-direction: column;
         }
     }
 }

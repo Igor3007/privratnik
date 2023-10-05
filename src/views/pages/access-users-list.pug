@@ -4,6 +4,7 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/components/pagination/pagination.pug
 
 block variables
     include ../../data/data.pug
@@ -44,7 +45,7 @@ block content
           | в разделе 
           a(href='#') «Права доступа».
         .access-config__action
-          .access-config__add: button.btn.btn--add(data-users="add") + Добавить пользователя
+          .access-config__add: button.btn.btn--add(data-users="add") Добавить пользователя
           .access-config__find 
             .input--find: input(type="text" placeholder="Найти пользователя")
           .access-config__btn: button.btn.btn-line Импорт из Excel
@@ -62,6 +63,7 @@ block content
                     .table__sort
                   .table__th 
                     | Номер телефона  
+                    .table__sort
                   .table__th 
                     | Госномер т/с
                     .table__sort
@@ -149,7 +151,8 @@ block content
                     ul.table-action
                         li(data-users="edit"): +icons('#ic_edit', 22)
                         li.row-remove(data-users="remove"): +icons('#ic_trash', 22)
-           
+    .personal-content__pagination
+      +pagination()      
         
 
 block scripts

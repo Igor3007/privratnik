@@ -38,38 +38,17 @@ block content
     .personal-content__tab-container
       .access-config
         .access-config__title Права доступа
-        .access-config__desc Выберите пользователя или группу пользователей и присвойте им созданный ранее сценарий доступа.
+        .access-config__desc 
+          |  Нет сценариев доступа, перейдите в раздел 
+          a(href='#') «Сценарии доступа» 
+          | и создайте нужный сценарий. Нет пользователей, перейдите в раздел 
+          a(href='#') «Список пользователей» 
+          | и добавьте их.
         .access-config__action
-          .access-config__add: button.btn.btn--add(data-rights="add") Добавить права доступа
-          .access-config__find
+          .access-config__add: button.btn.btn--add(data-rights="add" disabled) Добавить права доступа
+          .access-config__find.access-config__find--min
             .input--find: input(type="text" placeholder="Найти пользователя или группу")
-        .access-config__table
-        
-          .table-radius-wrapper
-            .table
-              .table__tr
-                  .table__th 
-                    | Имя или группа пользователей
-                    span.table__sort
-                  .table__th Сценарий доступа
-                  .table__th Действия
-              
-              .table__tr
-                .table__td(data-title="Имя или группа пользователей") Группа по умолчанию
-                .table__td(data-title="Сценарий доступа") Сценарий по умолчанию 
-                .table__td(data-title="Действия")
-                  ul.table-action
-                      li(data-rights="edit"): +icons('#ic_edit', 22)
-                      li.row-remove(data-rights="remove"): +icons('#ic_trash', 22)
-
-              .table__tr
-                .table__td(data-title="Имя или группа пользователей") Жильцы
-                .table__td(data-title="Сценарий доступа") Сценарий для жильцов
-                .table__td(data-title="Действия")
-                  ul.table-action
-                      li(data-rights="edit"): +icons('#ic_edit', 22)
-                      li.row-remove(data-rights="remove"): +icons('#ic_trash', 22)
-    
+         
 
 
 block scripts

@@ -295,8 +295,8 @@
 .top-nitification {
 
     &__item {
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
+        padding: 8px 0 11px 0;
+        border-bottom: 1px solid #CED6E0;
 
     }
 
@@ -332,15 +332,24 @@
 
         & a {
             color: var(--blue-dark);
+            transition: 0.3s ease;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 
     &__setting {
-
-
-
         & svg {
             fill: var(--blue-dark);
+            transition: 0.3s ease;
+        }
+
+        &:hover {
+            & svg {
+                fill: var(--blue-light);
+            }
         }
     }
 

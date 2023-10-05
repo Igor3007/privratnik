@@ -107,6 +107,8 @@ body {
         &::placeholder {
             color: $gray-56;
             opacity: 1;
+            text-shadow: none;
+            font-weight: 400;
         }
 
         &:focus {
@@ -536,5 +538,40 @@ body {
                 // }
             }
         }
+    }
+}
+
+.form__subitem .af-select {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.page-scroll-top {
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    background-color: var(--blue-dark);
+    justify-content: center;
+    align-items: center;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 8px;
+    border-bottom-right-radius: 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+    opacity: 0;
+    transform: translateY(100%);
+
+    &.is-active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &:hover {
+        background-color: var(--blue-medium);
     }
 }

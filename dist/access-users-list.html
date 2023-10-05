@@ -275,7 +275,7 @@
                    Добавление пользователей и групп пользователей, чтобы присвоить им <a href="#">«Сценарии доступа» </a>в разделе <a href="#">«Права доступа».</a></div>
                 <div class="access-config__action">
                   <div class="access-config__add">
-                    <button class="btn btn--add" data-users="add">+ Добавить пользователя</button>
+                    <button class="btn btn--add" data-users="add">Добавить пользователя</button>
                   </div>
                   <div class="access-config__find"> 
                     <div class="input--find">
@@ -305,7 +305,9 @@
                           <div class="table__sort"></div>
                         </div>
                         <div class="table__th">
-                           Номер телефона  </div>
+                           Номер телефона  
+                          <div class="table__sort"></div>
+                        </div>
                         <div class="table__th">
                            Госномер т/с
                           <div class="table__sort"></div>
@@ -660,6 +662,27 @@
                 </div>
               </div>
             </div>
+            <div class="personal-content__pagination">
+              <div class="pagination">
+                <div class="pagination__page">
+                  <ul>
+                    <li class="next"><a href="#2">
+                        <svg width="48" height="48">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_prev-pagination"></use>
+                        </svg></a></li>
+                    <li class="active"><a href="#1">1</a></li>
+                    <li><a href="#2">2</a></li>
+                    <li><a href="#3">3</a></li>
+                    <li><a href="#4">...</a></li>
+                    <li><a href="#10">10</a></li>
+                    <li class="next"><a href="#2">
+                        <svg width="48" height="48">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_next-pagination"></use>
+                        </svg></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -671,6 +694,11 @@
             <div class="footer-copyright">© 2023, ООО «Мои умные сервисы». Все права защищены</div>
           </div>
         </div>
+      </div>
+      <div class="page-scroll-top">
+        <svg width="25" height="25">
+          <use xlink:href="/img/sprites/sprite.svg#ic_arr-up"></use>
+        </svg>
       </div>
     </footer>
     <script src="/js/vendor.js"></script>

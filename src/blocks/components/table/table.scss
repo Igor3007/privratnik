@@ -89,7 +89,7 @@
 
         &:first-child {
 
-            font-weight: 500;
+            font-weight: 600;
             width: 100%;
 
             &::before {
@@ -117,6 +117,12 @@
         @media screen and (min-width: $w992) {
             display: table-cell;
         }
+
+        &.is-active {
+
+            color: var(--blue-dark);
+        }
+
     }
 
     &__sort {
