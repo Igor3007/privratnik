@@ -22,3 +22,16 @@
          padding-bottom: 0;
      }
  }
+
+ .footer.footer--personal {
+
+     & .container {
+         max-width: 100%;
+     }
+
+     & .footer-copyright {
+         @media screen and (min-width: $w1200) {
+             margin-left: 288px;
+         }
+     }
+ }

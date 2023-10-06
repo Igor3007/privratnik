@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* media breakpoints */
 
 html {
@@ -742,10 +744,6 @@ template {
   display: none;
 }
 
-.af-select-open .section-first-block {
-  z-index: 15;
-}
-
 select {
   opacity: 0;
 }
@@ -913,6 +911,22 @@ select {
   margin-left: -10px;
 }
 
+.af-select.af-select--top .select-list {
+  top: auto;
+  bottom: 100%;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.af-select.af-select--top .select-styled:active,
+.af-select.af-select--top .select-styled.active {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transition: none;
+}
+
 .loading {
   width: auto;
   overflow: hidden;
@@ -1067,10 +1081,6 @@ select {
   margin: auto;
   opacity: 0;
   transition: 0.2s ease;
-}
-
-.af-select--multiple .select-options li {
-  padding: 0.65rem 40px 0.65rem 15px;
 }
 
 .af-select--multiple .select-options li.active .af-check-multiple::before {
@@ -2588,7 +2598,7 @@ body textarea {
   width: 100%;
   transition: background 0.4s ease;
   border: none;
-  font-size: 14px;
+  font-size: 15px;
   padding: 15px;
   line-height: 140%;
   outline: none !important;
@@ -2738,7 +2748,7 @@ body textarea:focus {
 
 .form__label {
   font-weight: 600;
-  font-size: 17px;
+  font-size: 16px;
   width: 100%;
   color: var(--blue-dark, #253678);
   color: var(--text-01);
@@ -3722,6 +3732,10 @@ body textarea:focus {
   color: var(--text-03);
 }
 
+.footer.footer--personal .container {
+  max-width: 100%;
+}
+
 .section-page-404 {
   padding: 50px 0;
 }
@@ -4246,7 +4260,7 @@ body textarea:focus {
   opacity: 0.5;
 }
 
-.personal-aside__nav ul li.is-active a {
+.personal-aside__nav ul li.is-active > a {
   background-color: #fff;
   color: var(--blue-dark);
 }
@@ -4276,10 +4290,12 @@ body textarea:focus {
   font-weight: 500;
 }
 
+.personal-aside__nav ul li.is-sub-menu .sub-menu li a.is-active,
 .personal-aside__nav ul li.is-sub-menu .sub-menu li a:hover {
   color: var(--blue-dark);
 }
 
+.personal-aside__nav ul li.is-sub-menu .sub-menu li a.is-active::before,
 .personal-aside__nav ul li.is-sub-menu .sub-menu li a:hover::before {
   background-color: var(--blue-dark);
 }
@@ -4313,8 +4329,8 @@ body textarea:focus {
   opacity: 1;
 }
 
-.personal-aside__nav ul li:hover a {
-  color: var(--text-01);
+.personal-aside__nav ul li:hover > a {
+  color: var(--blue-dark);
 }
 
 .personal-aside__nav ul.sub-menu {
@@ -5017,11 +5033,13 @@ body textarea:focus {
   font-weight: 600;
   font-size: 20px;
   padding-bottom: 0.6em;
+  line-height: 135%;
 }
 
 .page-devices__desc {
   padding-bottom: 2.3em;
   font-size: 15px;
+  line-height: 140%;
 }
 
 .card-device {
@@ -5700,6 +5718,10 @@ a[data-tooltip]:hover::before {
     padding: 32px 0;
   }
 
+  .footer.footer--personal .footer-copyright {
+    margin-left: 288px;
+  }
+
   .page-personal__aside {
     display: block;
   }
@@ -5775,7 +5797,7 @@ a[data-tooltip]:hover::before {
   }
 
   .page-devices__item {
-    max-width: 25%;
+    max-width: 33.33%;
     padding: 16px;
   }
 }
@@ -5790,6 +5812,13 @@ a[data-tooltip]:hover::before {
   }
 }
 
+@media screen and (min-width: 1660px) {
+  .page-devices__item {
+    max-width: 25%;
+    padding: 16px;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .af-select {
     height: 45px;
@@ -5797,10 +5826,6 @@ a[data-tooltip]:hover::before {
 
   .select-styled {
     font-size: 14px;
-  }
-
-  .select-options li {
-    font-size: 13px;
   }
 }
 
@@ -5823,37 +5848,13 @@ a[data-tooltip]:hover::before {
 }
 
 @media screen and (max-width: 480px) {
-  .af-select-open {
-    overflow: hidden;
-  }
-
-  .select-list.active {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 900;
-    left: 0;
-    right: 0;
-    background-color: rgba(62, 73, 79, 0.69);
-  }
-
   .select-options {
-    top: auto;
-    bottom: 0;
     max-height: 50vh;
-    margin: auto;
-    background-color: #fff;
   }
 
   .select-options li {
     font-size: 16px;
-    padding: 1.5em 1.5em;
     max-width: 100%;
-  }
-
-  .af-select--multiple .select-options li {
-    padding: 1.5em 40px 1.5em 1.5em;
   }
 
   .form__subitem.form__subitem--free {
@@ -5869,6 +5870,15 @@ a[data-tooltip]:hover::before {
 
   .af-popup__close {
     right: 10px;
+  }
+
+  button[data-address="select-map"] {
+    font-size: 0;
+  }
+
+  button[data-address="select-map"]::before {
+    content: 'Выбрать на карте';
+    font-size: 16px;
   }
 
   .access-config__action > div {

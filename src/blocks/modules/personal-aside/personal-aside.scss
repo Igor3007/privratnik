@@ -41,7 +41,7 @@
                 }
 
                 &.is-active {
-                    & a {
+                    &>a {
                         background-color: #fff;
                         color: var(--blue-dark);
                     }
@@ -73,6 +73,7 @@
                                 font-weight: 500;
 
 
+                                &.is-active,
                                 &:hover {
 
                                     color: var(--blue-dark);
@@ -123,8 +124,8 @@
                         opacity: 1;
                     }
 
-                    & a {
-                        color: var(--text-01);
+                    &>a {
+                        color: var(--blue-dark);
                     }
                 }
             }

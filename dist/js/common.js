@@ -387,6 +387,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         btnBurger.addEventListener('click', e => {
             btnBurger.classList.toggle('open')
             menuBurger.classList.toggle('is-open')
+            document.body.classList.toggle('page-hidden')
         })
     }
 
