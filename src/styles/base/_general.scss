@@ -111,8 +111,9 @@ ul {
 }
 
 body.page-hidden {
-    overflow: hidden;
     touch-action: none;
+    overflow: hidden !important;
+    overscroll-behavior-y: none;
 }
 
 * {

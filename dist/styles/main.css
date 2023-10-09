@@ -87,8 +87,9 @@ ul {
 }
 
 body.page-hidden {
-  overflow: hidden;
   touch-action: none;
+  overflow: hidden !important;
+  overscroll-behavior-y: none;
 }
 
 * {
@@ -916,6 +917,8 @@ select {
   bottom: 100%;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .af-select.af-select--top .select-styled:active,
@@ -5849,12 +5852,17 @@ a[data-tooltip]:hover::before {
 
 @media screen and (max-width: 480px) {
   .select-options {
-    max-height: 50vh;
+    max-height: 155px;
   }
 
   .select-options li {
     font-size: 16px;
     max-width: 100%;
+  }
+
+  .af-select.af-select--top .select-styled:active,
+  .af-select.af-select--top .select-styled.active {
+    background-color: var(--bg-02);
   }
 
   .form__subitem.form__subitem--free {

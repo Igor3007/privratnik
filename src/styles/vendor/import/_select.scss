@@ -197,7 +197,7 @@ select {
     @media screen and (max-width: $w480) {
         // top: auto;
         // bottom: 0;
-        max-height: 50vh;
+        max-height: 155px;
         // margin: auto;
         // background-color: #fff;
     }
@@ -280,6 +280,10 @@ select {
         bottom: 100%;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+
     }
 
     & .select-styled:active,
@@ -290,6 +294,10 @@ select {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         transition: none;
+
+        @media screen and (max-width: $w480) {
+            background-color: var(--bg-02);
+        }
     }
 }
 
