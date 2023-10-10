@@ -275,3 +275,29 @@
         }
     }
 }
+
+.color-status {
+    &--red {
+        color: var(--red);
+    }
+
+    &--green {
+        color: var(--green);
+    }
+
+    &--orange {
+        color: var(--green);
+    }
+}
+
+.table-link {
+    & a {
+        color: var(--blue-dark);
+        font-weight: 600;
+
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

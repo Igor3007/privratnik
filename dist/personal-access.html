@@ -258,12 +258,254 @@
               </div>
             </div>
             <div class="personal-content__h1">Статистика доступа</div>
-            <div class="personal-content__action">
-              <div class="personal-content__add"><a href="#">
-                  <button class="btn">Добавить доступ</button></a></div>
+            <div class="personal-content__tabs">
+              <ul data-tab-center="">
+                <li class="is-active"><a href="personal-access.html">Открытия в реальном времени</a></li>
+                <li><a href="report-master.html">Мастер отчётов</a></li>
+              </ul>
             </div>
-            <div class="personal-content__main">
-              <div>Статистика доступа</div>
+            <div class="personal-content__h2">Открытия в режиме реального времени</div>
+            <div class="personal-content__desc">Смотрите открытия по созданным ранее доступам за день в режиме реального времени. Также вы можете выбрать метод открытия для удобства отображения.</div>
+            <div class="personal-content__action">
+              <div class="personal-content__methods">
+                <div class="link-dropdown link-dropdown--right">
+                  <div class="link-dropdown__title">Все методы открытия</div>
+                  <div class="link-dropdown__list">
+                    <ul>
+                      <li><a href="#">Номер телефона</a></li>
+                      <li><a href="#">Приложение</a></li>
+                      <li><a href="#">Госномер ТС</a></li>
+                      <li><a href="#">Пульт</a></li>
+                      <li><a href="#">RFID карта</a></li>
+                      <li><a href="#">RFID метка</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-content__tab-container">
+              <div class="personal-content__table">
+                <div class="table">
+                  <div class="table__tr">
+                    <div class="table__th">Дата/время<span class="table__sort"></span></div>
+                    <div class="table__th">
+                       Номер телефона<span class="table__sort"></span></div>
+                    <div class="table__th">
+                       Имя<span class="table__sort"></span></div>
+                    <div class="table__th">
+                       Парковка<span class="table__sort"></span></div>
+                    <div class="table__th">
+                       Статус доступа<span class="table__sort"></span></div>
+                    <div class="table__th">
+                       Ссылки на проезд<span class="table__sort"></span></div>
+                    <div class="table__th">Метод открытия  </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время"> 06.09.23, 13:06:02</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"><span class="bgimage lazyload" data-bg="/img/common/remote-device-call.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"> <span class="color-status--red">Отказано в доступе</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия с мобильного приложения"><span class="bgimage lazyload" data-bg="/img/common/remote-device-mobile-app.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--red">Отказано в доступе</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия по номеру авто"><span class="bgimage lazyload" data-bg="/img/common/remote-device-car-plate.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия c пульта ДУ"><span class="bgimage lazyload" data-bg="/img/common/remote-device-pult.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время"> 06.09.23, 13:06:02</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"><span class="bgimage lazyload" data-bg="/img/common/remote-device-call.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"> <span class="color-status--red">Отказано в доступе</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия с мобильного приложения"><span class="bgimage lazyload" data-bg="/img/common/remote-device-mobile-app.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--red">Отказано в доступе</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия по номеру авто"><span class="bgimage lazyload" data-bg="/img/common/remote-device-car-plate.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия c пульта ДУ"><span class="bgimage lazyload" data-bg="/img/common/remote-device-pult.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время"> 06.09.23, 13:06:02</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"><span class="bgimage lazyload" data-bg="/img/common/remote-device-call.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"> <span class="color-status--red">Отказано в доступе</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия с мобильного приложения"><span class="bgimage lazyload" data-bg="/img/common/remote-device-mobile-app.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--red">Отказано в доступе</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия по номеру авто"><span class="bgimage lazyload" data-bg="/img/common/remote-device-car-plate.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="table__tr">
+                    <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
+                    <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
+                    <div class="table__td" data-title="Имя">Тестовый Михаил</div>
+                    <div class="table__td" data-title="Код/адрес">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
+                    <div class="table__td" data-title="Ссылки на проезд">
+                                      <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
+                    </div>
+                    <div class="table__td" data-title="Метод открытия">
+                      <ul class="devices-access">
+                        <li><span class="tooltip--top" data-tooltip="Метод открытия c пульта ДУ"><span class="bgimage lazyload" data-bg="/img/common/remote-device-pult.svg"></span></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-content__pagination">
+              <div class="pagination pagination--showmore">
+                <div class="pagination__more"><a href="#">
+                    <button class="btn btn-line"><span>Показать ещё</span>
+                      <svg width="25" height="25">
+                        <use xlink:href="/img/sprites/sprite.svg#ic_arr-down"></use>
+                      </svg>
+                    </button></a></div>
+                <div class="pagination__page">
+                  <ul>
+                    <li class="next"><a href="#2">
+                        <svg width="48" height="48">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_prev-pagination"></use>
+                        </svg></a></li>
+                    <li class="active"><a href="#1">1</a></li>
+                    <li><a href="#2">2</a></li>
+                    <li class="next"><a href="#2">
+                        <svg width="48" height="48">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_next-pagination"></use>
+                        </svg></a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>

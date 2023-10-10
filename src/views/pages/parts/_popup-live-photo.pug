@@ -1,0 +1,37 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-live/popup-live.pug
+
+.popup-live
+     .popup-live__title Парковка на Болдина (фото)
+     .popup-live__desc 
+          ul
+               li 06.09.23, 13:06:02
+               li +7 (916) 261-19-17
+               li Тестовый Михаил
+               li: span.color-status--green Доступ предоставлен
+     .popup-live__slider
+          .splide(data-slider="live-photo")
+               .splide__track
+                    .splide__list
+                         .splide__slide
+                              +picture('/img/common/live-image1')
+                         .splide__slide
+                              +picture('/img/common/live-image1')
+                         .splide__slide
+                              +picture('/img/common/live-image1')
+                         .splide__slide
+                              +picture('/img/common/live-image1')
+     .popup-live__bottom
+          .popup-live__video(data-popup="live-video")
+               +icons('#ic_play')
+               span Смотреть видео
+          .popup-live__nav
+               .popup-live__nav-prev(data-slider-prev="live-photo"): +icons('#ic_prev-pagination', 48) 
+               .popup-live__nav-slides 
+                    span(data-slider-counter="current") 1
+                    | -
+                    span(data-slider-counter="all") 4
+               .popup-live__nav-prev(data-slider-next="live-photo"): +icons('#ic_next-pagination', 48) 
+          
+
+

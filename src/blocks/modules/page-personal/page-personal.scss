@@ -1,7 +1,9 @@
 .page-personal {
+
     display: flex;
     height: 100%;
-
+    max-width: 2048px;
+    margin: 0 auto;
 
     @media screen and (min-width: $w1376) {
         padding: 0 16px;

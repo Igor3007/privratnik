@@ -4,6 +4,7 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/components/pagination/pagination.pug
 
 block variables
     include ../../data/data.pug
@@ -25,13 +26,111 @@ block content
           'Статистика доступа',
         ])
     .personal-content__h1 Статистика доступа
-    .personal-content__action
-        .personal-content__add
-          a(href='#'): button.btn Добавить доступ
-    .personal-content__main
-        div Статистика доступа
+    .personal-content__tabs
+      ul(data-tab-center="")
+        li.is-active: a(href="personal-access.html") Открытия в реальном времени
+        li: a(href="report-master.html") Мастер отчётов
 
-    
+    .personal-content__h2 Открытия в режиме реального времени
+    .personal-content__desc Смотрите открытия по созданным ранее доступам за день в режиме реального времени. Также вы можете выбрать метод открытия для удобства отображения.
+    .personal-content__action
+        .personal-content__methods
+          .link-dropdown.link-dropdown--right
+            .link-dropdown__title Все методы открытия
+            .link-dropdown__list
+              ul
+                li: a(href='#') Номер телефона
+                li: a(href='#') Приложение
+                li: a(href='#') Госномер ТС
+                li: a(href='#') Пульт
+                li: a(href='#') RFID карта
+                li: a(href='#') RFID метка
+
+ 
+
+    .personal-content__tab-container
+      .personal-content__table
+
+        mixin photo-video
+          .table-link
+            a(href='#' data-popup="live-photo") Фото/
+            a(href='#' data-popup="live-video") Видео
+
+        .table
+          .table__tr
+              .table__th
+                | Дата/время
+                span.table__sort
+              .table__th 
+                | Номер телефона
+                span.table__sort
+              .table__th 
+                | Имя
+                span.table__sort
+              .table__th 
+                | Парковка
+                span.table__sort
+              .table__th 
+                | Статус доступа
+                span.table__sort
+              .table__th 
+                | Ссылки на проезд
+                span.table__sort
+              .table__th Метод открытия  
+          
+          each item in [1,1,1]
+
+            .table__tr
+              .table__td(data-title="Дата/время")  06.09.23, 13:06:02
+              .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+              .table__td(data-title="Имя") Тестовый Михаил
+              .table__td(data-title="Код/адрес") Парковка на Болдина
+              .table__td(data-title="Статус доступа")
+                span.color-status--green Доступ предоставлен
+              .table__td(data-title="Ссылки на проезд"): +photo-video()    
+              .table__td(data-title="Метод открытия")
+                ul.devices-access
+                  li: span( class="tooltip--top" data-tooltip="Метод открытия позвонив на номер телефона"): +bgimage('/img/common/remote-device-call.svg') 
+
+            .table__tr
+              .table__td(data-title="Дата/время") 06.09.23, 13:05:11
+              .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+              .table__td(data-title="Имя") Тестовый Михаил
+              .table__td(data-title="Код/адрес") Парковка на Болдина
+              .table__td(data-title="Статус доступа") 
+                span.color-status--red Отказано в доступе
+              .table__td(data-title="Ссылки на проезд"): +photo-video()
+              .table__td(data-title="Метод открытия")
+                ul.devices-access
+                  li: span( class="tooltip--top" data-tooltip="Метод открытия с мобильного приложения"): +bgimage('/img/common/remote-device-mobile-app.svg')
+
+            .table__tr
+              .table__td(data-title="Дата/время") 06.09.23, 13:05:11
+              .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+              .table__td(data-title="Имя") Тестовый Михаил
+              .table__td(data-title="Код/адрес") Парковка на Болдина
+              .table__td(data-title="Статус доступа")
+                span.color-status--red Отказано в доступе
+              .table__td(data-title="Ссылки на проезд"): +photo-video()
+              .table__td(data-title="Метод открытия")
+                  ul.devices-access
+                    li: span( class="tooltip--top" data-tooltip="Метод открытия по номеру авто"): +bgimage('/img/common/remote-device-car-plate.svg')
+
+            .table__tr
+              .table__td(data-title="Дата/время") 06.09.23, 13:05:11
+              .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+              .table__td(data-title="Имя") Тестовый Михаил
+              .table__td(data-title="Код/адрес") Парковка на Болдина
+              .table__td(data-title="Статус доступа")
+                span.color-status--green Доступ предоставлен
+              .table__td(data-title="Ссылки на проезд"): +photo-video()
+              .table__td(data-title="Метод открытия")
+                  ul.devices-access
+                    li: span( class="tooltip--top" data-tooltip="Метод открытия c пульта ДУ"): +bgimage('/img/common/remote-device-pult.svg')
+
+    .personal-content__pagination
+      +pagination-showmore()
+
 
 
 block scripts

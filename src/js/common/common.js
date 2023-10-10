@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         startTimer(duration, display) {
             let timer = duration,
                 minutes, seconds;
-            let instanseTimer = setInterval(() => {
+            let instanceTimer = setInterval(() => {
 
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 display.textContent = '(' + (minutes == '00' ? '' : minutes + ":") + seconds + ' сек)';
 
                 if (--timer < 0) {
-                    clearInterval(instanseTimer)
+                    clearInterval(instanceTimer)
                     display.parentNode.removeAttribute('disabled')
                     display.remove()
                 }
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //         }
     //     }
 
-    //     window.menuInstanse = new mobileMenu({
+    //     window.menuinstance = new mobileMenu({
     //         elButton,
     //         elContainer
     //     })
@@ -926,7 +926,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             startTimer(duration, display) {
                 let timer = duration,
                     minutes, seconds;
-                let instanseTimer = setInterval(() => {
+                let instanceTimer = setInterval(() => {
 
                     minutes = parseInt(timer / 60, 10);
                     seconds = parseInt(timer % 60, 10);
@@ -937,7 +937,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     display.textContent = minutes + ":" + seconds;
 
                     if (--timer < 0) {
-                        clearInterval(instanseTimer)
+                        clearInterval(instanceTimer)
                         this.repeatSendCode(display.closest('button'))
                     }
                 }, 1000);
@@ -1123,7 +1123,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }, (status, response) => {
 
 
-                    addParkingPopup.open(response, (instanse) => {
+                    addParkingPopup.open(response, (instance) => {
                         const selectCustom = new afSelect({
                             selector: 'select',
                             on: {
@@ -1148,11 +1148,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                         // init suggest
 
-                        if (instanse.querySelectorAll('.input--suggest')) {
+                        if (instance.querySelectorAll('.input--suggest')) {
 
                             window.loadApiYmaps((ymaps) => {
 
-                                instanse.querySelectorAll('.input--suggest input').forEach((input) => {
+                                instance.querySelectorAll('.input--suggest input').forEach((input) => {
 
                                     new inputSuggest({
                                         elem: input,
@@ -1345,9 +1345,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 mobileInBottom: true
             })
 
-            this.popup.open(this.getTemplate(), (instanse) => {
+            this.popup.open(this.getTemplate(), (instance) => {
                 this.mapInit()
-                this.inputSearch = instanse.querySelector('[data-suggest="input"]')
+                this.inputSearch = instance.querySelector('[data-suggest="input"]')
                 this.addEventInput()
             })
 
@@ -1435,7 +1435,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ======================================*/
 
     function initPopupDevice(response, addDevice) {
-        addDevice.open(response, (instanse) => {
+        addDevice.open(response, (instance) => {
             const selectCustom = new afSelect({
                 selector: 'select'
             })
@@ -1443,11 +1443,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
             selectCustom.init()
 
             // init suggest
-            if (instanse.querySelectorAll('.input--suggest')) {
+            if (instance.querySelectorAll('.input--suggest')) {
 
                 window.loadApiYmaps((ymaps) => {
 
-                    instanse.querySelectorAll('.input--suggest input').forEach((input) => {
+                    instance.querySelectorAll('.input--suggest input').forEach((input) => {
 
                         new inputSuggest({
                             elem: input,
@@ -1506,8 +1506,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             //select address on map
 
             if (document.querySelector('[data-address="select-map"]')) {
-                const openMap = instanse.querySelector('[data-address="select-map"]')
-                const coordinatesInput = instanse.querySelector('[data-address="coordinates"]')
+                const openMap = instance.querySelector('[data-address="select-map"]')
+                const coordinatesInput = instance.querySelector('[data-address="coordinates"]')
 
                 openMap.addEventListener('click', e => {
                     e.preventDefault()
@@ -1521,7 +1521,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                 coordinatesInput.value = e.coordinates.join(',')
                                 coordinatesInput.parentNode.style.display = 'block'
                                 openMap.innerText = 'Изменить геометку'
-                                instanse.querySelector('[data-suggest="input"]').value = e.address
+                                instance.querySelector('[data-suggest="input"]').value = e.address
                             }
                         }
                     })
@@ -1532,8 +1532,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             //mask for MAC address
 
-            if (instanse.querySelector('[data-mac-mask]')) {
-                new MaskInput(instanse.querySelector('[data-mac-mask]'), {
+            if (instance.querySelector('[data-mac-mask]')) {
+                new MaskInput(instance.querySelector('[data-mac-mask]'), {
                     mask: '**-**-**-**-**-**',
                 })
             }
@@ -1600,10 +1600,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function initPopupAccessScripts(response, addScript) {
 
-        addScript.open(response, (instanse) => {
+        addScript.open(response, (instance) => {
 
             // mask on time
-            instanse.querySelectorAll("[data-input-mask='time']").forEach(inputTime => {
+            instance.querySelectorAll("[data-input-mask='time']").forEach(inputTime => {
                 new MaskInput(inputTime, {
 
                     mask: (value) => {
@@ -1674,7 +1674,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function initPopupAccessGroup(response, popup) {
 
-        popup.open(response, (instanse) => {
+        popup.open(response, (instance) => {
 
         })
 
@@ -1712,7 +1712,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function initPopupAccessRights(response, popup) {
 
-        popup.open(response, (instanse) => {
+        popup.open(response, (instance) => {
 
             //init select 
             const selectCustom = new afSelect({
@@ -1799,7 +1799,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function initPopupAccessUsersList(response, popup) {
 
-        popup.open(response, (instanse) => {
+        popup.open(response, (instance) => {
 
             //init select 
             const selectCustom = new afSelect({
@@ -1924,21 +1924,121 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
     }
 
-    if (document.querySelector('.personal-content__tabs ul')) {
-        let container = document.querySelector('.personal-content__tabs ul')
+    if (document.querySelector('[data-tab-center]')) {
+        let container = document.querySelector('[data-tab-center]')
         let elem = container.querySelector('.is-active')
 
         scrollToElem(elem, container)
     }
 
-}); //domContentLoaded
+    /* ==================================
+    data-popup="live-photo"
+    ================================== */
 
-/* 
-    http://privratnik.promicom.xyz/access-onetime.html
-    http://privratnik.promicom.xyz/access-rights.html
-    http://privratnik.promicom.xyz/access-script.html
-    http://privratnik.promicom.xyz/access-users-list.html
-    http://privratnik.promicom.xyz/access-users.html
-    http://privratnik.promicom.xyz/group-list.html
-    http://privratnik.promicom.xyz/personal-device.html
-*/
+    if (document.querySelector('[data-popup="live-photo"]')) {
+
+        function popupLivePhoto() {
+            const popupLivePhoto = new afLightbox({
+                mobileInBottom: true
+            })
+
+            window.ajax({
+                type: 'GET',
+                url: '/parts/_popup-live-photo.html'
+            }, (status, response) => {
+
+                popupLivePhoto.open(response, (instance) => {
+
+                    //init slider
+                    const splide = new Splide('[data-slider="live-photo"]', {
+                        arrows: false,
+                        pagination: false
+                    });
+
+                    function splideCounter(newIndex) {
+                        const currentSlide = document.querySelector('[data-slider-counter="current"]')
+                        const allSlides = document.querySelector('[data-slider-counter="all"]')
+                        currentSlide.innerText = (newIndex + 1)
+                        allSlides.innerText = splide.root.querySelectorAll('.splide__slide').length
+                    }
+
+                    splide.on('move', function (newIndex) {
+                        splideCounter(newIndex)
+                    });
+                    splide.on('mounted', function (newIndex) {
+                        splideCounter(0)
+                    });
+
+                    splide.mount();
+
+                    const prev = document.querySelector('[data-slider-prev="live-photo"]')
+                    const next = document.querySelector('[data-slider-next="live-photo"]')
+
+                    prev.addEventListener('click', e => splide.go('<'))
+                    next.addEventListener('click', e => splide.go('>'))
+
+                    //event click
+
+                    if (instance.querySelector('[data-popup="live-video"]')) {
+                        instance.querySelector('[data-popup="live-video"]').addEventListener('click', e => {
+                            popupLiveVideo()
+                            popupLivePhoto.close()
+                        })
+                    }
+
+                })
+            })
+        }
+
+        const buttons = document.querySelectorAll('[data-popup="live-photo"]')
+        buttons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                popupLivePhoto()
+            })
+        })
+
+
+
+    }
+
+    /* ==================================
+    data-popup="live-video"
+    ================================== */
+
+    if (document.querySelector('[data-popup="live-video"]')) {
+
+        function popupLiveVideo() {
+            const popupLiveVideo = new afLightbox({
+                mobileInBottom: true
+            })
+
+            window.ajax({
+                type: 'GET',
+                url: '/parts/_popup-live-video.html'
+            }, (status, response) => {
+
+                popupLiveVideo.open(response, (instance) => {
+
+                    if (instance.querySelector('[data-popup="live-photo"]')) {
+                        instance.querySelector('[data-popup="live-photo"]').addEventListener('click', e => {
+                            popupLivePhoto()
+                            popupLiveVideo.close()
+                        })
+                    }
+
+                })
+            })
+        }
+
+        const buttons = document.querySelectorAll('[data-popup="live-video"]')
+        buttons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                popupLiveVideo()
+            })
+        })
+
+
+
+    }
+
+}); //domContentLoaded
