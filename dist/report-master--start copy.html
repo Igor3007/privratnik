@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Привратник - Сценарии доступа</title>
+    <title>Привратник - Статистика доступа</title>
     <meta name="theme-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -93,7 +93,7 @@
                   </li>
                   <li><a href="personal-parkings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-parking.svg)" ></span>Мои парковки</a>
                   </li>
-                  <li class="is-active  is-sub-menu  is-open"><a href="personal-settings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-settings.svg)" ></span>Настройки доступа</a>
+                  <li class=" is-sub-menu"><a href="personal-settings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-settings.svg)" ></span>Настройки доступа</a>
                     <ul class="sub-menu">
                       <li><a href="access-script.html">Сценарии доступа</a></li>
                       <li><a href="access-users.html">Список пользователей</a></li>
@@ -101,7 +101,7 @@
                       <li><a href="access-onetime.html">Разовые/временные пропуски</a></li>
                     </ul>
                   </li>
-                  <li><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
+                  <li class="is-active"><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
                   </li>
                   <li><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
                   </li>
@@ -245,97 +245,68 @@
               <div class="breadcrumb">
                 <ul>
                   <li><a href="/">Общая информация</a></li>
-                  <li><a href="#">Настройки доступа</a></li>
-                  <li><span>Сценарии доступа</span></li>
+                  <li><span>Статистика доступа</span></li>
                 </ul>
               </div>
             </div>
-            <div class="personal-content__h1">Настройки доступа</div>
+            <div class="personal-content__h1">Статистика доступа</div>
             <div class="personal-content__tabs">
               <ul data-tab-center="">
-                <li class="is-active"><a href="access-script.html">Сценарии доступа</a></li>
-                <li><a href="access-users.html">Список пользователей</a></li>
-                <li><a href="group-list.html">Список групп</a></li>
-                <li><a href="access-rights.html">Права доступа</a></li>
-                <li><a href="access-onetime.html">Разовые/временные пропуски</a></li>
+                <li><a href="personal-access.html">Открытия в реальном времени</a></li>
+                <li class="is-active"><a href="report-master.html">Мастер отчётов</a></li>
               </ul>
             </div>
-            <div class="personal-content__tab-container">
-              <div class="access-config">
-                <div class="access-config__title">Сценарии доступа</div>
-                <div class="access-config__desc">Создание сценариев доступа для пользователей из раздела <a href="/access-users.html">«Список пользователей»</a>. В разделе <a href="/access-rights.html">«Права доступа» </a>эти сценарии добавляются к пользователям и группам пользователей.</div>
-                <div class="access-config__action">
-                  <div class="access-config__add">
-                    <button class="btn btn--add" data-script="add">Добавить сценарий</button>
-                  </div>
-                </div>
-                <div class="access-config__table">
-                  <div class="table-radius-wrapper">
-                    <div class="table">
-                      <div class="table__tr">
-                        <div class="table__th">Номер и название сценария</div>
-                        <div class="table__th">Методы открытия</div>
-                        <div class="table__th">График действия</div>
-                        <div class="table__th">Дополнительные сервисы</div>
-                        <div class="table__th">Действия</div>
-                      </div>
-                      <div class="table__tr">
-                        <div class="table__td" data-title="Номер и название сценария"><strong>0. Сценарий по умолчанию</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
-                        <div class="table__td" data-title="Методы открытия">Телефонный вызов, Мобильное приложение, По госномеру</div>
-                        <div class="table__td" data-title="График действия">Все дни: Любое время (пример, когда дни не выбраны, время не прописано)</div>
-                        <div class="table__td" data-title="Дополнительные сервисы">Создавать временные/разовые пропуски, Доступ к видеотрансляции</div>
-                        <div class="table__td" data-title="Действия">-</div>
-                      </div>
-                      <div class="table__tr">
-                        <div class="table__td" data-title="Номер и название сценария"><strong>1. Полный запрет</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
-                        <div class="table__td" data-title="Методы открытия">-</div>
-                        <div class="table__td" data-title="График действия">-</div>
-                        <div class="table__td" data-title="Дополнительные сервисы">-</div>
-                        <div class="table__td" data-title="Действия">-</div>
-                      </div>
-                      <div class="table__tr">
-                        <div class="table__td" data-title="Номер и название сценария"><strong>2. Сценарий для жильцов</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
-                        <div class="table__td" data-title="Методы открытия">По госномеру</div>
-                        <div class="table__td" data-title="График действия">ПН: 08:00-12:00, 18:00-22:00; ВТ: 10:00-20:00; СР; ЧТ; ПТ</div>
-                        <div class="table__td" data-title="Дополнительные сервисы">-</div>
-                        <div class="table__td" data-title="Действия">
-                          <ul class="table-action">
-                            <li>
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
-                              </svg>
-                            </li>
-                            <li class="row-remove" data-script="remove">
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
-                              </svg>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="table__tr">
-                        <div class="table__td" data-title="Номер и название сценария"><strong>3. Сценарий для спецтранспорта</strong><small>Создан: 06.09.23, 10:11:11, Создавший</small><small>Изменен: 07.09.23, 10:20:22, Изменивший</small></div>
-                        <div class="table__td" data-title="Методы открытия">Телефонный вызов, Мобильное приложение, По госномеру</div>
-                        <div class="table__td" data-title="График действия">Все дни: Любое время (пример, когда дни не выбраны, время не прописано)</div>
-                        <div class="table__td" data-title="Дополнительные сервисы">Создавать временные/разовые пропуски, Доступ к видеотрансляции</div>
-                        <div class="table__td" data-title="Действия">
-                          <ul class="table-action">
-                            <li>
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
-                              </svg>
-                            </li>
-                            <li class="row-remove" data-script="remove">
-                              <svg width="22" height="22">
-                                <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
-                              </svg>
-                            </li>
-                          </ul>
-                        </div>
+            <div class="personal-content__h2">Мастер отчётов</div>
+            <div class="personal-content__desc">Легко формируйте отчёты по количеству попыток доступа за период, распределению доступа по времени суток, смотрите фото и видео проездов и другое. <br> Также вы сможете выгрузить отчёты в формате Excel-файла.</div>
+            <div class="report-master">
+              <div class="report-master__form">
+                <form action="#" method="GET">
+                  <div class="report-filter">
+                    <div class="report-filter__field">
+                      <label>Начало</label>
+                      <div class="report-filter__date">
+                        <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="start"/>
+                        <select placeholder="Время" data-find="false">
+                          <option value="0">01:00</option>
+                          <option value="0">02:00</option>
+                          <option value="0">03:00</option>
+                          <option value="0">04:00</option>
+                          <option value="0">05:00</option>
+                          <option value="0">06:00</option>
+                          <option value="0">07:00</option>
+                        </select>
                       </div>
                     </div>
+                    <div class="report-filter__field">
+                      <label>Окончание</label>
+                      <div class="report-filter__date">
+                        <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="end"/>
+                        <select placeholder="Время" data-find="false">
+                          <option value="0">01:00</option>
+                          <option value="0">02:00</option>
+                          <option value="0">03:00</option>
+                          <option value="0">04:00</option>
+                          <option value="0">05:00</option>
+                          <option value="0">06:00</option>
+                          <option value="0">07:00</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="report-filter__field">
+                      <label>Тип отчёта</label>
+                      <select placeholder="Выберите тип">
+                        <option value="0">Количество попыток доступа за период по объектам</option>
+                        <option value="0">Распределение доступа по времени суток</option>
+                        <option value="0">Просмотр фото и видео проездов</option>
+                        <option value="0">Отчет по методам открытия</option>
+                        <option value="0">Отчёт по разовым/временным пропускам</option>
+                      </select>
+                    </div>
+                    <div class="report-filter__field report-filter__field--submit">
+                      <button class="btn">Получить отчёт</button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

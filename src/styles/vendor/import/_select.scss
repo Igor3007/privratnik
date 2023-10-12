@@ -2,7 +2,7 @@ $background: none;
 $select-color: #fff;
 $select-background: #ECF0F5;
 $select-width: 100%;
-$select-height: auto;
+$select-height: 48px;
 $bg-gray: #ECF0F5;
 
 // .af-select-open {
@@ -34,18 +34,14 @@ select {
     color: $select-color;
     width: $select-width;
     min-width: rem(150);
-
     height: $select-height;
-
-    @media screen and (max-width: $w1200) {
-        height: rem(45);
-    }
 
     &--selected {
         & .select-styled span {
             color: var(--text-01);
         }
     }
+
 }
 
 // .af-selected-placeholder::before {
@@ -144,6 +140,7 @@ select {
     min-width: 100%;
     width: auto;
     border-radius: 0 0 6px 6px;
+    max-width: 100%;
 
     & input[type="text"] {
         width: 100% !important;
@@ -222,8 +219,8 @@ select {
         // transition: all 0.15s ease-in;
         font-size: 14px;
         margin: 2px 0;
-        white-space: nowrap;
-        max-width: 300px;
+        //white-space: nowrap;
+        max-width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
         position: relative;

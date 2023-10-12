@@ -1,0 +1,101 @@
+mixin report-master
+    .report-master
+      .report-master__form
+        form(action='/report-master--result.html' method='GET')
+          .report-filter
+            .report-filter__field
+              label Начало
+              .report-filter__date
+                  input(type="text" placeholder="Дата" data-input="datepicker" data-datepicker="start")
+                  select(placeholder="Время" data-find="false")
+                      option(value="0") 01:00
+                      option(value="0") 02:00
+                      option(value="0") 03:00
+                      option(value="0") 04:00
+                      option(value="0") 05:00
+                      option(value="0") 06:00
+                      option(value="0") 07:00
+            .report-filter__field
+              label Окончание
+              .report-filter__date
+                  input(type="text" placeholder="Дата" data-input="datepicker" data-datepicker="end")
+                  select(placeholder="Время" data-find="false")
+                      option(value="0") 01:00
+                      option(value="0") 02:00
+                      option(value="0") 03:00
+                      option(value="0") 04:00
+                      option(value="0") 05:00
+                      option(value="0") 06:00
+                      option(value="0") 07:00
+            .report-filter__field
+              label Тип отчёта
+              select(placeholder="Выберите тип" class="report-type")
+                option(value="/report-master--result.html") Количество попыток доступа за период по объектам
+                option(value="/report-master--result-ontime.html") Распределение доступа по времени суток
+                option(value="/report-master--result-photo.html") Распределение доступа по времени суток
+                option(value="/report-master--result-methods.html") Распределение доступа по времени суток
+                option(value="0") Просмотр фото и видео проездов
+                option(value="0") Отчет по методам открытия
+                option(value="0") Отчёт по разовым/временным пропускам
+            .report-filter__field.report-filter__field--submit
+              button.btn Получить отчёт
+
+mixin report-service
+  .report-service
+    .report-service__icon: +bgimage('/img/common/connect.svg')
+    .report-service__main
+      .report-service__title Услуга не подключена
+      .report-service__desc Перейдите в раздел «Услуги» с помощью кнопки «Подключить услугу» и активируйте то, что вас интересует.
+    .report-service__btn
+      a(href='/report-master--start.html'): button.btn.btn--add Подключить услугу
+
+
+mixin report-result
+  .report-result
+    .report-result__title Количество попыток доступа за период по объектам
+    .report-result__action
+      .report-result__item
+        select(placeholder="Все парковки")
+          option(value="0") Парковка на Болдина
+          option(value="0") Парковка 2
+          option(value="0") Парковка 3
+          option(value="0") Парковка 4
+          option(value="0") Парковка 5
+      .report-result__item
+        select(placeholder="Все пользователи и группы")
+          option(value="0") Парковка на Болдина
+          option(value="0") Парковка 2
+          option(value="0") Парковка 3
+          option(value="0") Парковка 4
+          option(value="0") Парковка 5
+      .report-result__item.report-result__item--export
+        a(href='#'): button.btn.btn-line Экспорт отчёта в Excel
+    .report-result__table
+      .table-radius-wrapper
+            .table.table--report
+              .table__tr
+                  .table__th 
+                    |  Парковка
+                    span.table__sort
+                  .table__th 
+                    |  Имя
+                    span.table__sort
+                  .table__th 
+                    |  Номер телефона
+                    span.table__sort
+                  .table__th 
+                    |  Количество попыток (удачных/отказ)
+                    span.table__sort
+
+              .table__tr
+                .table__td(data-title="Парковка") Парковка на Болдина
+                .table__td(data-title="Имя") Тестовый Михаил
+                .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+                .table__td(data-title="Количество попыток (удачных/отказ)") 16/0
+              each item in [1,1,1,1,1,1,1,1]
+                .table__tr
+                  .table__td(data-title="Парковка") ВАО-22-01
+                  .table__td(data-title="Имя") Тестовый Михаил
+                  .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+                  .table__td(data-title="Количество попыток (удачных/отказ)") 2/0
+    .report-result__pagination: +pagination-showmore()

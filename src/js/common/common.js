@@ -1928,7 +1928,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let container = document.querySelector('[data-tab-center]')
         let elem = container.querySelector('.is-active')
 
-        scrollToElem(elem, container)
+        setTimeout(() => {
+            scrollToElem(elem, container)
+        }, 100)
     }
 
     /* ==================================
@@ -2040,5 +2042,51 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
     }
+
+    /* ===================================
+    datepicker
+    ===================================*/
+
+    if (document.querySelector('[data-input="datepicker"]')) {
+
+        (function () {
+            Datepicker.locales.ru = {
+                days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+                daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
+                daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+                months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                today: "Сегодня",
+                clear: "Очистить",
+                format: "dd.mm.yyyy",
+                weekStart: 1,
+                monthsTitle: 'Месяцы'
+            }
+        })();
+
+        const elem = document.querySelector('.report-filter')
+
+        const datepicker = new DateRangePicker(elem, {
+            autohide: true,
+            language: 'ru',
+            inputs: [
+                elem.querySelector('[data-datepicker="start"]'),
+                elem.querySelector('[data-datepicker="end"]'),
+            ]
+        });
+    }
+
+    /* =============================
+    report
+    =============================*/
+
+    if (document.querySelector('.report-type')) {
+        document.querySelector('.report-type').addEventListener('change', e => {
+            window.location.href = e.target.value
+        })
+    }
+
+
+
 
 }); //domContentLoaded
