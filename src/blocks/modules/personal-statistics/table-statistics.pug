@@ -1,0 +1,77 @@
+mixin photo-video
+    .table-link
+        a(href='#' data-popup="live-photo") Фото/
+        a(href='#' data-popup="live-video") Видео
+
+mixin table-access
+    .table
+        .table__tr
+            .table__th
+                | Дата/время
+                span.table__sort
+            .table__th 
+                | Номер телефона
+                span.table__sort
+            .table__th 
+                | Имя
+                span.table__sort
+            .table__th 
+                | Парковка
+                span.table__sort
+            .table__th 
+                | Статус доступа
+                span.table__sort
+            .table__th 
+                | Ссылки на проезд
+                span.table__sort
+            .table__th Метод открытия  
+        
+        each item in [1,1,1]
+
+            .table__tr
+                .table__td(data-title="Дата/время")  06.09.23, 13:06:02
+                .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+                .table__td(data-title="Имя") Тестовый Михаил
+                .table__td(data-title="Парковка") Парковка на Болдина
+                .table__td(data-title="Статус доступа")
+                    span.color-status--green Доступ предоставлен
+                .table__td(data-title="Ссылки на проезд"): +photo-video()    
+                .table__td(data-title="Метод открытия")
+                    ul.devices-access
+                        li: span( class="tooltip--top tooltip--right" data-tooltip="Метод открытия позвонив на номер телефона"): +bgimage('/img/common/remote-device-call.svg') 
+
+            .table__tr
+                .table__td(data-title="Дата/время") 06.09.23, 13:05:11
+                .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+                .table__td(data-title="Имя") Тестовый Михаил
+                .table__td(data-title="Парковка") Парковка на Болдина
+                .table__td(data-title="Статус доступа") 
+                    span.color-status--red Отказано в доступе
+                .table__td(data-title="Ссылки на проезд"): +photo-video()
+                .table__td(data-title="Метод открытия")
+                    ul.devices-access
+                        li: span( class="tooltip--top tooltip--right" data-tooltip="Метод открытия с мобильного приложения"): +bgimage('/img/common/remote-device-mobile-app.svg')
+
+            .table__tr
+                .table__td(data-title="Дата/время") 06.09.23, 13:05:11
+                .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+                .table__td(data-title="Имя") Тестовый Михаил
+                .table__td(data-title="Парковка") Парковка на Болдина
+                .table__td(data-title="Статус доступа")
+                    span.color-status--red Отказано в доступе
+                .table__td(data-title="Ссылки на проезд"): +photo-video()
+                .table__td(data-title="Метод открытия")
+                    ul.devices-access
+                        li: span( class="tooltip--top tooltip--right" data-tooltip="Метод открытия по номеру авто"): +bgimage('/img/common/remote-device-car-plate.svg')
+
+            .table__tr
+                .table__td(data-title="Дата/время") 06.09.23, 13:05:11
+                .table__td(data-title="Номер телефона") +7 (916) 261-19-17
+                .table__td(data-title="Имя") Тестовый Михаил
+                .table__td(data-title="Парковка") Парковка на Болдина
+                .table__td(data-title="Статус доступа")
+                    span.color-status--green Доступ предоставлен
+                .table__td(data-title="Ссылки на проезд"): +photo-video()
+                .table__td(data-title="Метод открытия")
+                    ul.devices-access
+                        li: span( class="tooltip--top tooltip--right" data-tooltip="Метод открытия c пульта ДУ"): +bgimage('/img/common/remote-device-pult.svg')

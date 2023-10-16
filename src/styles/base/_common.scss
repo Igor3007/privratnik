@@ -54,6 +54,15 @@ a[data-tooltip] {
         }
     }
 
+    &.tooltip--right {
+        &::before {
+            right: 0;
+            left: auto;
+            transform: none;
+            border-bottom-right-radius: 0;
+        }
+    }
+
 
 
 }

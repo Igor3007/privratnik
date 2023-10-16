@@ -1,0 +1,40 @@
+.popup-common {
+    padding: 24px 12px;
+    max-width: 1200px;
+
+    @media screen and (min-width: $w480) {
+        padding: 24px;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    &__desc {
+        padding-bottom: 15px;
+        text-align: center;
+        color: var(--text-02);
+        line-height: 135%;
+    }
+
+    &__fields {
+        & .btn {
+            width: 100%;
+        }
+
+        & .form {
+            &__tabs {
+                & .checkbox {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    &__table {
+        padding-bottom: 24px;
+    }
+}

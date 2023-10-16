@@ -249,7 +249,7 @@
                 </ul>
               </div>
             </div>
-            <div class="personal-content__h1">Статистика доступа</div>
+            <div class="personal-content__h1">Статистика доступа - onetime</div>
             <div class="personal-content__tabs">
               <ul data-tab-center="">
                 <li><a href="personal-access.html">Открытия в реальном времени</a></li>
@@ -260,20 +260,37 @@
             <div class="personal-content__desc">Легко формируйте отчёты по количеству попыток доступа за период, распределению доступа по времени суток, смотрите фото и видео проездов и другое. <br> Также вы сможете выгрузить отчёты в формате Excel-файла.</div>
             <div class="report-master">
               <div class="report-master__form">
-                <form action="#" method="GET">
+                <form action="/report-master--result-byobject.html" method="GET">
                   <div class="report-filter">
                     <div class="report-filter__field">
                       <label>Начало</label>
                       <div class="report-filter__date">
                         <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="start"/>
                         <select placeholder="Время" data-find="false">
-                          <option value="0">01:00</option>
-                          <option value="0">02:00</option>
-                          <option value="0">03:00</option>
-                          <option value="0">04:00</option>
-                          <option value="0">05:00</option>
-                          <option value="0">06:00</option>
-                          <option value="0">07:00</option>
+                          <option value="0">0:00</option>
+                          <option value="0">1:00</option>
+                          <option value="0">2:00</option>
+                          <option value="0">3:00</option>
+                          <option value="0">4:00</option>
+                          <option value="0">5:00</option>
+                          <option value="0">6:00</option>
+                          <option value="0">7:00</option>
+                          <option value="0">8:00</option>
+                          <option value="0">9:00</option>
+                          <option value="0">10:00</option>
+                          <option value="0">11:00</option>
+                          <option value="0">12:00</option>
+                          <option value="0">13:00</option>
+                          <option value="0">14:00</option>
+                          <option value="0">15:00</option>
+                          <option value="0">16:00</option>
+                          <option value="0">17:00</option>
+                          <option value="0">18:00</option>
+                          <option value="0">19:00</option>
+                          <option value="0">20:00</option>
+                          <option value="0">21:00</option>
+                          <option value="0">22:00</option>
+                          <option value="0">23:00</option>
                         </select>
                       </div>
                     </div>
@@ -282,24 +299,41 @@
                       <div class="report-filter__date">
                         <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="end"/>
                         <select placeholder="Время" data-find="false">
-                          <option value="0">01:00</option>
-                          <option value="0">02:00</option>
-                          <option value="0">03:00</option>
-                          <option value="0">04:00</option>
-                          <option value="0">05:00</option>
-                          <option value="0">06:00</option>
-                          <option value="0">07:00</option>
+                          <option value="0">0:00</option>
+                          <option value="0">1:00</option>
+                          <option value="0">2:00</option>
+                          <option value="0">3:00</option>
+                          <option value="0">4:00</option>
+                          <option value="0">5:00</option>
+                          <option value="0">6:00</option>
+                          <option value="0">7:00</option>
+                          <option value="0">8:00</option>
+                          <option value="0">9:00</option>
+                          <option value="0">10:00</option>
+                          <option value="0">11:00</option>
+                          <option value="0">12:00</option>
+                          <option value="0">13:00</option>
+                          <option value="0">14:00</option>
+                          <option value="0">15:00</option>
+                          <option value="0">16:00</option>
+                          <option value="0">17:00</option>
+                          <option value="0">18:00</option>
+                          <option value="0">19:00</option>
+                          <option value="0">20:00</option>
+                          <option value="0">21:00</option>
+                          <option value="0">22:00</option>
+                          <option value="0">23:00</option>
                         </select>
                       </div>
                     </div>
                     <div class="report-filter__field">
                       <label>Тип отчёта</label>
-                      <select placeholder="Выберите тип">
-                        <option value="0">Количество попыток доступа за период по объектам</option>
-                        <option value="0">Распределение доступа по времени суток</option>
-                        <option value="0">Просмотр фото и видео проездов</option>
-                        <option value="0">Отчет по методам открытия</option>
-                        <option value="0">Отчёт по разовым/временным пропускам</option>
+                      <select class="report-type" placeholder="Выберите тип">
+                        <option value="/report-master--result-byobject.html">Количество попыток доступа за период по объектам</option>
+                        <option value="/report-master--result-byontime.html">Распределение доступа по времени суток</option>
+                        <option value="/report-master--result-byphoto.html">Просмотр фото и видео проездов</option>
+                        <option value="/report-master--result-bymethods.html">Отчет по методам открытия</option>
+                        <option selected="selected" value="/report-master--result-byonetime.html">Отчёт по разовым/временным пропускам</option>
                       </select>
                     </div>
                     <div class="report-filter__field report-filter__field--submit">
@@ -307,6 +341,94 @@
                     </div>
                   </div>
                 </form>
+              </div>
+            </div>
+            <div class="report-result">
+              <div class="report-result__title">Отчёт по разовым/временным пропускам</div>
+              <div class="report-result__action">
+                <div class="report-result__item">
+                  <select placeholder="Все парковки">
+                    <option value="0">Парковка на Болдина</option>
+                    <option value="0">Парковка 2</option>
+                    <option value="0">Парковка 3</option>
+                    <option value="0">Парковка 4</option>
+                    <option value="0">Парковка 5</option>
+                  </select>
+                </div>
+                <div class="report-result__item report-result__item--export"><a href="#">
+                    <button class="btn btn-line">Экспорт отчёта в Excel</button></a></div>
+              </div>
+              <div class="report-result__table">
+                <div class="table-radius-wrapper">
+                  <div class="table table--report">
+                    <div class="table__tr">
+                      <div class="table__th">
+                          Дата/время<span class="table__sort"></span></div>
+                      <div class="table__th">
+                          Парковка<span class="table__sort"></span></div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">Парковка на Болдина</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                    <div class="table__tr">
+                      <div class="table__td" data-title="Дата/время">ВАО-22-01</div>
+                      <div class="table__td" data-title="Парковка">Тестовый Михаил</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="report-result__pagination">
+                <div class="pagination pagination--showmore">
+                  <div class="pagination__more"><a href="#">
+                      <button class="btn btn-line"><span>Показать ещё</span>
+                        <svg width="25" height="25">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_arr-down"></use>
+                        </svg>
+                      </button></a></div>
+                  <div class="pagination__page">
+                    <ul>
+                      <li class="next"><a href="#2">
+                          <svg width="48" height="48">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_prev-pagination"></use>
+                          </svg></a></li>
+                      <li class="active"><a href="#1">1</a></li>
+                      <li><a href="#2">2</a></li>
+                      <li class="next"><a href="#2">
+                          <svg width="48" height="48">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_next-pagination"></use>
+                          </svg></a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

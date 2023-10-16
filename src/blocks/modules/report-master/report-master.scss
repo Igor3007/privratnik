@@ -5,21 +5,6 @@
     border-radius: 8px;
     padding: 9px 6px;
 
-    &__date {
-        display: flex;
-
-        & input {
-            width: calc(100% - 100px) !important;
-            margin-right: 4px;
-        }
-
-        & .af-select,
-        & select {
-            width: 100px;
-            max-width: 100px;
-        }
-    }
-
     &__field {
         padding: 6px;
         flex-grow: 1;
@@ -28,8 +13,14 @@
         flex-direction: column;
         flex-basis: 360px;
 
+
+
         & .af-select {
             width: 100%;
+
+            @media screen and (min-width: $w1440) {
+                max-width: 360px;
+            }
         }
 
         & label {
@@ -55,6 +46,21 @@
             @media screen and (max-width: $w480) {
                 width: 100%;
             }
+        }
+    }
+
+    &__date {
+        display: flex;
+
+        & input {
+            width: calc(100% - 100px) !important;
+            margin-right: 4px;
+        }
+
+        & .af-select,
+        & select {
+            width: 100px;
+            max-width: 100px;
         }
     }
 
@@ -192,8 +198,34 @@
                 &:first-child {
                     @media screen and (min-width: $w992) {
                         font-weight: 400;
+                        width: 360px;
                     }
                 }
+            }
+        }
+    }
+
+    & .table--lastmaxwidth {
+        & .table {
+
+            &:first-child {
+                @media screen and (min-width: $w992) {
+                    font-weight: 400;
+                }
+            }
+
+            &__th,
+            &__td {
+                &:last-child {
+
+                    width: auto;
+
+                    @media screen and (min-width: $w1200) {
+                        width: 185px;
+                    }
+                }
+
+
             }
         }
     }

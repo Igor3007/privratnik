@@ -249,7 +249,7 @@
                 </ul>
               </div>
             </div>
-            <div class="personal-content__h1">Статистика доступа</div>
+            <div class="personal-content__h1">Статистика доступа - photo</div>
             <div class="personal-content__tabs">
               <ul data-tab-center="">
                 <li><a href="personal-access.html">Открытия в реальном времени</a></li>
@@ -260,20 +260,37 @@
             <div class="personal-content__desc">Легко формируйте отчёты по количеству попыток доступа за период, распределению доступа по времени суток, смотрите фото и видео проездов и другое. <br> Также вы сможете выгрузить отчёты в формате Excel-файла.</div>
             <div class="report-master">
               <div class="report-master__form">
-                <form action="/report-master--result.html" method="GET">
+                <form action="/report-master--result-byobject.html" method="GET">
                   <div class="report-filter">
                     <div class="report-filter__field">
                       <label>Начало</label>
                       <div class="report-filter__date">
                         <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="start"/>
                         <select placeholder="Время" data-find="false">
-                          <option value="0">01:00</option>
-                          <option value="0">02:00</option>
-                          <option value="0">03:00</option>
-                          <option value="0">04:00</option>
-                          <option value="0">05:00</option>
-                          <option value="0">06:00</option>
-                          <option value="0">07:00</option>
+                          <option value="0">0:00</option>
+                          <option value="0">1:00</option>
+                          <option value="0">2:00</option>
+                          <option value="0">3:00</option>
+                          <option value="0">4:00</option>
+                          <option value="0">5:00</option>
+                          <option value="0">6:00</option>
+                          <option value="0">7:00</option>
+                          <option value="0">8:00</option>
+                          <option value="0">9:00</option>
+                          <option value="0">10:00</option>
+                          <option value="0">11:00</option>
+                          <option value="0">12:00</option>
+                          <option value="0">13:00</option>
+                          <option value="0">14:00</option>
+                          <option value="0">15:00</option>
+                          <option value="0">16:00</option>
+                          <option value="0">17:00</option>
+                          <option value="0">18:00</option>
+                          <option value="0">19:00</option>
+                          <option value="0">20:00</option>
+                          <option value="0">21:00</option>
+                          <option value="0">22:00</option>
+                          <option value="0">23:00</option>
                         </select>
                       </div>
                     </div>
@@ -282,24 +299,41 @@
                       <div class="report-filter__date">
                         <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="end"/>
                         <select placeholder="Время" data-find="false">
-                          <option value="0">01:00</option>
-                          <option value="0">02:00</option>
-                          <option value="0">03:00</option>
-                          <option value="0">04:00</option>
-                          <option value="0">05:00</option>
-                          <option value="0">06:00</option>
-                          <option value="0">07:00</option>
+                          <option value="0">0:00</option>
+                          <option value="0">1:00</option>
+                          <option value="0">2:00</option>
+                          <option value="0">3:00</option>
+                          <option value="0">4:00</option>
+                          <option value="0">5:00</option>
+                          <option value="0">6:00</option>
+                          <option value="0">7:00</option>
+                          <option value="0">8:00</option>
+                          <option value="0">9:00</option>
+                          <option value="0">10:00</option>
+                          <option value="0">11:00</option>
+                          <option value="0">12:00</option>
+                          <option value="0">13:00</option>
+                          <option value="0">14:00</option>
+                          <option value="0">15:00</option>
+                          <option value="0">16:00</option>
+                          <option value="0">17:00</option>
+                          <option value="0">18:00</option>
+                          <option value="0">19:00</option>
+                          <option value="0">20:00</option>
+                          <option value="0">21:00</option>
+                          <option value="0">22:00</option>
+                          <option value="0">23:00</option>
                         </select>
                       </div>
                     </div>
                     <div class="report-filter__field">
                       <label>Тип отчёта</label>
                       <select class="report-type" placeholder="Выберите тип">
-                        <option value="/report-master--result.html">Количество попыток доступа за период по объектам</option>
-                        <option value="/report-master--result-ontime.html">Распределение доступа по времени суток</option>
-                        <option value="0">Просмотр фото и видео проездов</option>
-                        <option value="0">Отчет по методам открытия</option>
-                        <option value="0">Отчёт по разовым/временным пропускам</option>
+                        <option value="/report-master--result-byobject.html">Количество попыток доступа за период по объектам</option>
+                        <option value="/report-master--result-byontime.html">Распределение доступа по времени суток</option>
+                        <option selected="selected" value="/report-master--result-byphoto.html">Просмотр фото и видео проездов</option>
+                        <option value="/report-master--result-bymethods.html">Отчет по методам открытия</option>
+                        <option value="/report-master--result-byonetime.html">Отчёт по разовым/временным пропускам</option>
                       </select>
                     </div>
                     <div class="report-filter__field report-filter__field--submit">
@@ -310,7 +344,7 @@
               </div>
             </div>
             <div class="report-result">
-              <div class="report-result__title">Количество попыток доступа за период по объектам</div>
+              <div class="report-result__title">Просмотр фото и видео проездов</div>
               <div class="report-result__action">
                 <div class="report-result__item">
                   <select placeholder="Все парковки">
@@ -333,72 +367,123 @@
                 <div class="report-result__item report-result__item--export"><a href="#">
                     <button class="btn btn-line">Экспорт отчёта в Excel</button></a></div>
               </div>
-              <div class="report-result__table">
-                <div class="table-radius-wrapper">
-                  <div class="table table--report">
-                    <div class="table__tr">
-                      <div class="table__th">
-                          Парковка<span class="table__sort"></span></div>
-                      <div class="table__th">
-                          Имя<span class="table__sort"></span></div>
-                      <div class="table__th">
-                          Номер телефона<span class="table__sort"></span></div>
-                      <div class="table__th">
-                          Количество попыток (удачных/отказ)<span class="table__sort"></span></div>
+              <div class="report-result__media">
+                <div class="report-media">
+                  <div class="report-media__list">
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="video">
+                          <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                          <div class="card-media__play">
+                            <svg width="48" height="48">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_play-video"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">16/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="photo">
+                          <picture><img src="/img/common/block-video-preview2.jpg"/></picture>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="video">
+                          <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                          <div class="card-media__play">
+                            <svg width="48" height="48">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_play-video"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="photo">
+                          <picture><img src="/img/common/block-video-preview2.jpg"/></picture>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="video">
+                          <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                          <div class="card-media__play">
+                            <svg width="48" height="48">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_play-video"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="video">
+                          <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                          <div class="card-media__play">
+                            <svg width="48" height="48">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_play-video"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="photo">
+                          <picture><img src="/img/common/block-video-preview2.jpg"/></picture>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="photo">
+                          <picture><img src="/img/common/block-video-preview2.jpg"/></picture>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="video">
+                          <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                          <div class="card-media__play">
+                            <svg width="48" height="48">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_play-video"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
-                    <div class="table__tr">
-                      <div class="table__td" data-title="Парковка">ВАО-22-01</div>
-                      <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                      <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
-                      <div class="table__td" data-title="Количество попыток (удачных/отказ)">2/0</div>
+                    <div class="report-media__item">
+                      <div class="card-media">
+                        <div class="card-media__preview" data-popup="photo">
+                          <picture><img src="/img/common/block-video-preview2.jpg"/></picture>
+                        </div>
+                        <div class="card-media__name">Тестовый Михаил</div>
+                        <div class="card-media__text">+7 (916) 261-19-17 - 06.09.23, 13:06:02</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -447,6 +532,6 @@
       </div>
     </footer>
     <script src="/js/vendor.js"></script>
-    <script src="/js/common.js"></script>
+    <script src="/js/common.js"> </script>
   </body>
 </html>

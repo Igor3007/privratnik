@@ -26,16 +26,18 @@ block content
           'Общая информация',
           'Статистика доступа',
         ])
-    .personal-content__h1 Статистика доступа
+    .personal-content__h1 Статистика доступа - byobj
     .personal-content__tabs
       ul(data-tab-center="")
         li: a(href="personal-access.html") Открытия в реальном времени
-        li.is-active: a(href="report-master.html") Мастер отчётов - photo
+        li.is-active: a(href="report-master.html") Мастер отчётов
 
     .personal-content__h2 Мастер отчётов
     .personal-content__desc Легко формируйте отчёты по количеству попыток доступа за период, распределению доступа по времени суток, смотрите фото и видео проездов и другое. <br> Также вы сможете выгрузить отчёты в формате Excel-файла.
 
-    +report-master
+    +report-master({
+      selected: 'Количество попыток доступа за период по объектам'
+    })
     +report-result
 
 block scripts

@@ -1,0 +1,12 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/personal-statistics/table-statistics.pug
+include ../../../blocks/components/pagination/pagination.pug
+
+.popup-common
+  .popup-common__title Распределение доступа по времени суток
+  .popup-common__desc Попытки входа в часы 3:00 – 4:00
+  .popup-common__table
+    .table-radius-wrapper
+      +table-access()
+  .popup-common__pagination
+    +pagination-showmore()

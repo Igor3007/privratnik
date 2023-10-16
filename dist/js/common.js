@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     if (document.querySelector('.table__sort')) {
         document.querySelectorAll('.table__sort').forEach(item => {
-            item.addEventListener('click', (e) => {
+            item.parentNode.classList.add('table__th--sort')
+            item.parentNode.addEventListener('click', (e) => {
                 item.classList.toggle('table__sort--up')
                 e.target.closest('.table__th').classList.toggle('is-active')
             })
@@ -1937,109 +1938,99 @@ document.addEventListener("DOMContentLoaded", function (event) {
     data-popup="live-photo"
     ================================== */
 
-    if (document.querySelector('[data-popup="live-photo"]')) {
-
-        function popupLivePhoto() {
-            const popupLivePhoto = new afLightbox({
-                mobileInBottom: true
-            })
-
-            window.ajax({
-                type: 'GET',
-                url: '/parts/_popup-live-photo.html'
-            }, (status, response) => {
-
-                popupLivePhoto.open(response, (instance) => {
-
-                    //init slider
-                    const splide = new Splide('[data-slider="live-photo"]', {
-                        arrows: false,
-                        pagination: false
-                    });
-
-                    function splideCounter(newIndex) {
-                        const currentSlide = document.querySelector('[data-slider-counter="current"]')
-                        const allSlides = document.querySelector('[data-slider-counter="all"]')
-                        currentSlide.innerText = (newIndex + 1)
-                        allSlides.innerText = splide.root.querySelectorAll('.splide__slide').length
-                    }
-
-                    splide.on('move', function (newIndex) {
-                        splideCounter(newIndex)
-                    });
-                    splide.on('mounted', function (newIndex) {
-                        splideCounter(0)
-                    });
-
-                    splide.mount();
-
-                    const prev = document.querySelector('[data-slider-prev="live-photo"]')
-                    const next = document.querySelector('[data-slider-next="live-photo"]')
-
-                    prev.addEventListener('click', e => splide.go('<'))
-                    next.addEventListener('click', e => splide.go('>'))
-
-                    //event click
-
-                    if (instance.querySelector('[data-popup="live-video"]')) {
-                        instance.querySelector('[data-popup="live-video"]').addEventListener('click', e => {
-                            popupLiveVideo()
-                            popupLivePhoto.close()
-                        })
-                    }
-
-                })
-            })
-        }
-
-        const buttons = document.querySelectorAll('[data-popup="live-photo"]')
-        buttons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                popupLivePhoto()
-            })
+    function popupLivePhoto() {
+        const popupLivePhoto = new afLightbox({
+            mobileInBottom: true
         })
 
+        window.ajax({
+            type: 'GET',
+            url: '/parts/_popup-live-photo.html'
+        }, (status, response) => {
 
+            popupLivePhoto.open(response, (instance) => {
 
+                //init slider
+                const splide = new Splide('[data-slider="live-photo"]', {
+                    arrows: false,
+                    pagination: false
+                });
+
+                function splideCounter(newIndex) {
+                    const currentSlide = document.querySelector('[data-slider-counter="current"]')
+                    const allSlides = document.querySelector('[data-slider-counter="all"]')
+                    currentSlide.innerText = (newIndex + 1)
+                    allSlides.innerText = splide.root.querySelectorAll('.splide__slide').length
+                }
+
+                splide.on('move', function (newIndex) {
+                    splideCounter(newIndex)
+                });
+                splide.on('mounted', function (newIndex) {
+                    splideCounter(0)
+                });
+
+                splide.mount();
+
+                const prev = document.querySelector('[data-slider-prev="live-photo"]')
+                const next = document.querySelector('[data-slider-next="live-photo"]')
+
+                prev.addEventListener('click', e => splide.go('<'))
+                next.addEventListener('click', e => splide.go('>'))
+
+                //event click
+
+                if (instance.querySelector('[data-popup="live-video"]')) {
+                    instance.querySelector('[data-popup="live-video"]').addEventListener('click', e => {
+                        popupLiveVideo()
+                        popupLivePhoto.close()
+                    })
+                }
+
+            })
+        })
+    }
+
+    if (document.querySelector('[data-popup="live-photo"]')) {
+        const buttons = document.querySelectorAll('[data-popup="live-photo"]')
+        buttons.forEach(button => {
+            button.addEventListener('click', popupLivePhoto)
+        })
     }
 
     /* ==================================
     data-popup="live-video"
     ================================== */
 
+    function popupLiveVideo() {
+        const popupLiveVideo = new afLightbox({
+            mobileInBottom: true
+        })
+
+        window.ajax({
+            type: 'GET',
+            url: '/parts/_popup-live-video.html'
+        }, (status, response) => {
+
+            popupLiveVideo.open(response, (instance) => {
+
+                if (instance.querySelector('[data-popup="live-photo"]')) {
+                    instance.querySelector('[data-popup="live-photo"]').addEventListener('click', e => {
+                        popupLivePhoto()
+                        popupLiveVideo.close()
+                    })
+                }
+
+            })
+        })
+    }
+
     if (document.querySelector('[data-popup="live-video"]')) {
-
-        function popupLiveVideo() {
-            const popupLiveVideo = new afLightbox({
-                mobileInBottom: true
-            })
-
-            window.ajax({
-                type: 'GET',
-                url: '/parts/_popup-live-video.html'
-            }, (status, response) => {
-
-                popupLiveVideo.open(response, (instance) => {
-
-                    if (instance.querySelector('[data-popup="live-photo"]')) {
-                        instance.querySelector('[data-popup="live-photo"]').addEventListener('click', e => {
-                            popupLivePhoto()
-                            popupLiveVideo.close()
-                        })
-                    }
-
-                })
-            })
-        }
 
         const buttons = document.querySelectorAll('[data-popup="live-video"]')
         buttons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                popupLiveVideo()
-            })
+            button.addEventListener('click', popupLiveVideo)
         })
-
-
 
     }
 
@@ -2083,6 +2074,61 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (document.querySelector('.report-type')) {
         document.querySelector('.report-type').addEventListener('change', e => {
             window.location.href = e.target.value
+        })
+    }
+
+    /* ======================================
+    Распределение доступа по времени суток
+    ======================================*/
+
+    if (document.querySelector('[data-popup="access-bytime"]')) {
+        const items = document.querySelectorAll('[data-popup="access-bytime"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-access-bytime.html'
+                }, (status, response) => {
+
+                    popup.open(response, (instance) => {
+
+                        const livePhoto = instance.querySelectorAll('[data-popup="live-photo"]')
+                        livePhoto.forEach(button => {
+                            button.addEventListener('click', popupLivePhoto)
+                        })
+
+                        const liveVideo = instance.querySelectorAll('[data-popup="live-video"]')
+                        liveVideo.forEach(button => {
+                            button.addEventListener('click', popupLiveVideo)
+                        })
+
+                    })
+                })
+            })
+        })
+    }
+
+    /* ===============================
+    play video
+    =============================== */
+
+    if (document.querySelector('[data-popup="video"]')) {
+        document.querySelectorAll('[data-popup="video"]').forEach(item => {
+            item.addEventListener('click', e => {
+                popupLiveVideo()
+            })
+        })
+    }
+    if (document.querySelector('[data-popup="photo"]')) {
+        document.querySelectorAll('[data-popup="photo"]').forEach(item => {
+            item.addEventListener('click', e => {
+                popupLivePhoto()
+            })
         })
     }
 

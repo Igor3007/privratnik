@@ -118,8 +118,15 @@
             display: table-cell;
         }
 
-        &.is-active {
+        &--sort {
+            cursor: pointer;
 
+            &:hover {
+                color: var(--blue-medium);
+            }
+        }
+
+        &.is-active {
             color: var(--blue-dark);
         }
 
