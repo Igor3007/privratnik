@@ -5854,7 +5854,7 @@ body textarea:focus {
   max-width: 100px;
 }
 
-.report-service {
+.activate-service {
   display: flex;
   flex-wrap: wrap;
   background-color: var(--bg-01);
@@ -5862,12 +5862,12 @@ body textarea:focus {
   border-radius: 8px;
 }
 
-.report-service__icon {
+.activate-service__icon {
   width: 56px;
   min-width: 56px;
 }
 
-.report-service__icon .bgimage {
+.activate-service__icon .bgimage {
   position: relative;
   background-size: contain;
   background-position: center;
@@ -5876,30 +5876,30 @@ body textarea:focus {
   padding-top: 100%;
 }
 
-.report-service__title {
+.activate-service__title {
   color: var(--text-01);
   font-size: 17px;
   font-weight: 600;
   padding-bottom: 0.6em;
 }
 
-.report-service__desc {
+.activate-service__desc {
   color: var(--text-02);
   font-size: 14px;
   line-height: 140%;
 }
 
-.report-service__main {
+.activate-service__main {
   width: calc(100% - 56px);
   padding-left: 20px;
 }
 
-.report-service__btn {
+.activate-service__btn {
   padding-top: 24px;
   width: 100%;
 }
 
-.report-service__btn .btn {
+.activate-service__btn .btn {
   width: 100%;
 }
 
@@ -6265,15 +6265,15 @@ a[data-tooltip]:hover::before {
     padding: 24px;
   }
 
-  .report-service__title {
+  .activate-service__title {
     font-size: 18px;
   }
 
-  .report-service__desc {
+  .activate-service__desc {
     font-size: 15px;
   }
 
-  .report-service__btn {
+  .activate-service__btn {
     width: auto;
   }
 }
@@ -6433,22 +6433,22 @@ a[data-tooltip]:hover::before {
     max-width: 360px;
   }
 
-  .report-service {
+  .activate-service {
     flex-wrap: nowrap;
     align-items: center;
     padding: 20px 26px;
   }
 
-  .report-service__icon {
+  .activate-service__icon {
     width: 64px;
     min-width: 64px;
   }
 
-  .report-service__main {
+  .activate-service__main {
     padding-right: 20px;
   }
 
-  .report-service__btn {
+  .activate-service__btn {
     padding-top: 0;
   }
 }

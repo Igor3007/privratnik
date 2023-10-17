@@ -57,13 +57,13 @@ mixin report-master(data)
           .report-filter__field.report-filter__field--submit
             button.btn Получить отчёт
 
-mixin report-service
-  .report-service
-    .report-service__icon: +bgimage('/img/common/connect.svg')
-    .report-service__main
-      .report-service__title Услуга не подключена
-      .report-service__desc Перейдите в раздел «Услуги» с помощью кнопки «Подключить услугу» и активируйте то, что вас интересует.
-    .report-service__btn
+mixin activate-service
+  .activate-service
+    .activate-service__icon: +bgimage('/img/common/connect.svg')
+    .activate-service__main
+      .activate-service__title Услуга не подключена
+      .activate-service__desc Перейдите в раздел «Услуги» с помощью кнопки «Подключить услугу» и активируйте то, что вас интересует.
+    .activate-service__btn
       a(href='/report-master--start.html'): button.btn.btn--add Подключить услугу
 
 mixin _report-result-action
