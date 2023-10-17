@@ -27,7 +27,13 @@ block content
     .personal-content__h1 Видеонаблюдение
          
     .personal-content__main
-         div Видеонаблюдение
+      .report-service
+        .report-service__icon: +bgimage('/img/common/connect.svg')
+        .report-service__main
+          .report-service__title Услуга не подключена
+          .report-service__desc Перейдите в раздел «Услуги» с помощью кнопки «Подключить услугу» и активируйте то, что вас интересует.
+        .report-service__btn
+          a(href='/personal-video-list.html'): button.btn.btn--add Подключить услугу
 
 
     

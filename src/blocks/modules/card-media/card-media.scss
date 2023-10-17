@@ -40,6 +40,7 @@
         position: relative;
         cursor: pointer;
 
+
         @media screen and (min-width: $w992) {
             padding-bottom: 12px;
         }
@@ -47,6 +48,8 @@
         & picture {
             @include picture(56%, cover);
             background-color: #eee;
+            border-radius: 8px;
+            overflow: hidden;
         }
     }
 

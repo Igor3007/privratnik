@@ -114,6 +114,41 @@
          }
 
      }
+
+     &--row {
+
+         padding-bottom: 24px;
+
+         @media screen and (min-width: $w1200) {
+             display: flex;
+             padding-bottom: 0;
+         }
+     }
+
+     &__left-side {
+         @media screen and (min-width: $w1200) {
+             width: calc(100% - 480px);
+             padding-right: 32px;
+         }
+     }
+
+     &__right-side {
+         @media screen and (min-width: $w1200) {
+             width: 480px;
+         }
+     }
+
+     &__find {
+         width: 100%;
+
+         @media screen and (min-width: $w480) {
+             max-width: 480px;
+         }
+
+         & input {
+             width: 100%;
+         }
+     }
  }
 
  .link-dropdown {

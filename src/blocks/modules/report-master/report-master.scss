@@ -232,3 +232,28 @@
 
 
 }
+
+.memory-info {
+    padding: 24px;
+    background-color: var(--bg-01);
+    border-radius: 8px;
+
+    &__title {
+        padding-bottom: 12px;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    &__desc {
+        padding-bottom: 12px;
+        color: var(--text-02);
+    }
+
+    &__link {
+        & a {
+            font-weight: 500;
+            color: var(--blue-dark);
+            font-size: 15px;
+        }
+    }
+}
