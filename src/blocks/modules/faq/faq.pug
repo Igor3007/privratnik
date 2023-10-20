@@ -1,0 +1,86 @@
+mixin question(data)
+    .question
+        .question__num= data.num
+        .question__main
+            .question__title= data.title
+            .question__answer Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей 
+        .question__toggle
+            .icon-cross-circle: .icon-cross
+
+
+mixin faq
+    .faq-group
+        .faq-group__title Работа с сервисом
+        .faq-group__list
+            .faq-group__item
+                +question({
+                    num: '01',
+                    title: 'Что нужно сделать в первую очередь? Основные этапы использования личного кабинета «Привратник».',
+                })
+            .faq-group__item
+                +question({
+                    num: '02',
+                    title: 'Как добавить устройства управления?',
+                })
+            .faq-group__item
+                +question({
+                    num: '03',
+                    title: 'Что делать в разделе «Настройки доступа»?',
+                })
+            .faq-group__item
+                +question({
+                    num: '04',
+                    title: 'Что такое «Статистика доступа»?',
+                })
+
+
+    .faq-group
+        .faq-group__title Платные услуги
+        .faq-group__list
+            .faq-group__item
+                +question({
+                    num: '01',
+                    title: 'Подключение видеосервисов (онлайн-трансляция, видеоархив)',
+                })
+            .faq-group__item
+                +question({
+                    num: '02',
+                    title: 'Доступ к онлайн-трансляции и видеоархиву',
+                })
+            .faq-group__item
+                +question({
+                    num: '03',
+                    title: 'Выдача разовых/временных пропусков',
+                })
+            .faq-group__item
+                +question({
+                    num: '04',
+                    title: 'Мастер отчётов',
+                })
+
+
+
+
+    .faq-group
+        .faq-group__title Пользовательские настройки, техническая поддержка и другое
+        .faq-group__list
+            .faq-group__item
+                +question({
+                    num: '01',
+                    title: 'Где изменить имя пользователя или пароль?',
+                })
+            .faq-group__item
+                +question({
+                    num: '02',
+                    title: 'Как настроить отображение уведомлений?',
+                })
+            .faq-group__item
+                +question({
+                    num: '03',
+                    title: 'Как связаться с Технической поддержкой сервиса?',
+                })
+            .faq-group__item
+                +question({
+                    num: '04',
+                    title: 'Мастер отчётов',
+                })

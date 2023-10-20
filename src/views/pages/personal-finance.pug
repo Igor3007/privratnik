@@ -4,6 +4,7 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/modules/transaction/transaction.pug
 
 block variables
     include ../../data/data.pug
@@ -34,6 +35,9 @@ block content
           .activate-service__desc Там вы можете подключить необходимый дополнительный функционал или отключить уже не нужный.
         .activate-service__btn
           a(href='/personal-services.html'): button.btn.btn--add Перейти в раздел услуги
+
+      +transactions()
+      
 
     
 

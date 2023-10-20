@@ -4,17 +4,15 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
-include ../../blocks/modules/faq/faq.pug
+include ../../blocks/modules/notification/notification.pug
 
 block variables
     include ../../data/data.pug
-    - const title = "Привратник - Вопросы и ответы"
+    - const title = "Привратник - Уведомления"
 
 
 block aside
-  +personal-aside({
-    title: 'Вопросы и ответы'
-  })
+  +personal-aside({})
 
 block content
   +personal-top()
@@ -23,12 +21,11 @@ block content
     .personal-content__breadcrubs
         +breadcrumb([
           'Общая информация',
-          'Вопросы и ответы',
+          'Уведомления',
         ])
-    .personal-content__h1 Вопросы и ответы
-         
+    .personal-content__h1 Уведомления
     .personal-content__main
-      +faq
+      +notification
 
 
     

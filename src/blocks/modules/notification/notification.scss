@@ -1,0 +1,51 @@
+.notification-group {
+    padding-bottom: 36px;
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 600;
+        padding-bottom: 12px;
+
+        @media screen and (min-width: $w480) {
+            font-size: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__list {
+        border: 1px solid #CED6E0;
+        color: var(--text-01);
+        border-radius: 8px;
+
+    }
+
+    &__item {
+        border-bottom: 1px solid #CED6E0;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.item-notification {
+    padding: 12px;
+
+    &--unread {
+        background-color: var(--bg-01);
+    }
+
+    &__title {
+        padding-bottom: 5px;
+        font-size: 15px;
+    }
+
+    &__message {
+        font-size: 13px;
+        color: var(--text-02);
+    }
+}

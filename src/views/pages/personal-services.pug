@@ -4,16 +4,16 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
-include ../../blocks/modules/faq/faq.pug
+include ../../blocks/modules/additional-services/additional-services.pug
 
 block variables
     include ../../data/data.pug
-    - const title = "Привратник - Вопросы и ответы"
+    - const title = "Привратник - Услуги"
 
 
 block aside
   +personal-aside({
-    title: 'Вопросы и ответы'
+    title: 'Услуги'
   })
 
 block content
@@ -23,12 +23,13 @@ block content
     .personal-content__breadcrubs
         +breadcrumb([
           'Общая информация',
-          'Вопросы и ответы',
+          'Услуги',
         ])
-    .personal-content__h1 Вопросы и ответы
-         
+    .personal-content__h1 Услуги
+    .personal-content__desc Описание раздела с преимуществами от использования услуг.
     .personal-content__main
-      +faq
+      +additional-services
+        
 
 
     

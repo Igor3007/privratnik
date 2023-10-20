@@ -18,7 +18,7 @@ mixin profile-tooltip(data)
             ul
                 li: a(href='#') Информация по аккаунту
                 li: a(href='#') История удалений
-                li: a(href='#') Настройки пользователя
+                li: a(href='user-settings.html') Настройки пользователя
         .profile-tooltip__links 
             ul
                 li: a(href='#') Перейти в ЛК пользователя
@@ -59,7 +59,7 @@ mixin personal-top
                 .link-icon__dropdown
                     .chat-tooltip-msg Чат с технической поддержкой сервиса
             .link-icon
-                .link-icon__svg: +icons('#ic_notifications')
+                .link-icon__svg: a(href='/user-notification.html'): +icons('#ic_notifications')
                 .link-icon__dropdown
                     .top-nitification
                         .top-nitification__list

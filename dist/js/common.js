@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             elementStatus.innerHTML = template;
 
             const timer = setTimeout(() => {
-                params.onConfirm()
+                params.onConfirm() != undefined ? params.onConfirm() : ''
                 //hideMSG(elementStatus)
             }, 5000)
 
@@ -166,6 +166,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
         hideElement(elem) {
+
+            if (!elem) return false;
+
             elem.style.opacity = 0
             elem.style.transition = '0.5s ease'
             setTimeout(() => {
@@ -214,8 +217,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 this.startTimer(5, buttonApply.querySelector('span'))
 
                 buttonApply.addEventListener('click', e => {
-                    this.hideElement(params.removeHtmlElem)
-                    this.topStatusRevert(params)
+                    if (params.removeHtmlElem) this.hideElement(params.removeHtmlElem)
+                    params.revertText ? this.topStatusRevert(params) : params.onConfirm()
                     popupDialog.close()
                 })
 
@@ -2132,7 +2135,95 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
     }
 
+    /* ===============================
+    add services form
+    =============================== */
 
+    if (document.querySelector('[data-services="form"]')) {
+        const forms = document.querySelectorAll('[data-services="form"]')
+
+        forms.forEach(form => {
+
+            let submitButton = form.querySelector('button[type="submit"]')
+            let removeButton = form.querySelector('button[data-services="remove"]')
+            let inputsRadio = form.querySelectorAll('input[type="radio"]')
+
+            function claerSelected(input) {
+                input.classList.contains('selected') ? input.classList.remove('selected') : ''
+                input.removeAttribute('disabled')
+                input.closest('label').querySelector('.radio-service__title span') ? input.closest('label').querySelector('.radio-service__title span').remove() : ''
+            }
+
+            inputsRadio.forEach(input => {
+                input.addEventListener('change', e => {
+                    submitButton.removeAttribute('disabled')
+                })
+            })
+
+            removeButton.addEventListener('click', e => {
+
+                window.dialog.remove({
+                    title: 'Отключение услуги',
+                    desc: 'Внимание! Вы уверены, что хотите отключить услугу «Подключение к онлайн-трансляции и видеоархиву»? Вы не сможете смотреть видеотрансляции онлайн с подключённых устройств, а видеоархив будет удалён через 30 дней.',
+                    onConfirm: function () {
+
+                        submitButton.innerText = 'Подключить услугу'
+                        submitButton.setAttribute('disabled', '')
+                        removeButton.parentNode.style.removeProperty('display')
+
+                        inputsRadio.forEach(input => {
+                            input.checked = false
+                            if (input.classList.contains('selected')) claerSelected(input)
+                        })
+                    }
+                })
+
+
+            })
+
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                submitButton.classList.add('btn-loading')
+
+                //ajax request
+
+                setTimeout(() => {
+                    submitButton.classList.remove('btn-loading')
+                    submitButton.innerText = 'Изменить пакет'
+                    removeButton.parentNode.style.display = 'block'
+                    inputsRadio.forEach(input => {
+                        if (input.checked) {
+                            input.classList.add('selected')
+                            input.setAttribute('disabled', '')
+                            input.closest('label').querySelector('.radio-service__title').innerHTML += ' <span class="color--green" >Подключено, осталось 0,97 ТБ</span>'
+                        } else {
+                            claerSelected(input)
+                        }
+                    })
+                }, 2000)
+
+            })
+
+        })
+    }
+
+    /* ==================================
+    faq
+    ==================================*/
+
+    if (document.querySelector('.question')) {
+        document.querySelectorAll('.question').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target.closest('.question__answer')) return false
+
+                item.classList.toggle('is-open')
+
+                setTimeout(() => {
+                    item.classList.toggle('is-scroll')
+                }, 300)
+            })
+        })
+    }
 
 
 }); //domContentLoaded

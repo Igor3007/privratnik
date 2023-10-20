@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Привратник - Вопросы и ответы</title>
+    <title>Привратник - Услуги</title>
     <meta name="theme-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -107,7 +107,7 @@
                   </li>
                   <li><a href="personal-finance.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-finance.svg)" ></span>Финансы</a>
                   </li>
-                  <li class="is-active"><a href="personal-faq.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-faq.svg)" ></span>Вопросы и ответы</a>
+                  <li><a href="personal-faq.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-faq.svg)" ></span>Вопросы и ответы</a>
                   </li>
                 </ul>
               </nav>
@@ -244,190 +244,208 @@
               <div class="breadcrumb">
                 <ul>
                   <li><a href="/">Общая информация</a></li>
-                  <li><span>Вопросы и ответы</span></li>
+                  <li><span>Услуги</span></li>
                 </ul>
               </div>
             </div>
-            <div class="personal-content__h1">Вопросы и ответы</div>
+            <div class="personal-content__h1">Услуги</div>
+            <div class="personal-content__desc">Описание раздела с преимуществами от использования услуг.</div>
             <div class="personal-content__main">
-              <div class="faq-group">
-                <div class="faq-group__title">Работа с сервисом</div>
-                <div class="faq-group__list">
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">01</div>
-                      <div class="question__main">
-                        <div class="question__title">Что нужно сделать в первую очередь? Основные этапы использования личного кабинета «Привратник».</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
+              <div class="additional-services">
+                <div class="additional-services__list">
+                  <div class="additional-services__item">
+                    <div class="service-card">
+                      <div class="service-card__head">
+                        <div class="service-card__icon"><span class="bgimage lazyload" data-bg="/img/svg/ic_nav-video-plus.svg"></span>
                         </div>
+                        <div class="service-card__main">
+                          <div class="service-card__title">Подключение к онлайн-трансляции и видеоархиву</div>
+                          <div class="service-card__desc">Стоимость месячного пакета зависит от количества памяти, подключаемой для хранения видео.</div>
+                        </div>
+                      </div>
+                      <div class="service-card__select">
+                        <form type="" data-services="form">
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">100 ГБ места для видеоархива</div>
+                                  <div class="radio-service__cost">
+                                    <div class="radio-service__month"> <strong>2 000 ₽</strong><small>/ мес</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">500 ГБ места для видеоархива</div>
+                                  <div class="radio-service__cost">
+                                    <div class="radio-service__month"> <strong>5 000 ₽</strong><small>/ мес</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">1ТБ места для видеоархива</div>
+                                  <div class="radio-service__cost">
+                                    <div class="radio-service__month"><strong>8999 ₽</strong><small>/ мес</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__action">
+                            <div class="service-card__add">
+                              <button class="btn" type="submit" disabled="disabled">Подключить услугу</button>
+                            </div>
+                            <div class="service-card__remove">
+                              <button class="btn btn-white" type="button" data-services="remove">Отключить услугу</button>
+                            </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">02</div>
-                      <div class="question__main">
-                        <div class="question__title">Как добавить устройства управления?</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
+                  <div class="additional-services__item">
+                    <div class="service-card">
+                      <div class="service-card__head">
+                        <div class="service-card__icon"><span class="bgimage lazyload" data-bg="/img/svg/ic_nav-video.svg"></span>
                         </div>
+                        <div class="service-card__main">
+                          <div class="service-card__title">Доступ к онлайн-трансляции и видеоархиву</div>
+                          <div class="service-card__desc">Месячный пакет доступа для пользователей. Администратор имеет неограниченный доступ по умолчанию.</div>
+                        </div>
+                      </div>
+                      <div class="service-card__select">
+                        <form type="" data-services="form">
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">Месячный пакет для пользователей</div>
+                                  <div class="radio-service__cost"> 
+                                    <div class="radio-service__month"><strong>2 000 ₽</strong><small>/ мес</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__action">
+                            <div class="service-card__add">
+                              <button class="btn" type="submit" disabled="disabled">Подключить услугу</button>
+                            </div>
+                            <div class="service-card__remove">
+                              <button class="btn btn-white" type="button" data-services="remove">Отключить услугу</button>
+                            </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">03</div>
-                      <div class="question__main">
-                        <div class="question__title">Что делать в разделе «Настройки доступа»?</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
+                  <div class="additional-services__item">
+                    <div class="service-card">
+                      <div class="service-card__head">
+                        <div class="service-card__icon"><span class="bgimage lazyload" data-bg="/img/svg/ic_shlg.svg"></span>
                         </div>
+                        <div class="service-card__main">
+                          <div class="service-card__title">Разовые / временные пропуски</div>
+                          <div class="service-card__desc">Выберите подходящий пакет разовых/временных пропусков из представленных ниже.</div>
+                        </div>
+                      </div>
+                      <div class="service-card__select">
+                        <form type="" data-services="form">
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">Пакет «Базовый»: 100 пропусков</div>
+                                  <div class="radio-service__cost"> 
+                                    <div class="radio-service__month"><strong>2 000 ₽</strong><small>/ мес</small></div>
+                                    <div class="radio-service__day"><strong>50 ₽</strong><small>за 1 пропуск вне пакета</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">Пакет «Профессиональный»: 300 пропусков</div>
+                                  <div class="radio-service__cost"> 
+                                    <div class="radio-service__month"><strong>3 500 ₽</strong><small>/ мес</small></div>
+                                    <div class="radio-service__day"><strong>35 ₽</strong><small>за 1 пропуск вне пакета</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__action">
+                            <div class="service-card__add">
+                              <button class="btn" type="submit" disabled="disabled">Подключить услугу</button>
+                            </div>
+                            <div class="service-card__remove">
+                              <button class="btn btn-white" type="button" data-services="remove">Отключить услугу</button>
+                            </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">04</div>
-                      <div class="question__main">
-                        <div class="question__title">Что такое «Статистика доступа»?</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
+                  <div class="additional-services__item">
+                    <div class="service-card">
+                      <div class="service-card__head">
+                        <div class="service-card__icon"><span class="bgimage lazyload" data-bg="/img/svg/ic_nav-access.svg"></span>
+                        </div>
+                        <div class="service-card__main">
+                          <div class="service-card__title">Мастер отчётов</div>
+                          <div class="service-card__desc">Доступ к любым типам отчётов в разделе «Статистика доступа». Сумма оплаты формируется по количеству пользователей на 23:59:59 каждых суток и списывается ежедневно.</div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="faq-group">
-                <div class="faq-group__title">Платные услуги</div>
-                <div class="faq-group__list">
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">01</div>
-                      <div class="question__main">
-                        <div class="question__title">Подключение видеосервисов (онлайн-трансляция, видеоархив)</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">02</div>
-                      <div class="question__main">
-                        <div class="question__title">Доступ к онлайн-трансляции и видеоархиву</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">03</div>
-                      <div class="question__main">
-                        <div class="question__title">Выдача разовых/временных пропусков</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">04</div>
-                      <div class="question__main">
-                        <div class="question__title">Мастер отчётов</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="faq-group">
-                <div class="faq-group__title">Пользовательские настройки, техническая поддержка и другое</div>
-                <div class="faq-group__list">
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">01</div>
-                      <div class="question__main">
-                        <div class="question__title">Где изменить имя пользователя или пароль?</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">02</div>
-                      <div class="question__main">
-                        <div class="question__title">Как настроить отображение уведомлений?</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">03</div>
-                      <div class="question__main">
-                        <div class="question__title">Как связаться с Технической поддержкой сервиса?</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="faq-group__item">
-                    <div class="question">
-                      <div class="question__num">04</div>
-                      <div class="question__main">
-                        <div class="question__title">Мастер отчётов</div>
-                        <div class="question__answer">Пример ответа. Текст со случайного сайта. Мы предлагает своим клиентам облачное решение для обеспечения контроля над управлением шлагбаумом или воротами. Данный комплекс услуг предназначен снизить или вообще искоренить случаи злоупотребления управления шлагбаумом со стороны арендаторов и соседей </div>
-                      </div>
-                      <div class="question__toggle">
-                        <div class="icon-cross-circle">
-                          <div class="icon-cross"></div>
-                        </div>
+                      <div class="service-card__select">
+                        <form type="" data-services="form">
+                          <div class="service-card__radio">
+                            <label>
+                              <input type="radio" name="video" value="1"/>
+                              <div class="radio-service">
+                                <div class="radio-service__elem"></div>
+                                <div class="radio-service__label">
+                                  <div class="radio-service__title">Подключить услугу</div>
+                                  <div class="radio-service__cost"> 
+                                    <div class="radio-service__month"><strong>20 ₽</strong><small>/использование</small></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div class="service-card__action">
+                            <div class="service-card__add">
+                              <button class="btn" type="submit" disabled="disabled">Подключить услугу</button>
+                            </div>
+                            <div class="service-card__remove">
+                              <button class="btn btn-white" type="button" data-services="remove">Отключить услугу</button>
+                            </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,150 @@
+mixin service-card
+    .service-card
+        .service-card__head
+            .service-card__icon: +bgimage('/img/svg/ic_nav-video-plus.svg')
+            .service-card__main
+                .service-card__title Подключение к онлайн-трансляции и видеоархиву
+                .service-card__desc Стоимость месячного пакета зависит от количества памяти, подключаемой для хранения видео.
+        .service-card__select
+            form(type="" data-services="form")
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title 100 ГБ места для видеоархива
+                                .radio-service__cost
+                                    .radio-service__month 
+                                        strong 2 000 ₽
+                                        small / мес
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title 500 ГБ места для видеоархива
+                                .radio-service__cost
+                                    .radio-service__month 
+                                        strong 5 000 ₽
+                                        small / мес
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title 1ТБ места для видеоархива
+                                .radio-service__cost
+                                    .radio-service__month
+                                        strong 8999 ₽
+                                        small / мес
+                .service-card__action
+                    .service-card__add: button.btn(type="submit" disabled) Подключить услугу
+                    .service-card__remove: button.btn.btn-white(type="button" data-services="remove" ) Отключить услугу
+
+
+mixin service-card-2
+    .service-card
+        .service-card__head
+            .service-card__icon: +bgimage('/img/svg/ic_nav-video.svg')
+            .service-card__main
+                .service-card__title Доступ к онлайн-трансляции и видеоархиву
+                .service-card__desc Месячный пакет доступа для пользователей. Администратор имеет неограниченный доступ по умолчанию.
+        .service-card__select
+            form(type="" data-services="form")
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title Месячный пакет для пользователей
+                                .radio-service__cost 
+                                    .radio-service__month
+                                        strong 2 000 ₽
+                                        small / мес
+                 
+                .service-card__action
+                    .service-card__add: button.btn(type="submit" disabled) Подключить услугу
+                    .service-card__remove: button.btn.btn-white(type="button" data-services="remove" ) Отключить услугу
+
+
+mixin service-card-3
+    .service-card
+        .service-card__head
+            .service-card__icon: +bgimage('/img/svg/ic_shlg.svg')
+            .service-card__main
+                .service-card__title Разовые / временные пропуски
+                .service-card__desc Выберите подходящий пакет разовых/временных пропусков из представленных ниже.
+        .service-card__select
+            form(type="" data-services="form")
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title Пакет «Базовый»: 100 пропусков
+                                .radio-service__cost 
+                                    .radio-service__month
+                                        strong 2 000 ₽
+                                        small / мес
+                                    .radio-service__day
+                                        strong 50 ₽
+                                        small за 1 пропуск вне пакета
+                                    
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title Пакет «Профессиональный»: 300 пропусков
+                                .radio-service__cost 
+                                    .radio-service__month
+                                        strong 3 500 ₽
+                                        small / мес
+                                    .radio-service__day
+                                        strong 35 ₽
+                                        small за 1 пропуск вне пакета
+                .service-card__action
+                    .service-card__add: button.btn(type="submit" disabled) Подключить услугу
+                    .service-card__remove: button.btn.btn-white(type="button" data-services="remove") Отключить услугу
+
+mixin service-card-4
+    .service-card
+        .service-card__head
+            .service-card__icon: +bgimage('/img/svg/ic_nav-access.svg')
+            .service-card__main
+                .service-card__title Мастер отчётов
+                .service-card__desc Доступ к любым типам отчётов в разделе «Статистика доступа». Сумма оплаты формируется по количеству пользователей на 23:59:59 каждых суток и списывается ежедневно.
+        .service-card__select
+            form(type="" data-services="form")
+                .service-card__radio
+                    label
+                        input(type="radio" name="video" value="1")
+                        .radio-service
+                            .radio-service__elem
+                            .radio-service__label
+                                .radio-service__title Подключить услугу
+                                .radio-service__cost 
+                                    .radio-service__month
+                                        strong 20 ₽
+                                        small /использование
+                                    
+                 
+                .service-card__action
+                    .service-card__add: button.btn(type="submit" disabled) Подключить услугу
+                    .service-card__remove: button.btn.btn-white(type="button" data-services="remove") Отключить услугу
+            
+           
+
+mixin additional-services
+    .additional-services
+        .additional-services__list
+            .additional-services__item: +service-card
+            .additional-services__item: +service-card-2
+            .additional-services__item: +service-card-3
+            .additional-services__item: +service-card-4

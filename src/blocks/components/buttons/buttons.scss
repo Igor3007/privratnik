@@ -154,6 +154,9 @@
     }
 
     &.btn-loading {
+
+        pointer-events: none;
+
         &::after {
             content: '';
             width: 0.8em;
@@ -215,4 +218,10 @@
     }
 
 
+}
+
+@keyframes loadingrotate {
+    to {
+        transform: rotate(360deg);
+    }
 }

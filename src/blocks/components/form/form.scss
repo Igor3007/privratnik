@@ -295,6 +295,18 @@ body {
         flex-wrap: wrap;
         position: relative;
 
+        &--leftlabel {
+            max-width: 240px;
+            font-size: 16px;
+            align-self: start;
+            font-weight: 600;
+
+            @media screen and (min-width: $w760) {
+                align-self: center;
+                font-weight: normal;
+            }
+        }
+
         // & label:not(.checkbox) {
         //     background-color: var(--bg-01);
         //     font-size: 13px;
@@ -358,6 +370,24 @@ body {
         }
     }
 
+    &__buttons {
+
+        display: flex;
+        margin: -5px;
+        flex-direction: column-reverse;
+        width: 100%;
+        justify-content: flex-end;
+
+        @media screen and (min-width: $w576) {
+            flex-direction: row;
+
+        }
+
+        & button {
+            margin: 5px;
+        }
+    }
+
     & fieldset {
         border: none;
         padding: 0;
@@ -380,6 +410,22 @@ body {
 
         & .select-options li {
             max-width: none;
+        }
+    }
+
+    & span[data-tooltip] {
+
+        margin-left: 8px;
+        margin-top: -3px;
+
+        &::before {
+            width: auto;
+            text-align: center;
+        }
+
+        & svg {
+            fill: var(--blue-light);
+            width: 16px;
         }
     }
 
