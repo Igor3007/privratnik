@@ -1,0 +1,33 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Редактирование разового/временного пропуска
+    .popup-form__desc Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций
+    .popup-form__fields
+       
+          form(action='/access-onetime-list.html' method='GET')
+               .form
+                    .form__item: .form__subitem
+                         .form__label Номер телефона, которому выдаётся пропуск
+                         input(type="text" placeholder="Введите номер" value="+7 (912) 441-51-51")
+
+                    .form__label Время действия пропуска
+
+                    .form__item
+                         .form__subitem: input(type="text" placeholder="Начало действия" value="06.09.23, 09:00")
+                         .form__subitem: input(type="text" placeholder="Конец действия" value="06.09.23, 18:00")
+
+                    .form__item
+                         .form__subitem
+                              .form__label Тип пропуска
+                              ul.switch-list
+                                   li: +radio('Разовый пропуск', 'type', '1', 'checked')
+                                   li: +radio('Многоразовый на время действия', 'type', '2')
+               
+                         
+                         
+                    
+          
+                    .form__item: .form__subitem
+                         button.btn Добавить пропуск

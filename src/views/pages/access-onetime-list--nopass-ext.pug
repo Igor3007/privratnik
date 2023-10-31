@@ -1,0 +1,110 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/components/pagination/pagination.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Разовые/временные пропуски"
+
+
+block aside
+  +personal-aside({
+    title: 'Настройки доступа',
+    openSub: true
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Настройки доступа',
+          'Разовые/временные пропуски',
+        ])
+    .personal-content__h1 Настройки доступа
+    .personal-content__tabs
+      ul(data-tab-center="")
+        li: a(href="access-script.html") Сценарии доступа
+        li: a(href="access-users.html") Список пользователей
+        li: a(href="group-list.html") Список групп
+        li: a(href="access-rights.html") Права доступа
+        li.is-active: a(href="access-onetime.html") Разовые/временные пропуски
+
+    .personal-content__tab-container
+      .access-config
+        .access-config__title Разовые/временные пропуски
+        .access-config__desc
+          | Осталось пропусков в текущем месяце: 
+          a(href='#') 10 (подключить больше)
+        .access-config__action
+          .access-config__add: button.btn.btn--add(data-pass="extension") Добавить пропуск
+          .access-config__find.access-config__find--min
+            .input--find: input(type="text" placeholder="Найти пользователя или группу")
+        .access-config__table
+          .table-radius-wrapper
+            .table.table--onetime
+              .table__tr
+                  .table__th 
+                    | Номер телефона
+                    .table__sort
+                  .table__th 
+                    | Время действия
+                    .table__sort
+                  .table__th 
+                    | Тип пропуска
+                    .table__sort
+                  .table__th 
+                    | Статус
+                    .table__sort
+                  .table__th 
+                    | Поделиться
+                    .table__sort
+                  .table__th Действия
+
+                
+              each item in [1,1,1,1,1,1,1]
+                .table__tr
+                  .table__td(data-title="Номер телефона") +7 (912) 441-51-51
+                  .table__td(data-title="Время действия") С 12.10.23, 09:00 по 15.10.23, 18:00
+                  .table__td(data-title="Тип пропуска") Разовый
+                  .table__td(data-title="Статус") Активный
+                  .table__td(data-title="Поделиться") 
+                    ul.share-list
+                      li: +icons('#ic_telegram')
+                      li: +icons('#ic_whatsapp')
+                      li: +icons('#ic_viber')
+                      li: +icons('#ic_qr')
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                      li(data-pass="edit"): +icons('#ic_edit', 22)
+                      li.row-remove(data-pass="remove"): +icons('#ic_trash', 22)
+                .table__tr
+                  .table__td(data-title="Номер телефона") 
+                    span +7 (912) 441-51-51
+                    small Использован: 5
+                  .table__td(data-title="Время действия") С 12.10.23, 09:00 по 15.10.23, 18:00
+                  .table__td(data-title="Тип пропуска") Разовый
+                  .table__td(data-title="Статус") Активный
+                  .table__td(data-title="Поделиться") 
+                    ul.share-list
+                      li: +icons('#ic_telegram')
+                      li: +icons('#ic_whatsapp')
+                      li: +icons('#ic_viber')
+                      li: +icons('#ic_qr')
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                      li(data-pass="edit"): +icons('#ic_edit', 22)
+                      li.row-remove(data-pass="remove"): +icons('#ic_trash', 22)
+    .personal-content__pagination
+      +pagination()  
+
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")

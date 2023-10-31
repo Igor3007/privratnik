@@ -38,7 +38,11 @@ block content
     .personal-content__tab-container
       .access-config
         .access-config__title Разовые/временные пропуски
-        .access-config__desc пусто =(
+        .access-config__desc
+          | Осталось пропусков в текущем месяце: 
+          a(href='#') 10 (подключить больше)
+        .access-config__action
+          .access-config__add: button.btn.btn--add(data-pass="add") Добавить пропуск
           
    
 

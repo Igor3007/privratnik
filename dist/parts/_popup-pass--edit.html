@@ -1,0 +1,48 @@
+
+<div class="popup-form">
+  <div class="popup-form__title">Редактирование разового/временного пропуска</div>
+  <div class="popup-form__desc">Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций</div>
+  <div class="popup-form__fields">
+    <form action="/access-onetime-list.html" method="GET">
+      <div class="form">
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Номер телефона, которому выдаётся пропуск</div>
+            <input type="text" placeholder="Введите номер" value="+7 (912) 441-51-51"/>
+          </div>
+        </div>
+        <div class="form__label">Время действия пропуска</div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <input type="text" placeholder="Начало действия" value="06.09.23, 09:00"/>
+          </div>
+          <div class="form__subitem">
+            <input type="text" placeholder="Конец действия" value="06.09.23, 18:00"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Тип пропуска</div>
+            <ul class="switch-list">
+              <li>
+                <label class="radio">
+                  <input type="radio" name="type" checked="" value="1"/><span class="radio__elem"></span><span class="radio__text">Разовый пропуск</span>
+                </label>
+              </li>
+              <li>
+                <label class="radio">
+                  <input type="radio" name="type" value="2"/><span class="radio__elem"></span><span class="radio__text">Многоразовый на время действия</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <button class="btn">Добавить пропуск</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

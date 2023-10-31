@@ -102,6 +102,10 @@
 
      &__methods {
 
+         width: 100%;
+         overflow-x: auto;
+         overflow-y: hidden;
+
          & .link-dropdown {
              &__title {
                  font-size: inherit;
@@ -127,14 +131,14 @@
 
      &__left-side {
          @media screen and (min-width: $w1200) {
-             width: calc(100% - 480px);
+             width: calc(100% - 604px);
              padding-right: 32px;
          }
      }
 
      &__right-side {
          @media screen and (min-width: $w1200) {
-             width: 480px;
+             width: 604px;
          }
      }
 
@@ -256,4 +260,75 @@
              }
          }
      }
+ }
+
+ .tabs-icons {
+
+     display: flex;
+     align-items: center;
+
+     width: 100%;
+
+     & li {
+         width: 48px;
+         min-width: 48px;
+         height: 48px;
+         border: 1px solid #ECF0F5;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 8px;
+         margin-right: 12px;
+         cursor: pointer;
+
+         &:last-child {
+             margin-right: 0;
+         }
+
+         &:hover {
+             background-color: #ECF0F5;
+         }
+
+         &.is-active {
+             background-color: var(--blue-dark);
+             border: 1px solid var(--blue-dark);
+
+             & .bgimage {
+                 filter: brightness(200);
+             }
+         }
+     }
+
+     & .bgimage {
+         width: 24px;
+         height: 24px;
+         @include bgimage-contain;
+     }
+
+     & span[data-tooltip] {
+         &::before {
+             min-width: auto;
+             white-space: nowrap;
+             width: auto;
+             top: calc(100% + 20px);
+         }
+
+         &:hover {
+             &::before {
+                 transition-delay: 0.6s;
+             }
+         }
+     }
+ }
+
+
+ .table--statistic {
+     & .table {
+         &__td {
+             &:first-child {
+                 font-weight: normal;
+             }
+         }
+     }
+
  }

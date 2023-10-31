@@ -41,6 +41,7 @@
         cursor: pointer;
 
 
+
         @media screen and (min-width: $w992) {
             padding-bottom: 12px;
         }
@@ -50,6 +51,14 @@
             background-color: #eee;
             border-radius: 8px;
             overflow: hidden;
+        }
+
+        &:hover {
+            & .card-media {
+                &__view {
+                    opacity: 1;
+                }
+            }
         }
     }
 
@@ -75,5 +84,19 @@
         top: 12px;
         left: 12px;
         cursor: pointer;
+    }
+
+    &__view {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        @include layer(2);
+        bottom: 12px;
+        border-radius: 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.3s ease;
     }
 }

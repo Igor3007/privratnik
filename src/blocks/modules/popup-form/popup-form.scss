@@ -33,6 +33,10 @@
             }
         }
     }
+
+    &__cost {
+        padding-bottom: 12px;
+    }
 }
 
 .select-address-on-map {
@@ -112,4 +116,90 @@
 
     }
 
+}
+
+.video-arhive {
+
+    &__title {
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--blue-dark);
+        padding-bottom: 24px;
+        width: 100%;
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin-left: auto;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxbDYgNiA2LTYiIHN0cm9rZT0iIzI1MzY3OCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    &__all {
+        display: none;
+    }
+
+    &__year {
+
+        max-width: 200px;
+        padding-bottom: 16px;
+
+    }
+
+    &__item {
+
+        padding-bottom: 24px;
+        font-size: 16px;
+        font-weight: 500;
+
+        & strong {
+            display: block;
+            padding-bottom: 12px;
+            font-size: 16px;
+        }
+
+        & ul {
+            display: flex;
+            margin: -3px;
+            flex-wrap: wrap;
+
+            & li {
+                padding: 3px;
+                flex-basis: 110px;
+                color: var(--blue-dark);
+                cursor: pointer;
+
+                &[disabled] {
+                    color: var(--blue-light);
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    &.is-open {
+        & .video-arhive {
+
+            &__title {
+
+
+                &::after {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &__all {
+                display: block;
+            }
+
+        }
+    }
 }

@@ -237,6 +237,7 @@
     padding: 24px;
     background-color: var(--bg-01);
     border-radius: 8px;
+    margin-bottom: 30px;
 
     &__title {
         padding-bottom: 12px;
@@ -254,6 +255,15 @@
             font-weight: 500;
             color: var(--blue-dark);
             font-size: 15px;
+        }
+    }
+
+    &__action {
+        display: flex;
+        padding-bottom: 12px;
+
+        & .btn {
+            margin-right: 12px;
         }
     }
 }

@@ -36,18 +36,15 @@ block content
     .personal-content__desc Смотрите открытия по созданным ранее доступам за день в режиме реального времени. Также вы можете выбрать метод открытия для удобства отображения.
     .personal-content__action
         .personal-content__methods
-          .link-dropdown.link-dropdown--right
-            .link-dropdown__title Все методы открытия
-            .link-dropdown__list
-              ul
-                li: a(href='#') Номер телефона
-                li: a(href='#') Приложение
-                li: a(href='#') Госномер ТС
-                li: a(href='#') Пульт
-                li: a(href='#') RFID карта
-                li: a(href='#') RFID метка
+          ul.tabs-icons(data-tab-filter="statistic")
+            li(data-filter="phone"): span( class=""  data-tooltip="Метод открытия позвонив на номер телефона"): +bgimage('/img/common/remote-device-call.svg') 
+            li(data-filter="number"): span( class=""  data-tooltip="Метод открытия по номеру авто"): +bgimage('/img/common/remote-device-car-plate.svg')
+            li(data-filter="rfid"): span( class=""  data-tooltip="Метод открытия чипом RFID"): +bgimage('/img/common/remote-device-chip.svg')
+            li(data-filter="app"): span( class=""  data-tooltip="Метод открытия с мобильного приложения"): +bgimage('/img/common/remote-device-mobile-app.svg')
+            li(data-filter="pult"): span( class=""  data-tooltip="Метод открытия c пульта ДУ"): +bgimage('/img/common/remote-device-pult.svg')
+            li(data-filter="rfid-card"): span( class=""  data-tooltip="Метод открытия RFID картой"): +bgimage('/img/common/remote-device-rfid-card.svg')
 
-    .personal-content__tab-container
+    .personal-content__tab-container(data-tab-filter-container="statistic")
       .personal-content__table
         +table-access()
     .personal-content__pagination

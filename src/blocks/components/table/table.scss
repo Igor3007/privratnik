@@ -165,6 +165,8 @@
     & strong {
         font-weight: 500;
     }
+
+
 }
 
 .table-dropdown {
@@ -233,6 +235,7 @@
     }
 }
 
+.share-list,
 .devices-access {
 
     display: flex;
@@ -271,6 +274,10 @@
                 opacity: 1;
                 cursor: pointer;
             }
+
+            & svg {
+                fill: var(--blue-dark);
+            }
         }
 
         & span[data-tooltip]::before {
@@ -281,7 +288,20 @@
             text-align: center;
         }
     }
+
+    & svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--blue-light);
+        cursor: pointer;
+    }
 }
+
+.share-list {
+    max-width: 140px;
+}
+
+
 
 .color-status {
     &--red {

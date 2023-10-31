@@ -103,6 +103,162 @@ document.addEventListener("DOMContentLoaded", function (event) {
     window.preloader = new Preloader();
 
 
+    /* ====================================
+    ajax tooltip
+    ====================================*/
+
+    // if (document.querySelector('[data-tooltip]')) {
+
+
+    //     class TooltipAjax {
+
+    //         constructor() {
+    //             this.$items = document.querySelectorAll('[data-tooltip]')
+    //             this.addEvents()
+    //             this.tooltip = null;
+    //         }
+
+    //         ajaxLoadTooltip(e, callback) {
+
+    //             // window.ajax({
+    //             //     type: 'GET', //POST
+    //             //     url: '/json/tooltips.json',
+    //             //     responseType: 'json',
+    //             //     data: {
+    //             //         idProduct: e.target.dataset.id,
+    //             //         idTooltip: e.target.dataset.propTooltip
+    //             //     }
+    //             // }, function (status, response) {
+    //             //     callback(response)
+    //             // })
+
+    //             console.log(e.target.closest('[data-tooltip]').dataset.tooltip)
+    //             callback(e.target.closest('[data-tooltip]').dataset.tooltip)
+
+    //         }
+
+    //         getTemplate(data) {
+
+
+    //             let html = ` <div class="tooltip-box" ><div class="af-spiner" ></div></div> `;
+
+    //             if (data) {
+
+    //                 html = `<div class="tooltip-box" >
+    //                            <div class="tooltip-box__text" >${data}</div>
+    //                        </div> `;
+    //             }
+
+    //             return html;
+
+    //         }
+
+    //         positionTooltip(e) {
+    //             const DomRect = e.target.getBoundingClientRect()
+    //             const tooltipW = this.tooltip.clientWidth;
+    //             const tooltipH = this.tooltip.clientHeight;
+    //             const offset = 20;
+
+    //             this.tooltip.style.left = (DomRect.x - (tooltipW / 2) + (offset / 2)) + 'px'
+    //             this.tooltip.style.top = (DomRect.y - tooltipH - (offset / 2)) + 'px'
+
+
+    //             if (this.tooltip.getBoundingClientRect().left < offset) {
+    //                 this.tooltip.classList.add('tooltip-box-item--left')
+    //                 this.tooltip.style.left = (DomRect.x - (DomRect.x / 2) + (offset / 2)) + 'px'
+    //             }
+
+    //             if (this.tooltip.getBoundingClientRect().top < offset) {
+    //                 this.tooltip.classList.add('tooltip-box-item--top')
+    //                 this.tooltip.style.top = (DomRect.y + (offset)) + 'px'
+    //             }
+    //         }
+
+    //         tooltipDesctop(e) {
+
+
+
+    //             this.tooltipRemove()
+
+    //             this.tooltip = document.createElement('div')
+    //             this.tooltip.innerHTML = this.getTemplate(false)
+    //             this.tooltip.classList.add('tooltip-box-item')
+
+
+
+    //             e.target.closest('[data-tooltip]').append(this.tooltip)
+    //             this.positionTooltip(e)
+
+    //             //load data
+
+    //             this.ajaxLoadTooltip(e, (response) => {
+    //                 this.tooltip.innerHTML = this.getTemplate(response)
+    //                 this.positionTooltip(e)
+
+    //             })
+
+
+    //         }
+
+    //         tooltipPopup(e) {
+    //             const tooltipPopup = new afLightbox({
+    //                 mobileInBottom: true
+    //             })
+
+    //             tooltipPopup.open('<div class="popup-tooltip-box" >' + this.getTemplate(false) + '</div>', () => {
+
+    //                 this.ajaxLoadTooltip(e, (response) => {
+    //                     tooltipPopup.changeContent('<div class="popup-tooltip-box" >' + this.getTemplate(response) + '</div>')
+    //                 })
+
+    //             })
+    //         }
+
+    //         tooltipRemove() {
+    //             this.tooltip ? this.tooltip.remove() : ''
+    //         }
+
+    //         addEvents() {
+    //             this.$items.forEach(item => {
+
+    //                 item.addEventListener('click', e => {
+
+    //                     //for desctop
+    //                     if (document.body.clientWidth > 576) {
+
+    //                         this.tooltipDesctop(e)
+
+    //                         //add event close on scroll
+    //                         window.addEventListener('scroll', e => {
+    //                             this.tooltipRemove()
+    //                         })
+
+    //                         //add event close on outher click 
+    //                         document.addEventListener('click', e => {
+    //                             if (!e.target.closest('[data-tooltip]'))
+    //                                 this.tooltipRemove()
+    //                         })
+
+    //                     } else {
+
+    //                         //for mobile
+    //                         this.tooltipPopup(e)
+
+    //                     }
+
+    //                 })
+
+    //             })
+    //         }
+
+    //     }
+
+    //     new TooltipAjax()
+
+
+    // }
+
+
     /* =================================================
     confirm
     ================================================= */
@@ -299,6 +455,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 title: 'Удаление пользователя',
                 desc: 'Внимание! Вы уверены, что хотите удалить пользователя Тестовый Михайл?',
                 revertText: 'Вы удалили пользователя Тестовый Михаил.',
+                onConfirm: function () {
+                    //ajax request for remove
+                    console.log('удалено')
+                }
+            })
+        })
+    })
+
+    document.querySelectorAll('[data-pass="remove"]').forEach(item => {
+        item.addEventListener('click', e => {
+            window.dialog.remove({
+                removeHtmlElem: item.closest('.table__tr'),
+                title: 'Удаление пропуска',
+                desc: 'Внимание!Вы уверены, что хотите удалить разовый / временный пропуск для телефона + 7(912) 441-51-51 ?',
+                revertText: 'Вы удалили пропуск для телефона + 7(912) 441-51-51 ',
                 onConfirm: function () {
                     //ajax request for remove
                     console.log('удалено')
@@ -2037,6 +2208,48 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     }
 
+    /* ==================================
+    data-popup="live-video-arhive"
+    ================================== */
+
+    function popupArhiveVideo() {
+        const popupVideo = new afLightbox({
+            mobileInBottom: true
+        })
+
+        window.ajax({
+            type: 'GET',
+            url: '/parts/_popup-live-video-arhive.html'
+        }, (status, response) => {
+
+            popupVideo.open(response, (instance) => {
+                popupVideo.open(response, (instance) => {
+                    //init select 
+                    const selectCustom = new afSelect({
+                        selector: 'select'
+                    })
+                    selectCustom.init()
+
+                    if (instance.querySelector('.video-arhive__title')) {
+                        instance
+                            .querySelector('.video-arhive__title')
+                            .addEventListener('click', e => e.target.closest('.video-arhive').classList.toggle('is-open'))
+                    }
+                })
+            })
+
+        })
+    }
+
+    if (document.querySelector('[data-popup="video-arhive"]')) {
+
+        const buttons = document.querySelectorAll('[data-popup="video-arhive"]')
+        buttons.forEach(button => {
+            button.addEventListener('click', popupArhiveVideo)
+        })
+
+    }
+
     /* ===================================
     datepicker
     ===================================*/
@@ -2224,6 +2437,188 @@ document.addEventListener("DOMContentLoaded", function (event) {
             })
         })
     }
+
+    /* ======================================
+    tabfilter
+    ======================================*/
+
+    class TabFilter {
+        constructor(params) {
+            this.$el = document.querySelector('[data-tab-filter="' + params.el + '"]')
+            this.$container = document.querySelector('[data-tab-filter-container="' + params.el + '"]')
+            this.active = null
+            this.addEvent()
+        }
+
+        changeTab(activeTab) {
+
+            if (this.active == activeTab) {
+
+                this.$el.querySelectorAll('[data-filter]').forEach(item => {
+                    !item.classList.contains('is-active') || item.classList.remove('is-active')
+                })
+
+                this.$container.querySelectorAll('[data-tab]').forEach(item => {
+                    !item.classList.contains('hide') || item.classList.remove('hide')
+                })
+
+                return false;
+            }
+
+            this.$container.querySelectorAll('[data-tab]').forEach(item => {
+                item.dataset.tab != activeTab ? item.classList.add('hide') : !item.classList.contains('hide') || item.classList.remove('hide')
+            })
+
+            this.$el.querySelectorAll('[data-filter]').forEach(item => {
+                item.dataset.filter == activeTab ? item.classList.add('is-active') : !item.classList.contains('is-active') || item.classList.remove('is-active')
+            })
+
+            this.active = activeTab
+        }
+
+        addEvent() {
+            this.$el.querySelectorAll('[data-filter]').forEach(item => {
+                item.addEventListener('click', e => this.changeTab(item.dataset.filter))
+            })
+        }
+    }
+
+    if (document.querySelector('[data-tab-filter="statistic"]')) {
+        new TabFilter({
+            el: 'statistic'
+        })
+    }
+
+    /* ======================================
+    add pass onetime
+    ======================================*/
+
+    function initPopupPassOnetime(response, popup) {
+
+        popup.open(response, (instance) => {
+
+            //init select 
+            const selectCustom = new afSelect({
+                selector: 'select'
+            })
+
+            selectCustom.init()
+
+
+
+        })
+
+
+    }
+
+    if (document.querySelector('[data-pass="add"]')) {
+        const items = document.querySelectorAll('[data-pass="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-pass--create.html'
+                }, (status, response) => {
+
+                    initPopupPassOnetime(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+    if (document.querySelector('[data-pass="edit"]')) {
+        const items = document.querySelectorAll('[data-pass="edit"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-pass--edit.html'
+                }, (status, response) => {
+
+                    initPopupPassOnetime(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+
+    /* =============================================
+    connect package onetime pass
+    =============================================*/
+
+
+    if (document.querySelector('[data-pass="nopass"]')) {
+        const items = document.querySelectorAll('[data-pass="nopass"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-pass--connect-pack.html'
+                }, (status, response) => {
+
+                    popup.open(response, (instance) => {})
+
+                })
+
+
+            })
+        })
+    }
+
+    /* =============================================
+    extensions package onetime pass
+    =============================================*/
+
+
+    if (document.querySelector('[data-pass="extension"]')) {
+        const items = document.querySelectorAll('[data-pass="extension"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-pass--connect-extensions.html'
+                }, (status, response) => {
+
+                    popup.open(response, false)
+
+                })
+
+
+            })
+        })
+    }
+
+
 
 
 }); //domContentLoaded

@@ -1,0 +1,19 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Использованы все пропуски пакета «Базовый»
+    .popup-form__desc 
+      | Вы использовали все доступные в пакете разовые/временные пропуски в этом месяце. Дальнейшее использование приведёт к дополнительным списаниям в размере:
+    .popup-form__cost
+      center: strong 50 ₽ за 1 пропуск вне пакета
+    .popup-form__fields
+       
+          form(action='/access-onetime-list.html' method='GET')
+               .form
+                 .form__item
+                    .form__subitem: .form__label: center Вы можете подключить пакет Профессиональный», чтобы получить большее количество пропусков в пакете:
+                 .form__item
+                    .form__subitem: a(href='/personal-services.html' class="btn btn-full" ) Подключить пакет
+                    .form__subitem: button.btn.btn-white(data-af-popup="close" type="button") Спасибо, пока не нужно
+               

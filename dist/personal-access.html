@@ -259,24 +259,19 @@
             <div class="personal-content__desc">Смотрите открытия по созданным ранее доступам за день в режиме реального времени. Также вы можете выбрать метод открытия для удобства отображения.</div>
             <div class="personal-content__action">
               <div class="personal-content__methods">
-                <div class="link-dropdown link-dropdown--right">
-                  <div class="link-dropdown__title">Все методы открытия</div>
-                  <div class="link-dropdown__list">
-                    <ul>
-                      <li><a href="#">Номер телефона</a></li>
-                      <li><a href="#">Приложение</a></li>
-                      <li><a href="#">Госномер ТС</a></li>
-                      <li><a href="#">Пульт</a></li>
-                      <li><a href="#">RFID карта</a></li>
-                      <li><a href="#">RFID метка</a></li>
-                    </ul>
-                  </div>
-                </div>
+                <ul class="tabs-icons" data-tab-filter="statistic">
+                  <li data-filter="phone"><span data-tooltip="Метод открытия позвонив на номер телефона"><span class="bgimage lazyload" data-bg="/img/common/remote-device-call.svg"></span></span></li>
+                  <li data-filter="number"><span data-tooltip="Метод открытия по номеру авто"><span class="bgimage lazyload" data-bg="/img/common/remote-device-car-plate.svg"></span></span></li>
+                  <li data-filter="rfid"><span data-tooltip="Метод открытия чипом RFID"><span class="bgimage lazyload" data-bg="/img/common/remote-device-chip.svg"></span></span></li>
+                  <li data-filter="app"><span data-tooltip="Метод открытия с мобильного приложения"><span class="bgimage lazyload" data-bg="/img/common/remote-device-mobile-app.svg"></span></span></li>
+                  <li data-filter="pult"><span data-tooltip="Метод открытия c пульта ДУ"><span class="bgimage lazyload" data-bg="/img/common/remote-device-pult.svg"></span></span></li>
+                  <li data-filter="rfid-card"><span data-tooltip="Метод открытия RFID картой"><span class="bgimage lazyload" data-bg="/img/common/remote-device-rfid-card.svg"></span></span></li>
+                </ul>
               </div>
             </div>
-            <div class="personal-content__tab-container">
+            <div class="personal-content__tab-container" data-tab-filter-container="statistic">
               <div class="personal-content__table">
-                <div class="table">
+                <div class="table table--statistic">
                   <div class="table__tr">
                     <div class="table__th">Дата/время<span class="table__sort"></span></div>
                     <div class="table__th">
@@ -291,11 +286,11 @@
                        Ссылки на проезд<span class="table__sort"></span></div>
                     <div class="table__th">Метод открытия  </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="phone">
                     <div class="table__td" data-title="Дата/время"> 06.09.23, 13:06:02</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -306,11 +301,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="app">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"> <span class="color-status--red">Отказано в доступе</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -321,11 +316,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="number">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--red">Отказано в доступе</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -336,11 +331,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="pult">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -351,11 +346,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="phone">
                     <div class="table__td" data-title="Дата/время"> 06.09.23, 13:06:02</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -366,11 +361,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="app">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"> <span class="color-status--red">Отказано в доступе</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -381,11 +376,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="number">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--red">Отказано в доступе</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -396,11 +391,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="pult">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -411,11 +406,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="phone">
                     <div class="table__td" data-title="Дата/время"> 06.09.23, 13:06:02</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -426,11 +421,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="app">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"> <span class="color-status--red">Отказано в доступе</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -441,11 +436,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="number">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--red">Отказано в доступе</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>
@@ -456,11 +451,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="table__tr">
+                  <div class="table__tr" data-tab="pult">
                     <div class="table__td" data-title="Дата/время">06.09.23, 13:05:11</div>
                     <div class="table__td" data-title="Номер телефона">+7 (916) 261-19-17</div>
                     <div class="table__td" data-title="Имя">Тестовый Михаил</div>
-                    <div class="table__td" data-title="Парковка">Парковка на Болдина</div>
+                    <div class="table__td" data-title="Парковка"> <span>Парковка на Болдина</span><small>Шлагбаум у кафе Витязь</small></div>
                     <div class="table__td" data-title="Статус доступа"><span class="color-status--green">Доступ предоставлен</span></div>
                     <div class="table__td" data-title="Ссылки на проезд">
                       <div class="table-link"><a href="#" data-popup="live-photo">Фото/</a><a href="#" data-popup="live-video">Видео</a></div>

@@ -4,7 +4,6 @@ include ../../blocks/modules/personal-aside/personal-aside.pug
 include ../../blocks/modules/personal-top/personal-top.pug
 include ../../blocks/modules/personal-content/personal-content.pug
 include ../../blocks/components/breadcrumb/breadcrumb.pug
-
 include ../../blocks/modules/card-media/card-media.pug
 
 block variables
@@ -35,15 +34,18 @@ block content
               .input--find: input(type="text" placeholder="Найти")
       .personal-content__right-side
         .memory-info
-          .memory-info__title Осталось 0,97 ТБ
-          .memory-info__desc Когда место закончится, записи в видеоархиве будут удаляться начиная с самой старой.
-          .memory-info__link: a(href='#')  Перейти в «Услуги»
+          .memory-info__title 9,84 ГБ места для видеоархива
+          .memory-info__desc Когда место закончится, записи в видеоархиве будут удаляться начиная с самой старой. Вы всегда можете подключить больше места в разделе услуг. Также вы можете предоставить доступ к онлайн-трансляции и видеоархиву всем пользователям.
+          .memory-info__action
+            a(href='/personal-services.html'): button.btn Подключить место
+            a(href='/access-users-list.html'): button.btn.btn-line Дать доступ пользователям
+          
 
     .personal-content__main
       .report-media
         .report-media__list
           each item in [1,1,1,1,1,1,1]
-            .report-media__item: +card-media(item)
+            .report-media__item: +card-media-video(item)
        
 
     
