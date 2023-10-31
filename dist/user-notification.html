@@ -191,7 +191,7 @@
                       </div>
                     </div>
                     <div class="top-nitification__bottom">
-                      <div class="top-nitification__all"><a href="#">Смотреть все уведомления</a></div>
+                      <div class="top-nitification__all"><a href="/user-notification.html">Смотреть все уведомления</a></div>
                       <div class="top-nitification__setting">
                         <svg width="25" height="25">
                           <use xlink:href="/img/sprites/sprite.svg#ic_gear"></use>
@@ -250,37 +250,89 @@
             </div>
             <div class="personal-content__h1">Уведомления</div>
             <div class="personal-content__main">
+              <div class="notification-action">
+                <div class="notification-action__button">
+                  <div class="notification-action__btn">
+                    <button class="btn"> 
+                      <svg width="25" height="25">
+                        <use xlink:href="/img/sprites/sprite.svg#ic_gear"></use>
+                      </svg><span>Настройки уведомлений</span>
+                    </button>
+                  </div>
+                  <div class="notification-action__btn">
+                    <button class="btn btn-white"> 
+                      <svg width="25" height="25">
+                        <use xlink:href="/img/sprites/sprite.svg#ic_check-read"></use>
+                      </svg><span>Отметить все как прочитанные</span>
+                    </button>
+                  </div>
+                  <div class="notification-action__btn">
+                    <button class="btn btn-white"> 
+                      <svg width="25" height="25">
+                        <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
+                      </svg><span>Очистить список уведомлений</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="notification-action__sort">
+                  <select>
+                    <option value="">Все уведомления</option>
+                    <option value="">Не прочитаные</option>
+                    <option value="">Важные</option>
+                  </select>
+                </div>
+              </div>
               <div class="notification-group">
                 <div class="notification-group__title">30 сентября</div>
                 <div class="notification-group__list">
                   <div class="notification-group__item">
                     <div class="item-notification item-notification--unread">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
+                      <div class="item-notification__check">
+                        <svg width="25" height="25">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_check-read"></use>
+                        </svg>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification item-notification--unread">
-                      <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
-                      <div class="item-notification__message">14:23, АНОНИМ, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
+                        <div class="item-notification__message">14:23, АНОНИМ, +7 (905) 533-**-02</div>
+                      </div>
+                      <div class="item-notification__check">
+                        <svg width="25" height="25">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_check-read"></use>
+                        </svg>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
-                      <div class="item-notification__message">01.02.23, 14:22 – АНОНИМ, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
+                        <div class="item-notification__message">01.02.23, 14:22 – АНОНИМ, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -290,14 +342,18 @@
                 <div class="notification-group__list">
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -307,56 +363,74 @@
                 <div class="notification-group__list">
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
-                      <div class="item-notification__message">14:23, АНОНИМ, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
+                        <div class="item-notification__message">14:23, АНОНИМ, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
-                      <div class="item-notification__message">01.02.23, 14:22 – АНОНИМ, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--red">Отказ в доступе </strong>(не внесен в БД)</div>
+                        <div class="item-notification__message">01.02.23, 14:22 – АНОНИМ, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">28.01.23, 09:41 – Михаил Тестовый +7 (490) 533-**-85</div>
+                      </div>
                     </div>
                   </div>
                   <div class="notification-group__item">
                     <div class="item-notification">
-                      <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
-                      <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      <div class="item-notification__main">
+                        <div class="item-notification__title"><strong class="color--green">Доступ предоставлен</strong></div>
+                        <div class="item-notification__message">16:27, Александр Юрьевич Шилов, +7 (905) 533-**-02</div>
+                      </div>
                     </div>
                   </div>
                 </div>

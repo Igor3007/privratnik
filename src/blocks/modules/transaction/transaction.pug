@@ -1,10 +1,125 @@
+mixin card-transaction(data)
+    .card-transaction(class = data.type == '+' ? 'card-transaction--pay':'')
+        .card-transaction__icon: span: +icons( data.type == '+' ? '#ic_plus-min':'#ic_check' )
+        .card-transaction__main
+            .card-transaction__name= data.title
+            .card-transaction__desc 30.09.23, 16:27
+        .card-transaction__cost: span= data.cost
+
+
 mixin transactions
+    .transactions-bill
+        .transactions-bill__state
+            .transactions-bill__icons: +icons('#ic_wallet')
+            .transactions-bill__val
+                | Ваш баланс:
+                span 10 000 ₽
+        .transactions-bill__pay
+            button.btn Пополнить
+
     .transactions
-        .transactions__date
+        .transactions__title История транзакций
+        .transactions__filter
+            .transactions__tabs
+                ul
+                    li Помесячно
+                    li.icon--green: +icons('#ic_plus-min')
+                    li: +icons('#ic_check')
+            .transactions__range-date
+                .input--date: input(type="text" placeholder="Начало отчётного периода")
+                .input--date: input(type="text" placeholder="Окончание отчётного периода")
+
         .transactions__list
             .transactions__item
-                .card-transaction
-                    .card-transaction__icon
-                    .card-transaction__main
-                        .card-transaction__main
-                    .card-transaction__cost раздел будет позже
+                .transactions__date 30 сентября
+                .transactions__cards
+                    +card-transaction({
+                        title: 'Ежедневное списание по подключённой услуге «Мастер отчётов»',
+                        cost: '160 ₽',
+                        type: '-',
+                    })
+                    +card-transaction({
+                        title: 'Оплата услуги «Видеонаблюдение 500ГБ»',
+                        cost: '-5 000 ₽',
+                        type: '-',
+                    })
+                    +card-transaction({
+                        title: 'Возврат средств по неиспользованным дням',
+                        cost: '+2 400 ₽',
+                        type: '+',
+                    })
+                    +card-transaction({
+                        title: 'Оплата за «Пакет разовых/временных пропусков “Профессиональный”»',
+                        cost: '-2 000 ₽',
+                        type: '-',
+                    })
+
+
+            .transactions__item
+                .transactions__date 27 сентября
+                .transactions__cards
+                    +card-transaction({
+                        title: 'Ежедневное списание по подключённой услуге «Мастер отчётов»',
+                        cost: '160 ₽',
+                        type: '-',
+                    })
+
+            .transactions__item
+                .transactions__date 24 сентября
+                .transactions__cards
+                    +card-transaction({
+                        title: 'Ежедневное списание по подключённой услуге «Мастер отчётов»',
+                        cost: '160 ₽',
+                        type: '-',
+                    })
+                    +card-transaction({
+                        title: 'Оплата услуги «Видеонаблюдение 500ГБ»',
+                        cost: '-5 000 ₽',
+                        type: '-',
+                    })
+                    +card-transaction({
+                        title: 'Возврат средств по неиспользованным дням',
+                        cost: '+2 400 ₽',
+                        type: '+',
+                    })
+                    +card-transaction({
+                        title: 'Оплата за «Пакет разовых/временных пропусков “Профессиональный”»',
+                        cost: '-2 000 ₽',
+                        type: '-',
+                    })
+
+
+            .transactions__item
+                .transactions__date 19 сентября
+                .transactions__cards
+                    +card-transaction({
+                        title: 'Ежедневное списание по подключённой услуге «Мастер отчётов»',
+                        cost: '160 ₽',
+                        type: '-',
+                    })
+
+            .transactions__item
+                .transactions__date 11 сентября
+                .transactions__cards
+                    +card-transaction({
+                        title: 'Ежедневное списание по подключённой услуге «Мастер отчётов»',
+                        cost: '160 ₽',
+                        type: '-',
+                    })
+                    +card-transaction({
+                        title: 'Оплата услуги «Видеонаблюдение 500ГБ»',
+                        cost: '-5 000 ₽',
+                        type: '-',
+                    })
+                    +card-transaction({
+                        title: 'Возврат средств по неиспользованным дням',
+                        cost: '+2 400 ₽',
+                        type: '+',
+                    })
+                    +card-transaction({
+                        title: 'Оплата за «Пакет разовых/временных пропусков “Профессиональный”»',
+                        cost: '-2 000 ₽',
+                        type: '-',
+                    })
+                    
+            

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", (event) => {
 
     const API_YMAPS = 'https://api-maps.yandex.ru/2.1/?apikey=0e2d85e0-7f40-4425-aab6-ff6d922bb371&suggest_apikey=ad5015b5-5f39-4ba3-9731-a83afcecb740&lang=ru_RU&mode=debug';
 
@@ -2462,6 +2462,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     !item.classList.contains('hide') || item.classList.remove('hide')
                 })
 
+                this.active = null
+
                 return false;
             }
 
@@ -2621,4 +2623,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+
+
+
 }); //domContentLoaded
+
+
+/* =============================================
+popup add space on videoarhive
+=============================================*/
+
+function popupAddSpaceArhive() {
+    const popup = new afLightbox({
+        mobileInBottom: true
+    })
+
+    window.ajax({
+        type: 'GET',
+        url: '/parts/_popup-add-space-arhive.html'
+    }, (status, response) => {
+        popup.open(response, false)
+    })
+}

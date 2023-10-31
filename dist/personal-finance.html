@@ -191,7 +191,7 @@
                       </div>
                     </div>
                     <div class="top-nitification__bottom">
-                      <div class="top-nitification__all"><a href="#">Смотреть все уведомления</a></div>
+                      <div class="top-nitification__all"><a href="/user-notification.html">Смотреть все уведомления</a></div>
                       <div class="top-nitification__setting">
                         <svg width="25" height="25">
                           <use xlink:href="/img/sprites/sprite.svg#ic_gear"></use>
@@ -250,26 +250,224 @@
             </div>
             <div class="personal-content__h1">Финансы</div>
             <div class="personal-content__main">
-              <div class="activate-service">
-                <div class="activate-service__icon"><span class="bgimage lazyload" data-bg="/img/common/connect.svg"></span>
+              <div class="transactions-bill">
+                <div class="transactions-bill__state">
+                  <div class="transactions-bill__icons">
+                    <svg width="25" height="25">
+                      <use xlink:href="/img/sprites/sprite.svg#ic_wallet"></use>
+                    </svg>
+                  </div>
+                  <div class="transactions-bill__val">Ваш баланс:<span>10 000 ₽</span></div>
                 </div>
-                <div class="activate-service__main">
-                  <div class="activate-service__title">Переходите в раздел «Услуги»</div>
-                  <div class="activate-service__desc">Там вы можете подключить необходимый дополнительный функционал или отключить уже не нужный.</div>
+                <div class="transactions-bill__pay">
+                  <button class="btn">Пополнить</button>
                 </div>
-                <div class="activate-service__btn"><a href="/personal-services.html">
-                    <button class="btn btn--add">Перейти в раздел услуги</button></a></div>
               </div>
               <div class="transactions">
-                <div class="transactions__date"></div>
+                <div class="transactions__title">История транзакций</div>
+                <div class="transactions__filter">
+                  <div class="transactions__tabs">
+                    <ul>
+                      <li>Помесячно</li>
+                      <li class="icon--green">
+                        <svg width="25" height="25">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_plus-min"></use>
+                        </svg>
+                      </li>
+                      <li>
+                        <svg width="25" height="25">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                        </svg>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="transactions__range-date">
+                    <div class="input--date">
+                      <input type="text" placeholder="Начало отчётного периода"/>
+                    </div>
+                    <div class="input--date">
+                      <input type="text" placeholder="Окончание отчётного периода"/>
+                    </div>
+                  </div>
+                </div>
                 <div class="transactions__list">
                   <div class="transactions__item">
-                    <div class="card-transaction">
-                      <div class="card-transaction__icon"></div>
-                      <div class="card-transaction__main">
-                        <div class="card-transaction__main"></div>
+                    <div class="transactions__date">30 сентября</div>
+                    <div class="transactions__cards">
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Ежедневное списание по подключённой услуге «Мастер отчётов»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>160 ₽</span></div>
                       </div>
-                      <div class="card-transaction__cost">раздел будет позже</div>
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Оплата услуги «Видеонаблюдение 500ГБ»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>-5 000 ₽</span></div>
+                      </div>
+                      <div class="card-transaction card-transaction--pay">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_plus-min"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Возврат средств по неиспользованным дням</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>+2 400 ₽</span></div>
+                      </div>
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Оплата за «Пакет разовых/временных пропусков “Профессиональный”»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>-2 000 ₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transactions__item">
+                    <div class="transactions__date">27 сентября</div>
+                    <div class="transactions__cards">
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Ежедневное списание по подключённой услуге «Мастер отчётов»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>160 ₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transactions__item">
+                    <div class="transactions__date">24 сентября</div>
+                    <div class="transactions__cards">
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Ежедневное списание по подключённой услуге «Мастер отчётов»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>160 ₽</span></div>
+                      </div>
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Оплата услуги «Видеонаблюдение 500ГБ»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>-5 000 ₽</span></div>
+                      </div>
+                      <div class="card-transaction card-transaction--pay">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_plus-min"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Возврат средств по неиспользованным дням</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>+2 400 ₽</span></div>
+                      </div>
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Оплата за «Пакет разовых/временных пропусков “Профессиональный”»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>-2 000 ₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transactions__item">
+                    <div class="transactions__date">19 сентября</div>
+                    <div class="transactions__cards">
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Ежедневное списание по подключённой услуге «Мастер отчётов»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>160 ₽</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="transactions__item">
+                    <div class="transactions__date">11 сентября</div>
+                    <div class="transactions__cards">
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Ежедневное списание по подключённой услуге «Мастер отчётов»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>160 ₽</span></div>
+                      </div>
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Оплата услуги «Видеонаблюдение 500ГБ»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>-5 000 ₽</span></div>
+                      </div>
+                      <div class="card-transaction card-transaction--pay">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_plus-min"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Возврат средств по неиспользованным дням</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>+2 400 ₽</span></div>
+                      </div>
+                      <div class="card-transaction">
+                        <div class="card-transaction__icon"><span>
+                            <svg width="25" height="25">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_check"></use>
+                            </svg></span></div>
+                        <div class="card-transaction__main">
+                          <div class="card-transaction__name">Оплата за «Пакет разовых/временных пропусков “Профессиональный”»</div>
+                          <div class="card-transaction__desc">30.09.23, 16:27</div>
+                        </div>
+                        <div class="card-transaction__cost"><span>-2 000 ₽</span></div>
+                      </div>
                     </div>
                   </div>
                 </div>

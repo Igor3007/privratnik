@@ -34,9 +34,15 @@
 
 .item-notification {
     padding: 12px;
+    display: flex;
+    align-items: center;
 
     &--unread {
-        background-color: var(--bg-01);
+        background-color: var(--bg-04);
+    }
+
+    &__main {
+        flex-grow: 1;
     }
 
     &__title {
@@ -47,5 +53,122 @@
     &__message {
         font-size: 13px;
         color: var(--text-02);
+        line-height: 140%;
     }
+
+    &__check {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        transition: 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fff;
+        }
+
+        & svg {
+            fill: var(--blue-light);
+            width: 22px;
+            height: 22px;
+
+            @media screen and (min-width: $w480) {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}
+
+.notification-action {
+
+
+
+
+    display: flex;
+    flex-wrap: wrap;
+
+
+    &__button {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -6px;
+        padding-bottom: 24px;
+    }
+
+    &__btn {
+        padding: 6px;
+
+
+        & svg {
+            margin-left: -10px;
+        }
+    }
+
+    &__sort {
+
+        padding-bottom: 24px;
+        width: 100%;
+
+        @media screen and (min-width: $w375) {
+            max-width: 220px;
+            margin-left: auto;
+        }
+    }
+
+    & .btn-white {
+
+        border-width: 1px;
+
+        @media screen and (max-width: $w1440) {
+            padding: 12px;
+            min-width: 48px;
+
+            & svg {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        & span {
+
+            display: none;
+
+            @media screen and (min-width: $w1440) {
+                display: block;
+            }
+        }
+
+
+    }
+
+    & .btn:not(.btn-white) {
+
+        @media screen and (max-width: $w576) {
+            padding: 12px;
+            min-width: 48px;
+
+            & svg {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        & span {
+
+            display: none;
+
+            @media screen and (min-width: $w576) {
+                display: block;
+            }
+        }
+
+
+    }
+
+
 }

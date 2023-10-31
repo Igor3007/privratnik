@@ -1,0 +1,18 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Место для видеоархива закончилось
+    .popup-form__desc 
+      | При добавлении новых видео в архив старые будут удаляться.
+       
+    .popup-form__fields
+       
+          form(action='/access-onetime-list.html' method='GET')
+               .form
+                 .form__item
+                    .form__subitem: .form__label: center Вы можете подключить больше места для архива <br> в разделе наших услуг:
+                 .form__item
+                    .form__subitem: a(href='/personal-services.html' class="btn btn-full" ) Подключить пакет
+                    .form__subitem: button.btn.btn-white(data-af-popup="close" type="button") Спасибо, пока не нужно
+               

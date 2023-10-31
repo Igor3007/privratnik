@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Привратник - Разовые/временные пропуски</title>
+    <title>Привратник - Видеонаблюдение</title>
     <meta name="theme-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -93,7 +93,7 @@
                   </li>
                   <li><a href="personal-parkings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-parking.svg)" ></span>Мои парковки</a>
                   </li>
-                  <li class="is-active  is-sub-menu  is-open"><a href="personal-settings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-settings.svg)" ></span>Настройки доступа</a>
+                  <li class=" is-sub-menu"><a href="personal-settings.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-settings.svg)" ></span>Настройки доступа</a>
                     <ul class="sub-menu">
                       <li><a href="access-script.html">Сценарии доступа</a></li>
                       <li><a href="access-users.html">Список пользователей</a></li>
@@ -103,7 +103,7 @@
                   </li>
                   <li><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
                   </li>
-                  <li><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
+                  <li class="is-active"><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
                   </li>
                   <li><a href="personal-finance.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-finance.svg)" ></span>Финансы</a>
                   </li>
@@ -240,35 +240,129 @@
             </div>
           </div>
           <div class="personal-content">
-            <div class="personal-content__breadcrubs">
-              <div class="breadcrumb">
-                <ul>
-                  <li><a href="/">Общая информация</a></li>
-                  <li><a href="#">Настройки доступа</a></li>
-                  <li><span>Разовые/временные пропуски</span></li>
-                </ul>
+            <div class="personal-content--row">
+              <div class="personal-content__left-side">
+                <div class="personal-content__breadcrubs">
+                  <div class="breadcrumb">
+                    <ul>
+                      <li><a href="/">Общая информация</a></li>
+                      <li><span>Видеонаблюдение</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="personal-content__h1">Видеонаблюдение</div>
+                <div class="personal-content__desc">Видеотрансляции с подключённых устройств в режиме реального времени. При выборе открывается на весь экран и можно посмотреть видеоархив записей.</div>
+                <div class="personal-content__action">
+                  <div class="personal-content__find">
+                    <div class="input--find">
+                      <input type="text" placeholder="Найти">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="personal-content__right-side">
+                <div class="memory-info">
+                  <div class="memory-info__title">9,84 ГБ места для видеоархива</div>
+                  <div class="memory-info__desc">Когда место закончится, записи в видеоархиве будут удаляться начиная с самой старой. Вы всегда можете подключить больше места в разделе услуг. Также вы можете предоставить доступ к онлайн-трансляции и видеоархиву всем пользователям.</div>
+                  <div class="memory-info__action"><a href="/personal-services.html">
+                      <button class="btn">Подключить место</button></a><a href="/access-users-list.html">
+                      <button class="btn btn-line">Дать доступ пользователям</button></a></div>
+                </div>
               </div>
             </div>
-            <div class="personal-content__h1">Настройки доступа</div>
-            <div class="personal-content__tabs">
-              <ul data-tab-center="">
-                <li><a href="access-script.html">Сценарии доступа</a></li>
-                <li><a href="access-users.html">Список пользователей</a></li>
-                <li><a href="group-list.html">Список групп</a></li>
-                <li><a href="access-rights.html">Права доступа</a></li>
-                <li class="is-active"><a href="access-onetime.html">Разовые/временные пропуски</a></li>
-              </ul>
-            </div>
-            <div class="personal-content__tab-container">
-              <div class="access-config">
-                <div class="access-config__title">Разовые/временные пропуски</div>
-                <div class="access-config__desc">Осталось пропусков в текущем месяце: <a href="#">10 (подключить больше)</a></div>
-                <div class="access-config__action">
-                  <div class="access-config__add">
-                    <button class="btn btn--add" data-pass="add">Добавить пропуск</button>
+            <div class="personal-content__main">
+              <div class="report-media">
+                <div class="report-media__list">
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
                   </div>
-                  <div class="access-config__find">
-                    <input class="input--find" type="text" placeholder="Найти">
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
+                  </div>
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
+                  </div>
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
+                  </div>
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
+                  </div>
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
+                  </div>
+                  <div class="report-media__item">
+                    <div class="card-media">
+                      <div class="card-media__preview" data-popup="video-arhive">
+                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
+                        <div class="card-media__view">
+                          <svg width="25" height="25">
+                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="card-media__name">Парковка</div>
+                    </div>
                   </div>
                 </div>
               </div>

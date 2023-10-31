@@ -113,6 +113,11 @@
             color: var(--blue-medium, #A8AFC9);
             border-color: var(--blue-medium, #A8AFC9);
         }
+
+        & svg {
+            fill: var(--blue-dark);
+            margin-right: 1em;
+        }
     }
 
     &.btn-line {
