@@ -45,7 +45,7 @@ mixin personal-top
                 .dropdown-icon__list
                     ul
                         li.is-active
-                            a(href='#')
+                            a(href='#' )
                                 strong Администратор
                                 span У вас уже есть собственные управляющие устройства
                         li
@@ -54,7 +54,7 @@ mixin personal-top
                                 span Базовый доступ без управляющих устройств
         .personal-top__right
             
-            .link-icon
+            .link-icon(data-support="chat")
                 .link-icon__svg: +icons('#ic_chat')
                 .link-icon__dropdown
                     .chat-tooltip-msg Чат с технической поддержкой сервиса

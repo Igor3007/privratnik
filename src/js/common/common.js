@@ -2287,9 +2287,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     report
     =============================*/
 
-    if (document.querySelector('.report-type')) {
-        document.querySelector('.report-type').addEventListener('change', e => {
-            window.location.href = e.target.value
+    if (document.querySelector('.report-master')) {
+        document.querySelector('.report-master form').addEventListener('submit', e => {
+            e.preventDefault()
+            const formData = new FormData(e.target)
+            window.location.href = formData.get('report')
         })
     }
 
@@ -2343,6 +2345,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (document.querySelector('[data-popup="photo"]')) {
         document.querySelectorAll('[data-popup="photo"]').forEach(item => {
             item.addEventListener('click', e => {
+
+                if (e.target.closest('.splide__arrows')) return false;
                 popupLivePhoto()
             })
         })
@@ -2620,6 +2624,179 @@ document.addEventListener("DOMContentLoaded", (event) => {
         })
     }
 
+    /* =============================================
+    slider card-media
+    =============================================*/
+
+    if (document.querySelector('[data-slider="card-media"]')) {
+
+        const items = document.querySelectorAll('[data-slider="card-media"]')
+
+        items.forEach(slider => {
+            let splide = new Splide(slider);
+            splide.mount();
+        })
+
+    }
+
+    /* ============================================
+    graph
+    ============================================*/
+
+    if (document.querySelector('#graph')) {
+        const ctx = document.getElementById('graph');
+
+        const labels = [
+            '4:00',
+            '5:00',
+            '6:00',
+            '7:00',
+            '8:00',
+            '12:00',
+            '16:00',
+            '20:00',
+            '22:00',
+
+        ];
+
+        //const labels = Utils.months({count: 7});
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Попытки',
+                data: [0, 0, 122, 170, 142, 145, 100, 0, 0],
+                fill: true,
+                borderColor: '#515E93',
+                cubicInterpolationMode: 'monotone',
+                tension: 0.4
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+
+            options: {
+                responsive: true,
+                interaction: {
+                    intersect: false,
+                },
+
+                plugins: {
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 1)',
+                        bodyColor: '#000',
+                        boxPadding: 6,
+                        borderColor: 'rgb(206, 214, 224)',
+                        titleColor: '#000',
+                        padding: 16
+                    },
+
+                    legend: {
+                        labels: {
+                            font: {
+                                size: 15
+                            }
+                        }
+                    }
+                },
+
+            },
+        };
+
+
+
+
+
+        const GRAPH = new Chart(ctx, config);
+
+
+        const weekDays = document.querySelectorAll('.report-graph__day')
+
+        function randomInteger(min, max) {
+            let rand = min + Math.random() * (max + 1 - min);
+            return Math.floor(rand);
+        }
+
+        weekDays.forEach((item, index) => {
+
+            index || item.classList.add('is-active')
+
+            item.addEventListener('click', e => {
+                GRAPH.data.datasets[0].data = [
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                    randomInteger(0, 300),
+                ];
+                GRAPH.update();
+
+                weekDays.forEach(item => !item.classList.contains('is-active') || item.classList.remove('is-active'))
+
+                item.classList.add('is-active')
+            })
+        })
+
+    }
+
+    /* ==========================================
+    чат
+    ==========================================*/
+
+    class SupportChat {
+        constructor() {
+            this.$trigger = document.querySelector('[data-support="chat"]')
+            this.modal = null
+            this.addEvent()
+        }
+
+        getTemplate() {
+            return `<div class="af-popup af-popup--visible af-popup--chats">
+            <div class="af-popup__bg"></div>
+            <div class="af-popup__wrp">
+                <div class="af-popup__container">
+                    <div class="af-popup__close">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M20 20L4 4m16 0L4 20"></path></svg>
+                    </div>
+                    <div class="af-popup__content">Чат с технической поддержкой</div>
+                </div>
+            </div>
+        </div>`
+        }
+
+        open() {
+            this.modal = document.createElement('div')
+            this.modal.innerHTML = this.getTemplate()
+
+            document.body.append(this.modal)
+
+            this.modal.addEventListener('click', e => {
+                if (!e.target.closest('.af-popup__container')) this.close()
+            })
+        }
+
+        close() {
+            this.modal.remove()
+
+        }
+
+        addEvent() {
+            this.$trigger.addEventListener('click', e => {
+                this.open()
+            })
+
+
+        }
+    }
+
+    new SupportChat()
+
 
 
 
@@ -2641,6 +2818,23 @@ function popupAddSpaceArhive() {
     window.ajax({
         type: 'GET',
         url: '/parts/_popup-add-space-arhive.html'
+    }, (status, response) => {
+        popup.open(response, false)
+    })
+}
+
+/* =============================================
+popup add service report
+=============================================*/
+
+function popupAddServiceReport() {
+    const popup = new afLightbox({
+        mobileInBottom: true
+    })
+
+    window.ajax({
+        type: 'GET',
+        url: '/parts/_popup-add-service-report.html'
     }, (status, response) => {
         popup.open(response, false)
     })

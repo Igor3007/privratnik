@@ -391,6 +391,10 @@ body {
         & button {
             margin: 5px;
         }
+
+        &--left {
+            justify-content: flex-start;
+        }
     }
 
     & fieldset {
@@ -613,6 +617,12 @@ body {
                 // }
             }
         }
+    }
+}
+
+.check-list {
+    & li {
+        padding: 5px 0;
     }
 }
 

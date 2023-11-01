@@ -9,6 +9,21 @@ mixin card-media(data)
         .card-media__name Тестовый Михаил
         .card-media__text +7 (916) 261-19-17 - 06.09.23, 13:06:02
 
+mixin card-media--image(data)
+    .card-media
+        .card-media__preview(data-popup=data == 2 ? 'photo':'video')
+            .card-media__slider
+                .splide(data-slider="card-media")
+                    .splide__track
+                        .splide__list
+                            each item in [1,2,3]
+                                .splide__slide
+                                    picture: img(src="/img/common/block-video-preview"+item+".jpg")
+            
+             
+        .card-media__name Тестовый Михаил
+        .card-media__text +7 (916) 261-19-17 - 06.09.23, 13:06:02
+
 mixin card-media-video(data)
     .card-media
         .card-media__preview(data-popup=data == 2 ? 'photo':'video-arhive')

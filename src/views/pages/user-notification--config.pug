@@ -1,0 +1,68 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Настройки уведомлений"
+
+
+block aside
+  +personal-aside({})
+
+block content
+  +personal-top()
+  
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Уведомления',
+        ])
+    .personal-content__h1 Уведомления
+    .personal-content__main
+      form(action='#' method='POST')
+        .form
+          .form__label Уведомления в личном кабинете
+          .form__item
+            .form__subitem 
+              ul.check-list
+                li: +checkbox('О предоставленном доступе', 'panel', 'checked')
+                li: +checkbox('Отказы в доступе', 'panel', 'checked')
+                li: +checkbox('Другие уведомления', 'panel', 'checked')
+
+          .form__label Уведомления в мобильном приложении
+          .form__item
+            .form__subitem 
+              ul.check-list
+                li: +checkbox('О предоставленном доступе', 'app', 'checked')
+                li: +checkbox('Отказы в доступе', 'app', 'checked')
+                li: +checkbox('Другие уведомления', 'app', 'checked')
+
+          .form__label Уведомления на электронную почту
+          .form__item
+            .form__subitem 
+              ul.check-list
+                li: +checkbox('О предоставленном доступе')
+                li: +checkbox('Отказы в доступе')
+                li: +checkbox('Другие уведомления')
+           
+
+          .form__item
+            .form__subitem
+              .form__buttons.form__buttons--left
+                button.btn(type="submit") Сохранить изменения
+                button.btn.btn-white(type="submit") Отмена
+
+                
+
+
+    
+
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")

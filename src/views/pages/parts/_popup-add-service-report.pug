@@ -1,0 +1,17 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/popup-form/popup-form.pug
+
+.popup-form
+    .popup-form__title Использованы все бесплатные отчёты
+    .popup-form__desc Счётчик бесплатных отчётов обновляется каждые сутки.
+       
+    .popup-form__fields
+       
+          form(action='/access-onetime-list.html' method='GET')
+               .form
+                 .form__item
+                    .form__subitem: .form__label: center Подключите услугу «Мастер отчётов» и просматривайте <br> отчёты неограниченно:
+                 .form__item
+                    .form__subitem: a(href='/personal-services.html' class="btn btn-full" ) Подключить услугу
+                    .form__subitem: button.btn.btn-white(data-af-popup="close" type="button") Спасибо, пока не нужно
+               

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Привратник - Видеонаблюдение</title>
+    <title>Привратник - Статистика доступа</title>
     <meta name="theme-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -101,9 +101,9 @@
                       <li><a href="access-onetime.html">Разовые/временные пропуски</a></li>
                     </ul>
                   </li>
-                  <li><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
+                  <li class="is-active"><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
                   </li>
-                  <li class="is-active"><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
+                  <li><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
                   </li>
                   <li><a href="personal-finance.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-finance.svg)" ></span>Финансы</a>
                   </li>
@@ -146,7 +146,7 @@
               </div>
             </div>
             <div class="personal-top__right">
-              <div class="link-icon">
+              <div class="link-icon" data-support="chat">
                 <div class="link-icon__svg">
                   <svg width="25" height="25">
                     <use xlink:href="/img/sprites/sprite.svg#ic_chat"></use>
@@ -191,7 +191,7 @@
                       </div>
                     </div>
                     <div class="top-nitification__bottom">
-                      <div class="top-nitification__all"><a href="#">Смотреть все уведомления</a></div>
+                      <div class="top-nitification__all"><a href="/user-notification.html">Смотреть все уведомления</a></div>
                       <div class="top-nitification__setting">
                         <svg width="25" height="25">
                           <use xlink:href="/img/sprites/sprite.svg#ic_gear"></use>
@@ -240,131 +240,160 @@
             </div>
           </div>
           <div class="personal-content">
-            <div class="personal-content--row">
-              <div class="personal-content__left-side">
-                <div class="personal-content__breadcrubs">
-                  <div class="breadcrumb">
-                    <ul>
-                      <li><a href="/">Общая информация</a></li>
-                      <li><span>Видеонаблюдение</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="personal-content__h1">Видеонаблюдение</div>
-                <div class="personal-content__desc">Видеотрансляции с подключённых устройств в режиме реального времени. При выборе открывается на весь экран и можно посмотреть видеоархив записей.</div>
-                <div class="personal-content__action">
-                  <div class="personal-content__find">
-                    <div class="input--find">
-                      <input type="text" placeholder="Найти">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="personal-content__right-side">
-                <div class="memory-info">
-                  <div class="memory-info__title">9,84 ГБ места для видеоархива</div>
-                  <div class="memory-info__desc">Когда место закончится, записи в видеоархиве будут удаляться начиная с самой старой. Вы всегда можете подключить больше места в разделе услуг. Также вы можете предоставить доступ к онлайн-трансляции и видеоархиву всем пользователям.</div>
-                  <div class="memory-info__action"><a href="/personal-services.html">
-                      <button class="btn">Подключить место</button></a><a href="/access-users-list.html">
-                      <button class="btn btn-line">Дать доступ пользователям</button></a></div>
-                </div>
+            <div class="personal-content__breadcrubs">
+              <div class="breadcrumb">
+                <ul>
+                  <li><a href="/">Общая информация</a></li>
+                  <li><span>Статистика доступа</span></li>
+                </ul>
               </div>
             </div>
-            <div class="personal-content__main">
-              <div class="report-media">
-                <div class="report-media__list">
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
+            <div class="personal-content__h1">Статистика доступа</div>
+            <div class="personal-content__tabs">
+              <ul data-tab-center="">
+                <li><a href="personal-access.html">Открытия в реальном времени</a></li>
+                <li class="is-active"><a href="report-master.html">Мастер отчётов</a></li>
+              </ul>
+            </div>
+            <div class="personal-content__h2">Мастер отчётов</div>
+            <div class="personal-content__desc">Легко формируйте отчёты по количеству попыток доступа за период, распределению доступа по времени суток, смотрите фото и видео проездов и другое. <br> Также вы сможете выгрузить отчёты в формате Excel-файла.</div>
+            <div class="report-master">
+              <div class="report-master__form">
+                <form action="/report-master--result-byobject.html" method="GET">
+                  <div class="report-filter">
+                    <div class="report-filter__label">Время начала и окончания отчётного периода:</div>
+                    <div class="report-filter__tags">
+                      <ul>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="days" value="day" checked=""/><span>День</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="days" value="week"/><span>Неделя</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="days" value="month"/><span>Месяц</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="days" value="year"/><span>Полгода</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="days" value="year"/><span>Год</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="report-filter__range">
+                      <div class="report-filter__field">
+                        <div class="report-filter__date">
+                          <div class="input--date">
+                            <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="start"/>
+                          </div>
+                          <select placeholder="Время" data-find="false">
+                            <option value="0">0:00</option>
+                            <option value="0">1:00</option>
+                            <option value="0">2:00</option>
+                            <option value="0">3:00</option>
+                            <option value="0">4:00</option>
+                            <option value="0">5:00</option>
+                            <option value="0">6:00</option>
+                            <option value="0">7:00</option>
+                            <option value="0">8:00</option>
+                            <option value="0">9:00</option>
+                            <option value="0">10:00</option>
+                            <option value="0">11:00</option>
+                            <option value="0">12:00</option>
+                            <option value="0">13:00</option>
+                            <option value="0">14:00</option>
+                            <option value="0">15:00</option>
+                            <option value="0">16:00</option>
+                            <option value="0">17:00</option>
+                            <option value="0">18:00</option>
+                            <option value="0">19:00</option>
+                            <option value="0">20:00</option>
+                            <option value="0">21:00</option>
+                            <option value="0">22:00</option>
+                            <option value="0">23:00</option>
+                          </select>
                         </div>
                       </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
+                      <div class="report-filter__field">
+                        <div class="report-filter__date">
+                          <div class="input--date">
+                            <input type="text" placeholder="Дата" data-input="datepicker" data-datepicker="end"/>
+                          </div>
+                          <select placeholder="Время" data-find="false">
+                            <option value="0">0:00</option>
+                            <option value="0">1:00</option>
+                            <option value="0">2:00</option>
+                            <option value="0">3:00</option>
+                            <option value="0">4:00</option>
+                            <option value="0">5:00</option>
+                            <option value="0">6:00</option>
+                            <option value="0">7:00</option>
+                            <option value="0">8:00</option>
+                            <option value="0">9:00</option>
+                            <option value="0">10:00</option>
+                            <option value="0">11:00</option>
+                            <option value="0">12:00</option>
+                            <option value="0">13:00</option>
+                            <option value="0">14:00</option>
+                            <option value="0">15:00</option>
+                            <option value="0">16:00</option>
+                            <option value="0">17:00</option>
+                            <option value="0">18:00</option>
+                            <option value="0">19:00</option>
+                            <option value="0">20:00</option>
+                            <option value="0">21:00</option>
+                            <option value="0">22:00</option>
+                            <option value="0">23:00</option>
+                          </select>
                         </div>
                       </div>
-                      <div class="card-media__name">Парковка</div>
+                    </div>
+                    <div class="report-filter__label">Тип отчёта:</div>
+                    <div class="report-filter__tags">
+                      <ul>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="report" value="/report-master--result-byobject.html"/><span>Количество попыток доступа за период по объектам</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="report" value="/report-master--result-byontime.html"/><span>Распределение доступа по времени суток</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="report" value="/report-master--result-byphoto.html"/><span>Просмотр фото и видео проездов</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="report" value="/report-master--result-bymethods.html"/><span>Отчет по методам открытия</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="el-tags">
+                            <input type="radio" name="report" value="/report-master--result-byonetime.html"/><span>Отчёт по разовым/временным пропускам</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="report-filter__submit">
+                      <button class="btn">Получить отчёт</button>
                     </div>
                   </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -387,5 +416,6 @@
     </footer>
     <script src="/js/vendor.js"></script>
     <script src="/js/common.js"></script>
+    <script>window.addEventListener('load', e => typeof popupAddServiceReport == 'undefined' || popupAddServiceReport())</script>
   </body>
 </html>

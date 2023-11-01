@@ -1,18 +1,29 @@
 .report-filter {
-    display: flex;
-    flex-wrap: wrap;
+
     border: 1px solid #CED6E0;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 9px 6px;
 
+    @media screen and (min-width: $w576) {
+        padding: 24px 24px;
+    }
+
+    &__range {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
     &__field {
-        padding: 6px;
+
+
         flex-grow: 1;
         width: 100%;
         display: flex;
         flex-direction: column;
-        flex-basis: 360px;
-
+        max-width: 360px;
+        margin-right: 12px;
+        flex-basis: 320px;
 
 
         & .af-select {
@@ -38,19 +49,18 @@
             }
         }
 
-        &--submit {
-            flex-grow: unset;
-            width: auto;
-            flex-basis: unset;
-
-            @media screen and (max-width: $w480) {
-                width: 100%;
-            }
+        & .input--date {
+            margin-right: 6px;
         }
+    }
+
+    &__submit {
+        padding-top: 12px;
     }
 
     &__date {
         display: flex;
+        padding-bottom: 14px;
 
         & input {
             width: calc(100% - 100px) !important;
@@ -64,7 +74,58 @@
         }
     }
 
+    &__label {
+        padding-bottom: 21px;
+    }
 
+    &__tags {
+        padding-bottom: 12px;
+    }
+
+    &__tags {
+        & ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -3px;
+
+            & li {
+                padding: 3px;
+            }
+        }
+    }
+
+
+
+}
+
+.el-tags {
+    & input {
+        display: none;
+
+        &:checked {
+            &~span {
+                background-color: var(--blue-dark);
+                color: #fff;
+                border: 1px solid var(--blue-dark);
+            }
+        }
+    }
+
+    & span {
+        display: inline-flex;
+        padding: 4px 12px 6px 12px;
+        border-radius: 8px;
+        line-height: 24px;
+        min-height: 36px;
+        cursor: pointer;
+        font-size: 15px;
+
+        border: 1px solid var(--stroke, #CED6E0);
+
+        &:hover {
+            background-color: var(--stroke, #CED6E0);
+        }
+    }
 }
 
 .activate-service {
@@ -266,4 +327,118 @@
             margin-right: 12px;
         }
     }
+}
+
+.report-graph {
+    @media screen and (min-width: $w992) {
+        display: flex;
+
+        &__days {
+            width: 23%;
+            min-width: 320px;
+        }
+
+        &__main {
+            width: 77%;
+            padding-left: 48px;
+        }
+    }
+
+    &__main {
+        @media screen and (min-width: $w992) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 0.8em;
+    }
+
+    &__day {
+        display: flex;
+        min-height: 36px;
+        align-items: center;
+        margin: 8px 0;
+        border: 1px solid var(--stroke);
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 15px;
+        color: var(--text-01);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--bg-01);
+        }
+
+        &-name {
+            flex-grow: 1;
+        }
+
+        &-count {
+            color: var(--text-02);
+        }
+
+        &.is-active,
+        &:active {
+            background-color: var(--blue-dark);
+            border-color: var(--blue-dark);
+            color: #fff;
+
+            & .report-graph__day-count {
+                color: #fff;
+            }
+
+        }
+    }
+
+    &__container {
+        //background-color: var(--stroke);
+        flex-grow: 1;
+
+
+    }
+
+    &__metrics {
+        display: flex;
+        flex-wrap: wrap;
+
+
+        &>div {
+            margin-right: 14px;
+            margin-bottom: 12px;
+
+            & strong,
+            & small {
+                display: block;
+            }
+
+            & small {
+                font-size: 15px;
+                color: var(--text-02);
+                line-height: 150%;
+                padding-bottom: 5px;
+            }
+
+        }
+
+
+    }
+
+    &__metric-red {
+        & strong {
+            color: var(--red);
+            font-size: 16px;
+        }
+    }
+
+    &__metric-green {
+        & strong {
+            color: var(--green);
+            font-size: 16px;
+        }
+    }
+
 }

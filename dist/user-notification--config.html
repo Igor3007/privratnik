@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Привратник - Видеонаблюдение</title>
+    <title>Привратник - Настройки уведомлений</title>
     <meta name="theme-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -103,7 +103,7 @@
                   </li>
                   <li><a href="personal-access.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-access.svg)" ></span>Статистика доступа</a>
                   </li>
-                  <li class="is-active"><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
+                  <li><a href="personal-video.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-video.svg)" ></span>Видеонаблюдение</a>
                   </li>
                   <li><a href="personal-finance.html"><span class="ic_24" style="background-image: url(/img/svg/ic_nav-finance.svg)" ></span>Финансы</a>
                   </li>
@@ -146,7 +146,7 @@
               </div>
             </div>
             <div class="personal-top__right">
-              <div class="link-icon">
+              <div class="link-icon" data-support="chat">
                 <div class="link-icon__svg">
                   <svg width="25" height="25">
                     <use xlink:href="/img/sprites/sprite.svg#ic_chat"></use>
@@ -191,7 +191,7 @@
                       </div>
                     </div>
                     <div class="top-nitification__bottom">
-                      <div class="top-nitification__all"><a href="#">Смотреть все уведомления</a></div>
+                      <div class="top-nitification__all"><a href="/user-notification.html">Смотреть все уведомления</a></div>
                       <div class="top-nitification__setting">
                         <svg width="25" height="25">
                           <use xlink:href="/img/sprites/sprite.svg#ic_gear"></use>
@@ -240,132 +240,94 @@
             </div>
           </div>
           <div class="personal-content">
-            <div class="personal-content--row">
-              <div class="personal-content__left-side">
-                <div class="personal-content__breadcrubs">
-                  <div class="breadcrumb">
-                    <ul>
-                      <li><a href="/">Общая информация</a></li>
-                      <li><span>Видеонаблюдение</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="personal-content__h1">Видеонаблюдение</div>
-                <div class="personal-content__desc">Видеотрансляции с подключённых устройств в режиме реального времени. При выборе открывается на весь экран и можно посмотреть видеоархив записей.</div>
-                <div class="personal-content__action">
-                  <div class="personal-content__find">
-                    <div class="input--find">
-                      <input type="text" placeholder="Найти">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="personal-content__right-side">
-                <div class="memory-info">
-                  <div class="memory-info__title">9,84 ГБ места для видеоархива</div>
-                  <div class="memory-info__desc">Когда место закончится, записи в видеоархиве будут удаляться начиная с самой старой. Вы всегда можете подключить больше места в разделе услуг. Также вы можете предоставить доступ к онлайн-трансляции и видеоархиву всем пользователям.</div>
-                  <div class="memory-info__action"><a href="/personal-services.html">
-                      <button class="btn">Подключить место</button></a><a href="/access-users-list.html">
-                      <button class="btn btn-line">Дать доступ пользователям</button></a></div>
-                </div>
+            <div class="personal-content__breadcrubs">
+              <div class="breadcrumb">
+                <ul>
+                  <li><a href="/">Общая информация</a></li>
+                  <li><span>Уведомления</span></li>
+                </ul>
               </div>
             </div>
+            <div class="personal-content__h1">Уведомления</div>
             <div class="personal-content__main">
-              <div class="report-media">
-                <div class="report-media__list">
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
+              <form action="#" method="POST">
+                <div class="form">
+                  <div class="form__label">Уведомления в личном кабинете</div>
+                  <div class="form__item">
+                    <div class="form__subitem"> 
+                      <ul class="check-list">
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="panel" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">О предоставленном доступе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="panel" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">Отказы в доступе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="panel" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">Другие уведомления</span>
+                          </label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
+                  <div class="form__label">Уведомления в мобильном приложении</div>
+                  <div class="form__item">
+                    <div class="form__subitem"> 
+                      <ul class="check-list">
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="app" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">О предоставленном доступе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="app" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">Отказы в доступе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="app" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">Другие уведомления</span>
+                          </label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
+                  <div class="form__label">Уведомления на электронную почту</div>
+                  <div class="form__item">
+                    <div class="form__subitem"> 
+                      <ul class="check-list">
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">О предоставленном доступе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Отказы в доступе</span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="checkbox">
+                            <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Другие уведомления</span>
+                          </label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
+                  <div class="form__item">
+                    <div class="form__subitem">
+                      <div class="form__buttons form__buttons--left">
+                        <button class="btn" type="submit">Сохранить изменения</button>
+                        <button class="btn btn-white" type="submit">Отмена</button>
                       </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
-                    </div>
-                  </div>
-                  <div class="report-media__item">
-                    <div class="card-media">
-                      <div class="card-media__preview" data-popup="video-arhive">
-                        <picture><img src="/img/common/block-video-preview1.jpg"/></picture>
-                        <div class="card-media__view">
-                          <svg width="25" height="25">
-                            <use xlink:href="/img/sprites/sprite.svg#ic_fullscreen"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-media__name">Парковка</div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

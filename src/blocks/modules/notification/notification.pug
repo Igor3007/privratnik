@@ -2,9 +2,10 @@ mixin notification
     .notification-action
         .notification-action__button
             .notification-action__btn
-                button.btn 
-                    +icons('#ic_gear')
-                    span Настройки уведомлений
+                a(href='/user-notification--config.html')
+                    button.btn 
+                        +icons('#ic_gear')
+                        span Настройки уведомлений
             .notification-action__btn
                 button.btn.btn-white 
                     +icons('#ic_check-read')

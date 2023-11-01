@@ -47,7 +47,7 @@
         }
 
         & picture {
-            @include picture(56%, cover);
+            @include picture(57%, cover);
             background-color: #eee;
             border-radius: 8px;
             overflow: hidden;
@@ -99,4 +99,33 @@
         opacity: 0;
         transition: 0.3s ease;
     }
+
+    & .splide {
+        &__arrows {
+            opacity: 0;
+        }
+
+        &__pagination {
+            z-index: 10;
+
+            &__page {
+
+                background-color: #fff;
+
+                & .is-active {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+
+    &:hover {
+        & .splide {
+            &__arrows {
+                opacity: 1;
+            }
+        }
+    }
+
+
 }

@@ -9,7 +9,7 @@ include ../../blocks/components/pagination/pagination.pug
 
 block variables
     include ../../data/data.pug
-    - const title = "Привратник - Статистика доступа - Распределение доступа по времени суток"
+    - const title = "Привратник - Статистика доступа"
 
 
 block aside
@@ -26,20 +26,21 @@ block content
           'Общая информация',
           'Статистика доступа',
         ])
-    .personal-content__h1 Статистика доступа 
+    .personal-content__h1 Статистика доступа
     .personal-content__tabs
       ul(data-tab-center="")
         li: a(href="personal-access.html") Открытия в реальном времени
-        li.is-active: a(href="report-master.html") Мастер отчётов 
+        li.is-active: a(href="report-master.html") Мастер отчётов
 
     .personal-content__h2 Мастер отчётов
     .personal-content__desc Легко формируйте отчёты по количеству попыток доступа за период, распределению доступа по времени суток, смотрите фото и видео проездов и другое. <br> Также вы сможете выгрузить отчёты в формате Excel-файла.
 
     +report-master({
-      selected: 'Распределение доступа по времени суток'
+      selected: 1
     })
-    +report-result--ontime
 
 block scripts
     script(src="/js/vendor.js")
     script(src="/js/common.js")
+    script.
+      window.addEventListener('load', e => typeof popupAddServiceReport == 'undefined' || popupAddServiceReport())
