@@ -103,6 +103,19 @@
                     background-color: var(--bg-01);
                 }
 
+                &.is-active {
+                    background-color: var(--blue-dark);
+                    border: 1px solid var(--blue-dark);
+
+                    & svg {
+                        fill: #fff;
+                    }
+
+                    & a {
+                        color: #fff;
+                    }
+                }
+
                 &.icon--green {
                     & svg {
                         fill: var(--green);
@@ -121,6 +134,7 @@
     &__cards {
         border: 1px solid var(--stroke);
         border-radius: 8px;
+        overflow: hidden;
     }
 
     &__range-date {
@@ -147,6 +161,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: -1px;
 
     @media screen and (min-width: $w576) {
         flex-wrap: nowrap;

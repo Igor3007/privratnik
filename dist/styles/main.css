@@ -5531,6 +5531,50 @@ body textarea:focus {
   padding-bottom: 12px;
 }
 
+.popup-replenishment {
+  padding: 24px 12px;
+  max-width: 560px;
+}
+
+.popup-replenishment__title {
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.popup-replenishment__desc {
+  padding-bottom: 15px;
+  color: var(--text-02);
+  line-height: 135%;
+}
+
+.popup-replenishment__form .form__note {
+  font-size: 13px;
+  color: var(--text-02);
+  line-height: 150%;
+}
+
+.popup-replenishment__form .form__note picture {
+  display: block;
+  padding-top: 24px;
+}
+
+.popup-replenishment__form .form__note img {
+  max-width: 100%;
+}
+
+.popup-replenishment__form .form .btn {
+  width: 100%;
+}
+
+.popup-replenishment__form .form .input-replenishment {
+  max-width: 375px;
+}
+
+.popup-replenishment__cost {
+  padding-bottom: 12px;
+}
+
 .select-address-on-map {
   padding: 12px;
 }
@@ -6397,6 +6441,7 @@ body textarea:focus {
 
 .report-graph__container {
   flex-grow: 1;
+  min-height: 360px;
 }
 
 .report-graph__metrics {
@@ -6612,6 +6657,19 @@ body textarea:focus {
   background-color: var(--bg-01);
 }
 
+.transactions__tabs ul li.is-active {
+  background-color: var(--blue-dark);
+  border: 1px solid var(--blue-dark);
+}
+
+.transactions__tabs ul li.is-active svg {
+  fill: #fff;
+}
+
+.transactions__tabs ul li.is-active a {
+  color: #fff;
+}
+
 .transactions__tabs ul li.icon--green svg {
   fill: var(--green);
 }
@@ -6625,6 +6683,7 @@ body textarea:focus {
 .transactions__cards {
   border: 1px solid var(--stroke);
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .transactions__range-date {
@@ -6648,6 +6707,7 @@ body textarea:focus {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: -1px;
 }
 
 .card-transaction:hover {
@@ -7426,6 +7486,10 @@ a[data-tooltip]:hover::before {
   }
 
   .popup-form {
+    padding: 24px;
+  }
+
+  .popup-replenishment {
     padding: 24px;
   }
 
