@@ -2495,6 +2495,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
         })
     }
 
+    if (document.querySelector('[data-tab-filter="transactions"]')) {
+        new TabFilter({
+            el: 'transactions'
+        })
+    }
+
     /* ======================================
     add pass onetime
     ======================================*/
@@ -2625,6 +2631,35 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     /* =============================================
+    replenishment bill
+    =============================================*/
+
+
+    if (document.querySelector('[data-popup="pay"]')) {
+        const items = document.querySelectorAll('[data-popup="pay"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-replenishment.html'
+                }, (status, response) => {
+
+                    popup.open(response, false)
+
+                })
+
+
+            })
+        })
+    }
+
+    /* =============================================
     slider card-media
     =============================================*/
 
@@ -2646,31 +2681,46 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (document.querySelector('#graph')) {
         const ctx = document.getElementById('graph');
 
-        const labels = [
-            '4:00',
-            '5:00',
-            '6:00',
-            '7:00',
-            '8:00',
-            '12:00',
-            '16:00',
-            '20:00',
-            '22:00',
+        function getTestData(min, max) {
+            let arr = []
 
-        ];
+            function randomInteger(min, max) {
+                let rand = min + Math.random() * (max + 1 - min);
+                return Math.floor(rand);
+            }
+
+            for (let i = 0; i <= 23; i++) {
+                arr.push({
+                    x: i + ':00',
+                    y: randomInteger(min, max),
+                })
+            }
+
+            return arr
+        }
 
         //const labels = Utils.months({count: 7});
 
         const data = {
-            labels: labels,
+
             datasets: [{
-                label: 'Попытки',
-                data: [0, 0, 122, 170, 142, 145, 100, 0, 0],
-                fill: true,
-                borderColor: '#515E93',
-                cubicInterpolationMode: 'monotone',
-                tension: 0.4
-            }]
+                    label: 'Удачных попыток',
+                    data: getTestData(40, 300),
+                    fill: true,
+                    borderColor: '#515E93',
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4
+                },
+                {
+                    label: 'Отказов',
+                    data: getTestData(0, 30),
+                    fill: true,
+                    borderColor: '#f00',
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4
+                },
+
+            ]
         };
 
         const config = {
@@ -2679,8 +2729,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 interaction: {
                     intersect: false,
+                    mode: 'index',
+                    axis: 'xy'
                 },
 
                 plugins: {
@@ -2694,6 +2747,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     },
 
                     legend: {
+                        display: false,
                         labels: {
                             font: {
                                 size: 15
@@ -2702,39 +2756,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     }
                 },
 
+                elements: {
+                    point: {
+                        radius: 2,
+                        borderWidth: 3,
+                        hoverRadius: 4,
+                        hoverBorderWidth: 6
+                    }
+                }
+
             },
         };
 
-
-
-
-
         const GRAPH = new Chart(ctx, config);
-
-
         const weekDays = document.querySelectorAll('.report-graph__day')
-
-        function randomInteger(min, max) {
-            let rand = min + Math.random() * (max + 1 - min);
-            return Math.floor(rand);
-        }
 
         weekDays.forEach((item, index) => {
 
             index || item.classList.add('is-active')
 
             item.addEventListener('click', e => {
-                GRAPH.data.datasets[0].data = [
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                    randomInteger(0, 300),
-                ];
+                GRAPH.data.datasets[0].data = getTestData(40, 300);
+                GRAPH.data.datasets[1].data = getTestData(0, 30);
                 GRAPH.update();
 
                 weekDays.forEach(item => !item.classList.contains('is-active') || item.classList.remove('is-active'))

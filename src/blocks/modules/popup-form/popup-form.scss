@@ -39,6 +39,62 @@
     }
 }
 
+.popup-replenishment {
+    padding: 24px 12px;
+    max-width: 560px;
+
+    @media screen and (min-width: $w480) {
+        padding: 24px;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+
+        padding-bottom: 20px;
+    }
+
+    &__desc {
+        padding-bottom: 15px;
+
+        color: var(--text-02);
+        line-height: 135%;
+    }
+
+    &__form {
+        & .form {
+            &__note {
+                font-size: 13px;
+                color: var(--text-02);
+                line-height: 150%;
+
+                & picture {
+                    display: block;
+                    padding-top: 24px;
+                }
+
+                & img {
+                    max-width: 100%;
+                }
+            }
+
+            & .btn {
+                width: 100%;
+            }
+
+            & .input-replenishment {
+                max-width: 375px;
+            }
+        }
+    }
+
+
+
+    &__cost {
+        padding-bottom: 12px;
+    }
+}
+
 .select-address-on-map {
     padding: 12px;
 }
