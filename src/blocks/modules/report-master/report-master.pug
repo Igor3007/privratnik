@@ -40,7 +40,7 @@ mixin report-master(data)
       }
     ];
 
-  .report-master
+  .report-master(data-datepicker="range")
     .report-master__form
       form(action='/report-master--result-byobject.html' method='GET')
         .report-filter

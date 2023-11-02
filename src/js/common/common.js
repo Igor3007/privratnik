@@ -2271,10 +2271,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         })();
 
-        const elem = document.querySelector('.report-filter')
+        const elem = document.querySelector('[data-datepicker="range"]')
 
         const datepicker = new DateRangePicker(elem, {
-            autohide: true,
+            autohide: false,
             language: 'ru',
             inputs: [
                 elem.querySelector('[data-datepicker="start"]'),

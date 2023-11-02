@@ -2,6 +2,7 @@
 
     padding-bottom: 36px;
 
+
     &:last-child {
         padding-bottom: 0;
     }
@@ -21,11 +22,11 @@
         border: 1px solid var(--bg-01);
         color: var(--text-01);
         border-radius: 8px;
-
+        overflow: hidden;
     }
 
     &__item {
-        &:nth-child(even) {
+        & .is-open {
             background: var(--bg-01);
 
             & .icon-cross-circle {
@@ -56,6 +57,8 @@
     display: flex;
     padding: 16px 12px;
     align-items: center;
+    border-bottom: 1px solid var(--stroke);
+    margin-bottom: -1px;
 
 
     &__title {
@@ -99,6 +102,7 @@
         border-radius: 50%;
         background-color: var(--bg-01);
         cursor: pointer;
+        transition: 0.3s ease;
 
         @media screen and (max-width: $w480) {
             background-color: transparent !important;
@@ -110,20 +114,25 @@
         }
     }
 
-    &.is-scroll {
-        & .question {
-            &__answer {
-                overflow: auto;
-            }
-        }
-    }
+
 
     &.is-open {
+
+        &.is-scroll {
+            & .question {
+                &__answer {
+                    overflow: auto;
+                    scroll-behavior: smooth;
+                    overscroll-behavior: contain;
+                }
+            }
+        }
+
         & .icon-cross {
             transform: rotate(360deg);
 
             &::after {
-                transition: 0.5s ease 0.45s;
+                transition: transform 0.5s ease 0.45s;
                 transform: rotate(90deg);
             }
         }
@@ -131,7 +140,11 @@
         & .question {
             &__answer {
                 max-height: 50vh;
-                padding-top: 12px;
+
+            }
+
+            &__title {
+                padding-bottom: 12px;
             }
         }
     }

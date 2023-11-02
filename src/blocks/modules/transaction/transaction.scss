@@ -131,13 +131,33 @@
         flex-grow: 1;
         justify-content: flex-end;
 
-        & div {
+        &>div {
             margin: 6px;
             flex-grow: 1;
             max-width: 360px;
             flex-basis: 280px;
+
+            @media screen and (min-width: $w1440) {
+                max-width: 410px;
+            }
         }
 
+    }
+}
+
+
+.date-time {
+
+    display: flex;
+
+    & .input--date {
+        max-width: calc(100% - 110px);
+    }
+
+    & .af-select {
+        max-width: 110px;
+        min-width: 110px;
+        margin-left: 6px;
     }
 }
 
