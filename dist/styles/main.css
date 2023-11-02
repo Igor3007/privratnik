@@ -6694,11 +6694,25 @@ body textarea:focus {
   justify-content: flex-end;
 }
 
-.transactions__range-date div {
+.transactions__range-date > div {
   margin: 6px;
   flex-grow: 1;
   max-width: 360px;
   flex-basis: 280px;
+}
+
+.date-time {
+  display: flex;
+}
+
+.date-time .input--date {
+  max-width: calc(100% - 110px);
+}
+
+.date-time .af-select {
+  max-width: 110px;
+  min-width: 110px;
+  margin-left: 6px;
 }
 
 .card-transaction {
@@ -6944,13 +6958,14 @@ body textarea:focus {
   border: 1px solid var(--bg-01);
   color: var(--text-01);
   border-radius: 8px;
+  overflow: hidden;
 }
 
-.faq-group__item:nth-child(even) {
+.faq-group__item .is-open {
   background: var(--bg-01);
 }
 
-.faq-group__item:nth-child(even) .icon-cross-circle {
+.faq-group__item .is-open .icon-cross-circle {
   background-color: var(--main);
 }
 
@@ -6958,6 +6973,8 @@ body textarea:focus {
   display: flex;
   padding: 16px 12px;
   align-items: center;
+  border-bottom: 1px solid var(--stroke);
+  margin-bottom: -1px;
 }
 
 .question__title {
@@ -7000,14 +7017,17 @@ body textarea:focus {
   border-radius: 50%;
   background-color: var(--bg-01);
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .question .icon-cross-circle:hover {
   opacity: 0.9;
 }
 
-.question.is-scroll .question__answer {
+.question.is-open.is-scroll .question__answer {
   overflow: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
 .question.is-open .icon-cross {
@@ -7015,13 +7035,16 @@ body textarea:focus {
 }
 
 .question.is-open .icon-cross::after {
-  transition: 0.5s ease 0.45s;
+  transition: transform 0.5s ease 0.45s;
   transform: rotate(90deg);
 }
 
 .question.is-open .question__answer {
   max-height: 50vh;
-  padding-top: 12px;
+}
+
+.question.is-open .question__title {
+  padding-bottom: 12px;
 }
 
 .icon-cross {
@@ -7570,8 +7593,8 @@ a[data-tooltip]:hover::before {
     padding-bottom: 20px;
   }
 
-  .faq-group__item:nth-child(even) .icon-cross::after,
-  .faq-group__item:nth-child(even) .icon-cross::before {
+  .faq-group__item .is-open .icon-cross::after,
+  .faq-group__item .is-open .icon-cross::before {
     background-color: #fff;
   }
 
@@ -8140,6 +8163,10 @@ a[data-tooltip]:hover::before {
 
   .report-result__item {
     max-width: 400px;
+  }
+
+  .transactions__range-date > div {
+    max-width: 410px;
   }
 
   .notification-action .btn-white span {

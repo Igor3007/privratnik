@@ -2707,7 +2707,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     label: 'Удачных попыток',
                     data: getTestData(40, 300),
                     fill: true,
-                    borderColor: '#515E93',
+                    borderColor: '#48BA53',
                     cubicInterpolationMode: 'monotone',
                     tension: 0.4
                 },
@@ -2715,7 +2715,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     label: 'Отказов',
                     data: getTestData(0, 30),
                     fill: true,
-                    borderColor: '#f00',
+                    borderColor: '#F94258',
                     cubicInterpolationMode: 'monotone',
                     tension: 0.4
                 },
