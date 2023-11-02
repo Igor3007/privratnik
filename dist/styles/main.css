@@ -7047,6 +7047,14 @@ body textarea:focus {
   padding-bottom: 12px;
 }
 
+.question:hover:not(.is-open) {
+  background-color: var(--bg-01);
+}
+
+.question:hover:not(.is-open) .icon-cross-circle {
+  background-color: var(--main);
+}
+
 .icon-cross {
   width: 14px;
   min-width: 14px;
@@ -7596,6 +7604,13 @@ a[data-tooltip]:hover::before {
   .faq-group__item .is-open .icon-cross::after,
   .faq-group__item .is-open .icon-cross::before {
     background-color: #fff;
+  }
+
+  .question:hover:not(.is-open) .icon-cross::after,
+  .question:hover:not(.is-open) .icon-cross::before {
+    background-color: #fff;
+    transition: 0.3s ease;
+    transition-delay: 0;
   }
 
   .notification-group__title {

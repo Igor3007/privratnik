@@ -148,6 +148,34 @@
             }
         }
     }
+
+    &:hover:not(.is-open) {
+
+        background-color: var(--bg-01);
+
+
+        & .icon-cross-circle {
+            background-color: var(--main);
+        }
+
+
+        & .icon-cross {
+
+            @media screen and (min-width: $w480) {
+
+                &::after,
+                &::before {
+                    background-color: #fff;
+                    transition: 0.3s ease;
+                    transition-delay: 0;
+                }
+            }
+
+
+        }
+
+
+    }
 }
 
 .icon-cross {

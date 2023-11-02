@@ -2273,13 +2273,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
         const elem = document.querySelector('[data-datepicker="range"]')
 
-        const datepicker = new DateRangePicker(elem, {
+        // const datepicker = new DateRangePicker(elem, {
+        //     autohide: false,
+        //     language: 'ru',
+        //     inputs: [
+        //         elem.querySelector('[data-datepicker="start"]'),
+        //         elem.querySelector('[data-datepicker="end"]'),
+        //     ]
+        // });
+
+        const datepicker = new Datepicker(elem.querySelector('[data-datepicker="start"]'), {
             autohide: false,
             language: 'ru',
-            inputs: [
-                elem.querySelector('[data-datepicker="start"]'),
-                elem.querySelector('[data-datepicker="end"]'),
-            ]
+        });
+
+        const datepickerEnd = new Datepicker(elem.querySelector('[data-datepicker="end"]'), {
+            autohide: false,
+            language: 'ru',
         });
     }
 
