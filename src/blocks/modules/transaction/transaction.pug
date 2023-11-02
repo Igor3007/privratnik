@@ -21,10 +21,10 @@ mixin transactions
         .transactions__title История транзакций
         .transactions__filter
             .transactions__tabs
-                ul
-                    li Помесячно
-                    li.icon--green: +icons('#ic_plus-min')
-                    li: +icons('#ic_check')
+                ul(data-tab-filter="transactions")
+                    li: a(href='/personal-finance--month.html') Помесячно
+                    li(data-filter="return").icon--green: +icons('#ic_plus-min')
+                    li(data-filter="payment"): +icons('#ic_check')
             .transactions__range-date(data-datepicker="range")
                 .date-time
                     .input--date: input(type="text" placeholder="Начало отчётного периода" data-input="datepicker" data-datepicker="start")
@@ -158,9 +158,17 @@ mixin transactions-month
                     li.is-active: a(href='/personal-finance.html') Помесячно
                     li(data-filter="return").icon--green: +icons('#ic_plus-min')
                     li(data-filter="payment"): +icons('#ic_check')
-            .transactions__range-date
-                .input--date: input(type="text" placeholder="Начало отчётного периода")
-                .input--date: input(type="text" placeholder="Окончание отчётного периода")
+            .transactions__range-date(data-datepicker="range")
+                .date-time
+                    .input--date: input(type="text" placeholder="Начало отчётного периода" data-input="datepicker" data-datepicker="start")
+                    select(placeholder="Время" data-find="false")
+                        each item, index in Array(24) 
+                            option(value="0")= index+':00' 
+                .date-time
+                    .input--date: input(type="text" placeholder="Окончание отчётного периода" data-input="datepicker" data-datepicker="end")
+                    select(placeholder="Время" data-find="false")
+                        each item, index in Array(24) 
+                            option(value="0")= index+':00' 
 
         .transactions__list(data-tab-filter-container="transactions")
             .transactions__item
