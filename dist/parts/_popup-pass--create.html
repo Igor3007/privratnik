@@ -5,19 +5,26 @@
   <div class="popup-form__fields">
     <form action="/access-onetime-list.html" method="GET">
       <div class="form">
+        <div class="form__label">Номер телефона, которому выдаётся пропуск</div>
         <div class="form__item">
           <div class="form__subitem">
-            <div class="form__label">Номер телефона, которому выдаётся пропуск</div>
-            <input type="text" placeholder="Введите номер"/>
+            <input type="text" placeholder="Введите номер" data-maska="+#(###)###-##-##"/>
+          </div>
+          <div class="form__subitem">
+            <input type="text" placeholder="Гос. номер авто"/>
           </div>
         </div>
         <div class="form__label">Время действия пропуска</div>
         <div class="form__item">
           <div class="form__subitem">
-            <input type="text" placeholder="Начало действия"/>
+            <div class="input--date">
+              <input type="text" placeholder="Начало действия" data-datepicker="start"/>
+            </div>
           </div>
           <div class="form__subitem">
-            <input type="text" placeholder="Конец действия"/>
+            <div class="input--date">
+              <input type="text" placeholder="Конец действия" data-datepicker="end"/>
+            </div>
           </div>
         </div>
         <div class="form__item">

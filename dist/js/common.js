@@ -722,7 +722,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } = Maska
 
     function initMaska() {
-        //new MaskInput("[data-maska]")
+        new MaskInput("[data-maska]")
     }
 
     initMaska();
@@ -1985,22 +1985,32 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
             // tabs
 
-            if (document.querySelector('[data-tab-radio]')) {
-                const radio = document.querySelectorAll('[data-tab-radio]')
-                const container = document.querySelector('[data-tab-container="type-user"]')
+            if (document.querySelector('[data-related-checkbox]')) {
 
-                radio.forEach(item => {
-                    item.addEventListener('change', e => {
-                        container.querySelectorAll('[data-tab-item]').forEach(tab => {
-                            if (tab.dataset.tabItem == item.dataset.tabRadio) {
-                                tab.classList.add('is-active')
-                            } else {
-                                tab.classList.contains('is-active') ? tab.classList.remove('is-active') : ''
-                            }
-                        })
+                const $elCheckboxs = document.querySelector('[data-related-checkbox]')
+                const checkboxs = $elCheckboxs.querySelectorAll('input[type=checkbox]')
+                const $elInputs = document.querySelector('[data-related-input="' + $elCheckboxs.dataset.relatedCheckbox + '"]')
+                const inputs = $elInputs.querySelectorAll('input[type=text]')
+
+                function showHideInput(checkbox, i) {
+                    if (checkbox.checked) {
+                        !inputs[i].parentNode.classList.contains('is-hide') || inputs[i].parentNode.classList.remove('is-hide')
+
+                    } else {
+                        inputs[i].parentNode.classList.add('is-hide')
+                    }
+                }
+
+                checkboxs.forEach((checkbox, i) => {
+
+                    showHideInput(checkbox, i)
+
+                    checkbox.addEventListener('change', e => {
+                        showHideInput(checkbox, i)
                     })
                 })
             }
+
 
         })
 
@@ -2254,34 +2264,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
     datepicker
     ===================================*/
 
-    if (document.querySelector('[data-input="datepicker"]')) {
+    (function () {
+        Datepicker.locales.ru = {
+            days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+            daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
+            daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+            months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+            monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+            today: "Сегодня",
+            clear: "Очистить",
+            format: "dd.mm.yyyy",
+            weekStart: 1,
+            monthsTitle: 'Месяцы'
+        }
+    })();
 
-        (function () {
-            Datepicker.locales.ru = {
-                days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
-                daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
-                daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-                months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
-                monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
-                today: "Сегодня",
-                clear: "Очистить",
-                format: "dd.mm.yyyy",
-                weekStart: 1,
-                monthsTitle: 'Месяцы'
-            }
-        })();
 
-        const elem = document.querySelector('[data-datepicker="range"]')
-
-        // const datepicker = new DateRangePicker(elem, {
-        //     autohide: false,
-        //     language: 'ru',
-        //     inputs: [
-        //         elem.querySelector('[data-datepicker="start"]'),
-        //         elem.querySelector('[data-datepicker="end"]'),
-        //     ]
-        // });
-
+    function initDatepicker(elem) {
         const datepicker = new Datepicker(elem.querySelector('[data-datepicker="start"]'), {
             autohide: false,
             language: 'ru',
@@ -2291,6 +2290,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             autohide: false,
             language: 'ru',
         });
+    }
+
+    if (document.querySelector('[data-input="datepicker"]')) {
+        initDatepicker(document)
     }
 
     /* =============================
@@ -2526,7 +2529,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
             selectCustom.init()
 
+            //datepicker
+            initDatepicker(instance)
 
+            //init mask
+
+            initMaska()
 
         })
 
@@ -2849,6 +2857,31 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     new SupportChat()
+
+    /* ========================================
+    related checkbox
+    ========================================*/
+
+    if (document.querySelector('[data-related-checkbox]')) {
+
+        const $elCheckboxs = document.querySelector('[data-related-checkbox]')
+        const checkboxs = $elCheckboxs.querySelectorAll('input[type=checkbox]')
+
+        const $elInputs = document.querySelector('[data-related-checkbox="' + $elCheckboxs.dataset.relatedCheckbox + '"]')
+        const inputs = $elInputs.querySelector('input[type=text]')
+
+        checkboxs.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', e => {
+
+                inputs.forEach((input, index) => {
+                    input.parentNode.classList.add('is-hide')
+                })
+
+                input[index].parentNode.classList.add('is-hide')
+
+            })
+        })
+    }
 
 
 

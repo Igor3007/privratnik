@@ -5456,6 +5456,7 @@ body textarea:focus {
   border-radius: 8px;
   margin-right: 12px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .tabs-icons li:last-child {
@@ -6389,11 +6390,17 @@ body textarea:focus {
 
 .memory-info__action {
   display: flex;
+  flex-wrap: wrap;
   padding-bottom: 12px;
+  margin: -6px;
+}
+
+.memory-info__action a {
+  padding: 6px;
 }
 
 .memory-info__action .btn {
-  margin-right: 12px;
+  width: 100%;
 }
 
 .report-graph__title {
@@ -6489,6 +6496,7 @@ body textarea:focus {
 .report-media__item {
   padding: 12px;
   flex-grow: 1;
+  width: 100%;
 }
 
 .card-media__preview {
@@ -7457,6 +7465,41 @@ a[data-tooltip]:hover::before {
   animation: 0.2s ease 0.2s both slide-in-left;
 }
 
+.device-status--orange,
+.device-status--red,
+.device-status--green {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  background-color: var(--green);
+  border-radius: 50%;
+  margin-left: 1em;
+  margin-bottom: 1px;
+}
+
+.device-status--orange {
+  background-color: var(--orange);
+}
+
+.device-status--red {
+  background-color: var(--red);
+}
+
+.device-id {
+  padding: 0 16px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.device-id li {
+  padding-bottom: 12px;
+}
+
+.device-id span {
+  display: block;
+  padding-bottom: 5px;
+}
+
 @media screen and (min-width: 360.98px) {
   .personal-top__left .dropdown-icon--role {
     display: block;
@@ -8297,6 +8340,10 @@ a[data-tooltip]:hover::before {
     width: 100%;
   }
 
+  .personal-content__add .hide-small-device {
+    display: none;
+  }
+
   button[data-address="select-map"] {
     font-size: 0;
   }
@@ -8323,6 +8370,11 @@ a[data-tooltip]:hover::before {
   }
 
   .report-filter__field .btn {
+    width: 100%;
+  }
+
+  .memory-info__action a {
+    display: block;
     width: 100%;
   }
 

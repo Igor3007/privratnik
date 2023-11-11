@@ -28,7 +28,7 @@ block content
     .personal-content__h1 Устройства управления
     .personal-content__action
         .personal-content__add
-           a(href='#'): button.btn.btn--add(data-device="add") Подключить устройство
+           a(href='#'): button.btn.btn--add(data-device="add") Подключить <span class="hide-small-device">устройство</span>
         .personal-content__sortable
           .link-dropdown
             .link-dropdown__title Сначала старые
@@ -52,7 +52,25 @@ block content
             .table__td(data-title="Название парковки") Шлагбаум у кафе Витязь
             .table__td(data-title="Адрес ближайшего строения") Москва, Островского улица, 36
             .table__td(data-title="Тип устройства") Роутер-СКУД
-            .table__td(data-title="Данные по устройству") 06-AD-C8-36-B3-F4
+            .table__td(data-title="Данные по устройству") 
+              span 06-AD-C8-36-B3-F4
+              span.device-status--green(title="online")
+              //span.device-status--red(title="offline")
+              //span.device-status--orange(title="warning")
+            .table__td(data-title="Тестовое открытие") 
+              button.btn.btn-xsmall Открыть
+            .table__td(data-title="Действия")
+                ul.table-action
+                  li(data-device="edit"): +icons('#ic_edit', 22)
+                  li.row-remove: +icons('#ic_trash', 22)
+
+          .table__tr
+            .table__td(data-title="Название парковки") Шлагбаум ДОМ 136
+            .table__td(data-title="Адрес ближайшего строения") Москва, Островского улица, 316
+            .table__td(data-title="Тип устройства") Роутер-СКУД
+            .table__td(data-title="Данные по устройству") 
+              span 06-AD-C8-36-B3-F4
+              span.device-status--red(title="offline")
             .table__td(data-title="Тестовое открытие") 
               button.btn.btn-xsmall Открыть
             .table__td(data-title="Действия")

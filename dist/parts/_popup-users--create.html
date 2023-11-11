@@ -38,7 +38,7 @@
         </div>
         <div class="form__item">
           <div class="form__subitem"><strong>Идентификаторы дополнительных методов открытия</strong>
-            <ul class="switch-list">
+            <ul class="switch-list" data-related-checkbox="device">
               <li>
                 <label class="checkbox">
                   <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Пульт</span>
@@ -53,6 +53,21 @@
                 <label class="checkbox">
                   <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">RFID метка</span>
                 </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <ul class="device-id" data-related-input="device">
+              <li class="is-hide"><span>Пульт</span>
+                <input type="text" placeholder="Номер пульта ДУ"/>
+              </li>
+              <li class="is-hide"><span>RFID карта</span>
+                <input type="text" placeholder="ID карты"/>
+              </li>
+              <li class="is-hide"><span>RFID метка</span>
+                <input type="text" placeholder="ID метки"/>
               </li>
             </ul>
           </div>

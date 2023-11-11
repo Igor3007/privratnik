@@ -321,11 +321,28 @@
 
     &__action {
         display: flex;
+        flex-wrap: wrap;
         padding-bottom: 12px;
 
-        & .btn {
-            margin-right: 12px;
+        margin: -6px;
+
+        & a {
+
+            padding: 6px;
+
+            @media screen and (max-width: $w480) {
+
+                display: block;
+                width: 100%;
+            }
         }
+
+        & .btn {
+            width: 100%;
+        }
+
+
+
     }
 }
 

@@ -15,6 +15,7 @@
     &__item {
         padding: 12px;
         flex-grow: 1;
+        width: 100%;
 
         @media screen and (min-width: $w992) {
             padding: 16px;

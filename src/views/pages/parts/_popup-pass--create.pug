@@ -8,15 +8,18 @@ include ../../../blocks/modules/popup-form/popup-form.pug
        
           form(action='/access-onetime-list.html' method='GET')
                .form
-                    .form__item: .form__subitem
-                         .form__label Номер телефона, которому выдаётся пропуск
-                         input(type="text" placeholder="Введите номер")
+                    .form__label Номер телефона, которому выдаётся пропуск
+                    .form__item
+                         .form__subitem
+                              input(type="text" placeholder="Введите номер" data-maska="+#(###)###-##-##")
+                         .form__subitem
+                              input(type="text" placeholder="Гос. номер авто")
 
                     .form__label Время действия пропуска
 
                     .form__item
-                         .form__subitem: input(type="text" placeholder="Начало действия")
-                         .form__subitem: input(type="text" placeholder="Конец действия")
+                         .form__subitem: .input--date: input(type="text" placeholder="Начало действия" data-datepicker="start")
+                         .form__subitem: .input--date: input(type="text" placeholder="Конец действия" data-datepicker="end")
 
                     .form__item
                          .form__subitem

@@ -28,10 +28,25 @@ include ../../../blocks/modules/popup-form/popup-form.pug
                     input(type="text" placeholder="Введите номер т/с")
                .form__item: .form__subitem
                     strong Идентификаторы дополнительных методов открытия
-                    ul.switch-list
+                    ul.switch-list(data-related-checkbox="device")
                          li: +checkbox('Пульт')
                          li: +checkbox('RFID карта')
                          li: +checkbox('RFID метка')
+
+               .form__item
+                    .form__subitem
+                         ul.device-id(data-related-input="device")
+                              li.is-hide
+                                   span Пульт
+                                   input(type="text" placeholder="Номер пульта ДУ")
+                              li.is-hide
+                                   span RFID карта
+                                   input(type="text" placeholder="ID карты")
+                              li.is-hide
+                                   span RFID метка
+                                   input(type="text" placeholder="ID метки")
+                    
+                    
 
                .form__item: .form__subitem
                     .form__label Примечание (необязательно)

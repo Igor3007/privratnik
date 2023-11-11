@@ -100,6 +100,17 @@
          }
      }
 
+     &__add {
+
+
+
+         & .hide-small-device {
+             @media screen and (max-width: $w480) {
+                 display: none;
+             }
+         }
+     }
+
      &__methods {
 
          width: 100%;
@@ -280,6 +291,7 @@
          border-radius: 8px;
          margin-right: 12px;
          cursor: pointer;
+         overflow: hidden;
 
          &:last-child {
              margin-right: 0;

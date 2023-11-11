@@ -251,7 +251,7 @@
             <div class="personal-content__h1">Устройства управления</div>
             <div class="personal-content__action">
               <div class="personal-content__add"><a href="#">
-                  <button class="btn btn--add" data-device="add">Подключить устройство</button></a></div>
+                  <button class="btn btn--add" data-device="add">Подключить <span class="hide-small-device">устройство</span></button></a></div>
               <div class="personal-content__sortable">
                 <div class="link-dropdown">
                   <div class="link-dropdown__title">Сначала старые</div>
@@ -279,7 +279,33 @@
                   <div class="table__td" data-title="Название парковки">Шлагбаум у кафе Витязь</div>
                   <div class="table__td" data-title="Адрес ближайшего строения">Москва, Островского улица, 36</div>
                   <div class="table__td" data-title="Тип устройства">Роутер-СКУД</div>
-                  <div class="table__td" data-title="Данные по устройству">06-AD-C8-36-B3-F4</div>
+                  <div class="table__td" data-title="Данные по устройству"> <span>06-AD-C8-36-B3-F4</span><span class="device-status--green" title="online"></span>
+                    <!--span.device-status--red(title="offline")-->
+                    <!--span.device-status--orange(title="warning")-->
+                  </div>
+                  <div class="table__td" data-title="Тестовое открытие"> 
+                    <button class="btn btn-xsmall">Открыть</button>
+                  </div>
+                  <div class="table__td" data-title="Действия">
+                    <ul class="table-action">
+                      <li data-device="edit">
+                        <svg width="22" height="22">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_edit"></use>
+                        </svg>
+                      </li>
+                      <li class="row-remove">
+                        <svg width="22" height="22">
+                          <use xlink:href="/img/sprites/sprite.svg#ic_trash"></use>
+                        </svg>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="table__tr">
+                  <div class="table__td" data-title="Название парковки">Шлагбаум ДОМ 136</div>
+                  <div class="table__td" data-title="Адрес ближайшего строения">Москва, Островского улица, 316</div>
+                  <div class="table__td" data-title="Тип устройства">Роутер-СКУД</div>
+                  <div class="table__td" data-title="Данные по устройству"> <span>06-AD-C8-36-B3-F4</span><span class="device-status--red" title="offline"></span></div>
                   <div class="table__td" data-title="Тестовое открытие"> 
                     <button class="btn btn-xsmall">Открыть</button>
                   </div>

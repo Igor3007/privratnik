@@ -313,3 +313,39 @@ a[data-tooltip]:hover::before {
         }
     }
 }
+
+.device-status--orange,
+.device-status--red,
+.device-status--green {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background-color: var(--green);
+    border-radius: 50%;
+    margin-left: 1em;
+    margin-bottom: 1px;
+}
+
+.device-status--orange {
+    background-color: var(--orange);
+}
+
+.device-status--red {
+    background-color: var(--red);
+}
+
+
+.device-id {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 360px;
+
+    & li {
+        padding-bottom: 12px;
+    }
+
+    & span {
+        display: block;
+        padding-bottom: 5px;
+    }
+}
