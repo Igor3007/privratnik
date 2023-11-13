@@ -1,0 +1,137 @@
+extends ../layouts/personal
+
+include ../../blocks/modules/personal-aside/personal-aside.pug
+include ../../blocks/modules/personal-top/personal-top.pug
+include ../../blocks/modules/personal-content/personal-content.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/components/pagination/pagination.pug
+
+block variables
+    include ../../data/data.pug
+    - const title = "Привратник - Помощники администратора"
+
+
+block aside
+  +personal-aside({
+    title: 'Помощники администратора',
+    openSub: true
+  })
+
+block content
+  +personal-top()
+
+  .personal-content
+    .personal-content__breadcrubs
+        +breadcrumb([
+          'Общая информация',
+          'Помощники администратора',
+        ])
+    .personal-content__h1 Помощники администратора
+    
+
+    .personal-content__tab-container
+      .access-config
+         
+        .access-config__desc 
+          | Добавление пользователей c правми помощников администратора
+        
+        .access-config__action
+          .access-config__add: button.btn.btn--add(data-helpers="add") Добавить помощника
+          .access-config__find 
+            .input--find: input(type="text" placeholder="Найти помощника")
+           
+        .access-config__table
+          .table-radius-wrapper
+            .table
+              .table__tr
+                  .table__th 
+                    | Имя
+                    .table__sort
+                  .table__th 
+                    | Номер телефона  
+                    .table__sort
+                  .table__th 
+                    | Права доступа
+                    .table__sort
+                  .table__th 
+                    | Парковки
+                    .table__sort
+                  .table__th 
+                    | Примечание
+                    .table__sort
+                  .table__th  Действия
+                  
+              each item in [1,1,1]
+                .table__tr
+                  .table__td(data-title="Имя")
+                    .table-dropdown
+                      .table-dropdown__title Тестовый Михаил
+                      .table-dropdown__list
+                        ul
+                          li: span Права доступа пользователя
+                          li: span Статистика пользования доступами
+                    small Создан: 06.09.23, 10:11:11, Создавший
+                    small Изменен: 07.09.23, 10:20:22, Изменивший
+
+                   
+                  .table__td(data-title="Номер телефона") +7 (490) 560-20-30
+                  .table__td(data-title="Права доступа")
+                    ul
+                      li Добавление пользователей
+                      li Добавление групп
+                      li Добавление парковок.
+                  .table__td(data-title="Парковки") 
+                    ul
+                      li Парковка на Болдина
+                      li Дом 213/7
+                      
+                      
+                  .table__td(data-title="Примечание") Пример текста примечания, чтобы было несколько строк
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                        li(data-helpers="edit"): +icons('#ic_edit', 22)
+                        li.row-remove(data-users="remove"): +icons('#ic_trash', 22)
+
+
+
+                .table__tr
+                  .table__td(data-title="Имя")
+                    .table-dropdown
+                      .table-dropdown__title Иван Иванович
+                      .table-dropdown__list
+                        ul
+                          li: span Права доступа пользователя
+                          li: span Статистика пользования доступами
+                    small Создан: 06.09.23, 10:11:11, Создавший
+                    small Изменен: 07.09.23, 10:20:22, Изменивший
+
+                   
+                  .table__td(data-title="Номер телефона") +7 (490) 560-20-30
+                  .table__td(data-title="Права доступа")
+                    ul
+                      li Добавление пользователей
+                  .table__td(data-title="Парковки") 
+                    ul
+                      
+                      li Дом 213/7
+                      
+                      
+                  .table__td(data-title="Примечание") Администратор магазина
+                  .table__td(data-title="Действия")
+                    ul.table-action
+                        li(data-helpers="edit"): +icons('#ic_edit', 22)
+                        li.row-remove(data-users="remove"): +icons('#ic_trash', 22)
+
+
+               
+    .personal-content__pagination
+      +pagination()      
+        
+
+block scripts
+    script(src="/js/vendor.js")
+    script(src="/js/common.js")
+
+ 
+ 
+

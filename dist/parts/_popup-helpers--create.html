@@ -1,0 +1,68 @@
+
+<div class="popup-form">
+  <div class="popup-form__title">Добавление помощника</div>
+  <div class="popup-form__desc">Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций</div>
+  <div class="popup-form__fields">
+    <form action="/access-users-list.html" method="GET">
+      <div class="form">
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Имя помощника</div>
+            <input type="text" placeholder="Введите имя"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Номер телефона</div>
+            <input type="tel" data-maska="+#(###)###-##-##" placeholder="Введите номер"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem"><strong>Права доступа </strong>
+            <ul class="switch-list switch-list--column">
+              <li>
+                <label class="checkbox">
+                  <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Добавление пользователей</span>
+                </label>
+              </li>
+              <li>
+                <label class="checkbox">
+                  <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Добавление групп</span>
+                </label>
+              </li>
+              <li>
+                <label class="checkbox">
+                  <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Добавление парковок </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem"><strong>Парковки</strong>
+            <select multiple="true">
+              <option value="">Парковка 1</option>
+              <option value="">Парковка 2</option>
+              <option value="">Парковка 3</option>
+              <option value="">Парковка 4</option>
+              <option value="">Парковка 5</option>
+              <option value="">Парковка 6</option>
+              <option value="">Парковка 12</option>
+            </select>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Примечание (необязательно)</div>
+            <input type="text" placeholder="Текст примечания"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <button class="btn">Добавить помощника</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
