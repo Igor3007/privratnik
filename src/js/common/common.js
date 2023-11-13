@@ -2884,6 +2884,77 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
 
+    /* ======================================
+    add user list
+    ======================================*/
+
+    function initPopupHelpersList(response, popup) {
+
+        popup.open(response, (instance) => {
+
+            //init select 
+            const selectCustom = new afSelect({
+                selector: 'select'
+            })
+
+            selectCustom.init()
+
+            //init mask
+
+            initMaska()
+        })
+
+    }
+
+    if (document.querySelector('[data-helpers="add"]')) {
+        const items = document.querySelectorAll('[data-helpers="add"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-helpers--create.html'
+                }, (status, response) => {
+
+                    initPopupHelpersList(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+    if (document.querySelector('[data-helpers="edit"]')) {
+        const items = document.querySelectorAll('[data-helpers="edit"]')
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+
+                const popup = new afLightbox({
+                    mobileInBottom: true
+                })
+
+                window.ajax({
+                    type: 'GET',
+                    url: '/parts/_popup-helpers--edit.html'
+                }, (status, response) => {
+
+                    initPopupHelpersList(response, popup)
+
+                })
+
+
+            })
+        })
+    }
+
+
 
 
 

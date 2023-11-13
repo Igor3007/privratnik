@@ -618,6 +618,17 @@ body {
             }
         }
     }
+
+    &--column {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 12px;
+
+        & li {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    }
 }
 
 .check-list {

@@ -1,0 +1,92 @@
+
+<div class="popup-form">
+  <div class="popup-form__title">Изменить пользователя</div>
+  <div class="popup-form__desc">Пожалуйста, проверьте правильность заполнения всех полей, чтобы избежать непредвиденных ситуаций</div>
+  <div class="popup-form__fields">
+    <form action="/access-users-list.html" method="GET">
+      <div class="form">
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Имя пользователя</div>
+            <input type="text" placeholder="Введите имя" value="Тестовый Михаил"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Группа пользователя</div>
+            <select name="group">
+              <option value="0">Общая группа</option>
+              <option value="1">Жильцы</option>
+              <option value="2" selected="selected">Спецтранспорт</option>
+              <option value="3">Обслуживающий персонал</option>
+              <option value="3">Жильцы с ограниченным доступом</option>
+              <option value="3">Жильцы с частичным доступом</option>
+            </select>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Номер телефона</div>
+            <input type="text" placeholder="Введите номер" value="+7 (490) 560-20-30"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Госномер транспортного средства (необязательно)</div>
+            <input type="text" placeholder="Введите номер т/с" value="А037НУ799"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem"><strong>Идентификаторы дополнительных методов открытия</strong>
+            <ul class="switch-list" data-related-checkbox="device">
+              <li>
+                <label class="checkbox">
+                  <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">Пульт</span>
+                </label>
+              </li>
+              <li>
+                <label class="checkbox">
+                  <input type="checkbox" name="rfid" checked=""/><span class="checkbox__elem"></span><span class="checkbox__text">RFID карта</span>
+                </label>
+              </li>
+              <li>
+                <label class="checkbox">
+                  <input type="checkbox" name="undefined"/><span class="checkbox__elem"></span><span class="checkbox__text">RFID метка</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <ul class="device-id" data-related-input="device">
+              <li class="is-hide"><span>Пульт</span>
+                <input type="text" placeholder="Номер пульта ДУ"/>
+              </li>
+              <li class="is-hide"><span>RFID карта</span>
+                <input type="text" placeholder="ID карты" value="12DDJ38ER5434"/>
+              </li>
+              <li class="is-hide"><span>RFID метка</span>
+                <input type="text" placeholder="ID метки"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <div class="form__label">Примечание (необязательно)</div>
+            <input type="text" placeholder="Текст примечания" value="Пример текста примечания, просто несколько слов"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <div class="form__subitem">
+            <button class="btn">Сохранить изменения</button>
+          </div>
+          <div class="form__subitem">
+            <button class="btn btn-line" data-af-popup="close" type="button">Закрыть </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

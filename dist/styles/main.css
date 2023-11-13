@@ -3324,6 +3324,17 @@ body textarea:focus {
   padding: 7px 10px;
 }
 
+.switch-list--column {
+  flex-direction: column;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.switch-list--column li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .check-list li {
   padding: 5px 0;
 }
