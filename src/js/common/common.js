@@ -102,163 +102,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     window.preloader = new Preloader();
 
-
-    /* ====================================
-    ajax tooltip
-    ====================================*/
-
-    // if (document.querySelector('[data-tooltip]')) {
-
-
-    //     class TooltipAjax {
-
-    //         constructor() {
-    //             this.$items = document.querySelectorAll('[data-tooltip]')
-    //             this.addEvents()
-    //             this.tooltip = null;
-    //         }
-
-    //         ajaxLoadTooltip(e, callback) {
-
-    //             // window.ajax({
-    //             //     type: 'GET', //POST
-    //             //     url: '/json/tooltips.json',
-    //             //     responseType: 'json',
-    //             //     data: {
-    //             //         idProduct: e.target.dataset.id,
-    //             //         idTooltip: e.target.dataset.propTooltip
-    //             //     }
-    //             // }, function (status, response) {
-    //             //     callback(response)
-    //             // })
-
-    //             console.log(e.target.closest('[data-tooltip]').dataset.tooltip)
-    //             callback(e.target.closest('[data-tooltip]').dataset.tooltip)
-
-    //         }
-
-    //         getTemplate(data) {
-
-
-    //             let html = ` <div class="tooltip-box" ><div class="af-spiner" ></div></div> `;
-
-    //             if (data) {
-
-    //                 html = `<div class="tooltip-box" >
-    //                            <div class="tooltip-box__text" >${data}</div>
-    //                        </div> `;
-    //             }
-
-    //             return html;
-
-    //         }
-
-    //         positionTooltip(e) {
-    //             const DomRect = e.target.getBoundingClientRect()
-    //             const tooltipW = this.tooltip.clientWidth;
-    //             const tooltipH = this.tooltip.clientHeight;
-    //             const offset = 20;
-
-    //             this.tooltip.style.left = (DomRect.x - (tooltipW / 2) + (offset / 2)) + 'px'
-    //             this.tooltip.style.top = (DomRect.y - tooltipH - (offset / 2)) + 'px'
-
-
-    //             if (this.tooltip.getBoundingClientRect().left < offset) {
-    //                 this.tooltip.classList.add('tooltip-box-item--left')
-    //                 this.tooltip.style.left = (DomRect.x - (DomRect.x / 2) + (offset / 2)) + 'px'
-    //             }
-
-    //             if (this.tooltip.getBoundingClientRect().top < offset) {
-    //                 this.tooltip.classList.add('tooltip-box-item--top')
-    //                 this.tooltip.style.top = (DomRect.y + (offset)) + 'px'
-    //             }
-    //         }
-
-    //         tooltipDesctop(e) {
-
-
-
-    //             this.tooltipRemove()
-
-    //             this.tooltip = document.createElement('div')
-    //             this.tooltip.innerHTML = this.getTemplate(false)
-    //             this.tooltip.classList.add('tooltip-box-item')
-
-
-
-    //             e.target.closest('[data-tooltip]').append(this.tooltip)
-    //             this.positionTooltip(e)
-
-    //             //load data
-
-    //             this.ajaxLoadTooltip(e, (response) => {
-    //                 this.tooltip.innerHTML = this.getTemplate(response)
-    //                 this.positionTooltip(e)
-
-    //             })
-
-
-    //         }
-
-    //         tooltipPopup(e) {
-    //             const tooltipPopup = new afLightbox({
-    //                 mobileInBottom: true
-    //             })
-
-    //             tooltipPopup.open('<div class="popup-tooltip-box" >' + this.getTemplate(false) + '</div>', () => {
-
-    //                 this.ajaxLoadTooltip(e, (response) => {
-    //                     tooltipPopup.changeContent('<div class="popup-tooltip-box" >' + this.getTemplate(response) + '</div>')
-    //                 })
-
-    //             })
-    //         }
-
-    //         tooltipRemove() {
-    //             this.tooltip ? this.tooltip.remove() : ''
-    //         }
-
-    //         addEvents() {
-    //             this.$items.forEach(item => {
-
-    //                 item.addEventListener('click', e => {
-
-    //                     //for desctop
-    //                     if (document.body.clientWidth > 576) {
-
-    //                         this.tooltipDesctop(e)
-
-    //                         //add event close on scroll
-    //                         window.addEventListener('scroll', e => {
-    //                             this.tooltipRemove()
-    //                         })
-
-    //                         //add event close on outher click 
-    //                         document.addEventListener('click', e => {
-    //                             if (!e.target.closest('[data-tooltip]'))
-    //                                 this.tooltipRemove()
-    //                         })
-
-    //                     } else {
-
-    //                         //for mobile
-    //                         this.tooltipPopup(e)
-
-    //                     }
-
-    //                 })
-
-    //             })
-    //         }
-
-    //     }
-
-    //     new TooltipAjax()
-
-
-    // }
-
-
     /* =================================================
     confirm
     ================================================= */
@@ -484,9 +327,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     ============================================== */
 
     if (document.querySelector('.page-scroll-top')) {
-
         const btnPageScrollTop = document.querySelector('.page-scroll-top')
-
         btnPageScrollTop.addEventListener('click', e => {
             window.scrollTo({
                 top: 0,
@@ -506,54 +347,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     /* ==============================================
     mobile menu
     ============================================== */
-
-    // if (document.querySelector('[data-menu="open"]')) {
-    //     const elContainer = document.querySelector('[data-menu="container"]')
-    //     const elButton = document.querySelector('[data-menu="btn"]')
-
-    //     function mobileMenu(params) {
-    //         this.el = params.elContainer;
-    //         this.button = params.elButton;
-    //         this.state = 'close';
-
-    //         this.open = function () {
-
-    //             this.el.classList.add('open')
-    //             this.button.classList.add('open')
-    //             document.body.classList.add('hidden')
-    //             this.state = 'open';
-
-    //         }
-
-    //         this.close = function () {
-
-    //             this.el.classList.add('close-animate')
-    //             this.button.classList.remove('open')
-
-
-    //             setTimeout(() => {
-    //                 this.el.classList.remove('open')
-    //                 this.el.classList.remove('close-animate')
-    //                 document.body.classList.remove('hidden')
-    //                 this.state = 'close'
-    //             }, 200)
-
-
-    //         }
-
-    //         this.toggle = function () {
-    //             if (this.state == 'close') this.open()
-    //             else this.close()
-    //         }
-    //     }
-
-    //     window.menuinstance = new mobileMenu({
-    //         elButton,
-    //         elContainer
-    //     })
-
-
-    // }
 
     if (document.querySelector('[data-menu="open"]')) {
         const btnBurger = document.querySelector('[data-menu="open"]')
@@ -638,8 +431,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     window.ajax = function (params, response) {
 
         //params Object
-        //dom element
-        //collback function
 
         window.preloader.load()
 
@@ -665,7 +456,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         xhr.onload = function () {
 
             response ? response(xhr.status, xhr.response) : ''
-
             window.preloader.stop()
 
             setTimeout(function () {
@@ -1436,6 +1226,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     this.myMap.setCenter(this.coordinates)
                     this.placemark.properties.set('balloonContent', this.getBalloonTemplate())
                     this.placemark.balloon.open()
+
+
                 },
 
                 (err) => {
@@ -1454,6 +1246,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     this.inputSearch.value = this.addressLine
                     this.placemark.properties.set('balloonContent', this.getBalloonTemplate())
                     this.placemark.balloon.open()
+
+
+
+                    // console.log(JSON.stringify({
+                    //     "city": res.geoObjects.get(0).getLocalities()[0],
+                    //     "name": "ООО ГК " + res.geoObjects.get(0).getLocalities()[0] + "",
+                    //     "address": this.addressLine,
+                    //     "phone": "+7 (863) 333-22-56",
+                    //     "email": "first-brodeks@mail.ru",
+                    //     "worktime": "ежедневно с 9:00 - 20:00",
+                    //     "images": "/img/common/shop.jpg",
+                    //     "coordinates": this.coordinates.join(','),
+                    //     "type": "brand-shop"
+                    // }))
                 },
 
                 (err) => {
@@ -2900,7 +2706,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             selectCustom.init()
 
             //init mask
-
             initMaska()
         })
 
@@ -2953,11 +2758,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             })
         })
     }
-
-
-
-
-
 
 
 }); //domContentLoaded

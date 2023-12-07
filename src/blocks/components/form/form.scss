@@ -650,7 +650,7 @@ body {
     width: 48px;
     height: 48px;
     display: flex;
-    background-color: var(--blue-dark);
+    background-color: #fff;
     justify-content: center;
     align-items: center;
     right: 20px;
@@ -661,6 +661,7 @@ body {
     transition: 0.3s ease;
     opacity: 0;
     transform: translateY(100%);
+    z-index: 10;
 
     &.is-active {
         opacity: 1;
