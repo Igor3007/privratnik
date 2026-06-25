@@ -418,7 +418,7 @@ select {
 
     & .select-options {
         & li {
-            padding-left: 46px;
+            padding-right: 46px;
         }
     }
 
@@ -443,7 +443,7 @@ select {
         }
 
         &::after {
-            background-color: var(--bg-02);
+            background-color: #dde5f0;
             @include layer(1);
             content: '';
             border-radius: 4px;

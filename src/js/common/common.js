@@ -1249,17 +1249,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 
-                    // console.log(JSON.stringify({
-                    //     "city": res.geoObjects.get(0).getLocalities()[0],
-                    //     "name": "ООО ГК " + res.geoObjects.get(0).getLocalities()[0] + "",
-                    //     "address": this.addressLine,
-                    //     "phone": "+7 (863) 333-22-56",
-                    //     "email": "first-brodeks@mail.ru",
-                    //     "worktime": "ежедневно с 9:00 - 20:00",
-                    //     "images": "/img/common/shop.jpg",
-                    //     "coordinates": this.coordinates.join(','),
-                    //     "type": "brand-shop"
-                    // }))
+                    console.log(JSON.stringify({
+                        "city": res.geoObjects.get(0).getLocalities()[0],
+                        //"name": "ООО ГК " + res.geoObjects.get(0).getLocalities()[0] + "",
+                        // "address": this.addressLine,
+                        // "phone": "+7 (863) 333-22-56",
+                        //  "email": "first-brodeks@mail.ru",
+                        // "worktime": "ежедневно с 9:00 - 20:00",
+                        //  "images": "/img/common/shop.jpg",
+                        "coordinates": this.coordinates.join(','),
+                        //  "type": "brand-shop"
+                    }))
                 },
 
                 (err) => {
